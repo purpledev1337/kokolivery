@@ -20,7 +20,7 @@ class CreateDishesTable extends Migration
             $table -> text('description');
             $table -> string('image_path');
             $table -> decimal('price',4,2);
-            $table -> enum('category',['Antipasto', 'Primo', 'Secondo', 'Dessert', 'Bibite']);
+            $table -> enum('category',['Antipasto', 'Primi Piatti', 'Secondi Piatti', 'Dessert', 'Bibite', 'Pizza']);
             $table -> boolean('is_visible');
 
             $table -> timestamps();

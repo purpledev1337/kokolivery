@@ -25,10 +25,13 @@ class TypeSeeder extends Seeder
             ['name' => 'Kebab'],
             ['name' => 'Bisteccheria'],
             ['name' => 'Poke'],
-            ['name' => 'Amerricano'],
+            ['name' => 'Americano'],
             ['name' => 'Gelato'],
             ['name' => 'Hamburgher'],
             ['name' => 'Dessert'],
+            ['name' => 'Messicano'],
+            ['name' => 'Indiano'],
+            ['name' => 'Brasiliano'],
         ]);
     }
 }
