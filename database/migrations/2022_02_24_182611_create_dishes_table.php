@@ -14,8 +14,16 @@ class CreateDishesTable extends Migration
     public function up()
     {
         Schema::create('dishes', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table -> id();
+
+            $table -> string('name');
+            $table -> text('description');
+            $table -> string('image_path');
+            $table -> decimal('price',4,2);
+            $table -> enum('category',['Antipasto', 'Primo', 'Secondo', 'Dessert', 'Bibite']);
+            $table -> boolean('is_visible');
+
+            $table -> timestamps();
         });
     }
 
