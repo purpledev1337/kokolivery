@@ -11,7 +11,7 @@ class TypeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->insert([
+        DB::table('types')->insert([
             ['name' => 'categoria 1'],
             ['name' => 'categoria 2'],
             ['name' => 'categoria 3'],
