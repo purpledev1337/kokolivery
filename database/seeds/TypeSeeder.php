@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Type;
+use App\User;
 
 class TypeSeeder extends Seeder
 {
@@ -42,5 +43,11 @@ class TypeSeeder extends Seeder
         //         ['type_id' => $type->id, 'restaurant_id' => rand(1,100)],
         //     );
         // }
+
+        User::all() -> each(function($restaurant){
+            $types = Type::inRandomOrder() -> limit(rand(1,3)) -> get();
+            $restaurant -> types() -> attach($types);
+            $restaurant -> save();
+        });
     }
 }

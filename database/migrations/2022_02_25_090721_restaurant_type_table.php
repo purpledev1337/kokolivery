@@ -13,9 +13,9 @@ class RestaurantTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('restaurant_type', function (Blueprint $table) {
+        Schema::create('type_user', function (Blueprint $table) {
             $table -> id();
-            $table-> bigInteger('restaurant_id')->unsigned();
+            $table-> bigInteger('user_id')->unsigned();
             $table-> bigInteger('type_id')->unsigned();
         
         });
@@ -28,6 +28,6 @@ class RestaurantTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('restaurant_type');   
+        Schema::dropIfExists('type_user');   
     }
 }
