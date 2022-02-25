@@ -10,4 +10,9 @@ class Order extends Model
         'status-pay',
         'delivery_time',
     ];
+
+    public function guest() {
+
+        return $this -> hasOne(Guest::class);
+    }
 }

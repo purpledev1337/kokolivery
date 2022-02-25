@@ -21,6 +21,8 @@ class CreateGuestsTable extends Migration
             $table -> string('address');
             $table -> string('email') ->unique();
 
+            $table -> bigInteger('order_id') -> unsigned();
+
             $table->timestamps();
         });
     }

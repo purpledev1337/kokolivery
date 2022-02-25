@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 
 use App\Guest;
+use App\Order;
 
 class GuestSeeder extends Seeder
 {
@@ -13,6 +14,13 @@ class GuestSeeder extends Seeder
      */
     public function run()
     {
-        factory(Guest::class, 20) -> create();
+        factory(Guest::class, 20) -> make() -> each(function ($guest) {
+
+            $order = Order::inRandomOrder() -> limit(1) -> first();
+            $guest -> order() -> associate($order);
+            $guest -> save();
+
+        });
+
     }
 }

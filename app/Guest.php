@@ -10,6 +10,12 @@ class Guest extends Model
         'name',
         'lastname',
         'address',
-        'email'
+        'email',
+        'order_id'
     ];
+
+    public function order() {
+
+        return $this->belongsTo(Guest::class);
+    }
 }

@@ -13,7 +13,12 @@ class AddForeignKeys extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('guests', function (Blueprint $table) {
+
+            $table->foreign('order_id')
+                  ->references('id')
+                  ->on('orders');
+        });
     }
 
     /**
@@ -23,6 +28,9 @@ class AddForeignKeys extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('guests', function (Blueprint $table) {
+
+            $table->dropForeign('order_id');
+        });
     }
 }

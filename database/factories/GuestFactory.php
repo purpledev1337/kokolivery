@@ -11,6 +11,7 @@ $factory->define(Guest::class, function (Faker $faker) {
         'name' => $faker -> firstName(),
         'lastname' => $faker -> lastName(),
         'address' => $faker -> address(),
-        'email' => $faker -> unique() -> email()
+        'email' => $faker -> unique() -> email(),
+        'order_id' => $faker->numberBetween(1, 20),
     ];
 });
