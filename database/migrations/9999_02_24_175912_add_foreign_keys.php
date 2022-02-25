@@ -13,7 +13,14 @@ class AddForeignKeys extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('dish_order', function (Blueprint $table) {
+            $table->foreign('dish_id', 'dish_order')
+                  ->references('id')
+                  ->on('dishes');
+            $table->foreign('order_id', 'order_dish')
+                  ->references('id')
+                  ->on('orders');
+        });
     }
 
     /**
@@ -23,6 +30,9 @@ class AddForeignKeys extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('dish_order', function (Blueprint $table) {
+            $table->dropForeign('dish_order');
+            $table->dropForeign('order_dish');
+        });
     }
 }

@@ -16,4 +16,9 @@ class Dish extends Model
         'category',
         'is_visible'
     ];
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class);
+    }
 }

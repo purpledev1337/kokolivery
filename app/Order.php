@@ -10,4 +10,9 @@ class Order extends Model
         'status-pay',
         'delivery_time',
     ];
+
+    public function dishes()
+    {
+        return $this->belongsToMany(Disd::class);
+    }
 }
