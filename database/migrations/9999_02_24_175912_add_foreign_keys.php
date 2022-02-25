@@ -35,7 +35,7 @@ class AddForeignKeys extends Migration
 
         Schema::table('guests', function (Blueprint $table) {
 
-            $table->foreign('order_id')
+            $table->foreign('order_id', 'id_order')
                   ->references('id')
                   ->on('orders');
         });
@@ -62,7 +62,7 @@ class AddForeignKeys extends Migration
 
         Schema::table('guests', function (Blueprint $table) {
 
-            $table->dropForeign('order_id');
+            $table->dropForeign('id_order');
         });
     }
 }
