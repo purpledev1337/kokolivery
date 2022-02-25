@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             // $table->timestamp('email_verified_at')->nullable();
             $table -> string('password');
             $table -> string('address');
-            $table -> string('city');
+            $table -> enum('city',['Milano', 'Napoli', 'Roma', 'Bologna', 'Firenze', 'Venezia', 'Torino', 'Pisa', 'Bari', 'Palermo', 'Cosenza', 'Cagliari']);
             $table -> string('p_iva',30);
             $table -> text('description') -> nullable();
             $table -> string('image_path') -> nullable();
