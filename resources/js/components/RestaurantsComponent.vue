@@ -5,7 +5,7 @@
 
         <div id="restaurants_box">
             <div class="restaurant_card" v-for="restaurant in restaurants" :key="restaurant.id">
-                <img src="" :alt="restaurant.image_path">
+                <img :src="`storage/${restaurant.image_path}`" alt="">
                 <h2>{{ restaurant.brand_name }}</h2>
                 <h6>Indirizzo: {{ restaurant.address }}</h6>
                 <span>Stelline -> {{ restaurant.rating }}</span>
@@ -25,10 +25,15 @@
             };
         },
         mounted() {
-            
-            axios.get('/api/restaurant_list')
+            this.getData();
+        },
+
+        methods: {
+            getData() {
+                axios.get('/api/restaurant_list')
                 .then(r => this.restaurants = r.data)
                 .catch(e => console.error(e));
+            }
         }
     }
 </script>

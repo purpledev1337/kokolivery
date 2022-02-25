@@ -5122,13 +5122,18 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    var _this = this;
+    this.getData();
+  },
+  methods: {
+    getData: function getData() {
+      var _this = this;
 
-    axios.get('/api/restaurant_list').then(function (r) {
-      return _this.restaurants = r.data;
-    })["catch"](function (e) {
-      return console.error(e);
-    });
+      axios.get('/api/restaurant_list').then(function (r) {
+        return _this.restaurants = r.data;
+      })["catch"](function (e) {
+        return console.error(e);
+      });
+    }
   }
 });
 
@@ -41391,7 +41396,9 @@ var render = function () {
           "div",
           { key: restaurant.id, staticClass: "restaurant_card" },
           [
-            _c("img", { attrs: { src: "", alt: restaurant.image_path } }),
+            _c("img", {
+              attrs: { src: "storage/" + restaurant.image_path, alt: "" },
+            }),
             _vm._v(" "),
             _c("h2", [_vm._v(_vm._s(restaurant.brand_name))]),
             _vm._v(" "),
