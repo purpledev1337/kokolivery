@@ -14,7 +14,7 @@
 
     <div class="container" >
         
-        <a class="btn btn-primary my-2" href="">REGISTER</a>
+        <a class="btn btn-primary my-2" href="{{ route('register') }}">REGISTER</a>
     
         <a class="btn btn-primary my-2" href="">LOGIN</a>
     </div>
