@@ -58,11 +58,11 @@ class AddForeignKeys extends Migration
         Schema::table('restaurant_type', function (Blueprint $table) {
             $table  -> dropForeign('restaurant_type');
             $table  -> dropForeign('type_restaurant');
+        });
 
         Schema::table('guests', function (Blueprint $table) {
 
             $table->dropForeign('order_id');
-
         });
     }
 }
