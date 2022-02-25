@@ -10962,12 +10962,6 @@ a.text-dark:focus {
   }
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #ffd00f;
@@ -10984,8 +10978,6 @@ body {
 }
 
 #cont-logo {
-  /* width: 30%;
-  min-width: 400px; */
   display: flex;
   align-items: center;
 }
@@ -11000,7 +10992,6 @@ img {
 
 h1 {
   position: relative;
-  /* top: -35px; */
   text-align: center;
   color: #5c2e4d;
   text-shadow: 3px 3px 6px white;
@@ -11013,5 +11004,11 @@ input {
   height: 40px;
   width: 400px;
   border-radius: 14px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
