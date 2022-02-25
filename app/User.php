@@ -35,6 +35,10 @@ class User extends Authenticatable
         return $this -> belongsToMany(Type::class);
     }
 
+    public function dishes(){
+        return $this -> hasMany(Dish::class);
+    }
+
 
 
     /**

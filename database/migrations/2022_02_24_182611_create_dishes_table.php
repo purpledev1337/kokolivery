@@ -16,6 +16,7 @@ class CreateDishesTable extends Migration
         Schema::create('dishes', function (Blueprint $table) {
             $table -> id();
 
+            $table ->biginteger('restaurant_id') -> unsigned();
             $table -> string('name');
             $table -> text('description');
             $table -> string('image_path');
