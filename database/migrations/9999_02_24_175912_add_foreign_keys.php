@@ -21,6 +21,16 @@ class AddForeignKeys extends Migration
                   ->references('id')
                   ->on('orders');
         });
+        
+        Schema::table('restaurant_type', function (Blueprint $table) {
+            $table  -> foreign('restaurant_id', 'restaurant_type')
+                    -> references('id')
+                    -> on('users');
+
+            $table  -> foreign('type_id', 'type_restaurant')
+                    -> references('id')
+                    -> on('types');
+        });
     }
 
     /**
@@ -33,6 +43,11 @@ class AddForeignKeys extends Migration
         Schema::table('dish_order', function (Blueprint $table) {
             $table->dropForeign('dish_order');
             $table->dropForeign('order_dish');
+        });
+
+        Schema::table('restaurant_type', function (Blueprint $table) {
+            $table  -> dropForeign('restaurant_type');
+            $table  -> dropForeign('type_restaurant');
         });
     }
 }

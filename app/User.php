@@ -31,6 +31,12 @@ class User extends Authenticatable
         'num_rating'
     ];
 
+    public function types() {
+        return $this -> belongsToMany(Type::class);
+    }
+
+
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -48,4 +54,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
 }
