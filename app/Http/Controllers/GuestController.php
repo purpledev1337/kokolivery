@@ -10,4 +10,9 @@ class GuestController extends Controller
     {
         return view('pages.home');
     }
+
+    public function register()
+    {
+        return view('pages.register');
+    }
 }
