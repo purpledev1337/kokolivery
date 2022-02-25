@@ -4,7 +4,7 @@
 
 <div>
 
-    <Restaurants-component></Restaurants-component>
+    <restaurants-component></restaurants-component>
 
 </div>
     

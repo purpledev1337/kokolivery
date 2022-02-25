@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@extends('layouts.main-layout')
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script src="{{ asset('js/app.js') }}"></script>
-
-    <title>test</title>
-</head>
-<body>
+@section('content')
 
     <div class="container" >
         
         <a class="btn btn-primary my-2" href="{{ route('register') }}">REGISTER</a>
-    
+
         <a class="btn btn-primary my-2" href="">LOGIN</a>
     </div>
 
@@ -35,8 +25,6 @@
         </div>
         
         <a href="{{ route('restaurant_list') }}">Link alla restaurant_list</a>
-    </div> 
+    </div>
 
-
-</body>
-</html>
+@endsection

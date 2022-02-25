@@ -11,6 +11,8 @@ class ApiController extends Controller
     public function getRestaurants() {
 
         $users = User::all();
+
+        dd("ciao");
         
         return json_encode($users);
     }
