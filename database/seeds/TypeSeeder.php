@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Type;
 
 class TypeSeeder extends Seeder
 {
@@ -33,5 +34,13 @@ class TypeSeeder extends Seeder
             ['name' => 'Indiano'],
             ['name' => 'Brasiliano'],
         ]);
+
+        Schema::disableForeignKeyConstraints();
+        for ($i = 1; $i < 10; $i++) {
+            $type=Type::inRandomOrder()->limit(1)->first();
+            DB::table('restaurant_type')->insert(
+                ['type_id' => $type->id, 'restaurant_id' => rand(1, 10)]
+            );
+        }
     }
 }
