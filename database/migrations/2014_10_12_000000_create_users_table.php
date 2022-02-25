@@ -15,12 +15,12 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table -> id();
-            $table -> string('brande_name');
+            $table -> string('brand_name');
             $table -> string('email') ->unique();
             // $table->timestamp('email_verified_at')->nullable();
             $table -> string('password');
             $table -> string('address');
-            $table -> string('city');
+            $table -> enum('city',['Milano', 'Napoli', 'Roma', 'Bologna', 'Firenze', 'Venezia', 'Torino', 'Pisa', 'Bari', 'Palermo', 'Cosenza', 'Cagliari']);
             $table -> string('p_iva',30);
             $table -> text('description') -> nullable();
             $table -> string('image_path') -> nullable();

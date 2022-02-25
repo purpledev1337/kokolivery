@@ -2,10 +2,11 @@
 
 use Illuminate\Database\Seeder;
 
-use App\Type;
-use App\User;
+use App\Order;
 
-class UserSeeder extends Seeder
+use App\Dish;
+
+class OrderSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +15,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class,300) -> create();
+        factory(Order::class, 200) -> create();
     }
 }
