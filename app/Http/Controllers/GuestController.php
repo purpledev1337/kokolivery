@@ -11,8 +11,12 @@ class GuestController extends Controller
         return view('pages.home');
     }
 
-    public function register()
+    public function register() 
     {
         return view('pages.register');
+    }
+    public function restaurant_list()
+    {
+        return view('pages.restaurant_list');
     }
 }

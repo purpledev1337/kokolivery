@@ -28,11 +28,13 @@
             <h1 id="float-title">
                 Kokolivery
             </h1> 
-        </div> 
+        </div>
         <div>
             <input type="text" placeholder="Inserisci La Via, La Citta' E La Provincia">
             <button class="btn btn-primary" >SEARCH</button>
         </div>
+        
+        <a href="{{ route('restaurant_list') }}">Link alla restaurant_list</a>
     </div> 
 
 
