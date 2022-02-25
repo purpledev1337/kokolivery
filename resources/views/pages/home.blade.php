@@ -12,6 +12,14 @@
 </head>
 <body>
 
+    <div class="container" >
+        
+        <a class="btn btn-primary my-2" href="{{ route('register') }}">REGISTER</a>
+    
+        <a class="btn btn-primary my-2" href="">LOGIN</a>
+    </div>
+
+
     <div id="cont">
         <div id="cont-logo">
             <div id="cont-img">
