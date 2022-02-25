@@ -15,7 +15,7 @@
     <div id="cont">
         <div id="cont-logo">
             <div id="cont-img">
-                <img id="float-img" src="asset/kokolivery-logo.svg" alt="">
+                <img id="float-img" src="storage/asset/kokolivery-logo.svg" alt="">
             </div>
             <h1 id="float-title">
                 Kokolivery

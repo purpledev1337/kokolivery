@@ -11008,3 +11008,10 @@ h1 {
   display: none;
 }
 
+input {
+  padding: 5px 15px;
+  height: 40px;
+  width: 400px;
+  border-radius: 14px;
+}
+
