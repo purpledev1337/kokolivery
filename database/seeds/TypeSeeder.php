@@ -36,18 +36,10 @@ class TypeSeeder extends Seeder
             ['name' => 'Brasiliano'],
         ]);
 
-        // Schema::disableForeignKeyConstraints();
-        // for ($i = 1; $i < 150; $i++) {
-        //     $type=Type::inRandomOrder()->limit(1)->first();
-        //     DB::table('restaurant_type')->insert(
-        //         ['type_id' => $type->id, 'restaurant_id' => rand(1,100)],
-        //     );
-        // }
-
-        User::all() -> each(function($restaurant){
+        User::all() -> each(function($user){
             $types = Type::inRandomOrder() -> limit(rand(1,3)) -> get();
-            $restaurant -> types() -> attach($types);
-            $restaurant -> save();
+            $user -> types() -> attach($types);
+            $user -> save();
         });
     }
 }

@@ -15,10 +15,5 @@ class UserSeeder extends Seeder
     public function run()
     {
         factory(User::class,100) -> create();
-        // -> each(function($restaurant){
-        //     $types = Type::inRandomOrder() -> limit(rand(1,3)) -> get();
-        //     $restaurant -> types() -> attach($types);
-        //     $restaurant -> save();
-        // });
     }
 }

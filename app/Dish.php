@@ -22,7 +22,7 @@ class Dish extends Model
         return $this->belongsToMany(Order::class);
     }
 
-    public function restaurant(){
+    public function user(){
         return $this -> belongsTo(User::class);
     }
 }

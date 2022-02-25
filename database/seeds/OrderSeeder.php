@@ -16,11 +16,5 @@ class OrderSeeder extends Seeder
     public function run()
     {
         factory(Order::class, 10) -> create();
-        //  -> each(function($o){
-
-        //     $dishes = Dish::inRandomOrder()->limit(rand(0,5))->get();
-        //     $o -> dishes() -> attach($dishes);
-        //     $o -> save();
-        // });
     }
 }
