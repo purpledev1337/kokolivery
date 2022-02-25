@@ -11,8 +11,12 @@ class Order extends Model
         'delivery_time',
     ];
 
-    public function dishes()
-    {
+    public function dishes() {
+
         return $this->belongsToMany(Dish::class);
+    }
+    public function guest() {
+
+        return $this -> hasOne(Guest::class);
     }
 }

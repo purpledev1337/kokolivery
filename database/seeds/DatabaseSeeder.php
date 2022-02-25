@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             TypeSeeder::class,
             OrderSeeder::class,
             DishSeeder::class,
+            GuestSeeder::class
         ]
         );
     }
