@@ -14,7 +14,7 @@ class GuestSeeder extends Seeder
      */
     public function run()
     {
-        factory(Guest::class, 20) -> make() -> each(function ($guest) {
+        factory(Guest::class, 80) -> make() -> each(function ($guest) {
 
             $order = Order::inRandomOrder() -> limit(1) -> first();
             $guest -> order() -> associate($order);
