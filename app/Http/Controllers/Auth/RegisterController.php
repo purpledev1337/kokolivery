@@ -73,9 +73,8 @@ class RegisterController extends Controller
         // $data['image'] = $imageName;
         // salvo l'array nel db
         // User::create($data);
+    
         
-        // torno alla home
-        return redirect() -> route('home');
     }
 
     /**
@@ -97,7 +96,7 @@ class RegisterController extends Controller
         // dd($data['image']);
         // salvo l'array nel db
         // dd($data);
-        return User::create([
+        User::create([
             'brand_name' => $data['brand_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -110,6 +109,7 @@ class RegisterController extends Controller
             'discount' => $data['discount'],
             'description' => $data['description'],
         ]);
-        
+        // torno alla home
+        return redirect() -> route('home');
     }
 }
