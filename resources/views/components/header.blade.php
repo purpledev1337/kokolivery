@@ -14,7 +14,7 @@
                     
                     @auth
                         <li class="nav-item">
-                            <span class="nav-link">{{ Auth::user() -> brand_name }}</span>
+                            <a href="{{ route('dashboard') }}" class="nav-link">{{ Auth::user() -> brand_name }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}">Logout</a>
