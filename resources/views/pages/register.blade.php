@@ -2,7 +2,7 @@
 @section('content')
     <form class="row g-3 container m-auto"
           method="POST"
-          action="{{ route() }}"
+          action="{{ route('register') }}"
           enctype="multipart/form-data">
           @method('POST')
           @csrf
