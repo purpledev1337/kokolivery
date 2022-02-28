@@ -1,7 +1,7 @@
 @extends('layouts.main-layout')
 @section('content')
     <h2>Piatti:</h2>
-    <a class="btn btn-primary" href="" >ADD</a>
+    <a class="btn btn-primary" href="{{ route('dish.create') }}" >ADD</a>
     <br>
     <br>
     @foreach ($dishes as $dish)
