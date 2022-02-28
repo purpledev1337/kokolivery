@@ -25,3 +25,10 @@ Route::middleware(['auth'])->prefix('post')->group(function () {
 Route::get('/api/restaurant_list', 'ApiController@getRestaurants')->name('api.restaurant_list');
 Route::get('/restaurant_list', 'GuestController@restaurant_list')->name('restaurant_list');
 
+Route::get('/dashboard','HomeController@dashboard')->name('dashboard');
+Route::get('/myDishes/{id}','HomeController@myDishes')->name('myDishes');
+Route::get('/myOrders/{id}','HomeController@myOrders')->name('myOrders');
+
+
+
+
