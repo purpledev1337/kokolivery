@@ -13,20 +13,20 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     
                     @auth
-                        <li class="nav-item navbar-brand me-2 mb-1 mb-lg-0">
-                            <span>{{ Auth::user() -> brand_name }}</span>
+                        <li class="nav-item">
+                            <span class="nav-link">{{ Auth::user() -> brand_name }}</span>
                         </li>
-                        <li>
-                            <a class="btn btn-outline-indigo me-2 mb-1 mb-lg-0" href="{{ route('logout') }}">LOGOUT</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('logout') }}">Logout</a>
                         </li>
-                    @else
+                    {{-- @else
                         <li class="btn btn-secondary me-2 mb-1 mb-lg-0" >
                             <a class="btn btn-outline-indigo me-2 mb-1 mb-lg-0" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
                         </li>
                         
                         <li class="nav-item me-2 mb-1 mb-lg-0">
                             <a class="btn btn-primary my-2 mb-1 mb-lg-0" href="{{ route('register') }}">REGISTER</a>
-                        </li>
+                        </li> --}}
                     @endauth
 
 
@@ -36,10 +36,13 @@
                         Collabora Con Noi
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Ristoranti Login</a></li>
-                        <li><a class="dropdown-item" href="#">Rider Login</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Contatti</a></li>
+                            
+                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#loginModal" href="#">Ristoranti Login</a></li>
+                            <li><a class="dropdown-item" href="#">Rider Login</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Contatti</a></li>
+                            <li><a class="dropdown-item" href="{{ route('register') }}">Registra qui il tuo Ristorante</a></li>
+
                         </ul>
                     </li>
                 </ul>

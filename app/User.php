@@ -23,7 +23,7 @@ class User extends Authenticatable
         'city',
         'p_iva',
         'description',
-        'image_path',
+        'image',
         'order_min',
         'delivery_price',
         'discount',

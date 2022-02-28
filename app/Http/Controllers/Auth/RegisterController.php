@@ -47,6 +47,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -63,18 +64,6 @@ class RegisterController extends Controller
             'description' => ['string', 'max:20000'],
         ]);
 
-        // // prendo l'img dal form
-        // $imageFile = $request -> file('image');
-        // // assegno un nome univoco all'img
-        // $imageName = rand(100000,999999) . '_' . time() . '.' . $imageFile -> getClientOriginalName();
-        // // salvo l'img nello storage
-        // $imageFile -> storeAs('/asset/', $imageName , 'public');
-        // // aggiungo l'img all'array che salvero' nel db
-        // $data['image'] = $imageName;
-        // salvo l'array nel db
-        // User::create($data);
-    
-        
     }
 
     /**
@@ -93,23 +82,20 @@ class RegisterController extends Controller
         $imageFile -> storeAs('/asset/', $imageName , 'public');
         // aggiungo l'img all'array che salvero' nel db
         $data['image'] = $imageName;
-        // dd($data['image']);
         // salvo l'array nel db
-        // dd($data);
-        User::create([
+        return User::create([
             'brand_name' => $data['brand_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'address' => $data['address'],
             'city' => $data['city'],
-            $data['image'] = $imageName,
+            'image' => $data['image'],
             'p_iva' => $data['p_iva'],
             'order_min' => $data['order_min'],
             'delivery_price' => $data['delivery_price'],
             'discount' => $data['discount'],
             'description' => $data['description'],
         ]);
-        // torno alla home
-        return redirect() -> route('home');
+        
     }
 }
