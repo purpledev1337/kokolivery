@@ -6,7 +6,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <a class="navbar-brand mb-1 mb-lg-0" href="#">LOGO</a>
+            <a class="navbar-brand mb-1 mb-lg-0" href="{{ route('home') }}">LOGO</a>
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 
