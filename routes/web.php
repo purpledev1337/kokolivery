@@ -23,6 +23,12 @@ Route::middleware(['auth'])->prefix('post')->group(function () {
 
 });
 
+
+Route::middleware(['auth'])->prefix('auth')->group(function () {
+    Route::get('restaurant/edit/{id}, AuthController@restaurantEdit')->name('restaurant.edit');
+});
+
+
 Route::get('/api/restaurant_list', 'ApiController@getRestaurants')->name('api.restaurant_list');
 Route::get('/restaurant_list', 'GuestController@restaurant_list')->name('restaurant_list');
 
