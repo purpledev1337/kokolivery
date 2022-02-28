@@ -4,6 +4,11 @@
     <br>
     <br>
     @foreach ($dishes as $dish)
-        {{ $dish -> name }} <br>
+    <div>
+        {{ $dish -> name }} 
+    </div>
+    <button class="btn btn-primary">EDIT</button>
+    <button class="btn btn-danger">DELETE</button>
+    <br><br>
     @endforeach
 @endsection
