@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Dish;
 use App\Order;
+use App\User;
 
 use Illuminate\Http\Request;
 
@@ -30,10 +31,11 @@ class HomeController extends Controller
    
     public function dashboard()
     {
+       
         return view('pages.dashboard');
     }
 
-    public function myDishes($id)
+    /* public function myDishes($id)
     {
         dd($id);
         $dishes = Dish::findOrFail($id);
@@ -46,5 +48,5 @@ class HomeController extends Controller
         $orders = Order::findOrFail($id);
         return view('pages.my_orders',compact('ordes'));
     }
-
+ */
 }
