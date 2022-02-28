@@ -9,10 +9,8 @@
         <h2>{{auth::user()->description}}</h2>
         <h2>{{auth::user()->order_min}}</h2>
         <h2>{{auth::user()->delivery_price}}</h2>
-        {{-- <a class="btn btn-primary" href="{{route('my_dishes')}}">PIATTI</a>
+        <a class="btn btn-primary" href="{{route('myDishes')}}">PIATTI</a>
         <a class="btn btn-primary" href="{{route('my_orders')}}">ORDINI</a>
- --}}
-
 
     </div>
 @endsection
