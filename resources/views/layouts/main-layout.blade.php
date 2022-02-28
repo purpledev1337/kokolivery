@@ -12,7 +12,7 @@
 </head>
 <body>
     <div id="app">
-        @include('components.footer')
+        @include('components.header')
         
         @yield('content')
 
