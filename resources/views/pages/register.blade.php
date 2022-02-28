@@ -1,6 +1,8 @@
 @extends('layouts.main-layout')
 @section('content')
     <form class="row g-3 container m-auto"
+          method="POST"
+          action="{{ route('register') }}"
           enctype="multipart/form-data">
           @method('POST')
           @csrf
@@ -100,5 +102,8 @@
             <label for="description" class="form-label">Description</label>
             <textarea name="description" class="form-control" cols="30" rows="4"></textarea>
         </div>
+
+        <a href="{{ route('home') }}" class="btn btn-danger offset-5 col-1 me-1" type="submit" >CANCEL</a>
+        <button class="btn btn-secondary col-1 ms-1" type="submit">REGISTER</button>
     </form>
 @endsection

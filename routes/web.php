@@ -8,6 +8,7 @@ Route::post('/login', 'Auth\LoginController@login') -> name('login');
 Route::get('/logout', 'Auth\LoginController@logout') -> name('logout');
 
 Route::get('/register', 'GuestController@register') -> name('register');
+Route::post('/register', 'Auth\RegisterController@register');
 
 
 Route::middleware(['auth'])->prefix('post')->group(function () {
