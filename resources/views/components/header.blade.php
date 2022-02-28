@@ -28,25 +28,26 @@
                             <a class="btn btn-primary my-2 mb-1 mb-lg-0" href="{{ route('register') }}">REGISTER</a>
                         </li>
                     @endauth
+
+
+                    {{-- dropdown --}}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Collabora Con Noi
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Ristoranti Login</a></li>
+                        <li><a class="dropdown-item" href="#">Rider Login</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Contatti</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-indigo" type="submit">Search</button>
                 </form>
-
-                {{-- dropdown --}}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Collabora Con Noi
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#">Ristoranti Login</a></li>
-                      <li><a class="dropdown-item" href="#">Rider Login</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Contatti</a></li>
-                    </ul>
-                </li>
 
             </div>
 
