@@ -26,8 +26,8 @@ Route::middleware(['auth'])->prefix('post')->group(function () {
 
 Route::middleware(['auth'])->prefix('auth')->group(function () {
     Route::get('restaurant/edit/{id}, AuthController@restaurantEdit')->name('restaurant.edit');
+    Route::get('restaurant/delete/{id}', 'AuthController@restaurantDelete')->name('restaurant.delete');
 });
-
 
 Route::get('/api/restaurant_list', 'ApiController@getRestaurants')->name('api.restaurant_list');
 Route::get('/restaurant_list', 'GuestController@restaurant_list')->name('restaurant_list');

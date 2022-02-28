@@ -14,7 +14,7 @@
         <a class="btn btn-primary" href="{{route('myDishes')}}">PIATTI</a>
         <a class="btn btn-primary" href="{{route('my_orders')}}">ORDINI</a>
         <a class="btn btn-secondary" href="">EDIT</a>
-        <a class="btn btn-danger" href="">DELETE</a>
+        <a class="btn btn-danger" href="{{route('restaurant.delete', Auth::user()->id)}}">DELETE</a>
 
     </div>
 @endsection
