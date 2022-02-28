@@ -47,13 +47,23 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'brand_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
+            'address' => ['string', 'min:4', 'max:255'],
+            'city' => ['required', 'string'],
+            'image' => ['image', 'mimes:jpeg,png,jpg', 'max:10240'],
+            'p_iva' => ['required', 'string', 'min:11', 'max:11'],
+            'order_min' => ['numeric', 'min:0', 'max:30'],
+            'delivery_price' => ['required', 'numeric', 'min:0', 'max:25'],
+            'discount' => ['required', 'numeric', 'min:0', 'max:90'],
+            'description' => ['string', 'max:20000'],
         ]);
+
     }
 
     /**
@@ -64,10 +74,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // prendo l'img dal form
+        $imageFile = $data['image'];
+        // assegno un nome univoco all'img
+        $imageName = rand(100000,999999) . '_' . time() . '.' . $imageFile -> getClientOriginalName();
+        // salvo l'img nello storage
+        $imageFile -> storeAs('/asset/', $imageName , 'public');
+        // aggiungo l'img all'array che salvero' nel db
+        $data['image'] = $imageName;
+        // salvo l'array nel db
         return User::create([
-            'name' => $data['name'],
+            'brand_name' => $data['brand_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'address' => $data['address'],
+            'city' => $data['city'],
+            'image' => $data['image'],
+            'p_iva' => $data['p_iva'],
+            'order_min' => $data['order_min'],
+            'delivery_price' => $data['delivery_price'],
+            'discount' => $data['discount'],
+            'description' => $data['description'],
         ]);
+        
     }
 }
