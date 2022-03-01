@@ -19,4 +19,5 @@ class GuestController extends Controller
     {
         return view('pages.restaurant_list');
     }
+    
 }
