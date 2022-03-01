@@ -66,7 +66,7 @@ class AuthController extends Controller
         // nel form l'utente propone una nuova image
         if($imageFile){
             // assegno un nome univoco all'img
-            // $imageName = rand(100000,999999) . '_' . time() . '.' . $imageFile -> getClientOriginalName();
+            $imageName = rand(100000,999999) . '_' . time() . '.' . $imageFile -> getClientOriginalName();
             // salvo l'img nello storage
             $imageFile -> storeAs('/storage/', $imageName , 'public');
             // aggiungo l'img all'array che salvero' nel db
