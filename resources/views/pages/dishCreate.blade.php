@@ -47,7 +47,7 @@
     <div class="col-6 offset-3">
     <label for="category" class="form-label">Category</label><br>
     <select class="form-select form-control" name="category" aria-label="Default select example">
-        <option selected>Open this select menu</option>
+        <option selected hidden>Open this select menu</option>
         <option value="Antipasto">Antipasto</option> 
         <option value="Primi Piatti">Primi Piatti</option> 
         <option value="Secondi Piatti">Secondi Piatti</option> 
