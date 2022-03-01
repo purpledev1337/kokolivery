@@ -34,6 +34,7 @@ Route::middleware(['auth'])->prefix('auth')->group(function () {
     Route::post('dish/update/{id}', 'AuthController@dishUpdate') -> name('dish.update');
 
     Route::get('dish/delete/{id}', 'AuthController@dishDelete') -> name('dish.delete');
+    Route::get('dish/visibility/{id}', 'AuthController@dishVisibility') -> name('dish.visibility');
 
     Route::get('restaurant/delete/{id}', 'AuthController@restaurantDelete')->name('restaurant.delete');
 });

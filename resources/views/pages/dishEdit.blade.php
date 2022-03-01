@@ -21,14 +21,14 @@
 
     {{-- brand name --}}
     <div class="col-md-6">
-    <label for="name" class="form-label">Dish Name</label>
-    <input type="text" name="name" class="form-control" value="{{$dish -> name }}" >
+        <label for="name" class="form-label">Dish Name</label>
+        <input type="text" name="name" class="form-control" value="{{$dish -> name }}" >
     </div>
 
     {{-- email --}}
     <div class="col-md-6">
-    <label for="description" class="form-label">Descrizione</label>
-    <input type="text" name="description" class="form-control" value="{{$dish -> description}}" >
+        <label for="description" class="form-label">Descrizione</label>
+        <input type="text" name="description" class="form-control" value="{{$dish -> description}}" >
     </div>
 
     {{-- image_path --}}
@@ -39,22 +39,22 @@
 
     {{-- password confirmation --}}
     <div class="col-md-6">
-    <label for="price" class="form-label">Price</label>
-    <input type="number" name="price" class="form-control" value="{{$dish -> price}}" >
+        <label for="price" class="form-label">Price</label>
+        <input type="number" name="price" class="form-control" value="{{$dish -> price}}" >
     </div>
 
     {{-- Category --}}
     <div class="col-6 offset-3">
-    <label for="category" class="form-label">Category</label><br>
-    <select class="form-select form-control" name="category" aria-label="Default select example">
-        <option value="{{ $dish -> category }}" selected hidden>{{ $dish -> category }}</option>
-        <option value="Antipasto">Antipasto</option> 
-        <option value="Primi Piatti">Primi Piatti</option> 
-        <option value="Secondi Piatti">Secondi Piatti</option> 
-        <option value="Dessert">Dessert</option> 
-        <option value="Bibite">Bibite</option> 
-        <option value="Pizza">Pizza</option>
-    </select>
+        <label for="category" class="form-label">Category</label><br>
+        <select class="form-select form-control" name="category" aria-label="Default select example">
+            <option value="{{ $dish -> category }}" selected hidden>{{ $dish -> category }}</option>
+            <option value="Antipasto">Antipasto</option> 
+            <option value="Primi Piatti">Primi Piatti</option> 
+            <option value="Secondi Piatti">Secondi Piatti</option> 
+            <option value="Dessert">Dessert</option> 
+            <option value="Bibite">Bibite</option> 
+            <option value="Pizza">Pizza</option>
+        </select>
     </div>
        
     <button type="SUBMIT">Crea</button>

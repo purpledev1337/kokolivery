@@ -14,7 +14,8 @@ class Dish extends Model
         'image_path',
         'price',
         'category',
-        'is_visible'
+        'is_visible', 
+        'delete'
     ];
 
     public function orders()

@@ -80,10 +80,23 @@ class AuthController extends Controller
         return redirect() -> route('myDishes');
     }
 
+    public function dishVisibility($id){
+        $dish = Dish::findOrFail($id);
+
+        if(!$dish -> is_visible){
+            $dish -> is_visible = 1;
+        } else{
+            // imposto visible a false per far sparire in page il piatto(all'utente)
+            $dish -> is_visible = 0;
+        }
+        $dish -> save();
+        return redirect() -> route('myDishes');
+    }
+
     public function dishDelete($id) {
         $dish = Dish::findOrFail($id);
-        // imposto visible a false per far sparire il page il piatto(mi resta in database)
-        $dish -> is_visible = 0;
+        // imposto visible a false per cancellare in page il piatto(mi resta in database)
+        $dish -> delete = 1;
         $dish -> save();
         return redirect() -> route('myDishes');
     } 

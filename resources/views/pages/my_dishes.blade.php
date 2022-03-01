@@ -5,12 +5,14 @@
     <br>
     <br>
     @foreach ($dishes as $dish)
-        @if ($dish -> is_visible)
+        @if (!$dish -> delete)
         <div>
             {{ $dish -> name }} 
+            <span class="{{ $dish -> is_visible? 'visibility':'' }}">Non Visibile</span>
         </div>
-        <a href="{{  route('dish.edit', $dish -> id)}}" class="btn btn-primary">EDIT</a>
+        <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary">EDIT</a>
         <a href="{{ route('dish.delete', $dish -> id) }}" class="btn btn-danger">DELETE</a>
+        <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary">VISIBILITY</a>
         <br><br>
         @endif
     @endforeach
