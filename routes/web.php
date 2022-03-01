@@ -39,7 +39,6 @@ Route::middleware(['auth'])->prefix('auth')->group(function () {
     Route::get('dish/delete/{id}', 'AuthController@dishDelete') -> name('dish.delete');
     Route::get('dish/visibility/{id}', 'AuthController@dishVisibility') -> name('dish.visibility');
 
-    Route::get('restaurant/delete/{id}', 'AuthController@restaurantDelete')->name('restaurant.delete');
 });
 
 Route::get('/api/restaurant_list', 'ApiController@getRestaurants')->name('api.restaurant_list');
