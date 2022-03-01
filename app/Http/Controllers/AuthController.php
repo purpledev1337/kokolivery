@@ -44,17 +44,17 @@ class AuthController extends Controller
         return redirect() -> route('myDishes');
     }
 
-    public function restaurantDelete($id)
+    public function restaurantDelete()
     {
-        // dd($id);
-        $restaurant = User::findOrFail($id);
-        dd($restaurant -> dishes());
-        // $restaurant -> save();
-
-        $restaurant -> types() -> detach($types -> id);
+        $restaurant = User::findOrFail(Auth::user()->id);
+        $restaurant -> types() -> detach();
         $restaurant -> save();
+        
+        $restaurant = User::findOrFail(Auth::user()->id);
+        $restaurant -> dishes() -> delete();
 
         $restaurant -> delete();
+
         return redirect() -> route('home');
         
     }
