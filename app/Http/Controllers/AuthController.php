@@ -44,6 +44,17 @@ class AuthController extends Controller
         return redirect() -> route('myDishes');
     }
 
+    public function dishDelete($id) {
+        $dish = Dish::findOrFail($id);
+        // se dish e' collegato ad un ordine cancello il piatto dall'ordine
+        // $dish -> orders() -> detach($dish);
+        
+        // $dish -> delete();
+        $dish -> is_visible = 0;
+        $dish -> save();
+        return redirect() -> route('myDishes');
+    } 
+
     public function restaurantDelete()
     {
         $restaurant = User::findOrFail(Auth::user()->id);

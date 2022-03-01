@@ -5,11 +5,13 @@
     <br>
     <br>
     @foreach ($dishes as $dish)
-    <div>
-        {{ $dish -> name }} 
-    </div>
-    <button class="btn btn-primary">EDIT</button>
-    <button class="btn btn-danger">DELETE</button>
-    <br><br>
+        @if ($dish -> is_visible)
+        <div>
+            {{ $dish -> name }} 
+        </div>
+        <button class="btn btn-primary">EDIT</button>
+        <a href="{{ route('dish.delete', $dish -> id) }}" class="btn btn-danger">DELETE</a>
+        <br><br>
+        @endif
     @endforeach
 @endsection
