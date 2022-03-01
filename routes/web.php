@@ -29,6 +29,10 @@ Route::middleware(['auth'])->prefix('auth')->group(function () {
 
     Route::get('dish/create', 'AuthController@dishCreate')->name('dish.create');
     Route::post('dish/store', 'AuthController@dishStore')->name('dish.store');
+
+    Route::get('dish/edit/{id}', 'AuthController@dishEdit') -> name('dish.edit');
+    Route::post('dish/update/{id}', 'AuthController@dishUpdate') -> name('dish.update');
+
     Route::get('dish/delete/{id}', 'AuthController@dishDelete') -> name('dish.delete');
 
     Route::get('restaurant/delete/{id}', 'AuthController@restaurantDelete')->name('restaurant.delete');

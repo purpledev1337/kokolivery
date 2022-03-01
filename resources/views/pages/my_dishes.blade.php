@@ -9,7 +9,7 @@
         <div>
             {{ $dish -> name }} 
         </div>
-        <button class="btn btn-primary">EDIT</button>
+        <a href="{{  route('dish.edit', $dish -> id)}}" class="btn btn-primary">EDIT</a>
         <a href="{{ route('dish.delete', $dish -> id) }}" class="btn btn-danger">DELETE</a>
         <br><br>
         @endif
