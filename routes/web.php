@@ -28,7 +28,9 @@ Route::middleware(['auth'])->prefix('auth')->group(function () {
     Route::get('restaurant/edit/{id}, AuthController@restaurantEdit')->name('restaurant.edit');
     Route::get('dish/create', 'AuthController@dishCreate')->name('dish.create');
     Route::post('dish/store', 'AuthController@dishStore')->name('dish.store');
-    Route::get('restaurant/delete/{id}', 'AuthController@restaurantDelete')->name('restaurant.delete');
+    Route::get('restaurant/delete', 'AuthController@restaurantDelete')->name('restaurant.delete');
+    Route::get('restaurant/edit', 'AuthController@restaurantEdit')->name('restaurant.edit');
+    Route::post('restaurant/update', 'AuthController@restaurantUpdate')->name('restaurant.update');
 });
 
 Route::get('/api/restaurant_list', 'ApiController@getRestaurants')->name('api.restaurant_list');

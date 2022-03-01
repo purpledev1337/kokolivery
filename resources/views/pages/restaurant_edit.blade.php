@@ -3,56 +3,47 @@
 @section('content')
     <form class="row g-3 container m-auto"
           method="POST"
-          action="{{ route('register') }}"
+          action="{{ route('restaurant.update') }}"
           enctype="multipart/form-data">
+
           @method('POST')
           @csrf
 
+          {{-- controllo errori --}}
           @if ($errors->any())
-          <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
           @endif
 
+        <h3>Aggiornamento Ristornate</h3>
         {{-- brand name --}}
         <div class="col-md-6">
             <label for="brand_name" class="form-label">Brand Name</label>
-            <input type="text" name="brand_name" class="form-control">
+            <input type="text" name="brand_name" class="form-control" value="{{ $restaurant -> brand_name }}">
         </div>
 
         {{-- email --}}
         <div class="col-md-6">
             <label for="email" class="form-label">Email</label>
-            <input type="email" name="email" class="form-control">
+            <input type="email" name="email" class="form-control" value="{{ $restaurant -> email }}">
         </div>
         
-        {{-- password  --}}
-        <div class="col-md-6">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" name="password" class="form-control">
-        </div>
-
-        {{-- password confirmation --}}
-        <div class="col-md-6">
-            <label for="password_confirmation" class="form-label">Password Confirmation</label>
-            <input type="password" name="password_confirmation" class="form-control">
-        </div>
-
         {{-- address --}}
         <div class="col-6">
             <label for="address" class="form-label">Address</label>
-            <input type="text" name="address" class="form-control">
+            <input type="text" name="address" class="form-control" value="{{ $restaurant -> address }}">
         </div>
 
         {{-- city --}}
         <div class="col-6">
             <label for="city" class="form-label">City</label><br>
             <select class="form-select form-control" name="city" aria-label="Default select example">
-                <option selected>Open this select menu</option>
+                <option {{ $restaurant -> city}} selected hidden> {{ $restaurant -> city}} </option>
                 <option value="Milano">Milano</option> 
                 <option value="Napoli">Napoli</option> 
                 <option value="Roma">Roma</option> 
@@ -71,7 +62,7 @@
         {{-- p.iva --}}
         <div class="col-6">
             <label for="p_iva" class="form-label">Partita Iva</label>
-            <input type="text" name="p_iva" class="form-control">
+            <input type="text" name="p_iva" class="form-control" value="{{ $restaurant -> p_iva }}">
         </div>
 
         {{-- path img --}}
@@ -83,28 +74,28 @@
         {{-- order min --}}
         <div class="col-4">
             <label for="order_min" class="form-label">Order Min</label>
-            <input type="number" name="order_min" class="form-control">
+            <input type="number" step="0.01" name="order_min" class="form-control" value="{{ $restaurant -> order_min }}">
         </div>
 
         {{-- Delivery price --}}
         <div class="col-4">
             <label for="delivery_price" class="form-label">Delivery Price</label>
-            <input type="number" name="delivery_price" class="form-control">
+            <input type="number" step="0.01" name="delivery_price" class="form-control" value="{{ $restaurant -> delivery_price }}">
         </div>
         
         {{-- discount --}}
         <div class="col-4">
             <label for="discount" class="form-label">Discount</label>
-            <input type="number" name="discount" class="form-control">
+            <input type="number" name="discount" class="form-control" value="{{ $restaurant -> discount }}">
         </div> 
         
         {{-- descrizione --}}
         <div class="offset-3 col-6">
             <label for="description" class="form-label">Description</label>
-            <textarea name="description" class="form-control" cols="30" rows="4"></textarea>
+            <textarea name="description" class="form-control" cols="30" rows="4">{{ $restaurant -> description }}</textarea>
         </div>
 
-        <a href="{{ route('home') }}" class="btn btn-danger offset-5 col-1 me-1" type="submit" >CANCEL</a>
-        <button class="btn btn-secondary col-1 ms-1" type="submit">REGISTER</button>
+        <a href="{{ route('dashboard') }}" class="btn btn-danger offset-5 col-1 me-1" type="submit" >CANCEL</a>
+        <button class="btn btn-secondary col-1 ms-1" type="submit">UPDATE</button>
     </form>
 @endsection

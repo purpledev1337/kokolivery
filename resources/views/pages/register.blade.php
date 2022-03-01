@@ -82,13 +82,13 @@
         {{-- order min --}}
         <div class="col-4">
             <label for="order_min" class="form-label">Order Min</label>
-            <input type="number" name="order_min" class="form-control">
+            <input type="number" step="0.01" name="order_min" class="form-control">
         </div>
 
         {{-- Delivery price --}}
         <div class="col-4">
             <label for="delivery_price" class="form-label">Delivery Price</label>
-            <input type="number" name="delivery_price" class="form-control">
+            <input type="number" step="0.01" name="delivery_price" class="form-control">
         </div>
         
         {{-- discount --}}

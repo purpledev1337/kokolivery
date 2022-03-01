@@ -44,6 +44,53 @@ class AuthController extends Controller
         return redirect() -> route('myDishes');
     }
 
+    public function restaurantEdit()
+    {
+        $restaurant = Auth::user();
+        return view('pages.restaurant_edit', compact('restaurant'));
+    }
+
+    public function restaurantUpdate(Request $request)
+    
+    {
+        $data = $request -> validate([
+            'brand_name' => ['required', 'string', 'max:255'],
+            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'address' => ['string', 'min:4', 'max:255'],
+            'city' => ['required', 'string'],
+            'image' => ['image', 'mimes:jpeg,png,jpg', 'max:10240'],
+            'p_iva' => ['required', 'string', 'min:11', 'max:11'],
+            'order_min' => ['numeric', 'min:0', 'max:30'],
+            'delivery_price' => ['required', 'numeric', 'min:0', 'max:25'],
+            'discount' => ['required', 'numeric', 'min:0', 'max:90'],
+            'description' => ['string', 'max:20000'],
+        ]);
+
+        // prendo l'img dal form
+        $imageFile = $request -> file('image');
+
+        if ($imageFile) {
+            // assegno un nome univoco all'img
+            $imageName = rand(100000,999999) . '_' . time() . '.' . $imageFile -> getClientOriginalName();
+            // salvo l'img nello storage
+            $imageFile -> storeAs('/storage/', $imageName , 'public');
+            // aggiungo l'img all'array che salvero' nel db
+            $data['image'] = $imageName;
+        }
+        
+        $restaurant = Auth::user();
+
+        if (Auth::user()->email != $request->email) {
+            $email = $request -> validate(['email' => ['required', 'string', 'email', 'max:255', 'unique:users']]);
+            $restaurant -> update($email);
+        }
+        
+        $restaurant -> update($data);
+
+        return redirect() -> route('dashboard');
+    }
+
+    // non funzionante
     public function restaurantDelete()
     {
         $restaurant = User::findOrFail(Auth::user()->id);
