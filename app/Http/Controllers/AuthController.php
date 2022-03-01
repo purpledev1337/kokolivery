@@ -24,7 +24,6 @@ class AuthController extends Controller
             'image_path' => 'image|mimes:jpeg,png,jpg|max:10240',
             'price' => 'required|numeric',
             'category' => 'required|string',
-            'is_visible' => 'required|boolean'
         ]);
 
         
@@ -38,12 +37,9 @@ class AuthController extends Controller
         // aggiungo l'img all'array che salvero' nel db
         $data['image_path'] = $imageName;
         
-        // $data['user_id'] = Auth::user() -> id;
-        
         $dish = Dish::make($data);
         $dish -> user() -> associate(Auth::user() -> id);
         $dish -> save();
-        // dd($data);
 
         return redirect() -> route('myDishes');
     }

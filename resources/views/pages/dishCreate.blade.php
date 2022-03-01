@@ -56,12 +56,7 @@
         <option value="Pizza">Pizza</option>
     </select>
     </div>
-        <input type="radio" id="1"
-         name="is_visible" value="1">
-        <label for="1">Visible</label>
-        <input type="radio" id="0"
-         name="is_visible" value="0">
-        <label for="2">Not Visible</label>
+       
     <button type="SUBMIT">Crea</button>
     </form>
 
