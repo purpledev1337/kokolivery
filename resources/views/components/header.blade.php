@@ -36,13 +36,13 @@
                         Collabora Con Noi
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            
-                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#loginModal" href="#">Ristoranti Login</a></li>
-                            <li><a class="dropdown-item" href="#">Rider Login</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            @guest
+                                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#loginModal" href="#">Ristoranti Login</a></li>
+                                <li><a class="dropdown-item" href="{{ route('register') }}">Registra qui il tuo Ristorante</a></li>
+                                <li><a class="dropdown-item" href="#">Rider Login</a></li>
+                            @endguest
+                            {{-- <li><hr class="dropdown-divider"></li> --}}
                             <li><a class="dropdown-item" href="#">Contatti</a></li>
-                            <li><a class="dropdown-item" href="{{ route('register') }}">Registra qui il tuo Ristorante</a></li>
-
                         </ul>
                     </li>
                 </ul>
