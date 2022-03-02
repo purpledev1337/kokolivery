@@ -9,16 +9,6 @@
     @method('POST')
     @csrf
 
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-
     {{-- brand name --}}
     <div class="col-md-6">
     <label for="name" class="form-label">Dish Name</label>
@@ -47,7 +37,7 @@
     <div class="col-6 offset-3">
     <label for="category" class="form-label">Category</label><br>
     <select class="form-select form-control" name="category" aria-label="Default select example">
-        <option selected hidden>Open this select menu</option>
+        <option selected hidden disabled>Open this select menu</option>
         <option value="Antipasto">Antipasto</option> 
         <option value="Primi Piatti">Primi Piatti</option> 
         <option value="Secondi Piatti">Secondi Piatti</option> 

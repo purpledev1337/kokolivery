@@ -26,20 +26,21 @@ class AuthController extends Controller
             'description' => 'required|string',
             'image_path' => 'image|mimes:jpeg,png,jpg|max:10240',
             'price' => 'required|numeric',
-            'category' => 'required|string',
+            'category' => 'required_with_all',
         ]);
 
-        // prendo l'img dal form
-        $imageFile = $Request -> file('image_path');
-
-        // assegno un nome univoco all'img
-        $imageName = rand(100000,999999) . '_' . time() . '.' . $imageFile -> getClientOriginalName();
-
-        // salvo l'img nello storage
-        $imageFile -> storeAs('/storage/', $imageName , 'public');
-
-        // aggiungo l'img all'array che salvero' nel db
-        $data['image_path'] = $imageName;
+        if($Request -> file('image_path')){
+            // prendo l'img dal form
+            $imageFile = $data['image_path'];
+            // assegno un nome univoco all'img
+            $imageName = rand(100000,999999) . '_' . time() . '.' . $imageFile -> getClientOriginalName();
+            // salvo l'img nello storage
+            $imageFile -> storeAs('/asset/', $imageName , 'public');
+            // aggiungo l'img all'array che salvero' nel db
+            $data['image_path'] = $imageName;
+        } else {
+            $data['image_path'] = 'asset/dish.jpg';
+        } 
         
         $dish = Dish::make($data);
         $dish -> user() -> associate(Auth::user() -> id);
