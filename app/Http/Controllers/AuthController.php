@@ -29,17 +29,18 @@ class AuthController extends Controller
             'category' => 'required|string',
         ]);
 
-        // prendo l'img dal form
-        $imageFile = $Request -> file('image_path');
-
-        // assegno un nome univoco all'img
-        $imageName = rand(100000,999999) . '_' . time() . '.' . $imageFile -> getClientOriginalName();
-
-        // salvo l'img nello storage
-        $imageFile -> storeAs('/storage/', $imageName , 'public');
-
-        // aggiungo l'img all'array che salvero' nel db
-        $data['image_path'] = $imageName;
+        if($Request -> file('image_path')){
+            // prendo l'img dal form
+            $imageFile = $data['image_path'];
+            // assegno un nome univoco all'img
+            $imageName = rand(100000,999999) . '_' . time() . '.' . $imageFile -> getClientOriginalName();
+            // salvo l'img nello storage
+            $imageFile -> storeAs('/asset/', $imageName , 'public');
+            // aggiungo l'img all'array che salvero' nel db
+            $data['image_path'] = $imageName;
+        } else {
+            $data['image_path'] = 'asset/dish.jpg';
+        } 
         
         $dish = Dish::make($data);
         $dish -> user() -> associate(Auth::user() -> id);
@@ -68,17 +69,17 @@ class AuthController extends Controller
             'category' => 'required|string',
         ]);
 
-        if(in_array('image_path', $data)){
-            // prendo l'img dal form
-            $imageFile = $data['image_path'];
+        
+        // prendo l'img dal form
+        $imageFile = $Request -> file('image_path');
+        // se nel form l'utente propone una nuova image
+        if($imageFile){
             // assegno un nome univoco all'img
             $imageName = rand(100000,999999) . '_' . time() . '.' . $imageFile -> getClientOriginalName();
             // salvo l'img nello storage
-            $imageFile -> storeAs('/asset/', $imageName , 'public');
+            $imageFile -> storeAs('/storage/', $imageName , 'public');
             // aggiungo l'img all'array che salvero' nel db
-            $dbData['image_path'] = $imageName;
-        } else {
-            $dbData['image_path'] = 'asset/dish.jpg';
+            $data['image_path'] = $imageName;
         }
 
         $dish = Dish::findOrFail($id);
