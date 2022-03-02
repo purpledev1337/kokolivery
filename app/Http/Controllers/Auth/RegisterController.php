@@ -63,7 +63,6 @@ class RegisterController extends Controller
             'discount' => ['required', 'numeric', 'min:0', 'max:90'],
             'description' => ['string', 'max:20000'],
         ]);
-
     }
 
     /**
@@ -74,28 +73,35 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // prendo l'img dal form
-        $imageFile = $data['image'];
-        // assegno un nome univoco all'img
-        $imageName = rand(100000,999999) . '_' . time() . '.' . $imageFile -> getClientOriginalName();
-        // salvo l'img nello storage
-        $imageFile -> storeAs('/asset/', $imageName , 'public');
-        // aggiungo l'img all'array che salvero' nel db
-        $data['image'] = $imageName;
-        // salvo l'array nel db
-        return User::create([
+        // dd($data);
+        
+        $dbData = [
             'brand_name' => $data['brand_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'address' => $data['address'],
             'city' => $data['city'],
-            'image' => $data['image'],
             'p_iva' => $data['p_iva'],
             'order_min' => $data['order_min'],
             'delivery_price' => $data['delivery_price'],
             'discount' => $data['discount'],
             'description' => $data['description'],
-        ]);
+        ];
+
+        if(in_array('image', $data)){
+            // prendo l'img dal form
+            $imageFile = $data['image'];
+            // assegno un nome univoco all'img
+            $imageName = rand(100000,999999) . '_' . time() . '.' . $imageFile -> getClientOriginalName();
+            // salvo l'img nello storage
+            $imageFile -> storeAs('/asset/', $imageName , 'public');
+            // aggiungo l'img all'array che salvero' nel db
+            $dbData['image'] = $imageName;
+        } else {
+            $dbData['image'] = 'asset/kokolivery-logo.svg';
+        }
+        // salvo l'array nel db
+        return User::create($dbData);
         
     }
 }
