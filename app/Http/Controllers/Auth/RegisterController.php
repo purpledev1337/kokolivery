@@ -76,12 +76,16 @@ class RegisterController extends Controller
     {
         // prendo l'img dal form
         $imageFile = $data['image'];
-        // assegno un nome univoco all'img
-        $imageName = rand(100000,999999) . '_' . time() . '.' . $imageFile -> getClientOriginalName();
-        // salvo l'img nello storage
-        $imageFile -> storeAs('/asset/', $imageName , 'public');
-        // aggiungo l'img all'array che salvero' nel db
-        $data['image'] = $imageName;
+        if($imageFile){
+            // assegno un nome univoco all'img
+            $imageName = rand(100000,999999) . '_' . time() . '.' . $imageFile -> getClientOriginalName();
+            // salvo l'img nello storage
+            $imageFile -> storeAs('/asset/', $imageName , 'public');
+            // aggiungo l'img all'array che salvero' nel db
+            $data['image'] = $imageName;
+        } else {
+            $data['image'] = 'asset/kokolivery-logo.svg';
+        }
         // salvo l'array nel db
         return User::create([
             'brand_name' => $data['brand_name'],
