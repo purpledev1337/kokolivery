@@ -51,7 +51,7 @@
         <div class="col-6">
             <label for="city" class="form-label">City</label><br>
             <select class="form-select form-control" name="city" aria-label="Default select example">
-                <option selected>Open this select menu</option>
+                <option disabled selected>Open this select menu</option>
                 <option value="Milano">Milano</option> 
                 <option value="Napoli">Napoli</option> 
                 <option value="Roma">Roma</option> 
