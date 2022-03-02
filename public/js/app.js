@@ -41432,8 +41432,12 @@ var render = function () {
       { attrs: { id: "restaurants_box" } },
       _vm._l(_vm.restaurants, function (restaurant) {
         return _c(
-          "div",
-          { key: restaurant.id, staticClass: "restaurant_card" },
+          "a",
+          {
+            key: restaurant.id,
+            staticClass: "restaurant_card",
+            attrs: { href: "restaurant/shop/" + restaurant.id },
+          },
           [
             _c("img", {
               attrs: { src: "storage/" + restaurant.image, alt: "" },
