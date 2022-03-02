@@ -98,13 +98,11 @@
         </div> 
         
         {{-- tipologia ristornate --}}
-        <div class="col-4">
-            <label for="name" class="form-label">Tipologia Ristorante</label>
-            <select class="form-select form-control" name="name" aria-label="Default select example">
-                @foreach ($types as $type)
-                    <option value="{{$type->id}}">{{$type->name}}</option>
-                @endforeach
-            </select>
+        <div class="col-12">
+            <label for="name" class="form-label">Tipologia Ristorante</label><br>
+            @foreach ($types as $type)
+                <input class="form-check-input" type="checkbox" name="types[]" value="{{$type->id}}"> {{$type->name}}
+            @endforeach
         </div> 
         
         {{-- descrizione --}}
