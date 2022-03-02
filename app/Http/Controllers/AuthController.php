@@ -26,7 +26,7 @@ class AuthController extends Controller
             'description' => 'required|string',
             'image_path' => 'image|mimes:jpeg,png,jpg|max:10240',
             'price' => 'required|numeric',
-            'category' => 'required|string',
+            'category' => 'required_with_all',
         ]);
 
         if($Request -> file('image_path')){
