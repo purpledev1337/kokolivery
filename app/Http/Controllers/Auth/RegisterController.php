@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Type;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -61,7 +62,8 @@ class RegisterController extends Controller
             'order_min' => ['numeric', 'min:0', 'max:30'],
             'delivery_price' => ['required', 'numeric', 'min:0', 'max:25'],
             'discount' => ['required', 'numeric', 'min:0', 'max:90'],
-            'description' => ['string', 'max:20000'],
+            'description' => ['nullable','string', 'max:20000'],
+            'types' => ['required_with_all'],
         ]);
     }
 
@@ -73,8 +75,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // dd($data);
-        
         $dbData = [
             'brand_name' => $data['brand_name'],
             'email' => $data['email'],
@@ -87,7 +87,7 @@ class RegisterController extends Controller
             'discount' => $data['discount'],
             'description' => $data['description'],
         ];
-
+        // verifico se è stata caricata una img e la rinomino, altrimenti ne carico una di default
         if(in_array('image', $data)){
             // prendo l'img dal form
             $imageFile = $data['image'];
@@ -100,8 +100,17 @@ class RegisterController extends Controller
         } else {
             $dbData['image'] = 'asset/kokolivery-logo.svg';
         }
-        // salvo l'array nel db
-        return User::create($dbData);
+
+        // salvo l'array nel db 
+        $restaurant = User::create($dbData);
+        // cerco il type scelto nel form da associare al ristorante
+        $types = $data['types'];
+        // associo alla tab type-restaurant id della type
+        $restaurant -> types() -> attach($types);
+        // salvo nella tabella pivot
+        $restaurant -> save();
+        // return User::create($dbData);
+        return $restaurant;
         
     }
 }
