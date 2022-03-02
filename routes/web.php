@@ -25,7 +25,7 @@ Route::middleware(['auth'])->prefix('post')->group(function () {
 
 
 Route::middleware(['auth'])->prefix('auth')->group(function () {
-    Route::get('restaurant/edit/{id}, AuthController@restaurantEdit')->name('restaurant.edit');
+    // Route::get('restaurant/edit/{id}, AuthController@restaurantEdit')->name('restaurant.edit');
 
     Route::get('dish/create', 'AuthController@dishCreate')->name('dish.create');
     Route::post('dish/store', 'AuthController@dishStore')->name('dish.store');
