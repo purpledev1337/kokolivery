@@ -5,19 +5,28 @@
             Numero Carrello ({{cart.length}})
         </div>
         <h3>Restaurants Shop:</h3>
+            <div id="restaurants_box" v-for="dish in dishes" :key="dish.id">
+                 <div class="restaurant_card" 
+                      v-if="dish.is_visible || dish.delete">
+                    <img :src="`storage/${dish.image_path}`" alt="">
+                    <h2>{{ dish.name }}</h2>
+                    <h3>Prezzo: {{ dish.price }}</h3>
+                    <h3>{{ dish.description }}</h3>
+                    <span>({{ dish.category }})</span>
+                    <br>
+                    <span class="btn btn-primary" 
+                        @click="addToCart(dish)">
+                        +
+                    </span>
+                    <span class="btn btn-danger" 
+                        @click="removeFromCart(dish.id)" 
+                        v-if="cart.some(item => item.id === dish.id)">
+                        -
+                    </span>
 
-        <div id="restaurants_box">
-            <div class="restaurant_card" v-for="dish in dishes" :key="dish.id">
-                <img :src="`storage/${dish.image_path}`" alt="">
-                <h2>{{ dish.name }}</h2>
-                <h3>Prezzo: {{ dish.price }}</h3>
-                <h3>{{ dish.description }}</h3>
-                <span>({{ dish.category }})</span>
-                <div @click="addToCart(dish)">+</div>
-                <div @click="removeFromCart(dish.id)" v-if="cart.some(item => item.id === dish.id)">-</div>
+                 </div>
             </div>
         </div>
-    </div>
 </template>
 
 <script>

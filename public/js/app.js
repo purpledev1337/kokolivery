@@ -5140,6 +5140,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -42295,64 +42304,73 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("a", { attrs: { href: "/" } }, [_vm._v("Link alla home")]),
-    _vm._v(" "),
-    _c("div", [
-      _vm._v(
-        "\n        Numero Carrello (" + _vm._s(_vm.cart.length) + ")\n    "
-      ),
-    ]),
-    _vm._v(" "),
-    _c("h3", [_vm._v("Restaurants Shop:")]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { attrs: { id: "restaurants_box" } },
+  return _c(
+    "div",
+    [
+      _c("a", { attrs: { href: "/" } }, [_vm._v("Link alla home")]),
+      _vm._v(" "),
+      _c("div", [
+        _vm._v(
+          "\n        Numero Carrello (" + _vm._s(_vm.cart.length) + ")\n    "
+        ),
+      ]),
+      _vm._v(" "),
+      _c("h3", [_vm._v("Restaurants Shop:")]),
+      _vm._v(" "),
       _vm._l(_vm.dishes, function (dish) {
-        return _c("div", { key: dish.id, staticClass: "restaurant_card" }, [
-          _c("img", { attrs: { src: "storage/" + dish.image_path, alt: "" } }),
-          _vm._v(" "),
-          _c("h2", [_vm._v(_vm._s(dish.name))]),
-          _vm._v(" "),
-          _c("h3", [_vm._v("Prezzo: " + _vm._s(dish.price))]),
-          _vm._v(" "),
-          _c("h3", [_vm._v(_vm._s(dish.description))]),
-          _vm._v(" "),
-          _c("span", [_vm._v("(" + _vm._s(dish.category) + ")")]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              on: {
-                click: function ($event) {
-                  return _vm.addToCart(dish)
-                },
-              },
-            },
-            [_vm._v("+")]
-          ),
-          _vm._v(" "),
-          _vm.cart.some(function (item) {
-            return item.id === dish.id
-          })
-            ? _c(
-                "div",
-                {
-                  on: {
-                    click: function ($event) {
-                      return _vm.removeFromCart(dish.id)
+        return _c("div", { key: dish.id, attrs: { id: "restaurants_box" } }, [
+          dish.is_visible || dish.delete
+            ? _c("div", { staticClass: "restaurant_card" }, [
+                _c("img", {
+                  attrs: { src: "storage/" + dish.image_path, alt: "" },
+                }),
+                _vm._v(" "),
+                _c("h2", [_vm._v(_vm._s(dish.name))]),
+                _vm._v(" "),
+                _c("h3", [_vm._v("Prezzo: " + _vm._s(dish.price))]),
+                _vm._v(" "),
+                _c("h3", [_vm._v(_vm._s(dish.description))]),
+                _vm._v(" "),
+                _c("span", [_vm._v("(" + _vm._s(dish.category) + ")")]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticClass: "btn btn-primary",
+                    on: {
+                      click: function ($event) {
+                        return _vm.addToCart(dish)
+                      },
                     },
                   },
-                },
-                [_vm._v("-")]
-              )
+                  [_vm._v("\n                    +\n                ")]
+                ),
+                _vm._v(" "),
+                _vm.cart.some(function (item) {
+                  return item.id === dish.id
+                })
+                  ? _c(
+                      "span",
+                      {
+                        staticClass: "btn btn-danger",
+                        on: {
+                          click: function ($event) {
+                            return _vm.removeFromCart(dish.id)
+                          },
+                        },
+                      },
+                      [_vm._v("\n                    -\n                ")]
+                    )
+                  : _vm._e(),
+              ])
             : _vm._e(),
         ])
       }),
-      0
-    ),
-  ])
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -55045,8 +55063,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\BOOLEAN\kokolivery\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! F:\BOOLEAN\kokolivery\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Maurizio\boolean\esercizi\kokolivery\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Maurizio\boolean\esercizi\kokolivery\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
