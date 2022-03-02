@@ -42,6 +42,7 @@ Route::middleware(['auth'])->prefix('auth')->group(function () {
 });
 
 Route::get('restaurant/shop/{id}', 'GuestController@restaurantDishes') -> name('guest.restaurantDishes');
+Route::get('/view/restaurant/shop/{id}', 'GuestController@restaurantDishesView') -> name('guest.restaurantDishes');
 Route::get('/api/restaurant_list', 'ApiController@getRestaurants')->name('api.restaurant_list');
 Route::get('/restaurant_list', 'GuestController@restaurant_list')->name('restaurant_list');
 

@@ -25,6 +25,13 @@ class GuestController extends Controller
     
     public function restaurantDishes($id) {
         $dishes = User::find($id) -> dishes;
-        return view('pages.restaurantShop', compact($dishes));
+
+        return view('pages.guest.restaurantShop', compact($dishes));
+    }
+
+    public function restaurantDishesView($id) {
+        $dishes = User::find($id) -> dishes;
+        
+        return json_encode($dishes);
     }
 }
