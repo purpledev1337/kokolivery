@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Dish;
+use App\Type;
 use Illuminate\Support\Facades\Auth;
 
 use App\User;
@@ -117,8 +118,9 @@ class AuthController extends Controller
     // edit del ristorante
     public function restaurantEdit()
     {
+        $types = Type::all();
         $restaurant = Auth::user();
-        return view('pages.restaurant_edit', compact('restaurant'));
+        return view('pages.restaurant_edit', compact('restaurant', 'types'));
     }
 
     // update ristorante
@@ -126,15 +128,17 @@ class AuthController extends Controller
     {
         $data = $request -> validate([
             'brand_name' => ['required', 'string', 'max:255'],
-            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . Auth::user()->id],
             'address' => ['string', 'min:4', 'max:255'],
             'city' => ['required', 'string'],
             'image' => ['image', 'mimes:jpeg,png,jpg', 'max:10240'],
-            'p_iva' => ['required', 'string', 'min:11', 'max:11'],
+            'p_iva' => ['required', 'string', 'min:11', 'max:11', 'unique:users,p_iva,' . Auth::user()->id], //unique:tabell,colonna,id va inserito cos' se non cambia il dato non da errore
             'order_min' => ['numeric', 'min:0', 'max:30'],
             'delivery_price' => ['required', 'numeric', 'min:0', 'max:25'],
             'discount' => ['required', 'numeric', 'min:0', 'max:90'],
             'description' => ['string', 'max:20000'],
+            'description' => ['nullable','string', 'max:20000'],
+            'types' => ['required_with_all'],
         ]);
 
         // prendo l'img dal form
@@ -150,14 +154,15 @@ class AuthController extends Controller
         }
         
         $restaurant = Auth::user();
-
-        if (Auth::user()->email != $request->email) {
-            $email = $request -> validate(['email' => ['required', 'string', 'email', 'max:255', 'unique:users']]);
-            $restaurant -> update($email);
-        }
-        
+        // if (Auth::user()->email != $request->email) {
+        //     $email = $request -> validate(['email' => ['required', 'string', 'email', 'max:255', 'unique:users']]);
+        //     $restaurant -> update($email);
+        // }
         $restaurant -> update($data);
-
+        
+        $types = Type::findOrFail($request -> get('types'));
+        $restaurant -> types() -> sync($types);
+        $restaurant -> save();
         return redirect() -> route('dashboard');
     }
 

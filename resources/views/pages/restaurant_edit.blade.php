@@ -88,6 +88,21 @@
             <label for="discount" class="form-label">Discount</label>
             <input type="number" name="discount" class="form-control" value="{{ $restaurant -> discount }}">
         </div> 
+
+        {{-- tipologia ristornate --}}
+        <div class="col-12">
+            <label for="name" class="form-label">Tipologia Ristorante</label><br>
+            @foreach ($types as $type)
+                <input class="form-check-input" type="checkbox" name="types[]" value="{{$type->id}}"
+                    @foreach ($restaurant -> types as $restaurantType)
+                        @if ($type -> id == $restaurantType -> id)
+                            checked
+                        @endif
+                    @endforeach
+                > {{$type->name}}
+            @endforeach
+        </div> 
+        
         
         {{-- descrizione --}}
         <div class="offset-3 col-6">
