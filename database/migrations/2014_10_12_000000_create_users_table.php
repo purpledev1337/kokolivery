@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table -> float('rating',2,1) -> nullable();
             $table -> integer('num_rating') -> default(0);
             $table -> rememberToken();
+            $table->softDeletes();
             $table -> timestamps();
         
         });
@@ -41,6 +42,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        $table->dropSoftDeletes();
         Schema::dropIfExists('users');
     }
 }
