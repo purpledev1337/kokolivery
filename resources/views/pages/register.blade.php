@@ -97,6 +97,16 @@
             <input type="number" name="discount" class="form-control">
         </div> 
         
+        {{-- tipologia ristornate --}}
+        <div class="col-4">
+            <label for="name" class="form-label">Tipologia Ristorante</label>
+            <select class="form-select form-control" name="name" aria-label="Default select example">
+                @foreach ($types as $type)
+                    <option value="{{$type->id}}">{{$type->name}}</option>
+                @endforeach
+            </select>
+        </div> 
+        
         {{-- descrizione --}}
         <div class="offset-3 col-6">
             <label for="description" class="form-label">Description</label>

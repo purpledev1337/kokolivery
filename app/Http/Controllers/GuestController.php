@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Dish;
 use App\User;
+use App\Type;
 
 class GuestController extends Controller
 {
@@ -14,7 +15,8 @@ class GuestController extends Controller
     }
 
     public function register() {
-        return view('pages.register');
+        $types = Type::all();
+        return view('pages.register', compact('types'));
     }
     
     public function restaurant_list() {
