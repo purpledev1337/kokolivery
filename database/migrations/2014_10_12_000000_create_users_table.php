@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table -> enum('city',['Milano', 'Napoli', 'Roma', 'Bologna', 'Firenze', 'Venezia', 'Torino', 'Pisa', 'Bari', 'Palermo', 'Cosenza', 'Cagliari']);
             $table -> string('p_iva',30);
             $table -> text('description') -> nullable();
-            $table -> string('image') -> nullable();
+            $table -> string('image') -> default('kokolivery-logo.svg');
             $table -> decimal('order_min', 4,2) -> nullable();
             $table -> decimal('delivery_price', 4,2);
             $table -> integer('discount');
