@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('welcome/{locale}', function ($locale) {
+    App::setLocale($locale);
+});
+
 Route::get('/', 'GuestController@home')->name('home');
 
 Route::post('/login', 'Auth\LoginController@login') -> name('login');
@@ -33,7 +37,7 @@ Route::middleware(['auth'])->prefix('auth')->group(function () {
         Route::post('/update/{id}', 'AuthController@dishUpdate') -> name('dish.update');
         
         Route::get('/visibility/{id}', 'AuthController@dishVisibility') -> name('dish.visibility');
-        Route::get('/delete/{id}', 'AuthController@dishDelete') -> name('dish.delete');
+        Route::get('/delete', 'AuthController@dishDelete') -> name('dish.delete');
     });
 
 

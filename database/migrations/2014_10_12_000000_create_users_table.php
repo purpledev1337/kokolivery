@@ -42,7 +42,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        $table->dropSoftDeletes();
+        // $table->dropSoftDeletes();
         Schema::dropIfExists('users');
     }
 }

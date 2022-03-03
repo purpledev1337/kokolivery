@@ -133,9 +133,9 @@ class AuthController extends Controller
     }
 
     // eliminazione del piatto
-    public function dishDelete($id) {
-
-        $dish = Dish::findOrFail($id);
+    public function dishDelete() {
+        // dd($_GET['pass_id']);
+        $dish = Dish::findOrFail($_GET["pass_id"]);
         // imposto delete a true per cancellare in page il piatto(mi resta in database)
         $dish -> delete = 1;
         $dish -> save();
