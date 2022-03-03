@@ -133,14 +133,17 @@ class AuthController extends Controller
     }
 
     // eliminazione del piatto
-    public function dishDelete() {
-        // dd($_GET['pass_id']);
-        $dish = Dish::findOrFail($_GET["pass_id"]);
+    public function dishDelete(Request $request) {
+        $data = $request -> validate([
+            'pass_id' => 'required|numeric|min:0'
+        ]);
+
+        $dish = Dish::findOrFail($data['pass_id']);
         // imposto delete a true per cancellare in page il piatto(mi resta in database)
         $dish -> delete = 1;
         $dish -> save();
         return redirect() -> route('myDishes');
-    }
+}
 
     // edit del ristorante
     public function restaurantEdit()

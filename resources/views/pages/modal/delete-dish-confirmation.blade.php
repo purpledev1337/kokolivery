@@ -7,8 +7,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('dish.delete') }}">
-                    
+                <form action="{{ route('dish.delete') }}" method="GET">
+                    @method('GET')
                     @csrf
                     <h5>Vuoi davvero eliminare il piatto?</h5>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ANNULLA</button>
