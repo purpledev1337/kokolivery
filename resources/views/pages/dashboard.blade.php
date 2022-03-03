@@ -19,7 +19,15 @@
         <a class="btn btn-primary" href="{{route('myDishes')}}">PIATTI</a>
         <a class="btn btn-primary" href="{{route('my_orders')}}">ORDINI</a>
         <a class="btn btn-secondary" href="{{route('restaurant.edit')}}">EDIT</a>
-        <a class="btn btn-danger" href="{{route('restaurant.delete')}}">DELETE</a>
-
+        <a  href="#" 
+        data-target-id="{{Auth::user()->id}}" 
+        data-bs-toggle="modal" 
+        data-bs-target="#deleteRestaurantConfirmation" 
+        class="btn btn-danger">
+        DELETE
+        </a>
     </div>
+
+    {{-- modale alert delete --}}
+    @include('pages.modal.delete-restaurant-confirmation')
 @endsection
