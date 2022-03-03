@@ -12262,6 +12262,11 @@ input {
   padding: 20px;
 }
 
+#shop #count {
+  background-color: red;
+  border-radius: 25%;
+}
+
 * {
   margin: 0;
   padding: 0;

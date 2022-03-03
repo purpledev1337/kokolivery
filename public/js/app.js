@@ -5151,6 +5151,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -42311,6 +42317,14 @@ var render = function () {
   return _c("div", { attrs: { id: "shop" } }, [
     _c("a", { attrs: { href: "/" } }, [_vm._v("Link alla home")]),
     _vm._v(" "),
+    _c("div", { attrs: { id: "cart" } }, [
+      _c("i", { staticClass: "fa-solid fa-cart-shopping-fast" }),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "count" } }, [
+        _vm._v("\n            " + _vm._s(_vm.cart.length) + "\n        "),
+      ]),
+    ]),
+    _vm._v(" "),
     _c("div", [
       _vm._v(
         "\n        Numero Carrello (" + _vm._s(_vm.cart.length) + ")\n    "
@@ -55072,8 +55086,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/cenny/Desktop/project final/kokolivery/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/cenny/Desktop/project final/kokolivery/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Maurizio\boolean\esercizi\kokolivery\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Maurizio\boolean\esercizi\kokolivery\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

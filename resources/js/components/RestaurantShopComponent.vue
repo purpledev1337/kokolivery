@@ -1,6 +1,12 @@
 <template>
     <div id="shop">
         <a href="/">Link alla home</a>
+        <div id="cart" >
+            <i class="fa-solid fa-cart-shopping-fast"></i>
+            <div id="count">
+                {{cart.length}}
+            </div>
+        </div>
         <div>
             Numero Carrello ({{cart.length}})
         </div>
