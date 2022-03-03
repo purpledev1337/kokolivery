@@ -5,7 +5,7 @@
 
         <div id="restaurants_box">
             <a  :href="`restaurant/shop/${restaurant.id}`" class="restaurant_card" v-for="restaurant in restaurants" :key="restaurant.id">
-                <img :src="`storage/${restaurant.image}`" alt="">
+                <img class="restaurant_img" :src="`storage/${restaurant.image}`" alt="">
                 <h2>{{ restaurant.brand_name }}</h2>
                 <h6>Indirizzo: {{ restaurant.address }}</h6>
                 <span>Stelline -> {{ restaurant.rating }}</span>

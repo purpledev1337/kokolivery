@@ -12202,10 +12202,6 @@ body {
   align-items: center;
 }
 
-#cont-img {
-  width: 50%;
-}
-
 img {
   width: 100%;
 }
@@ -12243,6 +12239,27 @@ input {
   border: 1px solid black;
   text-align: center;
   margin: 10px 0;
+}
+
+.restaurant_img {
+  width: 65%;
+}
+
+#shop {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#shop #flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+#shop .dish_box {
+  width: 31.3333333333%;
+  margin: 0 1%;
+  padding: 20px;
 }
 
 * {

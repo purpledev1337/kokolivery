@@ -1,0 +1,19 @@
+#shop {
+
+    width: 80%;
+    margin: 0 auto;
+    #flex{
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .dish_box {
+        width: calc((100% / 3) - 2%);
+        margin: 0 1%;
+        // width: calc(100% / 3);
+        // border: solid 6px black;
+        padding: 20px;
+    }
+}
