@@ -5157,6 +5157,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -42315,21 +42325,21 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "shop" } }, [
-    _c("a", { attrs: { href: "/" } }, [_vm._v("Link alla home")]),
-    _vm._v(" "),
-    _c("div", { attrs: { id: "cart" } }, [
-      _c("i", { staticClass: "fa-solid fa-cart-shopping-fast" }),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "count" } }, [
-        _vm._v("\n            " + _vm._s(_vm.cart.length) + "\n        "),
+    _c("div", { attrs: { id: "icon-cart" } }, [
+      _c("div", { attrs: { id: "cont_icon" } }, [
+        _c("i", { staticClass: "fa-solid fa-cart-shopping" }),
+        _vm._v(" "),
+        _vm.cart.length > 0
+          ? _c("div", { attrs: { id: "count" } }, [
+              _vm._v(
+                "\n              " + _vm._s(_vm.cart.length) + "\n          "
+              ),
+            ])
+          : _vm._e(),
       ]),
     ]),
     _vm._v(" "),
-    _c("div", [
-      _vm._v(
-        "\n        Numero Carrello (" + _vm._s(_vm.cart.length) + ")\n    "
-      ),
-    ]),
+    _c("div", [_vm._v("Numero Carrello (" + _vm._s(_vm.cart.length) + ")")]),
     _vm._v(" "),
     _c("h3", [_vm._v("Restaurants Shop:")]),
     _vm._v(" "),
@@ -42367,7 +42377,7 @@ var render = function () {
                       },
                     },
                   },
-                  [_vm._v("\n                    +\n                ")]
+                  [_vm._v(" + ")]
                 ),
                 _vm._v(" "),
                 _vm.cart.some(function (item) {
@@ -42383,7 +42393,7 @@ var render = function () {
                           },
                         },
                       },
-                      [_vm._v("\n                    -\n                ")]
+                      [_vm._v("\n          -\n        ")]
                     )
                   : _vm._e(),
               ])
