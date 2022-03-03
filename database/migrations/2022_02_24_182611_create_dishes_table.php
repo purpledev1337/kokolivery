@@ -19,10 +19,11 @@ class CreateDishesTable extends Migration
             $table -> biginteger('user_id') -> unsigned();
             $table -> string('name');
             $table -> text('description');
-            $table -> string('image_path');
+            $table -> string('image_path') -> nullable();
             $table -> decimal('price',4,2);
             $table -> enum('category',['Antipasto', 'Primi Piatti', 'Secondi Piatti', 'Dessert', 'Bibite', 'Pizza']);
-            $table -> boolean('is_visible');
+            $table -> boolean('is_visible') -> default(1);
+            $table -> boolean('delete') -> default(0);
 
             $table -> timestamps();
         });

@@ -4,7 +4,7 @@
 
     <div id="cont">
         <div id="cont-logo">
-            <div id="cont-img">
+            <div id="cont-img-home">
                 <img id="float-img" src="storage/asset/kokolivery-logo.svg" alt="">
             </div>
             <h1 id="float-title">

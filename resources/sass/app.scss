@@ -16,6 +16,8 @@
 
 @import 'dashboard.scss';
 
+@import 'shop.scss';
+
 * {
     margin: 0;
     padding: 0;
@@ -25,5 +27,9 @@
 body {
 
     padding-top: 150px;
+}
+
+.visibility{
+    display: none;
 }
 

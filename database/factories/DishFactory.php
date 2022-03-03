@@ -12,6 +12,5 @@ $factory->define(Dish::class, function (Faker $faker) {
         'image_path' => 'asset/kokolivery-logo.svg',
         'price' => $faker -> randomFloat(2, 1, 99),
         'category' => $faker -> randomElement(['Antipasto', 'Primi Piatti', 'Secondi Piatti', 'Dessert', 'Bibite', 'Pizza']),
-        'is_visible' => $faker -> boolean()
     ];
 });
