@@ -9,17 +9,6 @@
           @method('POST')
           @csrf
 
-          {{-- controllo errori --}}
-          @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-          @endif
-
         <h3>Aggiornamento Ristornate</h3>
         {{-- brand name --}}
         <div class="col-md-6">
