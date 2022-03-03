@@ -8,11 +8,12 @@
             </div>
             <div class="modal-body">
                 <form action="{{ route('dish.delete') }}">
-
+                    
+                    @csrf
                     <h5>Vuoi davvero eliminare il piatto?</h5>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ANNULLA</button>
                     <button type="submit" class="btn btn-danger">CONFERMA</button>
-                    <input class="form-control" id="pass_id" name="pass_id" type="hidden" >
+                    <input class="form-control" id="pass_id" name="pass_id" type="hidden">
                 </form>
             </div>
         </div>
