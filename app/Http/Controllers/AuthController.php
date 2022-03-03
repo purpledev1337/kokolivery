@@ -11,6 +11,33 @@ use App\User;
 
 class AuthController extends Controller
 {
+
+    public function dashboard()
+    {
+        return view('pages.dashboard');
+    }
+
+    public function myDishes()
+    {
+        $dishes = User::find(Auth::User() -> id) -> dishes;
+
+        return view('pages.my_dishes', compact('dishes'));
+    }
+
+    public function myOrders()
+    {
+        $dishes = User::find(Auth::User() -> id) -> dishes;
+
+        $listOrders = [];
+
+        foreach ($dishes as $dish) {
+            
+            $orders = Dish::find($dish -> id) -> orders;
+            array_push($listOrders, $orders);
+        }
+        return view('pages.my_orders', compact('listOrders'));
+    }
+    
     // view form create piatto
     public function dishCreate() {
 
@@ -180,4 +207,6 @@ class AuthController extends Controller
         return redirect() -> route('home');
         
     }
+
+    
 }

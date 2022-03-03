@@ -13,4 +13,11 @@ class ApiController extends Controller
         $users = User::all();
         return json_encode($users);
     }
+
+    
+    public function restaurantDishesView($id) {
+        $dishes = User::find($id) -> dishes;
+        
+        return json_encode($dishes);
+    }
 }
