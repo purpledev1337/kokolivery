@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div id="cont">
+    <div id="search_home">
         <div id="cont-logo">
             <div id="cont-img-home">
                 <img id="float-img" src="storage/asset/kokolivery-logo.svg" alt="">
@@ -18,5 +18,4 @@
         
         <a href="{{ route('restaurant_list') }}">Link alla restaurant_list</a>
     </div>
-
-@endsection
+    @endsection
