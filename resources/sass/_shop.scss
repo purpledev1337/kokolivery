@@ -1,5 +1,4 @@
 #shop {
-
     width: 80%;
     margin: 0 auto;
     #flex{
@@ -15,8 +14,42 @@
         padding: 20px;
     }
 
-    #count {
-        background-color: red;
+    #icon-cart {
+        height: 3.5rem;
+        width: 3.5rem;
+        background-color: $yellow;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border-radius: 25%;
+        position: fixed;
+        right: 20px;
+        top: 60px;
+
+        #cont_icon {
+            position: relative;
+            
+        }
+        #count {
+            position: absolute;
+            top: -18px;
+            right: -20px;
+            border-radius: 50%;
+            min-width: 25px;
+            min-height: 25px;
+        
+            background: $red;
+            color: white;
+            text-align: center;
+            padding: 2px;
+            font: 18px Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        i {
+            font-size: 2em;
+            color: black;
+        }
     }
+    
 }
