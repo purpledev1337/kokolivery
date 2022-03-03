@@ -197,12 +197,16 @@ class AuthController extends Controller
     }
 
     // eliminazione ristorante --- non funzionante!!!!!
-    public function restaurantDelete(){
-        $restaurant = User::findOrFail(Auth::user()->id);
+    public function restaurantDelete(Request $request){
+        $data = $request -> validate([
+            'pass_id' => 'required|numeric|min:0'
+        ]);
+
+        $restaurant = User::findOrFail($data['pass_id']);
         $restaurant -> types() -> detach();
         $restaurant -> save();
         
-        $restaurant = User::findOrFail(Auth::user()->id);
+        $restaurant = User::findOrFail($data['pass_id']);
         $restaurant -> dishes() -> delete();
 
         $restaurant -> delete();
