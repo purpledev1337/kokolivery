@@ -25,14 +25,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('home');
-    }
    
     public function dashboard()
     {
-       
         return view('pages.dashboard');
     }
 
@@ -54,7 +49,6 @@ class HomeController extends Controller
             $orders = Dish::find($dish -> id) -> orders;
             array_push($listOrders, $orders);
         }
-
         return view('pages.my_orders', compact('listOrders'));
     }
 

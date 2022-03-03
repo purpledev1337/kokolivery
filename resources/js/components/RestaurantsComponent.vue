@@ -4,13 +4,13 @@
         <h3>Restaurants List:</h3>
 
         <div id="restaurants_box">
-            <div class="restaurant_card" v-for="restaurant in restaurants" :key="restaurant.id">
-                <img :src="`storage/${restaurant.image_path}`" alt="">
+            <a  :href="`restaurant/shop/${restaurant.id}`" class="restaurant_card" v-for="restaurant in restaurants" :key="restaurant.id">
+                <img :src="`storage/${restaurant.image}`" alt="">
                 <h2>{{ restaurant.brand_name }}</h2>
                 <h6>Indirizzo: {{ restaurant.address }}</h6>
                 <span>Stelline -> {{ restaurant.rating }}</span>
                 <span>({{ restaurant.num_rating }})</span>
-            </div>
+            </a>
         </div>
     </div>
 </template>
