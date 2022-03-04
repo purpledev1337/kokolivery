@@ -24,7 +24,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+body {
+    padding-top: 56px;
+}
 .visibility{
     display: none;
 }
