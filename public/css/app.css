@@ -19134,6 +19134,7 @@ fieldset:disabled .btn {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  padding-top: 70px;
 }
 
 #search_home {
@@ -19174,7 +19175,6 @@ input {
 
 .container {
   text-align: center;
-  padding-top: 70px;
 }
 
 #restaurants_box {
@@ -19197,12 +19197,14 @@ input {
 #shop {
   width: 80%;
   margin: 0 auto;
+  position: relative;
 }
 
 #shop #flex {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  position: relative;
 }
 
 #shop .dish_box {
@@ -19246,6 +19248,47 @@ input {
 #shop #icon-cart i {
   font-size: 2em;
   color: black;
+}
+
+#shop #icon-cart:hover {
+  cursor: pointer;
+}
+
+.cart-message {
+  position: fixed;
+  top: 40%;
+  right: 50%;
+  transform: translate(50%, 0);
+  color: #ffffff;
+  padding: 1em 1.5em;
+  border-radius: 2em;
+  font-size: 1.5em;
+  z-index: 800;
+}
+
+.cart-message.cart-add {
+  background-color: rgba(0, 128, 0, 0.733);
+}
+
+.cart-message.cart-remove {
+  background-color: rgba(255, 46, 102, 0.733);
+}
+
+#cart-box {
+  border: 3px #f9db03 solid;
+  border-radius: 2em;
+  background-color: #f6993f;
+  position: fixed;
+  right: 25px;
+  top: 150px;
+  padding: 2rem;
+  z-index: 1000;
+  text-align: center;
+}
+
+#cart-box th,
+#cart-box td {
+  padding: 1.5rem;
 }
 
 * {
