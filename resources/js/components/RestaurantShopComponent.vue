@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div v-if="this.isCartOpen" id="cart-box">
+    <div v-if="this.isCartOpen && this.cart.length > 0" id="cart-box">
       <table>
         <tr>
           <th>Qnt.</th>
@@ -19,7 +19,7 @@
         </tr>
         <tr v-for="item, i in cart" :key="item.id + i">
           <!-- quantità presa da dish_order -->
-          <td>x</td>
+          <td>{{ item.quantity}}</td>
           <td>{{ item.name }}</td>
           <td>€ {{ item.price }}</td>
         </tr>
@@ -76,14 +76,7 @@ export default {
     return {
       url: null,
       dishes: [],
-      cart: [
-        {
-            'id': 205,
-            'name': null,
-            'quantity': 1,
-            'price': null
-          }
-      ],
+      cart: [],
       isCartOpen: false,
       addMessageOpened: false,
       removeMessageOpened: false,
@@ -106,48 +99,57 @@ export default {
 
     // func per aggiungere al carrello i piatti
     addToCart(item) {
-      const piatto = this.cart.filter(dish => dish.id == item.id);
-      console.log(piatto);
+      clearTimeout(this.closeRemoveMessage())
+      const piatto = this.cart.find(dish => dish.id == item.id);
       if(piatto){
-        const index = this.cart.findIndex(elem => elem.id === piatto.id )
+        const index = this.cart.findIndex(elem => elem.id === piatto.id)
         this.cart[index].quantity ++;
-        console.log('quantity', piatto.quantity);
-      } 
-      // else {
-      //   this.cart.push(
-      //     {
-      //       'id': item.id,
-      //       'name': item.name,
-      //       'quantity': 1,
-      //       'price': item.price
-      //     }
-      //   );
-      //   console.log('add', this.cart );
-      // }
-      // this.selectedDish = item;
-      // console.log(item.price);
-      // // this.cartTotal+=item.price;
-      // this.addMessageOpened = true;
-      // // this.isCartOpen = false;
-      // setTimeout(() => {this.addMessageOpened = false}, 1500);
+        console.log('quantity', piatto);
+      } else {
+        console.log();
+        this.cart.push(
+          {
+            'id': item.id,
+            'name': item.name,
+            'quantity': 1,
+            'price': item.price
+          }
+        );
+        console.log('add', this.cart );
+      }
+      this.selectedDish = item;
+      console.log(item.price);
+      // this.cartTotal+=item.price;
+      this.addMessageOpened = true;
+      // this.isCartOpen = false;
+      setTimeout(() => {this.closeAddMessage()}, 1500);
     },
 
     // func per rimuovere dal carrello i piatti
     removeFromCart(item) {
+      clearTimeout(this.closeAddMessage())
       // cerchiamo il primo piatto selezionato nel cart
-      const dishIndex = this.cart.findIndex((object) => {
-        
-        return object.id = item.id;
-      });
+      const index = this.cart.findIndex(elem => elem.id === item.id)
+      this.cart[index].quantity --;
       // rimuoviamo il piatto selezionato
-      this.cart.splice(dishIndex, 1);
+      if (!this.cart[index].quantity){
+        this.cart.splice(index, 1);
+      }
       this.selectedDish = item;
       // this.cartTotal-=item.price;
       this.removeMessageOpened = true;
       // this.isCartOpen = false;
-      setTimeout(() => {this.removeMessageOpened = false}, 1500);
+      setTimeout(() => {this.closeRemoveMessage()}, 1500);
+    },
+
+    closeAddMessage(){
+      this.addMessageOpened = false;
+    },
+    closeRemoveMessage(){
+      this.removeMessageOpened = false;
     },
   },
+
 
   computed: {
     cartTotal: function() {
@@ -156,7 +158,7 @@ export default {
 
       this.cart.forEach(dish => {
         
-        total+=Number(dish.price);
+        total+=Number(dish.price * dish.quantity);
       });
       return Number(total).toFixed(2);
     }

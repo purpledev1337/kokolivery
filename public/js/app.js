@@ -5195,12 +5195,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       url: null,
       dishes: [],
-      cart: [{
-        'id': 205,
-        'name': null,
-        'quantity': 1,
-        'price': null
-      }],
+      cart: [],
       isCartOpen: false,
       addMessageOpened: false,
       removeMessageOpened: false,
@@ -5244,60 +5239,74 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     // func per aggiungere al carrello i piatti
     addToCart: function addToCart(item) {
-      var piatto = this.cart.filter(function (dish) {
+      var _this2 = this;
+
+      clearTimeout(this.closeRemoveMessage());
+      var piatto = this.cart.find(function (dish) {
         return dish.id == item.id;
       });
-      console.log(piatto);
 
       if (piatto) {
         var index = this.cart.findIndex(function (elem) {
           return elem.id === piatto.id;
         });
         this.cart[index].quantity++;
-        console.log('quantity', piatto.quantity);
-      } // else {
-      //   this.cart.push(
-      //     {
-      //       'id': item.id,
-      //       'name': item.name,
-      //       'quantity': 1,
-      //       'price': item.price
-      //     }
-      //   );
-      //   console.log('add', this.cart );
-      // }
-      // this.selectedDish = item;
-      // console.log(item.price);
-      // // this.cartTotal+=item.price;
-      // this.addMessageOpened = true;
-      // // this.isCartOpen = false;
-      // setTimeout(() => {this.addMessageOpened = false}, 1500);
+        console.log('quantity', piatto);
+      } else {
+        console.log();
+        this.cart.push({
+          'id': item.id,
+          'name': item.name,
+          'quantity': 1,
+          'price': item.price
+        });
+        console.log('add', this.cart);
+      }
 
+      this.selectedDish = item;
+      console.log(item.price); // this.cartTotal+=item.price;
+
+      this.addMessageOpened = true; // this.isCartOpen = false;
+
+      setTimeout(function () {
+        _this2.closeAddMessage();
+      }, 1500);
     },
     // func per rimuovere dal carrello i piatti
     removeFromCart: function removeFromCart(item) {
-      var _this2 = this;
+      var _this3 = this;
 
-      // cerchiamo il primo piatto selezionato nel cart
-      var dishIndex = this.cart.findIndex(function (object) {
-        return object.id = item.id;
-      }); // rimuoviamo il piatto selezionato
+      clearTimeout(this.closeAddMessage()); // cerchiamo il primo piatto selezionato nel cart
 
-      this.cart.splice(dishIndex, 1);
+      var index = this.cart.findIndex(function (elem) {
+        return elem.id === item.id;
+      });
+      this.cart[index].quantity--; // rimuoviamo il piatto selezionato
+
+      if (!this.cart[index].quantity) {
+        this.cart.splice(index, 1);
+      }
+
       this.selectedDish = item; // this.cartTotal-=item.price;
 
       this.removeMessageOpened = true; // this.isCartOpen = false;
 
       setTimeout(function () {
-        _this2.removeMessageOpened = false;
+        _this3.closeRemoveMessage();
       }, 1500);
+    },
+    closeAddMessage: function closeAddMessage() {
+      this.addMessageOpened = false;
+    },
+    closeRemoveMessage: function closeRemoveMessage() {
+      this.removeMessageOpened = false;
     }
   },
   computed: {
     cartTotal: function cartTotal() {
       var total = 0;
       this.cart.forEach(function (dish) {
-        total += Number(dish.price);
+        total += Number(dish.price * dish.quantity);
       });
       return Number(total).toFixed(2);
     }
@@ -42430,7 +42439,7 @@ var render = function () {
       ]
     ),
     _vm._v(" "),
-    this.isCartOpen
+    this.isCartOpen && this.cart.length > 0
       ? _c("div", { attrs: { id: "cart-box" } }, [
           _c(
             "table",
@@ -42439,7 +42448,7 @@ var render = function () {
               _vm._v(" "),
               _vm._l(_vm.cart, function (item, i) {
                 return _c("tr", { key: item.id + i }, [
-                  _c("td", [_vm._v("x")]),
+                  _c("td", [_vm._v(_vm._s(item.quantity))]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(item.name))]),
                   _vm._v(" "),
