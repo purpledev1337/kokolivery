@@ -31,7 +31,11 @@
       </table>
       <a class="btn btn-success" href="">Procedi con l'acquisto</a>
     </div>
+    <!-- /cart -->
 
+
+
+    <!-- card restaurant -->
     <h3>Restaurants Shop:</h3>
     <div id="flex">
       <div class="dish_box" v-for="dish in dishes" :key="dish.id + dish.name">
@@ -63,10 +67,9 @@
         <div v-if="this.removeMessageOpened" class="cart-message cart-remove">
           "{{ selectedDish.name }}" è stato rimosso al carrello!
         </div>
-        <!-- <div v-if="this.messageOpened" class="cart-message" :class="addMessageOpened ? 'cart-add' : 'cart-remove' ">
-          "{{ cartMessage }}"
-        </div> -->
     </div>
+    <!-- /card restaurant -->
+
   </div>
 </template>
 
@@ -86,10 +89,11 @@ export default {
   mounted() {
     // salvo l'url
     this.url = window.location.pathname;
-    this.getData();
+    this.getDishes();
   },
   methods: {
-    async getData() {
+    // chiamata axios che mi torna tutti i piatti
+    async getDishes() {
       let res = await axios
         .get(`/api/view${this.url}`)
         .catch((e) => console.error(e));
@@ -99,14 +103,20 @@ export default {
 
     // func per aggiungere al carrello i piatti
     addToCart(item) {
+      // se c'e' un allert aperto lo chiudo
       clearTimeout(this.closeRemoveMessage())
+      // cerco nel carrello il piatto che ho cliccato
       const piatto = this.cart.find(dish => dish.id == item.id);
+
+      // Se la ricerca mi torna il piatto
       if(piatto){
+        // cerco nel cart la posizione del piatto
         const index = this.cart.findIndex(elem => elem.id === piatto.id)
+        // aggiungo 1 alla quantita' gia' presente
         this.cart[index].quantity ++;
-        console.log('quantity', piatto);
-      } else {
-        console.log();
+  
+      } else { // altrimenti pusho nel cart un nuovo oggetto con i dati di cui ho bisogno
+
         this.cart.push(
           {
             'id': item.id,
@@ -115,36 +125,43 @@ export default {
             'price': item.price
           }
         );
-        console.log('add', this.cart );
       }
+
       this.selectedDish = item;
-      console.log(item.price);
-      // this.cartTotal+=item.price;
+      
       this.addMessageOpened = true;
-      // this.isCartOpen = false;
+      
       setTimeout(() => {this.closeAddMessage()}, 1500);
     },
 
+
     // func per rimuovere dal carrello i piatti
     removeFromCart(item) {
+      // se c'e' un allert aperto lo chiudo
       clearTimeout(this.closeAddMessage())
       // cerchiamo il primo piatto selezionato nel cart
       const index = this.cart.findIndex(elem => elem.id === item.id)
+      // faccio -1 all'attuale quantita' del piatto che si trova all'indice che mi sono trovato
       this.cart[index].quantity --;
-      // rimuoviamo il piatto selezionato
+      // se quantity e' uguale a 0 (false)
       if (!this.cart[index].quantity){
+      // rimuoviamo il piatto selezionato
         this.cart.splice(index, 1);
       }
+
       this.selectedDish = item;
-      // this.cartTotal-=item.price;
+
       this.removeMessageOpened = true;
-      // this.isCartOpen = false;
+
       setTimeout(() => {this.closeRemoveMessage()}, 1500);
     },
 
+    // func per chiudere l'allert dell'aggiunta del piatto
     closeAddMessage(){
       this.addMessageOpened = false;
     },
+
+    // func per chiudere l'allert della rimozione del piatto
     closeRemoveMessage(){
       this.removeMessageOpened = false;
     },
@@ -157,9 +174,11 @@ export default {
       let total = 0;
 
       this.cart.forEach(dish => {
-        
+
         total+=Number(dish.price * dish.quantity);
+
       });
+
       return Number(total).toFixed(2);
     }
   }

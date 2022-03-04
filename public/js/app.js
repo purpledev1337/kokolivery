@@ -5190,6 +5190,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5207,10 +5210,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mounted: function mounted() {
     // salvo l'url
     this.url = window.location.pathname;
-    this.getData();
+    this.getDishes();
   },
   methods: {
-    getData: function getData() {
+    // chiamata axios che mi torna tutti i piatti
+    getDishes: function getDishes() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -5241,33 +5245,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     addToCart: function addToCart(item) {
       var _this2 = this;
 
-      clearTimeout(this.closeRemoveMessage());
+      // se c'e' un allert aperto lo chiudo
+      clearTimeout(this.closeRemoveMessage()); // cerco nel carrello il piatto che ho cliccato
+
       var piatto = this.cart.find(function (dish) {
         return dish.id == item.id;
-      });
+      }); // Se la ricerca mi torna il piatto
 
       if (piatto) {
+        // cerco nel cart la posizione del piatto
         var index = this.cart.findIndex(function (elem) {
           return elem.id === piatto.id;
-        });
+        }); // aggiungo 1 alla quantita' gia' presente
+
         this.cart[index].quantity++;
-        console.log('quantity', piatto);
       } else {
-        console.log();
+        // altrimenti pusho nel cart un nuovo oggetto con i dati di cui ho bisogno
         this.cart.push({
           'id': item.id,
           'name': item.name,
           'quantity': 1,
           'price': item.price
         });
-        console.log('add', this.cart);
       }
 
       this.selectedDish = item;
-      console.log(item.price); // this.cartTotal+=item.price;
-
-      this.addMessageOpened = true; // this.isCartOpen = false;
-
+      this.addMessageOpened = true;
       setTimeout(function () {
         _this2.closeAddMessage();
       }, 1500);
@@ -5276,28 +5279,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     removeFromCart: function removeFromCart(item) {
       var _this3 = this;
 
+      // se c'e' un allert aperto lo chiudo
       clearTimeout(this.closeAddMessage()); // cerchiamo il primo piatto selezionato nel cart
 
       var index = this.cart.findIndex(function (elem) {
         return elem.id === item.id;
-      });
-      this.cart[index].quantity--; // rimuoviamo il piatto selezionato
+      }); // faccio -1 all'attuale quantita' del piatto che si trova all'indice che mi sono trovato
+
+      this.cart[index].quantity--; // se quantity e' uguale a 0 (false)
 
       if (!this.cart[index].quantity) {
+        // rimuoviamo il piatto selezionato
         this.cart.splice(index, 1);
       }
 
-      this.selectedDish = item; // this.cartTotal-=item.price;
-
-      this.removeMessageOpened = true; // this.isCartOpen = false;
-
+      this.selectedDish = item;
+      this.removeMessageOpened = true;
       setTimeout(function () {
         _this3.closeRemoveMessage();
       }, 1500);
     },
+    // func per chiudere l'allert dell'aggiunta del piatto
     closeAddMessage: function closeAddMessage() {
       this.addMessageOpened = false;
     },
+    // func per chiudere l'allert della rimozione del piatto
     closeRemoveMessage: function closeRemoveMessage() {
       this.removeMessageOpened = false;
     }
