@@ -5,7 +5,7 @@
         <div id="cont_icon">
             <i class="fa-solid fa-cart-shopping"></i>
             <div v-if="cart.length > 0" id="count">
-                {{ cart.length }}
+                {{ quantityTotal }}
             </div>
         </div>
     </div>
@@ -29,7 +29,8 @@
           <th><b>€ {{ cartTotal }}</b></th>
         </tr>
       </table>
-      <a class="btn btn-success" :href="route">Procedi con l'acquisto</a>
+      <a class="btn btn-success" :href="route" >Procedi con l'acquisto</a>
+      <!-- @click="sendCart" -->
     </div>
     <!-- /cart -->
 
@@ -105,6 +106,12 @@ export default {
         .catch((e) => console.error(e));
       // salvo i piatti
       this.dishes = res.data;
+    },
+
+    async sendCart() {
+        await axios
+        .get(`stripe`, 'ciso')
+        .catch((e) => console.error(e));
     },
 
     // func per aggiungere al carrello i piatti
@@ -186,10 +193,24 @@ export default {
         total+=Number(dish.price * dish.quantity);
         
       });
-
       // mi faccio tornare il totale dei vari prezzi
       return Number(total).toFixed(2);
-    }
-  }
+    },
+
+    quantityTotal: function() {
+        // salvo la variabile con il totale con default zero
+        let total = 0;
+
+        // faccio un foreach del carrello
+        this.cart.forEach(dish => {
+          // alla variabile total sommo il valore di ogni quantita del piatto(ad ogni iterazione)
+          total+= dish.quantity;
+        });
+        console.log(total);
+        // mi faccio tornare il totale delle varie quantita'
+        return Number(total);
+      }
+  },
+
 };
 </script>

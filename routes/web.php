@@ -54,7 +54,7 @@ Route::prefix('api') -> group(function(){
     Route::get('/view/restaurant/shop/{id}', 'ApiController@restaurantDishesView') -> name('guest.restaurantDishes');
 });
 
-Route::get('stripe', 'StripePaymentController@stripe') -> name('stripe.view');
+Route::post('stripe/{totale}', 'StripePaymentController@stripe') -> name('stripe.view');
 Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
 
 

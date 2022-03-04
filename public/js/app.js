@@ -5193,6 +5193,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5245,6 +5246,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee);
+      }))();
+    },
+    sendCart: function sendCart() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios.get("stripe", 'ciso')["catch"](function (e) {
+                  return console.error(e);
+                });
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
       }))();
     },
     // func per aggiungere al carrello i piatti
@@ -5325,6 +5345,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }); // mi faccio tornare il totale dei vari prezzi
 
       return Number(total).toFixed(2);
+    },
+    quantityTotal: function quantityTotal() {
+      // salvo la variabile con il totale con default zero
+      var total = 0; // faccio un foreach del carrello
+
+      this.cart.forEach(function (dish) {
+        // alla variabile total sommo il valore di ogni quantita del piatto(ad ogni iterazione)
+        total += dish.quantity;
+      });
+      console.log(total); // mi faccio tornare il totale delle varie quantita'
+
+      return Number(total);
     }
   }
 });
@@ -42447,7 +42479,9 @@ var render = function () {
           _vm.cart.length > 0
             ? _c("div", { attrs: { id: "count" } }, [
                 _vm._v(
-                  "\n              " + _vm._s(_vm.cart.length) + "\n          "
+                  "\n              " +
+                    _vm._s(_vm.quantityTotal) +
+                    "\n          "
                 ),
               ])
             : _vm._e(),
@@ -55287,8 +55321,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/cenny/Desktop/project final/project/kokolivery/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/cenny/Desktop/project final/project/kokolivery/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Maurizio\boolean\esercizi\kokolivery\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Maurizio\boolean\esercizi\kokolivery\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

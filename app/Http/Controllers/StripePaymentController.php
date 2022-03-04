@@ -14,9 +14,9 @@ class StripePaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function stripe()
+    public function stripe($totale)
     {
-
+        dd($totale);
         return view('pages.stripe');
     }
   
