@@ -5193,7 +5193,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       url: null,
-      dishes: [],
+      dishes: [{
+        'id': null,
+        'name': null,
+        'quantity': 0,
+        'price': 0
+      }],
       cart: [],
       isCartOpen: false,
       addMessageOpened: false,
@@ -55234,8 +55239,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\BOOLEAN\kokolivery\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! F:\BOOLEAN\kokolivery\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Maurizio\boolean\esercizi\kokolivery\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Maurizio\boolean\esercizi\kokolivery\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -74,7 +74,14 @@ export default {
   data() {
     return {
       url: null,
-      dishes: [],
+      dishes: [
+        {
+          'id': null,
+          'name': null,
+          'quantity': 0,
+          'price': 0
+        }
+      ],
       cart: [],
       isCartOpen: false,
       addMessageOpened: false,
@@ -95,15 +102,30 @@ export default {
       // salvo i piatti
       this.dishes = res.data;
     },
+
     // func per aggiungere al carrello i piatti
     addToCart(item) {
-      this.cart.push(item);
-      this.selectedDish = item;
-      console.log(item.price);
-      // this.cartTotal+=item.price;
-      this.addMessageOpened = true;
-      // this.isCartOpen = false;
-      setTimeout(() => {this.addMessageOpened = false}, 1500);
+      const piatto = this.dishes.filter(dish => dish.id === item.id);
+      console.log(piatto);
+
+      // if(){
+      //   item.qua
+      // } else {
+      //   this.cart.push(
+      //     {
+      //       'id': item.id,
+      //       'name': item.name,
+      //       'quantity': 1,
+      //       'price': item.price
+      //     }
+      //   );
+      // }
+      // this.selectedDish = item;
+      // console.log(item.price);
+      // // this.cartTotal+=item.price;
+      // this.addMessageOpened = true;
+      // // this.isCartOpen = false;
+      // setTimeout(() => {this.addMessageOpened = false}, 1500);
     },
 
     // func per rimuovere dal carrello i piatti
@@ -122,6 +144,7 @@ export default {
       setTimeout(() => {this.removeMessageOpened = false}, 1500);
     },
   },
+
   computed: {
     cartTotal: function() {
 
