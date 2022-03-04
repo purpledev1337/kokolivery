@@ -19177,6 +19177,11 @@ input {
   padding-top: 70px;
 }
 
+#banner_svg {
+  background: #ffd00f;
+  background: linear-gradient(90deg, #ffd00f 49%, #d05026 100%);
+}
+
 #restaurants_box {
   display: flex;
   justify-content: space-around;
@@ -19252,6 +19257,10 @@ input {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  padding-top: 56px;
 }
 
 .visibility {
