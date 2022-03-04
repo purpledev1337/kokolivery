@@ -5189,17 +5189,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       url: null,
-      dishes: [{
-        'id': null,
+      dishes: [],
+      cart: [{
+        'id': 205,
         'name': null,
-        'quantity': 0,
-        'price': 0
+        'quantity': 1,
+        'price': null
       }],
-      cart: [],
       isCartOpen: false,
       addMessageOpened: false,
       removeMessageOpened: false,
@@ -5243,21 +5244,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     // func per aggiungere al carrello i piatti
     addToCart: function addToCart(item) {
-      var _this2 = this;
+      var piatto = this.cart.filter(function (dish) {
+        return dish.id == item.id;
+      });
+      console.log(piatto);
 
-      this.cart.push(item);
-      this.selectedDish = item;
-      console.log(item.price); // this.cartTotal+=item.price;
+      if (piatto) {
+        var index = this.cart.findIndex(function (elem) {
+          return elem.id === piatto.id;
+        });
+        this.cart[index].quantity++;
+        console.log('quantity', piatto.quantity);
+      } // else {
+      //   this.cart.push(
+      //     {
+      //       'id': item.id,
+      //       'name': item.name,
+      //       'quantity': 1,
+      //       'price': item.price
+      //     }
+      //   );
+      //   console.log('add', this.cart );
+      // }
+      // this.selectedDish = item;
+      // console.log(item.price);
+      // // this.cartTotal+=item.price;
+      // this.addMessageOpened = true;
+      // // this.isCartOpen = false;
+      // setTimeout(() => {this.addMessageOpened = false}, 1500);
 
-      this.addMessageOpened = true; // this.isCartOpen = false;
-
-      setTimeout(function () {
-        _this2.addMessageOpened = false;
-      }, 1500);
     },
     // func per rimuovere dal carrello i piatti
     removeFromCart: function removeFromCart(item) {
-      var _this3 = this;
+      var _this2 = this;
 
       // cerchiamo il primo piatto selezionato nel cart
       var dishIndex = this.cart.findIndex(function (object) {
@@ -5270,7 +5289,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.removeMessageOpened = true; // this.isCartOpen = false;
 
       setTimeout(function () {
-        _this3.removeMessageOpened = false;
+        _this2.removeMessageOpened = false;
       }, 1500);
     }
   },
@@ -42464,6 +42483,8 @@ var render = function () {
                         alt: "",
                       },
                     }),
+                    _vm._v(" "),
+                    _c("h2", [_vm._v(_vm._s(dish.id))]),
                     _vm._v(" "),
                     _c("h2", [_vm._v(_vm._s(dish.name))]),
                     _vm._v(" "),

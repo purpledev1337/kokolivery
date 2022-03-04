@@ -41,6 +41,7 @@
             alt=""
           />
           <!-- <img :src="require(`../public/storage/${dish.image_path}`)" alt=""> -->
+          <h2>{{ dish.id }}</h2>
           <h2>{{ dish.name }}</h2>
           <h3>Prezzo: {{ dish.price }}</h3>
           <h3>{{ dish.description }}</h3>
@@ -74,15 +75,15 @@ export default {
   data() {
     return {
       url: null,
-      dishes: [
+      dishes: [],
+      cart: [
         {
-          'id': null,
-          'name': null,
-          'quantity': 0,
-          'price': 0
-        }
+            'id': 205,
+            'name': null,
+            'quantity': 1,
+            'price': null
+          }
       ],
-      cart: [],
       isCartOpen: false,
       addMessageOpened: false,
       removeMessageOpened: false,
@@ -105,12 +106,14 @@ export default {
 
     // func per aggiungere al carrello i piatti
     addToCart(item) {
-      const piatto = this.dishes.filter(dish => dish.id === item.id);
+      const piatto = this.cart.filter(dish => dish.id == item.id);
       console.log(piatto);
-
-      // if(){
-      //   item.qua
-      // } else {
+      if(piatto){
+        const index = this.cart.findIndex(elem => elem.id === piatto.id )
+        this.cart[index].quantity ++;
+        console.log('quantity', piatto.quantity);
+      } 
+      // else {
       //   this.cart.push(
       //     {
       //       'id': item.id,
@@ -119,6 +122,7 @@ export default {
       //       'price': item.price
       //     }
       //   );
+      //   console.log('add', this.cart );
       // }
       // this.selectedDish = item;
       // console.log(item.price);
