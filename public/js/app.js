@@ -5310,10 +5310,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   computed: {
     cartTotal: function cartTotal() {
-      var total = 0;
+      // salvo la variabile con il totale con default zero
+      var total = 0; // faccio un foreach del carrello
+
       this.cart.forEach(function (dish) {
+        // alla variabile total sommo il valore di ogni prezzo del piatto(ad ogni iterazione)
         total += Number(dish.price * dish.quantity);
-      });
+      }); // mi faccio tornare il totale dei vari prezzi
+
       return Number(total).toFixed(2);
     }
   }

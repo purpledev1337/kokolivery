@@ -171,14 +171,17 @@ export default {
   computed: {
     cartTotal: function() {
 
+      // salvo la variabile con il totale con default zero
       let total = 0;
 
+      // faccio un foreach del carrello
       this.cart.forEach(dish => {
-
+        // alla variabile total sommo il valore di ogni prezzo del piatto(ad ogni iterazione)
         total+=Number(dish.price * dish.quantity);
-
+        
       });
 
+      // mi faccio tornare il totale dei vari prezzi
       return Number(total).toFixed(2);
     }
   }
