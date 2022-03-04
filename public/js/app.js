@@ -5194,6 +5194,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5357,7 +5371,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       console.log(total); // mi faccio tornare il totale delle varie quantita'
 
       return Number(total);
-    }
+    } // quantitySingle(item){
+    //     const piatto = this.cart.find(p => p.id == item.id);
+    //     return piatto.quantity;
+    // }
+
   }
 });
 
@@ -42557,18 +42575,33 @@ var render = function () {
                     _vm._v(" "),
                     _c("br"),
                     _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        staticClass: "btn btn-primary",
-                        on: {
-                          click: function ($event) {
-                            return _vm.addToCart(dish)
+                    _vm.cart.some(function (item) {
+                      return item.id === dish.id
+                    })
+                      ? _c(
+                          "span",
+                          {
+                            staticClass: "btn btn-primary",
+                            on: {
+                              click: function ($event) {
+                                return _vm.addToCart(dish)
+                              },
+                            },
                           },
-                        },
-                      },
-                      [_vm._v(" + ")]
-                    ),
+                          [_vm._v(" + \n        ")]
+                        )
+                      : _c(
+                          "span",
+                          {
+                            staticClass: "btn btn-primary",
+                            on: {
+                              click: function ($event) {
+                                return _vm.addToCart(dish)
+                              },
+                            },
+                          },
+                          [_vm._v(" Aggiungi al carrello \n        ")]
+                        ),
                     _vm._v(" "),
                     _vm.cart.some(function (item) {
                       return item.id === dish.id

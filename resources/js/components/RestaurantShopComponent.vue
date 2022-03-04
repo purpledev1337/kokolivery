@@ -52,7 +52,21 @@
           <h3>{{ dish.description }}</h3>
           <span>({{ dish.category }})</span>
           <br>
-          <span class="btn btn-primary" @click="addToCart(dish)"> + </span>
+
+          <span class="btn btn-primary" 
+                v-if="cart.some((item) => item.id === dish.id)" 
+                @click="addToCart(dish)"> + 
+          </span>
+
+          <!-- <span v-if="cart.some((item) => item.id === dish.id)" >
+            {{ quantitySingle(dish.id) }}
+          </span> -->
+
+          <span class="btn btn-primary" 
+                v-else
+                @click="addToCart(dish)"> Aggiungi al carrello 
+          </span>
+
           <span
             class="btn btn-danger"
             @click="removeFromCart(dish)"
@@ -209,7 +223,12 @@ export default {
         console.log(total);
         // mi faccio tornare il totale delle varie quantita'
         return Number(total);
-      }
+    },
+
+    // quantitySingle(item){
+    //     const piatto = this.cart.find(p => p.id == item.id);
+    //     return piatto.quantity;
+    // }
   },
 
 };
