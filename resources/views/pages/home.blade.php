@@ -18,5 +18,5 @@
         
         <a href="{{ route('restaurant_list') }}">Link alla restaurant_list</a>
     </div>
-    <img id="banner_svg" src="storage/asset/banner_home3.svg" alt="">
+    <img id="banner_svg" src="storage/asset/banner_home4.svg" alt="">
     @endsection
