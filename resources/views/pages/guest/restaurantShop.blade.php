@@ -4,7 +4,7 @@
 
 <div>
 
-    <restaurant-shop-component></restaurant-shop-component>
+    <restaurant-shop-component route="{{ route("stripe.view") }}"></restaurant-shop-component>
 
 </div>
     

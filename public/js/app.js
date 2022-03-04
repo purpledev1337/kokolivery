@@ -5207,6 +5207,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     };
   },
+  props: {
+    route: {
+      route: String,
+      required: true
+    }
+  },
   mounted: function mounted() {
     // salvo l'url
     this.url = window.location.pathname;
@@ -42477,9 +42483,11 @@ var render = function () {
             2
           ),
           _vm._v(" "),
-          _c("a", { staticClass: "btn btn-success", attrs: { href: "" } }, [
-            _vm._v("Procedi con l'acquisto"),
-          ]),
+          _c(
+            "a",
+            { staticClass: "btn btn-success", attrs: { href: _vm.route } },
+            [_vm._v("Procedi con l'acquisto")]
+          ),
         ])
       : _vm._e(),
     _vm._v(" "),

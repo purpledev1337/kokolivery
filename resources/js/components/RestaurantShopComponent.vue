@@ -29,7 +29,7 @@
           <th><b>€ {{ cartTotal }}</b></th>
         </tr>
       </table>
-      <a class="btn btn-success" href="">Procedi con l'acquisto</a>
+      <a class="btn btn-success" :href="route">Procedi con l'acquisto</a>
     </div>
     <!-- /cart -->
 
@@ -85,6 +85,12 @@ export default {
       removeMessageOpened: false,
       selectedDish: {'name': null},
     };
+  },
+  props:{
+    route:{
+        route:String,
+        required:true
+    }
   },
   mounted() {
     // salvo l'url

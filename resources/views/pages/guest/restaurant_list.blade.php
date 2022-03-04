@@ -5,6 +5,7 @@
 <div>
 
     <restaurants-component></restaurants-component>
+    
 
 </div>
     
