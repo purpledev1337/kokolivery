@@ -1,0 +1,38 @@
+#top-restaurant{
+    .row-cols-2 > * {
+        width: 40%!important;
+    }
+    .row-cols-lg-4 > * {
+        width: 30%;
+    }
+    .roundedTop{
+        border-top-left-radius: 2rem; 
+        border-top-right-radius: 2rem;
+    }
+    .roundedBottom{
+        border-bottom-left-radius: 2rem; 
+        border-bottom-right-radius: 2rem;
+    }
+
+    h4{
+        &.card-title.position-absolute{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+        }
+    }
+
+    i{
+        color: $yellow;
+    }
+
+    .card-img-top{
+        img{
+            height: 30em;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+}
