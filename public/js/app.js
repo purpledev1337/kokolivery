@@ -43166,10 +43166,11 @@ var render = function () {
         _vm._l(_vm.topRestaurants, function (restaurant) {
           return _c("div", { key: restaurant.id, staticClass: "col" }, [
             _c(
-              "div",
+              "a",
               {
                 staticClass:
                   "card h-100 shadow bg-body roundedTop roundedBottom",
+                attrs: { href: "restaurant/shop/" + restaurant.id },
               },
               [
                 _c(
