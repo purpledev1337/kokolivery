@@ -19132,11 +19132,6 @@ fieldset:disabled .btn {
   flex-grow: 0 !important;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  padding-top: 70px;
-}
-
 #search_home {
   display: flex;
   flex-direction: column;
@@ -19197,6 +19192,45 @@ input {
 
 .restaurant_img {
   width: 65%;
+}
+
+#top-restaurant .row-cols-2 > * {
+  width: 40% !important;
+}
+
+#top-restaurant .row-cols-lg-4 > * {
+  width: 30%;
+}
+
+#top-restaurant .roundedTop {
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+
+#top-restaurant .roundedBottom {
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+#top-restaurant h4.card-title.position-absolute,
+#top-restaurant .card-title.position-absolute.h4 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
+
+#top-restaurant i {
+  color: #f9db03;
+}
+
+#top-restaurant .card-img-top img {
+  height: 30em;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 #shop {
@@ -19304,6 +19338,7 @@ input {
 
 body {
   padding-top: 56px;
+  background-color: #fff;
 }
 
 .visibility {
