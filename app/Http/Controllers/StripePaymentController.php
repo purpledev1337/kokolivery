@@ -18,19 +18,17 @@ class StripePaymentController extends Controller
     protected $data ;
     
     public function saveCart(Request $request){
-        Session::put('cart', $request -> request);
-    }
-
-    public function viewCart(){
-        // dd($this -> $data);
+        $jsonBody = json_decode($request->getContent(), true);
+        // dd($jsonBody);
+        Session::put('cart', $jsonBody);
     }
 
     public function stripe()
     {
         $cart = Session::get('cart');
-        foreach ($cart as $item) {
-            $payment = $item;
-        };
+        // dd($cart['cart']);
+
+        $payment = $cart['tot'];
 
         return view('pages.stripe', compact('payment'));
     }
