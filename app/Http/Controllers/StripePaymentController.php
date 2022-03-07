@@ -22,6 +22,11 @@ class StripePaymentController extends Controller
     public function stripe()
     {
         $cart = Session::get('cart');
+        dd($cart);
+        $array=['tot'=>'ciaooooo'];
+        extract($array);
+        dd($array['tot']);
+        // dd($tot);
         foreach ($cart as $item) {
             $payment = $item;
         };
@@ -43,7 +48,7 @@ class StripePaymentController extends Controller
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create ([
                 "amount" => $payment * 100,
-                "currency" => "usd",
+                "currency" => "eur",
                 "source" => $request->stripeToken,
                 "description" => "Test payment from itsolutionstuff.com." 
         ]);
