@@ -29,8 +29,8 @@
           <th><b>€ {{ cartTotal }}</b></th>
         </tr>
       </table>
-      <a class="btn btn-success" :href="route" >Procedi con l'acquisto</a>
-      <!-- @click="sendCart" -->
+      <a class="btn btn-success" @click="sendCart">Procedi con l'acquisto</a>
+      <!-- :href="route" -->
     </div>
     <!-- /cart -->
 
@@ -132,9 +132,14 @@ export default {
     },
 
     async sendCart() {
+        let cart = {
+          'tot' : this.cartTotal,
+          // 'cart' : this.cart
+        };
         await axios
-        .get(`stripe`, 'ciso')
+        .post('stripe/save/cart', cart)
         .catch((e) => console.error(e));
+
     },
 
     // func per aggiungere al carrello i piatti
@@ -167,10 +172,7 @@ export default {
       
       this.addMessageOpened = true;
 
-      this.$session.set('cart', this.cart);
-      console.log('log session storage',this.$session.get('cart'));
-
-      localStorage.cart = this.cartTotal;
+      // localStorage.cart = this.cartTotal;
       setTimeout(() => {this.closeAddMessage()}, 1500);
     },
 
@@ -195,8 +197,6 @@ export default {
 
       // localStorage.setItem('cart', this.cartTotal);
       // console.log('log storage',localStorage.cart);
-      this.$session.set('cart', this.cart);
-      console.log('log session storage',this.$session.get('cart'));
 
       setTimeout(() => {this.closeRemoveMessage()}, 1500);
     },
