@@ -27,7 +27,7 @@ export default {
         }
     },
     props: {
-        topRestaurants: Object,
+        topRestaurants: Array,
     },
     methods: {
     },

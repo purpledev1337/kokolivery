@@ -5177,8 +5177,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.getRestaurant();
-    this.getCategory();
+    this.getRestaurant(); // this.getCategory();
   },
   computed: {// filteredRestaurant(){
     // },
@@ -5559,7 +5558,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   props: {
-    topRestaurants: Object
+    topRestaurants: Array
   },
   methods: {}
 });

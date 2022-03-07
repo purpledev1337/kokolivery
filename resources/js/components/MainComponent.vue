@@ -21,7 +21,7 @@ export default {
     },
     mounted() {
         this.getRestaurant();
-        this.getCategory();
+        // this.getCategory();
     },
     computed: {
         // filteredRestaurant(){
