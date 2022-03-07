@@ -67,7 +67,7 @@
         });
     </script>
 
-    <title>test</title>
+    <title>Kokolivery</title>
 </head>
 <body>
     <div id="app">
