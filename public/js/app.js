@@ -5112,6 +5112,8 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_sessionstorage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-sessionstorage */ "./node_modules/vue-sessionstorage/dist/vue-sessionstorage.min.js");
+/* harmony import */ var vue_sessionstorage__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_sessionstorage__WEBPACK_IMPORTED_MODULE_1__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -5208,6 +5210,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+
+Vue.use(vue_sessionstorage__WEBPACK_IMPORTED_MODULE_1___default.a);
+Vue.config.productionTip = false;
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5231,8 +5236,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mounted: function mounted() {
     // salvo l'url
     this.url = window.location.pathname;
-    this.getDishes();
+    this.getDishes(); // this.$session.set("username", "user123");
+    // console.log(this.$session.get("username"));
   },
+  // watch: {
+  // },
   methods: {
     // chiamata axios che mi torna tutti i piatti
     getDishes: function getDishes() {
@@ -5311,6 +5319,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.selectedDish = item;
       this.addMessageOpened = true;
+      this.$session.set('cart', this.cart);
+      console.log('log session storage', this.$session.get('cart'));
       setTimeout(function () {
         _this2.closeAddMessage();
       }, 1500);
@@ -5334,7 +5344,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       this.selectedDish = item;
-      this.removeMessageOpened = true;
+      this.removeMessageOpened = true; // localStorage.setItem('cart', this.cartTotal);
+      // console.log('log storage',localStorage.cart);
+
+      this.$session.set('cart', this.cart);
+      console.log('log session storage', this.$session.get('cart'));
       setTimeout(function () {
         _this3.closeRemoveMessage();
       }, 1500);
@@ -42918,6 +42932,17 @@ function normalizeComponent (
   }
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/vue-sessionstorage/dist/vue-sessionstorage.min.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/vue-sessionstorage/dist/vue-sessionstorage.min.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(t,e){ true?module.exports=e():undefined}(this,function(){return function(t){function e(i){if(s[i])return s[i].exports;var n=s[i]={exports:{},id:i,loaded:!1};return t[i].call(n.exports,n,n.exports,e),n.loaded=!0,n.exports}var s={};return e.m=t,e.c=s,e.p="",e(0)}([function(t,e,s){"use strict";function i(t){return t&&t.__esModule?t:{default:t}}var n=s(2),o=i(n),r=s(1),u=i(r);window.sessionStorage||(window.sessionStorage=u.default);var a={install:function(t,e){t.prototype.$session=new o.default}};t.exports=a},function(t,e){"use strict";function s(){this.data={},this.setItem=function(t,e){this.data[t]=e},this.getItem=function(t){return this.data[t]}}t.exports=s},function(t,e){"use strict";function s(){this.key=null,this.__getRandomString=function(){for(var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:10,e="";t--;)e+=String.fromCharCode(48+~~(42*Math.random()));return e},this.__getKey=function(){var t=window.sessionStorage.getItem("sessionKey");t||(t=this.__getRandomString(),window.sessionStorage.setItem("sessionKey",t)),this.key=t},this.__get=function(){this.key||this.__getKey();var t=JSON.parse(window.sessionStorage.getItem(this.key));return t||{}},this.get=function(t){var e=this.__get();return e[t]},this.__set=function(t){this.key||this.__getKey(),window.sessionStorage.setItem(this.key,JSON.stringify(t))},this.set=function(t,e){var s=this.__get();s[t]=e,this.__set(s)},this.exists=function(t){var e=this.__get();return t in e},this.remove=function(t){var e=this.__get();delete e[t],this.__set(e)},this.clear=function(){this.__set({})}}t.exports=s}])});
 
 /***/ }),
 

@@ -89,6 +89,9 @@
 </template>
 
 <script>
+import VueSessionStorage from "vue-sessionstorage";
+Vue.use(VueSessionStorage);
+Vue.config.productionTip = false;
 export default {
   data() {
     return {
@@ -111,7 +114,13 @@ export default {
     // salvo l'url
     this.url = window.location.pathname;
     this.getDishes();
+    // this.$session.set("username", "user123");
+    // console.log(this.$session.get("username"));
   },
+
+  // watch: {
+  // },
+
   methods: {
     // chiamata axios che mi torna tutti i piatti
     async getDishes() {
@@ -157,7 +166,10 @@ export default {
       this.selectedDish = item;
       
       this.addMessageOpened = true;
-      
+
+      this.$session.set('cart', this.cart);
+      console.log('log session storage',this.$session.get('cart'));
+
       setTimeout(() => {this.closeAddMessage()}, 1500);
     },
 
@@ -179,6 +191,11 @@ export default {
       this.selectedDish = item;
 
       this.removeMessageOpened = true;
+
+      // localStorage.setItem('cart', this.cartTotal);
+      // console.log('log storage',localStorage.cart);
+      this.$session.set('cart', this.cart);
+      console.log('log session storage',this.$session.get('cart'));
 
       setTimeout(() => {this.closeRemoveMessage()}, 1500);
     },

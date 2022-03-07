@@ -25,7 +25,7 @@
 <body>
   
 <div class="container">
-  
+
     <h1>Laravel 5 - Stripe Payment Gateway Integration Example <br/> ItSolutionStuff.com</h1>
   
     <div class="row">
