@@ -170,6 +170,7 @@ export default {
       this.$session.set('cart', this.cart);
       console.log('log session storage',this.$session.get('cart'));
 
+      localStorage.cart = this.cartTotal;
       setTimeout(() => {this.closeAddMessage()}, 1500);
     },
 

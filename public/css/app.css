@@ -19158,7 +19158,6 @@ h1,
   color: #5c2e4d;
   text-shadow: 3px 3px 6px white;
   font-size: 70px;
-  display: none;
 }
 
 input {
@@ -19328,6 +19327,25 @@ input {
 #cart-box th,
 #cart-box td {
   padding: 1.5rem;
+}
+
+#stripe .panel-title {
+  display: inline;
+  font-weight: bold;
+}
+
+#stripe .display-table {
+  display: table;
+}
+
+#stripe .display-tr {
+  display: table-row;
+}
+
+#stripe .display-td {
+  display: table-cell;
+  vertical-align: middle;
+  width: 61%;
 }
 
 * {
