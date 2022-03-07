@@ -29,8 +29,8 @@
           <th><b>€ {{ cartTotal }}</b></th>
         </tr>
       </table>
-      <a class="btn btn-success" @click="sendCart">Procedi con l'acquisto</a>
-      <!-- :href="route" -->
+      <a class="btn btn-success" :href="route">Procedi con l'acquisto</a>
+      <!-- @click="sendCart" -->
     </div>
     <!-- /cart -->
 
@@ -114,12 +114,7 @@ export default {
     // salvo l'url
     this.url = window.location.pathname;
     this.getDishes();
-    // this.$session.set("username", "user123");
-    // console.log(this.$session.get("username"));
   },
-
-  // watch: {
-  // },
 
   methods: {
     // chiamata axios che mi torna tutti i piatti
@@ -172,7 +167,8 @@ export default {
       
       this.addMessageOpened = true;
 
-      // localStorage.cart = this.cartTotal;
+      // mando il carrello aggiornato al server
+      this.sendCart();
       setTimeout(() => {this.closeAddMessage()}, 1500);
     },
 
@@ -195,9 +191,8 @@ export default {
 
       this.removeMessageOpened = true;
 
-      // localStorage.setItem('cart', this.cartTotal);
-      // console.log('log storage',localStorage.cart);
-
+      // mando il carrello aggiornato al server
+      this.sendCart();
       setTimeout(() => {this.closeRemoveMessage()}, 1500);
     },
 
@@ -242,11 +237,6 @@ export default {
         // mi faccio tornare il totale delle varie quantita'
         return Number(total);
     },
-
-    // quantitySingle(item){
-    //     const piatto = this.cart.find(p => p.id == item.id);
-    //     return piatto.quantity;
-    // }
   },
 
 };

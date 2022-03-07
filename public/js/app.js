@@ -5343,11 +5343,8 @@ Vue.config.productionTip = false;
   mounted: function mounted() {
     // salvo l'url
     this.url = window.location.pathname;
-    this.getDishes(); // this.$session.set("username", "user123");
-    // console.log(this.$session.get("username"));
+    this.getDishes();
   },
-  // watch: {
-  // },
   methods: {
     // chiamata axios che mi torna tutti i piatti
     getDishes: function getDishes() {
@@ -5432,8 +5429,9 @@ Vue.config.productionTip = false;
       }
 
       this.selectedDish = item;
-      this.addMessageOpened = true; // localStorage.cart = this.cartTotal;
+      this.addMessageOpened = true; // mando il carrello aggiornato al server
 
+      this.sendCart();
       setTimeout(function () {
         _this3.closeAddMessage();
       }, 1500);
@@ -5457,9 +5455,9 @@ Vue.config.productionTip = false;
       }
 
       this.selectedDish = item;
-      this.removeMessageOpened = true; // localStorage.setItem('cart', this.cartTotal);
-      // console.log('log storage',localStorage.cart);
+      this.removeMessageOpened = true; // mando il carrello aggiornato al server
 
+      this.sendCart();
       setTimeout(function () {
         _this4.closeRemoveMessage();
       }, 1500);
@@ -5496,11 +5494,7 @@ Vue.config.productionTip = false;
       console.log(total); // mi faccio tornare il totale delle varie quantita'
 
       return Number(total);
-    } // quantitySingle(item){
-    //     const piatto = this.cart.find(p => p.id == item.id);
-    //     return piatto.quantity;
-    // }
-
+    }
   }
 });
 
@@ -42841,7 +42835,7 @@ var render = function () {
           _vm._v(" "),
           _c(
             "a",
-            { staticClass: "btn btn-success", on: { click: _vm.sendCart } },
+            { staticClass: "btn btn-success", attrs: { href: _vm.route } },
             [_vm._v("Procedi con l'acquisto")]
           ),
         ])
