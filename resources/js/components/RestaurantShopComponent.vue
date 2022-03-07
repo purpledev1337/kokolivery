@@ -5,7 +5,7 @@
         <div id="cont_icon">
             <i class="fa-solid fa-cart-shopping"></i>
             <div v-if="cart.length > 0" id="count">
-                {{ cart.length }}
+                {{ quantityTotal }}
             </div>
         </div>
     </div>
@@ -29,7 +29,8 @@
           <th><b>€ {{ cartTotal }}</b></th>
         </tr>
       </table>
-      <a class="btn btn-success" :href="route">Procedi con l'acquisto</a>
+      <a class="btn btn-success" :href="route" >Procedi con l'acquisto</a>
+      <!-- @click="sendCart" -->
     </div>
     <!-- /cart -->
 
@@ -51,7 +52,21 @@
           <h3>{{ dish.description }}</h3>
           <span>({{ dish.category }})</span>
           <br>
-          <span class="btn btn-primary" @click="addToCart(dish)"> + </span>
+
+          <span class="btn btn-primary" 
+                v-if="cart.some((item) => item.id === dish.id)" 
+                @click="addToCart(dish)"> + 
+          </span>
+
+          <!-- <span v-if="cart.some((item) => item.id === dish.id)" >
+            {{ quantitySingle(dish.id) }}
+          </span> -->
+
+          <span class="btn btn-primary" 
+                v-else
+                @click="addToCart(dish)"> Aggiungi al carrello 
+          </span>
+
           <span
             class="btn btn-danger"
             @click="removeFromCart(dish)"
@@ -105,6 +120,12 @@ export default {
         .catch((e) => console.error(e));
       // salvo i piatti
       this.dishes = res.data;
+    },
+
+    async sendCart() {
+        await axios
+        .get(`stripe`, 'ciso')
+        .catch((e) => console.error(e));
     },
 
     // func per aggiungere al carrello i piatti
@@ -186,10 +207,29 @@ export default {
         total+=Number(dish.price * dish.quantity);
         
       });
-
       // mi faccio tornare il totale dei vari prezzi
       return Number(total).toFixed(2);
-    }
-  }
+    },
+
+    quantityTotal: function() {
+        // salvo la variabile con il totale con default zero
+        let total = 0;
+
+        // faccio un foreach del carrello
+        this.cart.forEach(dish => {
+          // alla variabile total sommo il valore di ogni quantita del piatto(ad ogni iterazione)
+          total+= dish.quantity;
+        });
+        console.log(total);
+        // mi faccio tornare il totale delle varie quantita'
+        return Number(total);
+    },
+
+    // quantitySingle(item){
+    //     const piatto = this.cart.find(p => p.id == item.id);
+    //     return piatto.quantity;
+    // }
+  },
+
 };
 </script>
