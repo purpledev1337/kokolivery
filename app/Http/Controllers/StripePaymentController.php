@@ -14,15 +14,9 @@ class StripePaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    protected $data ;
     
     public function saveCart(Request $request){
         Session::put('cart', $request -> request);
-    }
-
-    public function viewCart(){
-        // dd($this -> $data);
     }
 
     public function stripe()
@@ -48,7 +42,7 @@ class StripePaymentController extends Controller
         };
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create ([
-                "amount" => $d,
+                "amount" => $payment * 100,
                 "currency" => "usd",
                 "source" => $request->stripeToken,
                 "description" => "Test payment from itsolutionstuff.com." 
