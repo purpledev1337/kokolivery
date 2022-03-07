@@ -29,10 +29,10 @@ class StripePaymentController extends Controller
     {
         $cart = Session::get('cart');
         foreach ($cart as $item) {
-            $d = $item;
+            $payment = $item;
         };
 
-        return view('pages.stripe', compact('d'));
+        return view('pages.stripe', compact('payment'));
     }
   
     /**
@@ -44,7 +44,7 @@ class StripePaymentController extends Controller
     {
         $cart = Session::get('cart');
         foreach ($cart as $item) {
-            $d = $item;
+            $payment = $item;
         };
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create ([
