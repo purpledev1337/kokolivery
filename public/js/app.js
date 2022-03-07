@@ -5378,17 +5378,24 @@ Vue.config.productionTip = false;
       }))();
     },
     sendCart: function sendCart() {
+      var _this2 = this;
+
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var cart;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
-                return axios.get("stripe", 'ciso')["catch"](function (e) {
+                cart = {
+                  'tot': _this2.cartTotal // 'cart' : this.cart
+
+                };
+                _context2.next = 3;
+                return axios.post('stripe/save/cart', cart)["catch"](function (e) {
                   return console.error(e);
                 });
 
-              case 2:
+              case 3:
               case "end":
                 return _context2.stop();
             }
@@ -5398,7 +5405,7 @@ Vue.config.productionTip = false;
     },
     // func per aggiungere al carrello i piatti
     addToCart: function addToCart(item) {
-      var _this2 = this;
+      var _this3 = this;
 
       // se c'e' un allert aperto lo chiudo
       clearTimeout(this.closeRemoveMessage()); // cerco nel carrello il piatto che ho cliccato
@@ -5425,17 +5432,15 @@ Vue.config.productionTip = false;
       }
 
       this.selectedDish = item;
-      this.addMessageOpened = true;
-      this.$session.set('cart', this.cart);
-      console.log('log session storage', this.$session.get('cart'));
-      localStorage.cart = this.cartTotal;
+      this.addMessageOpened = true; // localStorage.cart = this.cartTotal;
+
       setTimeout(function () {
-        _this2.closeAddMessage();
+        _this3.closeAddMessage();
       }, 1500);
     },
     // func per rimuovere dal carrello i piatti
     removeFromCart: function removeFromCart(item) {
-      var _this3 = this;
+      var _this4 = this;
 
       // se c'e' un allert aperto lo chiudo
       clearTimeout(this.closeAddMessage()); // cerchiamo il primo piatto selezionato nel cart
@@ -5455,10 +5460,8 @@ Vue.config.productionTip = false;
       this.removeMessageOpened = true; // localStorage.setItem('cart', this.cartTotal);
       // console.log('log storage',localStorage.cart);
 
-      this.$session.set('cart', this.cart);
-      console.log('log session storage', this.$session.get('cart'));
       setTimeout(function () {
-        _this3.closeRemoveMessage();
+        _this4.closeRemoveMessage();
       }, 1500);
     },
     // func per chiudere l'allert dell'aggiunta del piatto
@@ -42838,7 +42841,7 @@ var render = function () {
           _vm._v(" "),
           _c(
             "a",
-            { staticClass: "btn btn-success", attrs: { href: _vm.route } },
+            { staticClass: "btn btn-success", on: { click: _vm.sendCart } },
             [_vm._v("Procedi con l'acquisto")]
           ),
         ])
@@ -55501,21 +55504,21 @@ files.keys().map(function (key) {
 });
 document.addEventListener("DOMContentLoaded", function () {
   var app = new Vue({
-    el: '#app',
-    data: function data() {
-      return {
-        payment: '',
-        field: ''
-      };
-    },
-    mounted: function mounted() {
-      this.field = localStorage.cart;
-    },
-    watch: {
-      field: function field(val) {
-        this.$root.payment = val;
-      }
-    }
+    el: '#app' // data() {
+    //     return {
+    //         payment: '',
+    //         field: ''
+    //     }
+    // },
+    // mounted() {
+    //     this.field = localStorage.cart;
+    // },
+    // watch: {
+    //     field: function (val) {
+    //         this.$root.payment = val;
+    //     }
+    // }
+
   });
 });
 
@@ -56067,8 +56070,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/cenny/Desktop/project final/project/kokolivery/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/cenny/Desktop/project final/project/kokolivery/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Maurizio\boolean\esercizi\kokolivery\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Maurizio\boolean\esercizi\kokolivery\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

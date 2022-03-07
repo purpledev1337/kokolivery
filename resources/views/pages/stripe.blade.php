@@ -24,9 +24,9 @@
                         @endif
     
                         <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation"
-                                                        data-cc-on-file="false"
-                                                        data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
-                                                        id="payment-form">
+                                data-cc-on-file="false"
+                                data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
+                                id="payment-form">
                             @csrf
     
                             <div class='form-row row'>
@@ -71,7 +71,9 @@
     
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <button class="btn btn-primary btn-lg btn-block" type="submit"> @{{ payment }}</button>
+                                    <button class="btn btn-primary btn-lg btn-block" type="submit"> 
+                                        {{ $payment }}
+                                    </button>
                                 </div>
                             </div>
                             

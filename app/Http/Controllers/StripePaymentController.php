@@ -14,9 +14,25 @@ class StripePaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    protected $data ;
+    
+    public function saveCart(Request $request){
+        Session::put('cart', $request -> request);
+    }
+
+    public function viewCart(){
+        // dd($this -> $data);
+    }
+
     public function stripe()
     {
-        return view('pages.stripe');
+        $cart = Session::get('cart');
+        foreach ($cart as $item) {
+            $d = $item;
+        };
+
+        return view('pages.stripe', compact('d'));
     }
   
     /**
@@ -26,9 +42,13 @@ class StripePaymentController extends Controller
      */
     public function stripePost(Request $request)
     {
+        $cart = Session::get('cart');
+        foreach ($cart as $item) {
+            $d = $item;
+        };
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create ([
-                "amount" => 100 * 100,
+                "amount" => $d,
                 "currency" => "usd",
                 "source" => $request->stripeToken,
                 "description" => "Test payment from itsolutionstuff.com." 
@@ -37,7 +57,7 @@ class StripePaymentController extends Controller
         Session::flash('success', 'Pagamento avvenuto con successo!');
         $order = Order::make();
         $order -> status_pay = true;
-        $order -> delivery_time = rand(1,60);
+        $order -> delivery_time = rand(5,60);
         $order -> save();
         return back();
     }
