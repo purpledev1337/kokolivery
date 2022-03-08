@@ -17,7 +17,8 @@ class AddForeignKeys extends Migration
         Schema::table('dish_order', function (Blueprint $table) {
             $table->foreign('dish_id', 'dish_order')
                   ->references('id')
-                  ->on('dishes');
+                  ->on('dishes')
+                  ->onDelete('set null');
             $table->foreign('order_id', 'order_dish')
                   ->references('id')
                   ->on('orders');

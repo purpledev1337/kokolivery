@@ -1,0 +1,18 @@
+#restaurants_box {
+
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.restaurant_card {
+
+    width: 30%;
+    border: 1px solid black;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.restaurant_img {
+    width: 65%;
+}

@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     protected $fillable = [
-        'status-pay',
+        'status_pay',
         'delivery_time',
     ];
 
     public function dishes() {
 
-        return $this->belongsToMany(Dish::class);
+        return $this->belongsToMany(Dish::class)->withPivot('quantity');
     }
     public function guest() {
 

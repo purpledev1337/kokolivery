@@ -1,5 +1,6 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import '~@fortawesome/fontawesome-free/css/all.css';
 
 // Variables
 @import 'variables';
@@ -7,11 +8,29 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Header
+@import 'header';
+
 @import 'home.scss';
+
+@import 'restaurant_list.scss';
+
+@import 'card.scss';
+
+@import 'shop.scss';
+
+@import 'stripe.scss';
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+body {
+    padding-top: 56px;
+    background-color: #fff;
+}
+.visibility{
+    display: none;
 }
 

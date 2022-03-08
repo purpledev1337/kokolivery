@@ -1,0 +1,108 @@
+
+#shop {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+
+    #flex{
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        position: relative;
+    }
+
+    .dish_box {
+        width: calc((100% / 3) - 2%);
+        margin: 0 1%;
+        padding: 20px;
+    }
+
+    #icon-cart {
+        height: 3.5rem;
+        width: 3.5rem;
+        background-color: $yellow;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 25%;
+        position: fixed;
+        right: 25px;
+        top: 65px;
+
+        #cont_icon {
+            position: relative;
+            
+        }
+        #count {
+            position: absolute;
+            top: -18px;
+            right: -20px;
+            border-radius: 50%;
+            min-width: 25px;
+            min-height: 25px;
+        
+            background: $red;
+            color: white;
+            text-align: center;
+            padding: 2px;
+            font: 18px Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        i {
+            font-size: 2em;
+            color: black;
+        }
+
+        &:hover {
+
+            cursor: pointer;
+        }
+
+    }
+    
+}
+
+.cart-message {
+
+    position: fixed;
+    top: 40%;
+    right: 50%;
+    transform: translate(50%, 0);
+    color: #ffffff;
+    padding: 1em 1.5em;
+    border-radius: 2em;
+    font-size: 1.5em;
+    z-index: 800;
+
+    &.cart-add {
+
+        background-color: rgba(0, 128, 0, 0.733);
+    }
+
+    &.cart-remove {
+
+        background-color: rgba(255, 46, 102, 0.733);
+    }
+}
+
+#cart-box {
+
+    border: 3px $yellow solid;
+    border-radius: 2em;
+    background-color: $orange;
+    position: fixed;
+    right: 25px;
+    top: 150px;
+    padding: 2rem;
+    z-index: 1000;
+    text-align: center;
+
+    th, td {
+
+        padding: 1.5rem;
+    }
+
+
+}

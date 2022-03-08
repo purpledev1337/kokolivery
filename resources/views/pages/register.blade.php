@@ -1,19 +1,11 @@
 @extends('layouts.main-layout')
 @section('content')
     <form class="row g-3 container m-auto"
+          method="POST"
+          action="{{ route('register') }}"
           enctype="multipart/form-data">
           @method('POST')
           @csrf
-
-          @if ($errors->any())
-          <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
-          @endif
 
         {{-- brand name --}}
         <div class="col-md-6">
@@ -49,7 +41,7 @@
         <div class="col-6">
             <label for="city" class="form-label">City</label><br>
             <select class="form-select form-control" name="city" aria-label="Default select example">
-                <option selected>Open this select menu</option>
+                <option disabled selected>Open this select menu</option>
                 <option value="Milano">Milano</option> 
                 <option value="Napoli">Napoli</option> 
                 <option value="Roma">Roma</option> 
@@ -80,13 +72,13 @@
         {{-- order min --}}
         <div class="col-4">
             <label for="order_min" class="form-label">Order Min</label>
-            <input type="number" name="order_min" class="form-control">
+            <input type="number" step="0.01" name="order_min" class="form-control">
         </div>
 
         {{-- Delivery price --}}
         <div class="col-4">
             <label for="delivery_price" class="form-label">Delivery Price</label>
-            <input type="number" name="delivery_price" class="form-control">
+            <input type="number" step="0.01" name="delivery_price" class="form-control">
         </div>
         
         {{-- discount --}}
@@ -95,10 +87,21 @@
             <input type="number" name="discount" class="form-control">
         </div> 
         
+        {{-- tipologia ristornate --}}
+        <div class="col-12">
+            <label for="name" class="form-label">Tipologia Ristorante</label><br>
+            @foreach ($types as $type)
+                <input class="form-check-input" type="checkbox" name="types[]" value="{{$type->id}}"> {{$type->name}}
+            @endforeach
+        </div> 
+        
         {{-- descrizione --}}
         <div class="offset-3 col-6">
             <label for="description" class="form-label">Description</label>
             <textarea name="description" class="form-control" cols="30" rows="4"></textarea>
         </div>
+
+        <a href="{{ route('home') }}" class="btn btn-danger offset-5 col-1 me-1" type="submit" >CANCEL</a>
+        <button class="btn btn-secondary col-1 ms-1" type="submit">REGISTER</button>
     </form>
 @endsection
