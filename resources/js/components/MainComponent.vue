@@ -16,7 +16,7 @@ export default {
         return {
             restaurants: [],
             filteredRestaurant: [],
-            category: [],
+            types: [],
         }
     },
     mounted() {
@@ -33,13 +33,16 @@ export default {
             axios.get('/api/restaurant_list')
                 .then((res) => {
                     // recupero tutti i ristornati
-                    this.restaurants = res.data;
+                    this.restaurants = res.data.users;
+                    this.types = res.data.types;
+                    console.log('risto',this.restaurants);
+                    console.log('types',this.types);
                     // ordino i ristoranti x rating discendete
                     this.filteredRestaurant = this.restaurants;
                     this.filteredRestaurant.sort( (a,b) => b.rating - a.rating);
                     // filtro solo i primi 10 risultati
                     this.filteredRestaurant = this.filteredRestaurant.splice(0,10);
-                    console.log(this.filteredRestaurant);
+                    // console.log(this.filteredRestaurant);
                 }) 
                 .catch(error => console.error(error));
         }
