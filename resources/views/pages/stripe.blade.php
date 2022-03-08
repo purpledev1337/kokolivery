@@ -22,7 +22,7 @@
                     {{-- nome --}}
                     <div class="col">
                         <label for="validationCustom01" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+                        <input type="text" class="form-control" id="validationCustom01" value="Mark" name="name"required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -30,18 +30,18 @@
                     {{-- cognome --}}
                     <div class="col">
                         <label for="validationCustom02" class="form-label">Cognome</label>
-                        <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+                        <input type="text" class="form-control" id="validationCustom02" value="Otto" name="lastname"required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
                     </div>
                     {{-- email --}}
                     <div class="col">
-                        <label for="validationCustomUsername" class="form-label">Username</label>
+                        <label for="validationCustomUsername" class="form-label">email</label>
                         <div class="input-group has-validation">
                             <span class="input-group-text" id="inputGroupPrepend">@</span>
                             <input type="email" class="form-control" id="validationCustomUsername"
-                                value="markotto@gmail.com" aria-describedby="inputGroupPrepend" required>
+                                value="markotto@gmail.com" aria-describedby="inputGroupPrepend" name="email" required>
                             <div class="invalid-feedback">
                                 Please choose a username.
                             </div>
@@ -49,17 +49,17 @@
                     </div>
                     <div class="form-row row">
                         {{-- città --}}
-                        <div class="col-xs-12 col-md-4">
+                        {{-- <div class="col-xs-12 col-md-4">
                             <label for="validationCustom03" class="form-label">Città</label>
                             <input type="text" class="form-control" id="validationCustom03" required>
                             <div class="invalid-feedback">
                                 Please provide a valid city.
                             </div>
-                        </div>
+                        </div> --}}
                         {{-- indirizzo --}}
                         <div class="col-xs-12 col-md-8">
                             <label for="validationCustom04" class="form-label">Indirizzo</label>
-                            <input type="text" class="form-control" id="validationCustom03" required>
+                            <input type="text" class="form-control" id="validationCustom03" name="address" required>
                             <div class="invalid-feedback">
                                 Please provide a valid address.
                             </div>
@@ -73,7 +73,7 @@
 
                     <div class="col">
                         <label for="validationCustom05" class="form-label">Nome sull carta</label>
-                        <input type="text" class="form-control" id="validationCustom01" required>
+                        <input type="text" class="form-control" id="validationCustom01" required value="nome">
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -82,7 +82,7 @@
                     <div class="col">
                         <label for="validationCustom06" class="form-label">Numero carta</label>
                         <input type="text" class="form-control card-number" id="validationCustom01" autocomplete='off'
-                            required>
+                            value="4242424242424242" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -93,7 +93,7 @@
                         <div class="col-xs-12 col-md-4">
                             <label for="validationCustom07" class="form-label">CVC</label>
                             <input type="text" class="form-control card-cvc" id="validationCustom07" autocomplete="off"
-                                placeholder="ex. 311" required>
+                                placeholder="ex. 311" required value="123">
                             <div class="invalid-feedback">
                                 Please provide a valid cvc.
                             </div>
@@ -103,7 +103,7 @@
                             <label for="validationCustom08" class="form-label expiration required">Mese scadenza
                                 carta</label>
                             <input type="text" class="form-control card-expiry-month" id="validationCustom08"
-                                placeholder="MM" required>
+                                placeholder="MM" required value="12">
                             <div class="invalid-feedback">
                                 Please provide a valid month.
                             </div>
@@ -113,7 +113,7 @@
                             <label for="validationCustom09" class="form-label expiration required">Anno scadenza
                                 carta</label>
                             <input type="text" class="form-control card-expiry-year" id="validationCustom09"
-                                placeholder="YYYY" required>
+                                placeholder="YYYY" required value="2024">
                             <div class="invalid-feedback">
                                 Please provide a valid year.
                             </div>

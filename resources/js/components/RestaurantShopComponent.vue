@@ -129,8 +129,9 @@ export default {
     async sendCart() {
         let cart = {
           'tot' : this.cartTotal,
-          'cart' : this.cart
+          'cartDishes' : this.cart
         };
+        
         await axios
         .post('stripe/save/cart', cart)
         .catch((e) => console.error(e));

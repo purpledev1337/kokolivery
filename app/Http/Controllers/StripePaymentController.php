@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Session;
 use Stripe;
 use App\Order;
+use App\Guest;
    
 class StripePaymentController extends Controller
 {
@@ -16,15 +17,15 @@ class StripePaymentController extends Controller
      */
     
     public function saveCart(Request $request){
+
         $jsonBody = json_decode($request->getContent(), true);
-        // dd($jsonBody);
         Session::put('cart', $jsonBody);
+
     }
 
     public function stripe()
     {
         $cart = Session::get('cart');
-        // dd($cart['cart']);
 
         $payment = $cart['tot'];
 
@@ -38,10 +39,9 @@ class StripePaymentController extends Controller
      */
     public function stripePost(Request $request)
     {
-        $cart = Session::get('cart');
-        foreach ($cart as $item) {
-            $payment = $item;
-        };
+        $cartTot = Session::get('cart');
+        $payment = $cartTot['tot'];
+
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create ([
                 "amount" => $payment * 100,
@@ -50,11 +50,32 @@ class StripePaymentController extends Controller
                 "description" => "Test payment from itsolutionstuff.com." 
         ]);
 
+        $data = $request -> validate([
+            'name' => 'required|string',
+            'lastname' => 'required|string',
+            'address' => 'required|string',
+            'email' => 'required|string',
+        ]);
+
         Session::flash('success', 'Pagamento avvenuto con successo!');
+
         $order = Order::make();
         $order -> status_pay = true;
         $order -> delivery_time = rand(5,60);
+        
         $order -> save();
+
+        $cartData = Session::get('cart');
+        $cart = $cartData['cartDishes'];
+
+        foreach ($cart as $dish) {
+            $order->dishes()->attach($dish['id'], ['quantity' => $dish['quantity']]);
+        };
+
+        $guest = Guest::make($data);
+        $guest -> order_id = $order -> id;
+        $guest -> save();
+
         return back();
     }
 }

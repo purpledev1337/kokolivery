@@ -5385,7 +5385,7 @@ Vue.config.productionTip = false;
               case 0:
                 cart = {
                   'tot': _this2.cartTotal,
-                  'cart': _this2.cart
+                  'cartDishes': _this2.cart
                 };
                 _context2.next = 3;
                 return axios.post('stripe/save/cart', cart)["catch"](function (e) {
