@@ -29,7 +29,7 @@
           <th><b>€ {{ cartTotal }}</b></th>
         </tr>
       </table>
-      <a class="btn btn-success" :href="route" >Procedi con l'acquisto</a>
+      <a class="btn btn-success" :href="route">Procedi con l'acquisto</a>
       <!-- @click="sendCart" -->
     </div>
     <!-- /cart -->
@@ -114,12 +114,7 @@ export default {
     // salvo l'url
     this.url = window.location.pathname;
     this.getDishes();
-    // this.$session.set("username", "user123");
-    // console.log(this.$session.get("username"));
   },
-
-  // watch: {
-  // },
 
   methods: {
     // chiamata axios che mi torna tutti i piatti
@@ -132,9 +127,15 @@ export default {
     },
 
     async sendCart() {
+        let cart = {
+          'tot' : this.cartTotal,
+          'cartDishes' : this.cart
+        };
+        
         await axios
-        .get(`stripe`, 'ciso')
+        .post('stripe/save/cart', cart)
         .catch((e) => console.error(e));
+
     },
 
     // func per aggiungere al carrello i piatti
@@ -167,9 +168,8 @@ export default {
       
       this.addMessageOpened = true;
 
-      this.$session.set('cart', this.cart);
-      console.log('log session storage',this.$session.get('cart'));
-
+      // mando il carrello aggiornato al server
+      this.sendCart();
       setTimeout(() => {this.closeAddMessage()}, 1500);
     },
 
@@ -192,11 +192,8 @@ export default {
 
       this.removeMessageOpened = true;
 
-      // localStorage.setItem('cart', this.cartTotal);
-      // console.log('log storage',localStorage.cart);
-      this.$session.set('cart', this.cart);
-      console.log('log session storage',this.$session.get('cart'));
-
+      // mando il carrello aggiornato al server
+      this.sendCart();
       setTimeout(() => {this.closeRemoveMessage()}, 1500);
     },
 
@@ -241,11 +238,6 @@ export default {
         // mi faccio tornare il totale delle varie quantita'
         return Number(total);
     },
-
-    // quantitySingle(item){
-    //     const piatto = this.cart.find(p => p.id == item.id);
-    //     return piatto.quantity;
-    // }
   },
 
 };

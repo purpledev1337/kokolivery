@@ -196,7 +196,7 @@ class AuthController extends Controller
         return redirect() -> route('dashboard');
     }
 
-    // eliminazione ristorante --- non funzionante!!!!!
+    // eliminazione ristorante
     public function restaurantDelete(Request $request){
         $data = $request -> validate([
             'pass_id' => 'required|numeric|min:0'
