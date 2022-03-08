@@ -10,11 +10,10 @@
               </h1> 
           </div>
           <div>
-              <input type="text" placeholder="Inserisci La Via, La Citta' E La Provincia">
-              <button class="btn btn-primary" >SEARCH</button>
+              <input type="text" placeholder="Inserisci La Via, La Citta' E La Provincia" v-model="city">
+              <a :href="`/restaurant_list/${city}`" class="btn btn-primary" >SEARCH</a>
           </div>
           
-          <!-- <a href="{{ route('restaurant_list') }}">Link alla restaurant_list</a> -->
       </div>
       <img id="banner_svg" src="storage/asset/banner_home4.svg" alt="">
   </section>
@@ -24,7 +23,7 @@
 export default {
     data() {
         return {
-            // filteredRestaurant: [],
+            city: '',
         }
     },
     props: {

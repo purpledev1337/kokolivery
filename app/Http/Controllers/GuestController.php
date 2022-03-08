@@ -19,8 +19,8 @@ class GuestController extends Controller
         return view('pages.register', compact('types'));
     }
     
-    public function restaurant_list() {
-        return view('pages.guest.restaurant_list');
+    public function restaurant_list($city) {
+        return view('pages.guest.restaurant_list',compact('city'));
     }
     
     public function restaurantDishes($id) {

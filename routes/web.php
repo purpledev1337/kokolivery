@@ -46,7 +46,7 @@ Route::middleware(['auth'])->prefix('auth')->group(function () {
 
 
 Route::get('restaurant/shop/{id}', 'GuestController@restaurantDishes') -> name('restaurant.shop');
-Route::get('/restaurant_list', 'GuestController@restaurant_list')->name('restaurant_list');
+Route::get('/restaurant_list/{city}', 'GuestController@restaurant_list')->name('restaurant_list');
 
 // api route
 Route::prefix('api') -> group(function(){

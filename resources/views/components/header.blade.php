@@ -29,9 +29,9 @@
                         </li> --}}
                     @endauth
 
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="{{ route('restaurant_list') }}">Ristoranti</a>
-                    </li>
+                    </li> --}}
                     {{-- dropdown --}}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

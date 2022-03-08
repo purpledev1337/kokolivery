@@ -4,6 +4,7 @@
 
 <div>
 
+    {{$city}}
     <restaurants-component></restaurants-component>
     
 
