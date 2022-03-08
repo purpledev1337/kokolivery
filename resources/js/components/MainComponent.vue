@@ -30,7 +30,7 @@ export default {
     },
     methods: {
         getRestaurant(){
-            axios.get('/api/restaurant_list')
+            axios.get('/api/restaurants')
                 .then((res) => {
                     // recupero tutti i ristornati
                     this.restaurants = res.data.users;

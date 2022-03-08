@@ -1,16 +1,15 @@
 <template>
     <div>
-        <a href="/">Link alla home</a>
         <h3>Restaurants List:</h3>
-
+        {{city}}
         <div id="restaurants_box">
-            <a  :href="`restaurant/shop/${restaurant.id}`" class="restaurant_card" v-for="restaurant in restaurants" :key="restaurant.id">
-                <img class="restaurant_img" :src="`storage/${restaurant.image}`" alt="">
+            <div @click.prevent="searchRestaurantsFromCity(restaurant.id)"  class="restaurant_card" v-for="restaurant in restaurants" :key="restaurant.id">
+                <img class="restaurant_img" :src="`../storage/${restaurant.image}`" alt="">
                 <h2>{{ restaurant.brand_name }}</h2>
                 <h6>Indirizzo: {{ restaurant.address }}</h6>
                 <span>Stelline -> {{ restaurant.rating }}</span>
                 <span>({{ restaurant.num_rating }})</span>
-            </a>
+            </div>
         </div>
     </div>
 </template>
@@ -20,20 +19,32 @@
         data() {
 
             return {
-
-                restaurants:[]
+                restaurants:[],
+                types: [],
             };
         },
+        props: {
+            city: String,
+        },
         mounted() {
-            this.getData();
+            this.getRestaurant();
         },
 
         methods: {
-            getData() {
-                axios.get('/api/restaurant_list')
-                .then(r => this.restaurants = r.data)
-                .catch(e => console.error(e));
-            }
+             getRestaurant(){
+                axios.get('/api/restaurants')
+                    .then((res) => {
+                        // recupero tutti i ristornati
+                        this.restaurants = res.data.users;
+                        this.types = res.data.types;
+                        console.log('risto',this.restaurants);
+                        console.log('types',this.types);
+                    }) 
+                    .catch(error => console.error(error));
+            },
+            searchRestaurantsFromCity(id){
+                window.location.href = `/restaurant/shop/${id}`;   
+            },
         }
     }
 </script>

@@ -5139,7 +5139,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {// topRestaurants: Object,
   },
-  methods: {}
+  methods: {
+    searchRestaurantsFromCity: function searchRestaurantsFromCity() {
+      var cityChoose = this.city.toLowerCase();
+      this.city = '';
+      window.location.href = "/restaurants/".concat(cityChoose);
+    }
+  }
 });
 
 /***/ }),
@@ -5186,7 +5192,7 @@ __webpack_require__.r(__webpack_exports__);
     getRestaurant: function getRestaurant() {
       var _this = this;
 
-      axios.get('/api/restaurant_list').then(function (res) {
+      axios.get('/api/restaurants').then(function (res) {
         // recupero tutti i ristornati
         _this.restaurants = res.data.users;
         _this.types = res.data.types;
@@ -5527,25 +5533,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      restaurants: []
+      restaurants: [],
+      types: []
     };
   },
+  props: {
+    city: String
+  },
   mounted: function mounted() {
-    this.getData();
+    this.getRestaurant();
   },
   methods: {
-    getData: function getData() {
+    getRestaurant: function getRestaurant() {
       var _this = this;
 
-      axios.get('/api/restaurant_list').then(function (r) {
-        return _this.restaurants = r.data;
-      })["catch"](function (e) {
-        return console.error(e);
+      axios.get('/api/restaurants').then(function (res) {
+        // recupero tutti i ristornati
+        _this.restaurants = res.data.users;
+        _this.types = res.data.types;
+        console.log('risto', _this.restaurants);
+        console.log('types', _this.types);
+      })["catch"](function (error) {
+        return console.error(error);
       });
+    },
+    searchRestaurantsFromCity: function searchRestaurantsFromCity(id) {
+      window.location.href = "/restaurant/shop/".concat(id);
     }
   }
 });
@@ -42625,6 +42641,16 @@ var render = function () {
           },
           domProps: { value: _vm.city },
           on: {
+            keyup: function ($event) {
+              if (
+                !$event.type.indexOf("key") &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              $event.preventDefault()
+              return _vm.searchRestaurantsFromCity.apply(null, arguments)
+            },
             input: function ($event) {
               if ($event.target.composing) {
                 return
@@ -42635,10 +42661,15 @@ var render = function () {
         }),
         _vm._v(" "),
         _c(
-          "a",
+          "button",
           {
             staticClass: "btn btn-primary",
-            attrs: { href: "/restaurant_list/" + _vm.city },
+            on: {
+              click: function ($event) {
+                $event.preventDefault()
+                return _vm.searchRestaurantsFromCity.apply(null, arguments)
+              },
+            },
           },
           [_vm._v("SEARCH")]
         ),
@@ -42937,25 +42968,28 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("a", { attrs: { href: "/" } }, [_vm._v("Link alla home")]),
-    _vm._v(" "),
     _c("h3", [_vm._v("Restaurants List:")]),
-    _vm._v(" "),
+    _vm._v("\n    " + _vm._s(_vm.city) + "\n    "),
     _c(
       "div",
       { attrs: { id: "restaurants_box" } },
       _vm._l(_vm.restaurants, function (restaurant) {
         return _c(
-          "a",
+          "div",
           {
             key: restaurant.id,
             staticClass: "restaurant_card",
-            attrs: { href: "restaurant/shop/" + restaurant.id },
+            on: {
+              click: function ($event) {
+                $event.preventDefault()
+                return _vm.searchRestaurantsFromCity(restaurant.id)
+              },
+            },
           },
           [
             _c("img", {
               staticClass: "restaurant_img",
-              attrs: { src: "storage/" + restaurant.image, alt: "" },
+              attrs: { src: "../storage/" + restaurant.image, alt: "" },
             }),
             _vm._v(" "),
             _c("h2", [_vm._v(_vm._s(restaurant.brand_name))]),

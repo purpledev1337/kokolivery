@@ -4,8 +4,7 @@
 
 <div>
 
-    {{$city}}
-    <restaurants-component></restaurants-component>
+    <restaurants-component city="{{$city ?? ''}}"></restaurants-component>
     
 
 </div>
