@@ -7,9 +7,7 @@ use Session;
 use Stripe;
 use App\Order;
 use App\Guest;
-use App\User;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Auth;
 use App\Mail\OrderShipped;
 
    
@@ -81,6 +79,7 @@ class StripePaymentController extends Controller
         $guest -> order_id = $order -> id;
         $guest -> save();
 
+        //collego OrderShipped, e mando i dati al costruttore
         Mail::to($guest->email) ->send (new OrderShipped( $guest, $cartData,$order));
         Mail::to('admin@kokolivery.com') ->send (new OrderShipped( $guest, $cartData,$order));
 

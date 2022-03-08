@@ -10,7 +10,7 @@ use Illuminate\Queue\SerializesModels;
 class OrderShipped extends Mailable
 {
     use Queueable, SerializesModels;
-
+ //collego le informazioni tramite costruttore
     public  $guest;
     public   $cartData;
     public $order;
@@ -22,7 +22,7 @@ class OrderShipped extends Mailable
         $this -> order =  $order;
     }
 
-
+    //inserisco email del mittente e collego la pagina in blade del mess
     public function build()
     {
         return $this    ->from('no-replays@kokolivery.com')
