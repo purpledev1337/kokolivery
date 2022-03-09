@@ -17,7 +17,7 @@
                         <h5 class="widget-title">LINK UTILI<span></span></h5>
                         <ul class="thumbnail-widget">
                             <li>
-                                <div class="thumb-content"><a href="#.">RISTORANTI</a></div>
+                                <div class="thumb-content"><a href="{{ route('restaurants') }}">RISTORANTI</a></div>
                             </li>
                             <li>
                                 <div class="thumb-content"><a href="#.">RIDER</a></div>
@@ -25,8 +25,9 @@
                             <li>
                                 <div class="thumb-content"><a href="#.">STORIA</a></div>
                             </li>
+                           
                             <li>
-                                <div class="thumb-content"><a href="#.">DOVE SIAMO</a></div>
+                                <div class="thumb-content"><a href="{{ route('home') }}">HOME</a></div>
                             </li>
                         </ul>
                     </div>

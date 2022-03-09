@@ -1,22 +1,10 @@
 <template>
-  <section>
-      <div id="search_home">
-          <div id="cont-logo">
-              <div id="cont-img-home">
-                  <img class="kokohover" id="float-img" src="storage/asset/kokolivery-logo.svg" alt="">
-              </div>
-              <h1 class="kokohover" id="float-title">
-                  Kokolivery
-              </h1> 
-          </div>
-          <div class="kokohover">
+
+      <div id="" class="verkoko">
               <input @keyup.enter.prevent="searchRestaurantsFromCity" type="text" placeholder="Inserisci La Via, La Citta' E La Provincia" v-model="city">
               <button @click.prevent="searchRestaurantsFromCity"  class="btn btn-primary" >SEARCH</button>
-          </div>
-          
       </div>
-      <img id="banner_svg" src="storage/asset/banner_home4.svg" alt="">
-  </section>
+
 </template>
 
 <script>

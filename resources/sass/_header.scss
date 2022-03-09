@@ -1,3 +1,43 @@
+nav{
+height: 100px;
+flex-direction: column;
+}
+
 .navbar-collapse {
     flex-grow: 0!important;
 }
+.logonavbase
+{
+    text-shadow: 1px 2px 3px #5c2e4d;
+    font-size: 32px;
+}
+
+.bg-valerio{
+    background-color:$orange;
+    color: white;
+    transition: 0.3s;
+  }
+
+.a, .white
+{
+      color: white;
+}
+.a, .black
+{
+      color: #252525;
+}
+
+.hoverkoko{
+    display: none;
+}
+.removehover{
+    display: inline;
+    width: 100px;
+}
+.removehoverform{
+    display: inline;
+}
+.logonav{
+ display: none;
+}
+
