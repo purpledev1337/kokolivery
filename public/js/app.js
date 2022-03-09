@@ -55379,21 +55379,7 @@ files.keys().map(function (key) {
 });
 document.addEventListener("DOMContentLoaded", function () {
   var app = new Vue({
-    el: '#app' // data() {
-    //     return {
-    //         payment: '',
-    //         field: ''
-    //     }
-    // },
-    // mounted() {
-    //     this.field = localStorage.cart;
-    // },
-    // watch: {
-    //     field: function (val) {
-    //         this.$root.payment = val;
-    //     }
-    // }
-
+    el: '#app'
   });
 });
 
@@ -55807,8 +55793,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/cenny/Desktop/project final/project/kokolivery/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/cenny/Desktop/project final/project/kokolivery/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Maurizio\boolean\esercizi\kokolivery\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Maurizio\boolean\esercizi\kokolivery\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
