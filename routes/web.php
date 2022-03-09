@@ -62,6 +62,8 @@ Route::post('restaurant/shop/stripe/save/cart', 'StripePaymentController@saveCar
 Route::get('stripe', 'StripePaymentController@stripe') -> name('stripe.view');
 Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
 
+// chart js
+Route::get('chartjs', 'HomeController@chartjs');
 
 
 
