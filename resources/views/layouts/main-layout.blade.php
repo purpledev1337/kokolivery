@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,41 +14,42 @@
 
     <script type="text/javascript">
         $(function() {
-            var $form         = $(".require-validation");
-        $('form.require-validation').bind('submit', function(e) {
-            var $form         = $(".require-validation"),
-                inputSelector = ['input[type=email]', 'input[type=password]',
-                                'input[type=text]', 'input[type=file]',
-                                'textarea'].join(', '),
-                $inputs       = $form.find('.required').find(inputSelector),
-                $errorMessage = $form.find('div.error'),
-                valid         = true;
+            var $form = $(".require-validation");
+            $('form.require-validation').bind('submit', function(e) {
+                var $form = $(".require-validation"),
+                    inputSelector = ['input[type=email]', 'input[type=password]',
+                        'input[type=text]', 'input[type=file]',
+                        'textarea'
+                    ].join(', '),
+                    $inputs = $form.find('.required').find(inputSelector),
+                    $errorMessage = $form.find('div.error'),
+                    valid = true;
                 $errorMessage.addClass('d-none');
-        
+
                 $('.has-error').removeClass('has-error');
-            $inputs.each(function(i, el) {
-            var $input = $(el);
-            if ($input.val() === '') {
-                $input.parent().addClass('has-error');
-                $errorMessage.removeClass('d-none');
-                e.preventDefault();
-            }
+                $inputs.each(function(i, el) {
+                    var $input = $(el);
+                    if ($input.val() === '') {
+                        $input.parent().addClass('has-error');
+                        $errorMessage.removeClass('d-none');
+                        e.preventDefault();
+                    }
+                });
+
+                if (!$form.data('cc-on-file')) {
+                    e.preventDefault();
+                    Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+                    Stripe.createToken({
+                        number: $('.card-number').val(),
+                        cvc: $('.card-cvc').val(),
+                        exp_month: $('.card-expiry-month').val(),
+                        exp_year: $('.card-expiry-year').val()
+                    }, stripeResponseHandler);
+                }
+
             });
-        
-            if (!$form.data('cc-on-file')) {
-            e.preventDefault();
-            Stripe.setPublishableKey($form.data('stripe-publishable-key'));
-            Stripe.createToken({
-                number: $('.card-number').val(),
-                cvc: $('.card-cvc').val(),
-                exp_month: $('.card-expiry-month').val(),
-                exp_year: $('.card-expiry-year').val()
-            }, stripeResponseHandler);
-            }
-        
-        });
-        
-        function stripeResponseHandler(status, response) {
+
+            function stripeResponseHandler(status, response) {
                 if (response.error) {
                     $('.error')
                         .removeClass('d-none')
@@ -62,34 +64,35 @@
                     $form.get(0).submit();
                 }
             }
-        
+
         });
     </script>
 
     <title>Kokolivery</title>
 </head>
+
 <body>
     <div id="app">
         <div id="home">
-            
+
             @include('components.header')
             @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             @endif
-            
+
             @yield('content')
-    
+
             @include('components.footer')
 
         </div>
 
     </div>
-
 </body>
+
 </html>
