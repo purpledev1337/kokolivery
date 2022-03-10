@@ -37,7 +37,7 @@ class ChartController extends Controller
         }
 
         // Generate random colours for the groups
-        for ($i=0; $i<=count($order); $i++) {
+        for ($i=0; $i<count($order); $i++) {
             $colours[] = '#' . substr(str_shuffle('ABCDEF0123456789'), 0, 6);
         }
 
@@ -47,8 +47,8 @@ class ChartController extends Controller
         $chart->labels = (array_values($dishName));
         $chart->dataset = (array_values($total));
         $chart->colours = $colours;
-
-        return view('layouts.index', compact('chart'));
+        // dd($chart);
+        return json_encode($chart);
 
     }
 }
