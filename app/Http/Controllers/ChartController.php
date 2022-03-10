@@ -31,11 +31,10 @@ class ChartController extends Controller
         $total = [];
 
         foreach ($order as $tot) {
-            array_push($total, $tot -> total);
+            $total[] = $tot -> total;
             $dish = Dish::findOrFail($tot -> dish_id);
-            array_push($dishName, $dish -> name);
+            $dishName[] = $dish -> name;
         }
-        // dd($dishName);
 
         // Generate random colours for the groups
         for ($i=0; $i<=count($order); $i++) {
@@ -48,7 +47,7 @@ class ChartController extends Controller
         $chart->labels = (array_values($dishName));
         $chart->dataset = (array_values($total));
         $chart->colours = $colours;
-        // dd($chart);
+
         return view('layouts.index', compact('chart'));
 
     }
