@@ -63,7 +63,8 @@ Route::get('stripe', 'StripePaymentController@stripe') -> name('stripe.view');
 Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
 
 
+// rotta rider
 
-
+Route::get('/rider', 'GuestController@rider')->name('rider');
 
 

@@ -1,6 +1,6 @@
 <header>
     <nav style="" class="navbar fixed-top navbar-expand-lg">
-        <div class="container-fluid">
+        <div class="container-fluid centratura-logonav">
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
                 aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,31 +29,37 @@
 
                     {{-- dropdown --}}
                     <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle black" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Collabora Con Noi
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @guest
-                                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#loginModal"
-                                        href="#">Ristoranti Login</a></li>
-                                <li><a class="dropdown-item" href="{{ route('register') }}">Registra qui il tuo
-                                        Ristorante</a></li>
-                                <li><a class="dropdown-item" href="#">Rider Login</a></li>
-                            @endguest
-                            {{-- <li><hr class="dropdown-divider"></li> --}}
-                            <li><a class="dropdown-item" href="#">Contatti</a></li>
-                        </ul>
+                        <button class="btn btn-collabora">
+                            <a class="nav-link dropdown-toggle black" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Collabora Con Noi
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @guest
+                                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#loginModal"
+                                            href="#">Ristoranti Login</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('register') }}">Registra qui il tuo
+                                            Ristorante</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('rider') }}">Rider Login</a></li>
+                                @endguest
+                                {{-- <li><hr class="dropdown-divider"></li> --}}
+                                <li><a class="dropdown-item" href="#">Contatti</a></li>
+                            </ul>
+                        </button>
                     </li>
 
                     {{-- link to home --}}
-                    <li class="nav-item">
-                        <a class="nav-link black" href="{{ route('home') }}">Home</a>
-                    </li>
+                    <button class="btn btn-collabora" >
+                        <li class="nav-item">
+                            <a class="nav-link black" href="{{ route('home') }}">Home</a>
+                        </li>
+                    </button>
                     {{-- link to all restaurants --}}
-                    <li class="nav-item">
-                        <a class="nav-link black" href="{{ route('restaurants') }}">Ristoranti</a>
-                    </li>
+                    <button class="btn btn-collabora">
+                        <li class="nav-item">
+                            <a class="nav-link black" href="{{ route('restaurants') }}">Ristoranti</a>
+                        </li>
+                    </button>
 
                 </ul>
 
