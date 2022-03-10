@@ -32,13 +32,12 @@ export default {
         getRestaurant(){
             axios.get('/api/restaurants')
                 .then((res) => {
-                    // recupero tutti i ristornati
-                    this.restaurants = res.data.users;
-                    this.types = res.data.types;
-                    console.log('risto',this.restaurants);
-                    console.log('types',this.types);
-                    // ordino i ristoranti x rating discendete
-                    this.filteredRestaurant = this.restaurants;
+                    // // recupero tutti i ristornati e tipologie
+                    // this.restaurants = res.data.users;
+                    // this.types = res.data.types;
+                    // // ordino i ristoranti x rating discendete
+                    // this.filteredRestaurant = this.restaurants;
+                    this.filteredRestaurant = res.data.users;
                     this.filteredRestaurant.sort( (a,b) => b.rating - a.rating);
                     // filtro solo i primi 10 risultati
                     this.filteredRestaurant = this.filteredRestaurant.splice(0,10);
