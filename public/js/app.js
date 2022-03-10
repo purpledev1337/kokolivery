@@ -5609,9 +5609,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5643,6 +5640,7 @@ __webpack_require__.r(__webpack_exports__);
         // recupero tutti i ristornati e le categorie
         _this.restaurants = res.data.users;
         _this.types = res.data.types;
+        console.log(_this.types);
       })["catch"](function (error) {
         return console.error(error);
       });
@@ -43216,7 +43214,22 @@ var render = function () {
         ]),
       ]),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "div",
+          { staticClass: "col" },
+          _vm._l(_vm.types, function (type) {
+            return _c("span", { key: type.id, staticClass: "type" }, [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(type.name) +
+                  "\n                "
+              ),
+            ])
+          }),
+          0
+        ),
+      ]),
     ]),
     _vm._v(" "),
     _c("div", { attrs: { id: "restaurantsbox" } }, [
@@ -43233,24 +43246,7 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col" }, [
-        _c("span", { staticClass: "type" }, [
-          _vm._v("\n                    Sushi\n                "),
-        ]),
-        _vm._v(" "),
-        _c("span", [
-          _vm._v("\n                    italiano\n                "),
-        ]),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

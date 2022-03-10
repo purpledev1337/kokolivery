@@ -12,11 +12,8 @@
             <!-- sezione tipologie -->
             <div class="row">
                 <div class="col">
-                    <span class="type">
-                        Sushi
-                    </span>
-                    <span>
-                        italiano
+                    <span v-for="type in types" :key="type.id" class="type">
+                        {{type.name}}
                     </span>
                     <!-- <label for="cityFilter">Filtra qui i ristornati per tipologia:</label>
                     <input @keyup.enter.prevent="filterRestaurantByCity" type="text" name="city"  v-model.lazy="inputCity">
@@ -65,6 +62,7 @@
                         // recupero tutti i ristornati e le categorie
                         this.restaurants = res.data.users;
                         this.types = res.data.types;
+                        console.log(this.types);
                     }) 
                     .catch(error => console.error(error));
             },
