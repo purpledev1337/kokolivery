@@ -1,5 +1,5 @@
 nav{
-height: 100px;
+
 flex-direction: column;
 }
 
@@ -18,7 +18,7 @@ flex-direction: column;
     transition: 0.3s;
   }
 
-.a, .white
+ .white
 {
       color: white;
 }
@@ -41,3 +41,11 @@ flex-direction: column;
  display: none;
 }
 
+.provatext{
+width: 100%;
+background-color: $orange;
+display: flex;
+}
+.centratura{
+    margin: 0 auto;
+}

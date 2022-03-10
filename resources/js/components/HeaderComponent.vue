@@ -11,7 +11,7 @@
           </div>
           <div class="kokohover">
               <input @keyup.enter.prevent="searchRestaurantsFromCity" type="text" placeholder="Inserisci La Via, La Citta' E La Provincia" v-model="city">
-              <button @click.prevent="searchRestaurantsFromCity"  class="btn btn-primary" >SEARCH</button>
+              <button @click.prevent="searchRestaurantsFromCity"  class="btn btn-primary" >CERCA</button>
           </div>
           
       </div>

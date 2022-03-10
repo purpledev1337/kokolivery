@@ -1,5 +1,5 @@
 <header>
-    <nav style="" class="navbar fixed-top navbar-expand-lg  bg-light">
+    <nav style="" class="navbar fixed-top navbar-expand-lg">
         <div class="container-fluid">
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
@@ -17,10 +17,10 @@
                     @auth
                         <li class="nav-item">
                             <a href="{{ route('dashboard') }}"
-                                class="nav-link">{{ Auth::user()->brand_name }}</a>
+                                class="nav-link black">{{ Auth::user()->brand_name }}</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+                        <li class="nav-item ">
+                            <a class="nav-link black" href="{{ route('logout') }}">Logout</a>
                         </li>
                     @endauth
                     <form class="form-inline hoverkoko">
@@ -30,7 +30,7 @@
 
                     {{-- dropdown --}}
                     <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle white" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle black" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Collabora Con Noi
                         </a>
@@ -49,11 +49,11 @@
 
                     {{-- link to home --}}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link black" href="{{ route('home') }}">Home</a>
                     </li>
                     {{-- link to all restaurants --}}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('restaurants') }}">Ristoranti</a>
+                        <a class="nav-link black" href="{{ route('restaurants') }}">Ristoranti</a>
                     </li>
 
                 </ul>
@@ -67,7 +67,7 @@
             </div>
 
         </div>
-        <div>
+        <div class="provatext">
             <search-component></search-component>
         </div>
     </nav>
@@ -83,8 +83,6 @@
             $(window).scroll(function() {
                 var scroll = $(window).scrollTop();
                 if (scroll >= 50) {
-                    //header.addClass("navbar-dark bg-primary");
-                    header.removeClass(" bg-light");
                     header.addClass(" bg-valerio");
                     brand.addClass("white");
                     brand.removeClass("black");
@@ -98,7 +96,6 @@
 
                 } else {
                     header.removeClass(" bg-valerio");
-                    header.addClass(" bg-light");
                     brand.removeClass("white");
                     brand.addClass("black")
                     linka.removeClass("white");
