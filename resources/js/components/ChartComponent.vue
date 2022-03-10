@@ -1,7 +1,7 @@
 <template>
     <!-- resources/assets/js/components -->
     <div>
-        <canvas id="canvas"></canvas>
+        <canvas id="canvas" height="70px"></canvas>
     </div>
 </template>
 
@@ -35,9 +35,10 @@
                 console.log('color',this.colors);
                 this.renderChart();
             },
+            // polarArea
             renderChart() {
                 new Chart(document.getElementById('canvas').getContext('2d'), {
-                    type: 'polarArea',
+                    type: 'bar',
                     data: {
                         labels: this.labels,
                         datasets: [{

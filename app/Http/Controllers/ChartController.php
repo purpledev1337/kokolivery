@@ -47,7 +47,7 @@ class ChartController extends Controller
         $chart->labels = (array_values($dishName));
         $chart->dataset = (array_values($total));
         $chart->colours = $colours;
-        // dd($chart);
+        
         return json_encode($chart);
 
     }
