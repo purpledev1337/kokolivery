@@ -19250,13 +19250,12 @@ input {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 #shop .category_box > h2,
 #shop .category_box > .h2 {
   width: 100%;
-  text-align: center;
 }
 
 #shop .category_box.ant {
@@ -19290,7 +19289,9 @@ input {
 }
 
 #shop .dish_box {
-  width: 100%;
+  width: 31.3333333333%;
+  margin: 0 1%;
+  padding: 20px;
 }
 
 #shop #icon-cart {
@@ -19355,9 +19356,6 @@ input {
 }
 
 #cart-box {
-  border: 3px #f9db03 solid;
-  border-radius: 2em;
-  background-color: #f6993f;
   position: fixed;
   right: 25px;
   top: 150px;

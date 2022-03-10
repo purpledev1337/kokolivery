@@ -17,12 +17,12 @@
         width: 100%;
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: flex-start;
 
         &>h2 {
 
             width: 100%;
-            text-align: center;
+            // text-align: center;
         }
 
         &.ant{
@@ -58,9 +58,9 @@
     }
 
     .dish_box {
-        width: 100%;
-        // margin: 0 1%;
-        // padding: 20px;
+        width: calc((100% / 3) - 2%);
+        margin: 0 1%;
+        padding: 20px;
     }
 
     #icon-cart {
@@ -134,9 +134,9 @@
 
 #cart-box {
 
-    border: 3px $yellow solid;
-    border-radius: 2em;
-    background-color: $orange;
+    // border: 3px $yellow solid;
+    // border-radius: 2em;
+    // background-color: $orange;
     position: fixed;
     right: 25px;
     top: 150px;

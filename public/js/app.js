@@ -5328,6 +5328,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 Vue.use(vue_sessionstorage__WEBPACK_IMPORTED_MODULE_1___default.a);
 Vue.config.productionTip = false;
@@ -5338,7 +5350,7 @@ Vue.config.productionTip = false;
       dishes: [],
       arrayCategories: [],
       arrayCategoryDishes: [],
-      categoryLooped: '',
+      categoryLooped: "",
       catAntipasto: [],
       catPrimiPiatti: [],
       catSecondiPiatti: [],
@@ -5350,7 +5362,7 @@ Vue.config.productionTip = false;
       addMessageOpened: false,
       removeMessageOpened: false,
       selectedDish: {
-        'name': null
+        name: null
       }
     };
   },
@@ -5421,11 +5433,11 @@ Vue.config.productionTip = false;
             switch (_context2.prev = _context2.next) {
               case 0:
                 cart = {
-                  'tot': _this2.cartTotal,
-                  'cartDishes': _this2.cart
+                  tot: _this2.cartTotal,
+                  cartDishes: _this2.cart
                 };
                 _context2.next = 3;
-                return axios.post('stripe/save/cart', cart)["catch"](function (e) {
+                return axios.post("stripe/save/cart", cart)["catch"](function (e) {
                   return console.error(e);
                 });
 
@@ -5458,10 +5470,10 @@ Vue.config.productionTip = false;
       } else {
         // altrimenti pusho nel cart un nuovo oggetto con i dati di cui ho bisogno
         this.cart.push({
-          'id': item.id,
-          'name': item.name,
-          'quantity': 1,
-          'price': item.price
+          id: item.id,
+          name: item.name,
+          quantity: 1,
+          price: item.price
         });
       }
 
@@ -5517,7 +5529,6 @@ Vue.config.productionTip = false;
       var _this5 = this;
 
       this.arrayCategoryDishes = [];
-      console.log("cat: ", cat);
       this.dishes.forEach(function (dish) {
         if (dish.category === cat) {
           _this5.arrayCategoryDishes.push(dish);
@@ -5557,7 +5568,7 @@ Vue.config.productionTip = false;
       console.log(total); // mi faccio tornare il totale delle varie quantita'
 
       return Number(total);
-    } // categoryDishes: function() {  
+    } // categoryDishes: function() {
     //   console.log("categoria attuale",this.categoryLooped);
     //   this.dishes.filter(this.checkCategory());
     //   console.log("this.arrayCategoryDishes:", this.arrayCategoryDishes);
@@ -42823,7 +42834,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "shop" } }, [
+  return _c("div", { staticClass: "row", attrs: { id: "shop" } }, [
     _c(
       "div",
       {
@@ -42840,59 +42851,55 @@ var render = function () {
           _vm._v(" "),
           _vm.cart.length > 0
             ? _c("div", { attrs: { id: "count" } }, [
-                _vm._v(
-                  "\n              " +
-                    _vm._s(_vm.quantityTotal) +
-                    "\n          "
-                ),
+                _vm._v("\n        " + _vm._s(_vm.quantityTotal) + "\n      "),
               ])
             : _vm._e(),
         ]),
       ]
     ),
     _vm._v(" "),
-    this.isCartOpen && this.cart.length > 0
-      ? _c("div", { attrs: { id: "cart-box" } }, [
-          _c(
-            "table",
-            [
-              _vm._m(0),
-              _vm._v(" "),
-              _vm._l(_vm.cart, function (item, i) {
-                return _c("tr", { key: item.id + i }, [
-                  _c("td", [_vm._v(_vm._s(item.quantity))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(item.name))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("€ " + _vm._s(item.price))]),
-                ])
-              }),
-              _vm._v(" "),
-              _c("tr", [
-                _c("th"),
+    _c(
+      "div",
+      { staticClass: "d-none d-md-inline col-md-4", attrs: { id: "cart-box" } },
+      [
+        _c(
+          "table",
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._l(_vm.cart, function (item, i) {
+              return _c("tr", { key: item.id + i }, [
+                _c("td", [_vm._v(_vm._s(item.quantity))]),
                 _vm._v(" "),
-                _c("th", [_vm._v("Totale")]),
+                _c("td", [_vm._v(_vm._s(item.name))]),
                 _vm._v(" "),
-                _c("th", [_c("b", [_vm._v("€ " + _vm._s(_vm.cartTotal))])]),
-              ]),
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            { staticClass: "btn btn-success", attrs: { href: _vm.route } },
-            [_vm._v("Procedi con l'acquisto")]
-          ),
-        ])
-      : _vm._e(),
-    _vm._v(" "),
-    _c("h3", [_vm._v("Restaurants Shop:")]),
+                _c("td", [_vm._v("€ " + _vm._s(item.price))]),
+              ])
+            }),
+            _vm._v(" "),
+            _c("tr", [
+              _c("th"),
+              _vm._v(" "),
+              _c("th", [_vm._v("Totale")]),
+              _vm._v(" "),
+              _c("th", [_c("b", [_vm._v("€ " + _vm._s(_vm.cartTotal))])]),
+            ]),
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          { staticClass: "btn btn-success", attrs: { href: _vm.route } },
+          [_vm._v("Procedi con l'acquisto")]
+        ),
+      ]
+    ),
     _vm._v(" "),
     _vm.dishes.length
       ? _c(
           "div",
-          { attrs: { id: "flex" } },
+          { staticClass: "col-xs-12 col-md-8", attrs: { id: "flex" } },
           [
             _vm._l(_vm.arrayCategories, function (category, i) {
               return _c(
@@ -42911,11 +42918,11 @@ var render = function () {
                 },
                 [
                   _c("h2", { staticStyle: { width: "100%" } }, [
-                    _vm._v(
-                      _vm._s(category) + ": " + _vm._s(_vm.setCat(category))
-                    ),
+                    _vm._v(_vm._s(category) + ":"),
                   ]),
-                  _vm._v(" "),
+                  _vm._v(
+                    "\n      " + _vm._s(_vm.setCat(category)) + "\n      "
+                  ),
                   _vm._l(_vm.arrayCategoryDishes, function (dish, k) {
                     return _c("div", { key: k, staticClass: "dish_box" }, [
                       _c("div", [
@@ -42955,7 +42962,7 @@ var render = function () {
                                         },
                                       },
                                     },
-                                    [_vm._v(" + \n          ")]
+                                    [_vm._v("\n              +\n            ")]
                                   )
                                 : _c(
                                     "span",
@@ -42969,7 +42976,7 @@ var render = function () {
                                     },
                                     [
                                       _vm._v(
-                                        " Aggiungi al carrello \n          "
+                                        "\n              Aggiungi al carrello\n            "
                                       ),
                                     ]
                                   ),
@@ -42987,7 +42994,7 @@ var render = function () {
                                         },
                                       },
                                     },
-                                    [_vm._v("\n            -\n          ")]
+                                    [_vm._v("\n              -\n            ")]
                                   )
                                 : _vm._e(),
                             ])
@@ -43003,9 +43010,9 @@ var render = function () {
             this.addMessageOpened
               ? _c("div", { staticClass: "cart-message cart-add" }, [
                   _vm._v(
-                    '\n        "' +
+                    '\n      "' +
                       _vm._s(_vm.selectedDish.name) +
-                      '" è stato aggiunto al carrello!\n      '
+                      '" è stato aggiunto al carrello!\n    '
                   ),
                 ])
               : _vm._e(),
@@ -43013,9 +43020,9 @@ var render = function () {
             this.removeMessageOpened
               ? _c("div", { staticClass: "cart-message cart-remove" }, [
                   _vm._v(
-                    '\n        "' +
+                    '\n      "' +
                       _vm._s(_vm.selectedDish.name) +
-                      '" è stato rimosso al carrello!\n      '
+                      '" è stato rimosso al carrello!\n    '
                   ),
                 ])
               : _vm._e(),
