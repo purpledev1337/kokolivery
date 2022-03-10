@@ -8,14 +8,59 @@
 
         display: flex;
         flex-wrap: wrap;
-        justify-content: flex-start;
+        justify-content: center;
         position: relative;
     }
 
+    .category_box {
+
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        &>h2 {
+
+            width: 100%;
+            text-align: center;
+        }
+
+        &.ant{
+            
+            order: 1;
+        }
+        &.pri{
+            
+            order: 2;
+        }
+        &.sec{
+            
+            order: 3;
+        }
+        &.piz{
+            
+            order: 4;
+        }
+        &.des{
+            
+            order: 5;
+        }
+        &.bib{
+            
+            order: 6;
+        }
+    }
+
+    #loading_screen {
+        font-size: 5em;
+        text-align: center;
+        padding: 3em 0;
+    }
+
     .dish_box {
-        width: calc((100% / 3) - 2%);
-        margin: 0 1%;
-        padding: 20px;
+        width: 100%;
+        // margin: 0 1%;
+        // padding: 20px;
     }
 
     #icon-cart {
