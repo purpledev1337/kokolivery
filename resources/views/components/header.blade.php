@@ -16,8 +16,7 @@
 
                     @auth
                         <li class="nav-item">
-                            <a href="{{ route('dashboard') }}"
-                                class="nav-link black">{{ Auth::user()->brand_name }}</a>
+                            <a href="{{ route('dashboard') }}" class="nav-link black">{{ Auth::user()->brand_name }}</a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link black" href="{{ route('logout') }}">Logout</a>
@@ -67,12 +66,12 @@
             </div>
 
         </div>
-        <div class="provatext">
+        <div class="containeNav">
             <search-component></search-component>
         </div>
     </nav>
-    
-    
+
+
     <script>
         $(function() {
             var header = $(".navbar");

@@ -48,8 +48,8 @@
           <!-- <img :src="require(`../public/storage/${dish.image_path}`)" alt=""> -->
           <h2>{{ dish.id }}</h2>
           <h2>{{ dish.name }}</h2>
-          <h3>Prezzo: {{ dish.price }}</h3>
-          <h3>{{ dish.description }}</h3>
+          <h3>Prezzo: {{ dish.price }}€ </h3>
+          <h3>Descrizione: {{ dish.description }}</h3>
           <span>({{ dish.category }})</span>
           <br>
 

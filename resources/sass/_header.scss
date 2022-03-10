@@ -1,3 +1,4 @@
+//sezione navbar
 nav{
 
 flex-direction: column;
@@ -11,13 +12,11 @@ flex-direction: column;
     text-shadow: 1px 2px 3px #5c2e4d;
     font-size: 32px;
 }
+.centratura{
+    margin: 0 auto;
+}
 
-.bg-valerio{
-    background-color:$orange;
-    color: white;
-    transition: 0.3s;
-  }
-
+//colori link
  .white
 {
       color: white;
@@ -27,8 +26,16 @@ flex-direction: column;
       color: #252525;
 }
 
+//sezione navbar che scompare
+.bg-valerio{
+    background-color:$orange;
+    color: white;
+    transition: 0.5s;
+  }
+
 .hoverkoko{
     display: none;
+    transition: 0.5s;
 }
 .removehover{
     display: inline;
@@ -39,13 +46,12 @@ flex-direction: column;
 }
 .logonav{
  display: none;
+ transition: 0.5s;
 }
 
-.provatext{
+.containeNav{
 width: 100%;
 background-color: $orange;
 display: flex;
 }
-.centratura{
-    margin: 0 auto;
-}
+
