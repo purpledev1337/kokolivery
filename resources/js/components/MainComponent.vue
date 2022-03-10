@@ -4,7 +4,10 @@
         <header-component />
 
         <!-- Top Ten Restaurant -->
-        <top-restaurant-component :topRestaurants="filteredRestaurant" />
+        <h4 class="h4 m-2">I nostri migliori Ristornati</h4>
+        <div id="top-restaurant" class="cardrestaurant container-fluid">
+            <top-restaurant-component :topRestaurants="filteredRestaurant" />
+        </div>
     </section>
 </template>
 

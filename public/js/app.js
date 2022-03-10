@@ -5231,6 +5231,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -5680,6 +5683,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CardComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CardComponent.vue */ "./resources/js/components/CardComponent.vue");
 //
 //
 //
@@ -5701,7 +5705,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    CardComponent: _CardComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       filteredRestaurant: []
@@ -42726,7 +42734,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "row row-cols-2 justify-content-center" },
+    { staticClass: "row row-cols-3 justify-content-center" },
     _vm._l(_vm.filteredRestaurants, function (restaurant) {
       return _c(
         "div",
@@ -42927,9 +42935,23 @@ var render = function () {
     [
       _c("header-component"),
       _vm._v(" "),
-      _c("top-restaurant-component", {
-        attrs: { topRestaurants: _vm.filteredRestaurant },
-      }),
+      _c("h4", { staticClass: "h4 m-2" }, [
+        _vm._v("I nostri migliori Ristornati"),
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "cardrestaurant container-fluid",
+          attrs: { id: "top-restaurant" },
+        },
+        [
+          _c("top-restaurant-component", {
+            attrs: { topRestaurants: _vm.filteredRestaurant },
+          }),
+        ],
+        1
+      ),
     ],
     1
   )
@@ -43268,72 +43290,9 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "container-fluid content my-5",
-      attrs: { id: "top-restaurant" },
-    },
-    [
-      _c("h4", { staticClass: "h4 m-2" }, [
-        _vm._v("I nostri migliori Ristornati"),
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "row flex-nowrap overflow-auto row-cols-2 row-cols-lg-4 position-relative",
-        },
-        _vm._l(_vm.topRestaurants, function (restaurant) {
-          return _c("div", { key: restaurant.id, staticClass: "col" }, [
-            _c(
-              "a",
-              {
-                staticClass:
-                  "card h-100 shadow bg-body roundedTop roundedBottom",
-                attrs: { href: "restaurant/shop/" + restaurant.id },
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "card-img-top position-relative roundedTop" },
-                  [
-                    _c("img", {
-                      staticClass: "roundedTop",
-                      attrs: {
-                        src: "https://source.unsplash.com/random",
-                        alt: "restaurant.brand_name",
-                      },
-                    }),
-                    _vm._v(" "),
-                    _c("h4", { staticClass: "card-title position-absolute" }, [
-                      _vm._v(_vm._s(restaurant.brand_name)),
-                    ]),
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c("p", { staticClass: "card-text" }, [
-                    _vm._v(_vm._s(restaurant.description)),
-                  ]),
-                  _vm._v(" "),
-                  _c("span", [
-                    _vm._v(_vm._s(restaurant.rating) + " "),
-                    _c("i", { staticClass: "fas fa-star" }),
-                    _vm._v(" (" + _vm._s(restaurant.num_rating) + ") "),
-                  ]),
-                  _vm._v(" "),
-                  _c("span", [_vm._v(_vm._s(restaurant.city))]),
-                ]),
-              ]
-            ),
-          ])
-        }),
-        0
-      ),
-    ]
-  )
+  return _c("card-component", {
+    attrs: { filteredRestaurants: _vm.topRestaurants },
+  })
 }
 var staticRenderFns = []
 render._withStripped = true

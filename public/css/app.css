@@ -19176,45 +19176,6 @@ input {
   background: linear-gradient(90deg, #ffd00f 49%, #d05026 100%);
 }
 
-#top-restaurant .row-cols-2 > * {
-  width: 40% !important;
-}
-
-#top-restaurant .row-cols-lg-4 > * {
-  width: 30%;
-}
-
-#top-restaurant .roundedTop {
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
-}
-
-#top-restaurant .roundedBottom {
-  border-bottom-left-radius: 2rem;
-  border-bottom-right-radius: 2rem;
-}
-
-#top-restaurant h4.card-title.position-absolute,
-#top-restaurant .card-title.position-absolute.h4 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-}
-
-#top-restaurant i {
-  color: #f9db03;
-}
-
-#top-restaurant .card-img-top img {
-  height: 30em;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
-}
-
 .cardrestaurant {
   /**** description *****/
   /**** Details ****/
@@ -19249,6 +19210,9 @@ input {
   z-index: 10;
   font-size: 30px;
   padding-top: 20px;
+  background-color: rgb(var(--bs-light-rgb));
+  height: 3em;
+  opacity: 0.7;
 }
 
 .cardrestaurant .card .card-image {
@@ -19258,12 +19222,12 @@ input {
   width: 100%;
   height: 100%;
   z-index: 2;
-  background-color: #000;
+  background-color: #202020;
   transition: 0.5s;
 }
 
 .cardrestaurant .card:hover img {
-  opacity: 0.4;
+  opacity: 0.2;
   transition: 0.5s;
 }
 
@@ -19281,6 +19245,9 @@ input {
 }
 
 .cardrestaurant .container-description > .description {
+  font-size: 1.2rem;
+  text-align: center;
+  padding-top: 0.5rem;
   font-weight: bold;
   margin: 0 6px;
   transition: 0.4s;
@@ -19293,11 +19260,6 @@ input {
   opacity: 1;
 }
 
-.cardrestaurant .card:hover h2,
-.cardrestaurant .card:hover .h2 {
-  color: #fff;
-}
-
 .cardrestaurant .details {
   position: absolute;
   bottom: 0;
@@ -19307,10 +19269,13 @@ input {
   height: 120px;
   z-index: 1;
   padding: 10px;
+  opacity: 1;
+  color: #000;
 }
 
 .cardrestaurant .details h6,
 .cardrestaurant .details .h6 {
+  font-size: 1rem !important;
   margin: 30px 0;
   padding: 0;
   text-align: center;
@@ -19320,8 +19285,16 @@ input {
 .cardrestaurant .details .h6 .more-details {
   font-size: 1rem;
   line-height: 2.5rem;
-  color: #333;
-  font-weight: 300;
+  font-weight: bolder;
+}
+
+#top-restaurant .row {
+  flex-wrap: nowrap;
+  justify-content: start !important;
+}
+
+#top-restaurant .row-cols-2 > * {
+  width: 40% !important;
 }
 
 #shop {
