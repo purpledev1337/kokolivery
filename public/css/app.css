@@ -19147,10 +19147,6 @@ fieldset:disabled .btn {
   align-items: center;
 }
 
-#top-restaurant img {
-  width: 100%;
-}
-
 h1,
 .h1 {
   position: relative;
@@ -19174,6 +19170,16 @@ input {
 #banner_svg {
   background: #ffd00f;
   background: linear-gradient(90deg, #ffd00f 49%, #d05026 100%);
+}
+
+#top-restaurant .row {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  justify-content: start !important;
+}
+
+#top-restaurant .row-cols-2 > * {
+  width: 40% !important;
 }
 
 .cardrestaurant {
@@ -19286,15 +19292,6 @@ input {
   font-size: 1rem;
   line-height: 2.5rem;
   font-weight: bolder;
-}
-
-#top-restaurant .row {
-  flex-wrap: nowrap;
-  justify-content: start !important;
-}
-
-#top-restaurant .row-cols-2 > * {
-  width: 40% !important;
 }
 
 #shop {

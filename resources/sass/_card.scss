@@ -1,17 +1,17 @@
-.cardrestaurant{
-    i{
+.cardrestaurant {
+    i {
         color: $yellow;
     }
-    
+
     .card-wrapper {
-    width: 400px;
-    height: 500px;
-    position: relative;
+        width: 400px;
+        height: 500px;
+        position: relative;
     }
-    
+
     .card {
 
-        .brandname{
+        .brandname {
             text-align: center;
             z-index: 10;
             font-size: 30px;
@@ -33,124 +33,77 @@
         cursor: pointer;
         transition: 0.5s;
     }
+
     .card .card-image {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    background-color: #202020;
-    transition: 0.5s;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        background-color: #202020;
+        transition: 0.5s;
     }
+
     .card:hover img {
-    opacity: 0.2;
-    transition: 0.5s;
+        opacity: 0.2;
+        transition: 0.5s;
     }
-    
+
     .card:hover .card-image {
-    transform: translateY(-100px);
-    transition: all 0.9s;
+        transform: translateY(-100px);
+        transition: all 0.9s;
     }
-    
+
     /**** description *****/
     .container-description {
-    z-index: 3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    }
-    .container-description>.description {
-    font-size: 1.2rem;
-    text-align: center;
-    padding-top: .5rem;
-    font-weight: bold;
-    margin: 0 6px;
-    transition: 0.4s;
-    // transform: translateY(200px);
-    opacity: 1;
-    }
-    
-    .card:hover .container-description {
-    color: #fff;
-    transform: translateY(0px);
-    opacity: 1;
+        z-index: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
     }
 
-    // .card:hover h2{
-    // color: #fff;
-    // }
-    
+    .container-description>.description {
+        font-size: 1.2rem;
+        text-align: center;
+        padding-top: .5rem;
+        font-weight: bold;
+        margin: 0 6px;
+        transition: 0.4s;
+        opacity: 1;
+    }
+
+    .card:hover .container-description {
+        color: #fff;
+        transform: translateY(0px);
+        opacity: 1;
+    }
+
     /**** Details ****/
     .details {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background: #fff;
-    width: 100%;
-    height: 120px;
-    z-index: 1;
-    padding: 10px;
-    opacity: 1;
-    color: #000;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: #fff;
+        width: 100%;
+        height: 120px;
+        z-index: 1;
+        padding: 10px;
+        opacity: 1;
+        color: #000;
     }
+
     .details h6 {
-    font-size: 1rem!important;
-    margin: 30px 0;
-    padding: 0;
-    text-align: center;
+        font-size: 1rem !important;
+        margin: 30px 0;
+        padding: 0;
+        text-align: center;
     }
+
     .details h6 .more-details {
-    font-size: 1rem;
-    line-height: 2.5rem;
-    // color: #333;
-    font-weight: bolder;
+        font-size: 1rem;
+        line-height: 2.5rem;
+        font-weight: bolder;
     }
-}
-
-#top-restaurant{
-    .row{
-        flex-wrap: nowrap;
-        // overflow-x: auto;
-        justify-content: start!important;
-    }
-    .row-cols-2 > * {
-        width: 40%!important;
-    }
-
-
-    // .row-cols-3 > * {
-    //     width: 30%;
-    // }
-    // .roundedTop{
-    //     border-top-left-radius: 2rem; 
-    //     border-top-right-radius: 2rem;
-    // }
-    // .roundedBottom{
-    //     border-bottom-left-radius: 2rem; 
-    //     border-bottom-right-radius: 2rem;
-    // }
-
-    // h4{
-    //     &.card-title.position-absolute{
-    //         position: absolute;
-    //         top: 50%;
-    //         left: 50%;
-    //         transform: translate(-50%, -50%);
-    //         color: #fff;
-    //     }
-    // }
-
-    // i{
-    //     color: $yellow;
-    // }
-
-    // .card-img-top{
-    //     img{
-    //         height: 30em;
-    //         object-fit: cover;
-    //         object-position: center;
-    //     }
-    // }
 }
