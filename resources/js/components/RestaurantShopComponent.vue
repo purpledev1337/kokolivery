@@ -14,9 +14,9 @@
       </div>
     </div>
 
-    <div id="categories_box" class="row d-flex justify-content-center">
+    <div id="categories_box" class="row-md d-flex justify-content-center">
       <a
-        class="col-xs-4 col-md-2 btn btn-success mx-1"
+        class="col-xs-4 col-md-2 btn orange mx-1"
         v-for="(category, i) in arrayCategories"
         :key="i"
         :href="`#${category}` + `link`">
@@ -42,7 +42,7 @@
             bib: category == 'Bibite',
           }"
         >
-          <h2 :id="`${category}` + `link`" class="col-12">{{ category }}:</h2>
+          <h2 class="col-12" :id="`${category}` + `link`">{{ category }}:</h2>
           {{ setCat(category) }}
           <div
             class="dish_box col-xs-12 col-lg-6"
@@ -121,7 +121,7 @@
             </th>
           </tr>
         </table>
-        <a class="btn btn-success" :href="route">Procedi con l'acquisto</a>
+        <a :class="!cart.length ? 'disabled' : ''" class="btn btn-success" :href="route">Procedi con l'acquisto</a>
         <!-- @click="sendCart" -->
       </div>
 

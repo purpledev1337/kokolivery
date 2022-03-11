@@ -19253,6 +19253,12 @@ input {
   justify-content: center;
 }
 
+#shop #dashboard_box #categories_box .orange {
+  color: #000;
+  background-color: #d05026;
+  border-color: #d05026;
+}
+
 #shop #flex {
   display: flex;
   flex-wrap: wrap;

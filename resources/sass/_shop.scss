@@ -24,6 +24,16 @@
             flex-direction: column;
             justify-content: center;
         }
+
+        #categories_box {
+
+            .orange {
+
+                color: #000;
+                background-color: #d05026;
+                border-color: #d05026;
+            }
+        }
     }
 
     #flex{

@@ -42934,7 +42934,7 @@ var render = function () {
         _c(
           "div",
           {
-            staticClass: "row d-flex justify-content-center",
+            staticClass: "row-md d-flex justify-content-center",
             attrs: { id: "categories_box" },
           },
           _vm._l(_vm.arrayCategories, function (category, i) {
@@ -42942,7 +42942,7 @@ var render = function () {
               "a",
               {
                 key: i,
-                staticClass: "col-xs-4 col-md-2 btn btn-success mx-1",
+                staticClass: "col-xs-4 col-md-2 btn orange mx-1",
                 attrs: { href: "#" + category + "link" },
               },
               [_vm._v("\n\n        " + _vm._s(category) + "\n\n    ")]
@@ -43177,6 +43177,7 @@ var render = function () {
                   "a",
                   {
                     staticClass: "btn btn-success",
+                    class: !_vm.cart.length ? "disabled" : "",
                     attrs: { href: _vm.route },
                   },
                   [_vm._v("Procedi con l'acquisto")]
