@@ -9,14 +9,9 @@
     import Chart from 'chart.js/auto';
 
     export default {
-        // props: {
-        //     labels: String,
-        //     dataProp: String,
-        //     colors: String,
-        // },
         data(){
             return{
-                // dataChart: null,
+
                 labels: null,
                 dataProp: null,
                 colors: null,
@@ -26,17 +21,11 @@
             async getDataChart(){
                 let res = await axios.get('/charts')
                 .catch(error => console.error(error));
-                // this.dataChart = res.data;
                 this.labels = res.data.labels;
                 this.dataProp = res.data.dataset;
                 this.colors = res.data.colours;
-                console.log(res.data);
-                console.log('labels',this.labels);
-                console.log('dataset',this.dataProp);
-                console.log('color',this.colors);
                 this.renderChart();
             },
-            // polarArea
             renderChart() {
                 new Chart(document.getElementById('canvas').getContext('2d'), {
                     type: 'bar',
@@ -59,9 +48,6 @@
             }
         },
         mounted() {
-            // console.log(JSON.parse(this.labels));
-            // console.log('data',JSON.parse(this.dataProp));
-            // this.renderChart();
             this.getDataChart();
         }
     }
