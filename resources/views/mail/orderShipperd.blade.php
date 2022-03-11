@@ -3,7 +3,7 @@ Ciao  {{ $guest ->name}}, {{$guest ->lastname}}
 il tuo ordine numero: {{$guest ->order_id}} <br>
 arriverà in : {{ $guest ->address}} <br>
 
-il pagamento di euro {{ $cartData['tot']}} <br>
+il pagamento di € {{ $cartData['tot']}} <br>
 hai ordinato:
 @foreach ( $cartData['cartDishes'] as $dish)
 <li> {{$dish['quantity']}}x - {{$dish['name']}} - €{{$dish['price']}}</li>

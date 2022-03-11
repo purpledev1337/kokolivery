@@ -85,9 +85,11 @@
                     </ul>
                 </div>
             @endif
+            <div id="content">
+                @yield('content')
 
-            @yield('content')
-
+            </div>
+    
             @include('components.footer')
 
         </div>

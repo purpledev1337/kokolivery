@@ -1,3 +1,62 @@
+//sezione navbar
+nav{
+
+flex-direction: column;
+}
+
 .navbar-collapse {
     flex-grow: 0!important;
+}
+.logonavbase
+{
+    text-shadow: 1px 2px 3px #5c2e4d;
+    font-size: 32px;
+}
+.centratura{
+    margin: 0 auto;
+    position: relative;
+    top: -40px;
+}
+
+//colori link
+ .white
+{
+      color: white;
+}
+.a, .black
+{
+      color: #000000;
+}
+
+//sezione navbar che scompare
+.bg-valerio{
+    background-color:$orange;
+    color: white;
+    transition: 0.5s;
+  }
+
+.hoverkoko{
+    display: none;
+    transition: 0.5s;
+}
+.removehover{
+    display: inline;
+    width: 100px;
+}
+.removehoverform{
+    display: inline;
+}
+.logonav{
+ display: none;
+ transition: 0.5s;
+}
+
+.containeNav{
+width: 100%;
+background-color: $orange;
+display: flex;
+}
+
+.navbar-light .navbar-toggler{
+    color: blue !important;
 }

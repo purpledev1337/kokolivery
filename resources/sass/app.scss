@@ -21,16 +21,24 @@
 
 @import 'stripe.scss';
 
+@import '_footer.scss';
+
+@import '_jumbotron';
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 body {
-    padding-top: 56px;
+   
     background-color: #fff;
 }
 .visibility{
     display: none;
 }
 
+
+#content {
+    padding: 4em 0em;
+}

@@ -1,8 +1,8 @@
 
-// body {
-//     font-family: Arial, Helvetica, sans-serif;
-//     padding-top: 70px;
-// }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 40px;
+ }
 
 
 #search_home {
@@ -13,7 +13,9 @@
     height: 75vh;
     background: rgb(255,208,15);
     background: linear-gradient(90deg, rgba(255,208,15,1) 49%, rgba(208,80,38,1) 100%);
-
+}
+#home{
+    margin-top: 40px;
 }
 
 #cont-logo {
@@ -47,4 +49,15 @@ input {
 #banner_svg {
     background: rgb(255,208,15);
     background: linear-gradient(90deg, rgba(255,208,15,1) 49%, rgba(208,80,38,1) 100%);
+}
+
+
+
+.sfumatura_header{
+    background-color: #cdbfe2;
+    background-image: var(--bs-gradient);
+}
+
+.nav-link:hover, .nav-link:focus{
+    color: #ffffff;
 }
