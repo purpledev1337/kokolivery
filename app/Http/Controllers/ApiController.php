@@ -81,8 +81,21 @@ class ApiController extends Controller
 
     
     public function restaurantDishesView($id) {
-        $dishes = User::find($id) -> dishes;
-        
-        return json_encode($dishes);
+
+        $dishes = DB::table('dishes')
+                -> select('*')
+                -> where('user_id', $id)
+                -> where('is_visible', 1)
+                -> where('delete', 0)
+                -> get();
+
+        $restaurant = User::findOrFail($id);
+
+
+        $data = [
+            'dishes' => $dishes,
+            'restaurant' => $restaurant
+        ];
+        return json_encode($data);
     }
 }
