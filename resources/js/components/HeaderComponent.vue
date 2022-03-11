@@ -10,11 +10,10 @@
               </h1> 
           </div>
           <div>
-              <input type="text" placeholder="Inserisci La Via, La Citta' E La Provincia">
-              <button class="btn btn-primary" >SEARCH</button>
+              <input @keyup.enter.prevent="searchRestaurantsFromCity" type="text" placeholder="Inserisci La Via, La Citta' E La Provincia" v-model="city">
+              <button @click.prevent="searchRestaurantsFromCity"  class="btn btn-primary" >SEARCH</button>
           </div>
           
-          <!-- <a href="{{ route('restaurant_list') }}">Link alla restaurant_list</a> -->
       </div>
       <img id="banner_svg" src="storage/asset/banner_home4.svg" alt="">
   </section>
@@ -24,13 +23,18 @@
 export default {
     data() {
         return {
-            // filteredRestaurant: [],
+            city: '',
         }
     },
     props: {
         // topRestaurants: Object,
     },
     methods: {
+        searchRestaurantsFromCity(){
+            let cityChoose = this.city.toLowerCase();
+            this.city = '';
+            window.location.href = `/restaurants/${cityChoose}`;   
+        },
     },
 }
 </script>

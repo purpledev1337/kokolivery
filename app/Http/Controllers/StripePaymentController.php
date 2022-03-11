@@ -7,6 +7,9 @@ use Session;
 use Stripe;
 use App\Order;
 use App\Guest;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderShipped;
+
    
 class StripePaymentController extends Controller
 {
@@ -42,6 +45,7 @@ class StripePaymentController extends Controller
         $cartTot = Session::get('cart');
         $payment = $cartTot['tot'];
 
+
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create ([
                 "amount" => $payment * 100,
@@ -67,7 +71,6 @@ class StripePaymentController extends Controller
 
         $cartData = Session::get('cart');
         $cart = $cartData['cartDishes'];
-
         foreach ($cart as $dish) {
             $order->dishes()->attach($dish['id'], ['quantity' => $dish['quantity']]);
         };
@@ -75,6 +78,10 @@ class StripePaymentController extends Controller
         $guest = Guest::make($data);
         $guest -> order_id = $order -> id;
         $guest -> save();
+
+        //collego OrderShipped, e mando i dati al costruttore
+        Mail::to($guest->email) ->send (new OrderShipped( $guest, $cartData,$order));
+        Mail::to('admin@kokolivery.com') ->send (new OrderShipped( $guest, $cartData,$order));
 
         return back();
     }

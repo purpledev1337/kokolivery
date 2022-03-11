@@ -19182,14 +19182,15 @@ input {
   flex-wrap: wrap;
 }
 
-.restaurant_card {
+#restaurants_box .restaurant_card {
+  cursor: pointer;
   width: 30%;
   border: 1px solid black;
   text-align: center;
   margin: 10px 0;
 }
 
-.restaurant_img {
+#restaurants_box .restaurant_img {
   width: 65%;
 }
 

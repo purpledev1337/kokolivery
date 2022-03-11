@@ -18,9 +18,13 @@ class GuestController extends Controller
         $types = Type::all();
         return view('pages.register', compact('types'));
     }
-    
-    public function restaurant_list() {
-        return view('pages.guest.restaurant_list');
+    // ritorna pagina con ristornati per città
+    public function getRestaurants($city) {
+        return view('pages.guest.restaurants',compact('city'));
+    }
+    // ritorna pagina con tutti i ristoranti
+    public function getAllRestaurants() {
+        return view('pages.guest.restaurants');
     }
     
     public function restaurantDishes($id) {

@@ -19,19 +19,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}">Logout</a>
                         </li>
-                    {{-- @else
-                        <li class="btn btn-secondary me-2 mb-1 mb-lg-0" >
-                            <a class="btn btn-outline-indigo me-2 mb-1 mb-lg-0" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
-                        </li>
-                        
-                        <li class="nav-item me-2 mb-1 mb-lg-0">
-                            <a class="btn btn-primary my-2 mb-1 mb-lg-0" href="{{ route('register') }}">REGISTER</a>
-                        </li> --}}
                     @endauth
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('restaurant_list') }}">Ristoranti</a>
-                    </li>
                     {{-- dropdown --}}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -47,12 +36,22 @@
                             <li><a class="dropdown-item" href="#">Contatti</a></li>
                         </ul>
                     </li>
+                    {{-- link to home --}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home') }}">Home</a>
+                    </li>
+                    {{-- link to all restaurants --}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('restaurants') }}">Ristoranti</a>
+                    </li>
+                    
                 </ul>
                 
-                <form class="d-flex">
+                {{-- searchbar nav --}}
+                {{-- <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-indigo" type="submit">Search</button>
-                </form>
+                </form> --}}
 
             </div>
 

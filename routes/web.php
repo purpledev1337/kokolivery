@@ -46,20 +46,23 @@ Route::middleware(['auth'])->prefix('auth')->group(function () {
 
 
 Route::get('restaurant/shop/{id}', 'GuestController@restaurantDishes') -> name('restaurant.shop');
-Route::get('/restaurant_list', 'GuestController@restaurant_list')->name('restaurant_list');
+Route::get('/restaurants/{city}', 'GuestController@getRestaurants')->name('restaurants.city');
+Route::get('/restaurants', 'GuestController@getAllRestaurants')->name('restaurants');
 
 // api route
 Route::prefix('api') -> group(function(){
-    Route::get('/restaurant_list', 'ApiController@getRestaurants')->name('api.restaurant_list');
+    Route::get('/restaurants', 'ApiController@getRestaurants')->name('api.restaurants');
     Route::get('/view/restaurant/shop/{id}', 'ApiController@restaurantDishesView') -> name('guest.restaurantDishes');
 });
 
+// rotte stripe
 Route::get('stripe/cart', 'StripePaymentController@viewCart');
 Route::post('restaurant/shop/stripe/save/cart', 'StripePaymentController@saveCart');
 
 Route::get('stripe', 'StripePaymentController@stripe') -> name('stripe.view');
 Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post');
 
+Route::get('/charts', 'ChartController@index')->name('charts');
 
 
 
