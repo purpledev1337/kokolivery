@@ -13,7 +13,7 @@
 
 @import 'home.scss';
 
-@import 'restaurant_list.scss';
+@import 'resturants.scss';
 
 @import 'card.scss';
 
@@ -21,16 +21,24 @@
 
 @import 'stripe.scss';
 
+@import '_footer.scss';
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 body {
-    padding-top: 56px;
+   h2{
+       font-size: 2.5em;
+   }
     background-color: #fff;
 }
 .visibility{
     display: none;
 }
 
+
+#content {
+    padding: 4em 0em;
+}

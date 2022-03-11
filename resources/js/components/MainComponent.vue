@@ -4,7 +4,10 @@
         <header-component />
 
         <!-- Top Ten Restaurant -->
-        <top-restaurant-component :topRestaurants="filteredRestaurant" />
+        <h4 class="h4 m-2">I nostri migliori Ristornati</h4>
+        <div id="top-restaurant" class="cardrestaurant container-fluid">
+            <top-restaurant-component :topRestaurants="filteredRestaurant" />
+        </div>
     </section>
 </template>
 
@@ -30,15 +33,10 @@ export default {
     },
     methods: {
         getRestaurant(){
-            axios.get('/api/restaurants')
+            axios.get('/api/restaurants/get')
                 .then((res) => {
-                    // recupero tutti i ristornati
-                    this.restaurants = res.data.users;
-                    this.types = res.data.types;
-                    console.log('risto',this.restaurants);
-                    console.log('types',this.types);
-                    // ordino i ristoranti x rating discendete
-                    this.filteredRestaurant = this.restaurants;
+                    // // recupero tutti i ristornati e riordino per rating
+                    this.filteredRestaurant = res.data;
                     this.filteredRestaurant.sort( (a,b) => b.rating - a.rating);
                     // filtro solo i primi 10 risultati
                     this.filteredRestaurant = this.filteredRestaurant.splice(0,10);
