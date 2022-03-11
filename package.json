@@ -25,6 +25,8 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.0.0",
+        "chart.js": "^3.7.1",
+        "vue-chartjs": "^3.5.1",
         "vue-sessionstorage": "^1.0.0"
     }
 }
