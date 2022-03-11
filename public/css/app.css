@@ -19153,7 +19153,7 @@ nav {
 
 .a,
 .black {
-  color: #252525;
+  color: #000000;
 }
 
 .bg-valerio {
@@ -19185,6 +19185,15 @@ nav {
   width: 100%;
   background-color: #d05026;
   display: flex;
+}
+
+.navbar-light .navbar-toggler {
+  color: blue !important;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding-top: 40px;
 }
 
 #search_home {
@@ -19233,6 +19242,16 @@ input {
 #banner_svg {
   background: #ffd00f;
   background: linear-gradient(90deg, #ffd00f 49%, #d05026 100%);
+}
+
+.sfumatura_header {
+  background-color: #cdbfe2;
+  background-image: var(--bs-gradient);
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #ffffff;
 }
 
 #restaurants_box {
@@ -19482,7 +19501,7 @@ footer.light .footer-copyright {
 }
 
 .widget li a:hover {
-  color: #4b92dc;
+  color: #ffffff;
 }
 
 .widget-title {
@@ -19563,14 +19582,19 @@ ul.social-footer2 li a {
 }
 
 .btn {
-  background-color: #ff8d1e;
+  background-color: #FF2c63;
+  color: #fff;
+}
+
+.btnBlue {
+  background-color: #390075;
   color: #fff;
 }
 
 .btn:hover,
 .btn:focus,
 .btn.active {
-  background: #4b92dc;
+  background: #390075;
   color: #fff;
   -ms-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   -o-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
@@ -19583,9 +19607,14 @@ ul.social-footer2 li a {
   transform: rotate(180deg);
 }
 
+.btnNavScesa:hover {
+  background: #FF2c63;
+  color: #fff;
+}
+
 #containerJumbo {
   width: 100%;
-  height: 1000px;
+  height: 1300px;
   background-image: url("/storage/asset/rider.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -19609,7 +19638,7 @@ ul.social-footer2 li a {
 }
 
 .centratura-logonav {
-  padding: 0 10%;
+  padding: 34px 10%;
 }
 
 * {

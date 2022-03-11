@@ -32,15 +32,17 @@ export default {
 };
 $(function () {
   var koko = $(".verkoko");
-
+  var bottone = $(".btn");
   $(window).scroll(function () {
     var scroll = $(window).scrollTop();
     if (scroll >= 50) {
-      //header.addClass("navbar-dark bg-primary");
-
+      bottone.addClass("btnBlue");
+      bottone.addClass("btnNavScesa");
       koko.removeClass("hoverkoko");
     } else {
       koko.addClass(" hoverkoko");
+      bottone.removeClass("btnBlue");
+       bottone.removeClass("btnNavScesa");
     }
   });
 });

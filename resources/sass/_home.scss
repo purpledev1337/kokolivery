@@ -1,8 +1,8 @@
 
-// body {
-//     font-family: Arial, Helvetica, sans-serif;
-//     padding-top: 70px;
-// }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 40px;
+ }
 
 
 #search_home {
@@ -52,3 +52,12 @@ input {
 }
 
 
+
+.sfumatura_header{
+    background-color: #cdbfe2;
+    background-image: var(--bs-gradient);
+}
+
+.nav-link:hover, .nav-link:focus{
+    color: #ffffff;
+}

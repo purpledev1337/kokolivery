@@ -1,5 +1,5 @@
 <header>
-    <nav style="" class="navbar fixed-top navbar-expand-lg">
+    <nav  class="navbar fixed-top navbar-expand-lg sfumatura_header">
         <div class="container-fluid centratura-logonav">
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
@@ -89,6 +89,7 @@
                 var scroll = $(window).scrollTop();
                 if (scroll >= 50) {
                     header.addClass(" bg-valerio");
+                    header.removeClass("sfumatura_header");
                     brand.addClass("white");
                     brand.removeClass("black");
                     linka.removeClass("black");
@@ -101,6 +102,7 @@
 
                 } else {
                     header.removeClass(" bg-valerio");
+                    header.addClass("sfumatura_header");
                     brand.removeClass("white");
                     brand.addClass("black")
                     linka.removeClass("white");
