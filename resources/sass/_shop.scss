@@ -25,15 +25,6 @@
             justify-content: center;
         }
 
-        #categories_box {
-
-            .orange {
-
-                color: #000;
-                background-color: #d05026;
-                border-color: #d05026;
-            }
-        }
     }
 
     #flex{
@@ -190,4 +181,10 @@
     font-size: 5em;
     text-align: center;
     padding: 3em 0;
+}
+
+.btn-orange {
+
+    background-color: #d05026;
+    border-color: #d05026;
 }
