@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\Type;
+use DB;
 
 class ApiController extends Controller
 {
@@ -24,9 +25,17 @@ class ApiController extends Controller
 
     
     public function restaurantDishesView($id) {
-        $dishes = User::find($id) -> dishes;
+
+        $dishes = DB::table('dishes')
+                -> select('*')
+                -> where('user_id', $id)
+                -> where('is_visible', 1)
+                -> where('delete', 0)
+                -> get();
+
         $restaurant = User::findOrFail($id);
-        
+
+
         $data = [
             'dishes' => $dishes,
             'restaurant' => $restaurant

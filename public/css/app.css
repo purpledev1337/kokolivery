@@ -19151,8 +19151,7 @@ img {
   width: 100%;
 }
 
-h1,
-.h1 {
+#float-title {
   position: relative;
   text-align: center;
   color: #5c2e4d;

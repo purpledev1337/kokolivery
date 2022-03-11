@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div id="categories_box" class="row-md d-flex justify-content-center">
+    <div id="categories_box" class="row-md d-flex justify-content-center m-5">
       <a
         class="col-xs-4 col-md-2 btn btn-orange mx-1"
         v-for="(category, i) in arrayCategories"
@@ -48,7 +48,7 @@
             class="dish_box col-xs-12 col-lg-6"
             v-for="(dish, k) in arrayCategoryDishes"
             :key="k">
-              <div class="dish_card row p-3" v-if="dish.is_visible && !dish.delete">
+              <div class="dish_card row p-3">
 
                 <!-- <img :src="require(`../public/storage/${dish.image_path}`)" alt=""> -->
                 <div class="col-9">
@@ -89,9 +89,6 @@
 
                 </div>
               </div>
-              <div v-else>
-                ...coming soon...
-              </div>
           </div>
         </div>
 
@@ -125,6 +122,12 @@
             <td>{{ item.quantity }}</td>
             <td>{{ item.name }}</td>
             <td>€ {{ item.price }}</td>
+            <td>
+              <span class="btn btn-secondary"
+                @click="removeFromCart(item)">
+                -
+              </span>
+            </td>
           </tr>
           <tr>
             <th></th>

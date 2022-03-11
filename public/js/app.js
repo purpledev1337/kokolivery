@@ -5385,6 +5385,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 Vue.use(vue_sessionstorage__WEBPACK_IMPORTED_MODULE_1___default.a);
 Vue.config.productionTip = false;
@@ -42947,7 +42950,7 @@ var render = function () {
         _c(
           "div",
           {
-            staticClass: "row-md d-flex justify-content-center",
+            staticClass: "row-md d-flex justify-content-center m-5",
             attrs: { id: "categories_box" },
           },
           _vm._l(_vm.arrayCategories, function (category, i) {
@@ -43016,92 +43019,76 @@ var render = function () {
                             staticClass: "dish_box col-xs-12 col-lg-6",
                           },
                           [
-                            dish.is_visible && !dish.delete
-                              ? _c(
-                                  "div",
-                                  { staticClass: "dish_card row p-3" },
-                                  [
-                                    _c("div", { staticClass: "col-9" }, [
-                                      _c("h2", [_vm._v(_vm._s(dish.name))]),
-                                      _vm._v(" "),
-                                      _c("h5", [
-                                        _vm._v(_vm._s(dish.description)),
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("h3", [
-                                        _vm._v("€" + _vm._s(dish.price)),
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("br"),
-                                      _vm._v(" "),
-                                      _vm.cart.some(function (item) {
-                                        return item.id === dish.id
-                                      })
-                                        ? _c(
-                                            "span",
-                                            {
-                                              staticClass: "btn btn-orange",
-                                              on: {
-                                                click: function ($event) {
-                                                  return _vm.addToCart(dish)
-                                                },
-                                              },
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                  +\n                "
-                                              ),
-                                            ]
-                                          )
-                                        : _c(
-                                            "span",
-                                            {
-                                              staticClass: "btn btn-orange",
-                                              on: {
-                                                click: function ($event) {
-                                                  return _vm.addToCart(dish)
-                                                },
-                                              },
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                  Aggiungi al carrello\n                "
-                                              ),
-                                            ]
-                                          ),
-                                      _vm._v(" "),
-                                      _vm.cart.some(function (item) {
-                                        return item.id === dish.id
-                                      })
-                                        ? _c(
-                                            "span",
-                                            {
-                                              staticClass: "btn btn-secondary",
-                                              on: {
-                                                click: function ($event) {
-                                                  return _vm.removeFromCart(
-                                                    dish
-                                                  )
-                                                },
-                                              },
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                  -\n                "
-                                              ),
-                                            ]
-                                          )
-                                        : _vm._e(),
-                                    ]),
-                                    _vm._v(" "),
-                                    _vm._m(0, true),
-                                  ]
-                                )
-                              : _c("div", [
-                                  _vm._v(
-                                    "\n              ...coming soon...\n            "
-                                  ),
-                                ]),
+                            _c("div", { staticClass: "dish_card row p-3" }, [
+                              _c("div", { staticClass: "col-9" }, [
+                                _c("h2", [_vm._v(_vm._s(dish.name))]),
+                                _vm._v(" "),
+                                _c("h5", [_vm._v(_vm._s(dish.description))]),
+                                _vm._v(" "),
+                                _c("h3", [_vm._v("€" + _vm._s(dish.price))]),
+                                _vm._v(" "),
+                                _c("br"),
+                                _vm._v(" "),
+                                _vm.cart.some(function (item) {
+                                  return item.id === dish.id
+                                })
+                                  ? _c(
+                                      "span",
+                                      {
+                                        staticClass: "btn btn-orange",
+                                        on: {
+                                          click: function ($event) {
+                                            return _vm.addToCart(dish)
+                                          },
+                                        },
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                  +\n                "
+                                        ),
+                                      ]
+                                    )
+                                  : _c(
+                                      "span",
+                                      {
+                                        staticClass: "btn btn-orange",
+                                        on: {
+                                          click: function ($event) {
+                                            return _vm.addToCart(dish)
+                                          },
+                                        },
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                  Aggiungi al carrello\n                "
+                                        ),
+                                      ]
+                                    ),
+                                _vm._v(" "),
+                                _vm.cart.some(function (item) {
+                                  return item.id === dish.id
+                                })
+                                  ? _c(
+                                      "span",
+                                      {
+                                        staticClass: "btn btn-secondary",
+                                        on: {
+                                          click: function ($event) {
+                                            return _vm.removeFromCart(dish)
+                                          },
+                                        },
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                  -\n                "
+                                        ),
+                                      ]
+                                    )
+                                  : _vm._e(),
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(0, true),
+                            ]),
                           ]
                         )
                       }),
@@ -43180,6 +43167,21 @@ var render = function () {
                         _c("td", [_vm._v(_vm._s(item.name))]),
                         _vm._v(" "),
                         _c("td", [_vm._v("€ " + _vm._s(item.price))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "span",
+                            {
+                              staticClass: "btn btn-secondary",
+                              on: {
+                                click: function ($event) {
+                                  return _vm.removeFromCart(item)
+                                },
+                              },
+                            },
+                            [_vm._v("\n              -\n            ")]
+                          ),
+                        ]),
                       ])
                     }),
                     _vm._v(" "),
