@@ -51,7 +51,10 @@ Route::get('/restaurants', 'GuestController@getAllRestaurants')->name('restauran
 
 // api route
 Route::prefix('api') -> group(function(){
-    Route::get('/restaurants', 'ApiController@getRestaurants')->name('api.restaurants');
+    // Route::get('/restaurants', 'ApiController@getRestaurants')->name('api.restaurants');
+    Route::get('/categories', 'ApiController@getCategotries')->name('api.categories');
+    // Route::get('/categories/by/restaurant/{id}', 'ApiController@categoriesByRestaurant')->name('api.categories.by.restaurant');
+    Route::get('/restaurants/get/{city?}', 'ApiController@getRestaurantsWithDetails')->name('api.restaurants.get');
     Route::get('/view/restaurant/shop/{id}', 'ApiController@restaurantDishesView') -> name('guest.restaurantDishes');
 });
 

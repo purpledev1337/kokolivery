@@ -5101,6 +5101,74 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CardComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CardComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {};
+  },
+  props: {
+    filteredRestaurants: Array
+  },
+  methods: {
+    // show della pagina del ristornate selezionato
+    getRestaurantViewById: function getRestaurantViewById(id) {
+      window.location.href = "/restaurant/shop/".concat(id);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ChartComponent.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ChartComponent.vue?vue&type=script&lang=js& ***!
@@ -5285,6 +5353,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -5307,14 +5378,9 @@ __webpack_require__.r(__webpack_exports__);
     getRestaurant: function getRestaurant() {
       var _this = this;
 
-      axios.get('/api/restaurants').then(function (res) {
-        // recupero tutti i ristornati
-        _this.restaurants = res.data.users;
-        _this.types = res.data.types;
-        console.log('risto', _this.restaurants);
-        console.log('types', _this.types); // ordino i ristoranti x rating discendete
-
-        _this.filteredRestaurant = _this.restaurants;
+      axios.get('/api/restaurants/get').then(function (res) {
+        // // recupero tutti i ristornati e riordino per rating
+        _this.filteredRestaurant = res.data;
 
         _this.filteredRestaurant.sort(function (a, b) {
           return b.rating - a.rating;
@@ -5648,35 +5714,116 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       restaurants: [],
-      types: []
+      types: [],
+      restaurantsCity: [],
+      inputCity: '',
+      loading: true
     };
   },
   props: {
     city: String
   },
+  created: function created() {
+    this.inputCity = this.city;
+  },
   mounted: function mounted() {
-    this.getRestaurant();
+    this.getCategories();
+    this.getRestaurants();
+  },
+  computed: {
+    filteredRestaurants: function filteredRestaurants() {
+      return this.filterRestaurantsByCity();
+    }
   },
   methods: {
-    getRestaurant: function getRestaurant() {
+    getRestaurants: function getRestaurants() {
       var _this = this;
 
-      axios.get('/api/restaurants').then(function (res) {
-        // recupero tutti i ristornati
-        _this.restaurants = res.data.users;
-        _this.types = res.data.types;
-        console.log('risto', _this.restaurants);
-        console.log('types', _this.types);
+      axios.get('/api/restaurants/get').then(function (res) {
+        console.log(res.data);
+        _this.restaurants = res.data;
+        _this.loading = false;
       })["catch"](function (error) {
         return console.error(error);
       });
     },
-    searchRestaurantsFromCity: function searchRestaurantsFromCity(id) {
+    getCategories: function getCategories() {
+      var _this2 = this;
+
+      axios.get('/api/categories').then(function (res) {
+        // recupero tutti le categorie
+        // this.restaurants = res.data.users;
+        _this2.types = res.data;
+      })["catch"](function (error) {
+        return console.error(error);
+      });
+    },
+    // show della pagina del ristornate selezionato
+    getRestaurantViewById: function getRestaurantViewById(id) {
       window.location.href = "/restaurant/shop/".concat(id);
+    },
+    // filtro ristornati per città --> inputCity!
+    filterRestaurantsByCity: function filterRestaurantsByCity() {
+      var _this3 = this;
+
+      if (this.inputCity === '') {
+        // ritorno tutti i ristornati
+        return this.restaurantsCity = this.restaurants;
+      }
+
+      this.restaurantsCity = []; // filtro i ristornati per città
+
+      this.restaurants.forEach(function (restaurant) {
+        if (restaurant.city.toLowerCase().includes(_this3.inputCity.toLowerCase())) {
+          _this3.restaurantsCity.push(restaurant);
+        }
+
+        console.log(_this3.restaurantsCitys);
+      });
+      return this.restaurantsCity;
     }
   }
 });
@@ -5751,28 +5898,16 @@ $(function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CardComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CardComponent.vue */ "./resources/js/components/CardComponent.vue");
 //
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    CardComponent: _CardComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       filteredRestaurant: []
@@ -42780,6 +42915,116 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CardComponent.vue?vue&type=template&id=6e4da0f2&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CardComponent.vue?vue&type=template&id=6e4da0f2& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "row row-cols-3 justify-content-center" },
+    _vm._l(_vm.filteredRestaurants, function (restaurant) {
+      return _c(
+        "div",
+        {
+          key: restaurant.id,
+          staticClass: "col card-wrapper",
+          on: {
+            click: function ($event) {
+              $event.preventDefault()
+              return _vm.getRestaurantViewById(restaurant.id)
+            },
+          },
+        },
+        [
+          _c("div", { staticClass: "card" }, [
+            _c("h2", { staticClass: "brandname" }, [
+              _vm._v(_vm._s(restaurant.brand_name)),
+            ]),
+            _vm._v(" "),
+            _vm._m(0, true),
+            _vm._v(" "),
+            _c("div", { staticClass: "container-description" }, [
+              _c("p", { staticClass: "description" }, [
+                _vm._v(_vm._s(restaurant.description)),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "details" }, [
+              _c(
+                "h6",
+                [
+                  _vm._v(
+                    "\n              " +
+                      _vm._s(restaurant.city) +
+                      " - \n              "
+                  ),
+                  _vm._v(" "),
+                  _vm._l(restaurant.categories, function (categories) {
+                    return _c("span", { key: categories.id }, [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(categories.name) +
+                          "\n              "
+                      ),
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(
+                    "\n               " +
+                      _vm._s(restaurant.address) +
+                      "\n               "
+                  ),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "more-details" }, [
+                    _vm._v(_vm._s(restaurant.rating) + " "),
+                    _c("i", { staticClass: "fas fa-star" }),
+                    _vm._v(" (" + _vm._s(restaurant.num_rating) + ")"),
+                  ]),
+                ],
+                2
+              ),
+            ]),
+          ]),
+        ]
+      )
+    }),
+    0
+  )
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-image" }, [
+      _c("img", {
+        attrs: {
+          src: "https://source.unsplash.com/random/900×700/?restaurant",
+          alt: "",
+        },
+      }),
+    ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ChartComponent.vue?vue&type=template&id=59dc526a&":
 /*!*****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ChartComponent.vue?vue&type=template&id=59dc526a& ***!
@@ -42939,9 +43184,23 @@ var render = function () {
     [
       _c("header-component"),
       _vm._v(" "),
-      _c("top-restaurant-component", {
-        attrs: { topRestaurants: _vm.filteredRestaurant },
-      }),
+      _c("h4", { staticClass: "h4 m-2" }, [
+        _vm._v("I nostri migliori Ristornati"),
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "cardrestaurant container-fluid",
+          attrs: { id: "top-restaurant" },
+        },
+        [
+          _c("top-restaurant-component", {
+            attrs: { topRestaurants: _vm.filteredRestaurant },
+          }),
+        ],
+        1
+      ),
     ],
     1
   )
@@ -43175,46 +43434,152 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h3", [_vm._v("Restaurants List:")]),
-    _vm._v("\n    " + _vm._s(_vm.city) + "\n    "),
-    _c(
-      "div",
-      { attrs: { id: "restaurants_box" } },
-      _vm._l(_vm.restaurants, function (restaurant) {
-        return _c(
-          "div",
-          {
-            key: restaurant.id,
-            staticClass: "restaurant_card",
-            on: {
-              click: function ($event) {
-                $event.preventDefault()
-                return _vm.searchRestaurantsFromCity(restaurant.id)
-              },
-            },
-          },
-          [
-            _c("img", {
-              staticClass: "restaurant_img",
-              attrs: { src: "../storage/" + restaurant.image, alt: "" },
-            }),
-            _vm._v(" "),
-            _c("h2", [_vm._v(_vm._s(restaurant.brand_name))]),
-            _vm._v(" "),
-            _c("h6", [_vm._v("Indirizzo: " + _vm._s(restaurant.address))]),
-            _vm._v(" "),
-            _c("span", [_vm._v("Stelline -> " + _vm._s(restaurant.rating))]),
-            _vm._v(" "),
-            _c("span", [_vm._v("(" + _vm._s(restaurant.num_rating) + ")")]),
-          ]
-        )
-      }),
-      0
-    ),
+  return _c("section", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { attrs: { id: "restaurantsbox" } }, [
+      _c("div", { staticClass: "cardrestaurant container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-2 pt-4" },
+            [
+              _c("h5", { staticClass: "h5" }, [_vm._v("CITTA'")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col input-group input-group mb-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model.lazy",
+                      value: _vm.inputCity,
+                      expression: "inputCity",
+                      modifiers: { lazy: true },
+                    },
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", name: "city" },
+                  domProps: { value: _vm.inputCity },
+                  on: {
+                    keyup: function ($event) {
+                      if (
+                        !$event.type.indexOf("key") &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                      ) {
+                        return null
+                      }
+                      $event.preventDefault()
+                      return _vm.filterRestaurantsByCity.apply(null, arguments)
+                    },
+                    change: function ($event) {
+                      _vm.inputCity = $event.target.value
+                    },
+                  },
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    on: {
+                      click: function ($event) {
+                        $event.preventDefault()
+                        return _vm.filterRestaurantsByCity.apply(
+                          null,
+                          arguments
+                        )
+                      },
+                    },
+                  },
+                  [_vm._v("search")]
+                ),
+              ]),
+              _vm._v(" "),
+              _c("h5", { staticClass: "h5" }, [_vm._v("CATEGORIE")]),
+              _vm._v(" "),
+              _vm._l(_vm.types, function (type) {
+                return _c(
+                  "div",
+                  { key: type.id, staticClass: "input-group mb-3" },
+                  [
+                    _c("div", { staticClass: "input-group-text" }, [
+                      _c("input", {
+                        staticClass: "form-check-input mt-0",
+                        attrs: { type: "checkbox" },
+                        domProps: { value: type.id },
+                        on: {
+                          click: function ($event) {
+                            return _vm.test(type.id, type.name)
+                          },
+                        },
+                      }),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          "aria-label": "Text input with checkbox",
+                        },
+                      },
+                      [_vm._v(_vm._s(type.name))]
+                    ),
+                  ]
+                )
+              }),
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _vm.loading
+            ? _c("div", { attrs: { id: "loading" } }, [
+                _c("span"),
+                _vm._v(" "),
+                _c("span"),
+                _vm._v(" "),
+                _c("span"),
+                _vm._v(" "),
+                _c("span"),
+              ])
+            : _c(
+                "div",
+                { staticClass: "col-10" },
+                [
+                  _c("card-component", {
+                    attrs: { filteredRestaurants: _vm.filteredRestaurants },
+                  }),
+                ],
+                1
+              ),
+        ]),
+      ]),
+    ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "container my-4", attrs: { id: "restaurants" } },
+      [
+        _c("div", { staticClass: "row" }, [
+          _c("h2", { staticClass: "h2" }, [
+            _vm._v("RISTORANTI CHE CONSEGNANO ORA"),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-2" }),
+        ]),
+      ]
+    )
+  },
+]
 render._withStripped = true
 
 
@@ -43308,72 +43673,9 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "container-fluid content my-5",
-      attrs: { id: "top-restaurant" },
-    },
-    [
-      _c("h4", { staticClass: "h4 m-2" }, [
-        _vm._v("I nostri migliori Ristornati"),
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "row flex-nowrap overflow-auto row-cols-2 row-cols-lg-4 position-relative",
-        },
-        _vm._l(_vm.topRestaurants, function (restaurant) {
-          return _c("div", { key: restaurant.id, staticClass: "col" }, [
-            _c(
-              "a",
-              {
-                staticClass:
-                  "card h-100 shadow bg-body roundedTop roundedBottom",
-                attrs: { href: "restaurant/shop/" + restaurant.id },
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "card-img-top position-relative roundedTop" },
-                  [
-                    _c("img", {
-                      staticClass: "roundedTop",
-                      attrs: {
-                        src: "https://source.unsplash.com/random",
-                        alt: "restaurant.brand_name",
-                      },
-                    }),
-                    _vm._v(" "),
-                    _c("h4", { staticClass: "card-title position-absolute" }, [
-                      _vm._v(_vm._s(restaurant.brand_name)),
-                    ]),
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c("p", { staticClass: "card-text" }, [
-                    _vm._v(_vm._s(restaurant.description)),
-                  ]),
-                  _vm._v(" "),
-                  _c("span", [
-                    _vm._v(_vm._s(restaurant.rating) + " "),
-                    _c("i", { staticClass: "fas fa-star" }),
-                    _vm._v(" (" + _vm._s(restaurant.num_rating) + ") "),
-                  ]),
-                  _vm._v(" "),
-                  _c("span", [_vm._v(_vm._s(restaurant.city))]),
-                ]),
-              ]
-            ),
-          ])
-        }),
-        0
-      ),
-    ]
-  )
+  return _c("card-component", {
+    attrs: { filteredRestaurants: _vm.topRestaurants },
+  })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -55612,6 +55914,7 @@ module.exports = function(module) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./components/CardComponent.vue": "./resources/js/components/CardComponent.vue",
 	"./components/ChartComponent.vue": "./resources/js/components/ChartComponent.vue",
 	"./components/HeaderComponent.vue": "./resources/js/components/HeaderComponent.vue",
 	"./components/MainComponent.vue": "./resources/js/components/MainComponent.vue",
@@ -55709,6 +56012,75 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/CardComponent.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/CardComponent.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CardComponent_vue_vue_type_template_id_6e4da0f2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CardComponent.vue?vue&type=template&id=6e4da0f2& */ "./resources/js/components/CardComponent.vue?vue&type=template&id=6e4da0f2&");
+/* harmony import */ var _CardComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CardComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/CardComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CardComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CardComponent_vue_vue_type_template_id_6e4da0f2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CardComponent_vue_vue_type_template_id_6e4da0f2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/CardComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/CardComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/CardComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CardComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CardComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CardComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CardComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/CardComponent.vue?vue&type=template&id=6e4da0f2&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/CardComponent.vue?vue&type=template&id=6e4da0f2& ***!
+  \**********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardComponent_vue_vue_type_template_id_6e4da0f2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CardComponent.vue?vue&type=template&id=6e4da0f2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CardComponent.vue?vue&type=template&id=6e4da0f2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardComponent_vue_vue_type_template_id_6e4da0f2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CardComponent_vue_vue_type_template_id_6e4da0f2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -56202,7 +56574,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: expected \"{\".\n   ╷\n21 │ $orange:rgba(208,80,38,1);\r\n   │                          ^\n   ╵\n  resources\\sass\\_variables.scss 21:26  @import\n  C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\resources\\sass\\app.scss 6:9                             root stylesheet\n    at C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\webpack\\lib\\NormalModule.js:316:20\n    at C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\loader-runner\\lib\\LoaderRunner.js:233:18\n    at context.callback (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass-loader\\dist\\index.js:73:7\n    at Function.call$2 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:99051:16)\n    at render_closure1.call$2 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:84557:12)\n    at _RootZone.runBinary$3$3 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:29579:18)\n    at _FutureListener.handleError$1 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:28099:21)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:28406:49)\n    at Object._Future__propagateToListeners (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:3909:77)\n    at _Future._completeError$2 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:28252:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:27900:12)\n    at Object._asyncRethrow (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:3712:17)\n    at C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:19793:20\n    at _wrapJsFunctionForAsync_closure.$protected (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:3737:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:27919:12)\n    at _awaitOnObject_closure0.call$2 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:27913:25)\n    at _RootZone.runBinary$3$3 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:29579:18)\n    at _FutureListener.handleError$1 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:28099:21)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:28406:49)\n    at Object._Future__propagateToListeners (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:3909:77)\n    at _Future._completeError$2 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:28252:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:27900:12)\n    at Object._asyncRethrow (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:3712:17)\n    at C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:15294:20\n    at _wrapJsFunctionForAsync_closure.$protected (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:3737:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:27919:12)\n    at _awaitOnObject_closure0.call$2 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:27913:25)\n    at _RootZone.runBinary$3$3 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:29579:18)\n    at _FutureListener.handleError$1 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:28099:21)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:28406:49)\n    at Object._Future__propagateToListeners (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:3909:77)\n    at _Future._completeError$2 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:28252:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:27900:12)\n    at Object._asyncRethrow (C:\\Users\\valer\\OneDrive\\Desktop\\esercitazioniboolean\\kokolivery\\node_modules\\sass\\sass.dart.js:3712:17)");
 
 /***/ }),
 
