@@ -70,7 +70,7 @@ footer.light .footer-copyright
 }
 .widget li a:hover
 {
-    color: #4b92dc;
+    color: #ffffff;
 }
 .widget-title
  {
@@ -142,12 +142,16 @@ ul.social-footer2 li a
 }
 .btn
 {
-    background-color: #ff8d1e;
+    background-color: #FF2c63;
+    color:#fff
+}
+.btnBlue{
+    background-color: #390075;
     color:#fff
 }
 .btn:hover, .btn:focus, .btn.active 
 {
-    background: #4b92dc;color: #fff;
+    background: #390075;color: #fff;
     -webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     -ms-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
@@ -163,4 +167,8 @@ ul.social-footer2 li a
 #bannerfot_svg {
     background: #252525;
     transform: rotate(180deg);
+}
+
+.btnNavScesa:hover{
+    background: #FF2c63;color: #fff;
 }
