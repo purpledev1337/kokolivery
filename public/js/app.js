@@ -5340,6 +5340,38 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 Vue.use(vue_sessionstorage__WEBPACK_IMPORTED_MODULE_1___default.a);
 Vue.config.productionTip = false;
@@ -5348,15 +5380,16 @@ Vue.config.productionTip = false;
     return {
       url: null,
       dishes: [],
+      restaurantData: "",
       arrayCategories: [],
       arrayCategoryDishes: [],
       categoryLooped: "",
-      catAntipasto: [],
-      catPrimiPiatti: [],
-      catSecondiPiatti: [],
-      catDessert: [],
-      catBibite: [],
-      catPizza: [],
+      // catAntipasto: [],
+      // catPrimiPiatti: [],
+      // catSecondiPiatti: [],
+      // catDessert: [],
+      // catBibite: [],
+      // catPizza: [],
       cart: [],
       isCartOpen: false,
       addMessageOpened: false,
@@ -5396,7 +5429,8 @@ Vue.config.productionTip = false;
               case 2:
                 res = _context.sent;
                 // salvo i piatti
-                _this.dishes = res.data; // push del piatto nella rispettiva categoria
+                _this.dishes = res.data["dishes"];
+                _this.restaurantData = res.data["restaurant"]; // push del piatto nella rispettiva categoria
                 // this.dishes.forEach(dish => {
                 //   this.popolateDishCategory(dish,'Antipasto',this.catAntipasto);
                 //   this.popolateDishCategory(dish,'Primi Piatti',this.catPrimiPiatti);
@@ -5415,7 +5449,7 @@ Vue.config.productionTip = false;
 
                 console.log(_this.arrayCategories);
 
-              case 6:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -5576,6 +5610,18 @@ Vue.config.productionTip = false;
     // }
 
   }
+});
+$(function () {
+  var cart = $(".cart_position");
+  $(window).scroll(function () {
+    var scroll = $(window).scrollTop();
+
+    if (scroll >= 30) {
+      cart.addClass("scrollEffect");
+    } else {
+      cart.removeClass("scrollEffect");
+    }
+  });
 });
 
 /***/ }),
@@ -42834,205 +42880,315 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row", attrs: { id: "shop" } }, [
-    _c(
-      "div",
-      {
-        attrs: { id: "icon-cart" },
-        on: {
-          click: function ($event) {
-            _vm.isCartOpen = !_vm.isCartOpen
-          },
-        },
-      },
-      [
-        _c("div", { attrs: { id: "cont_icon" } }, [
-          _c("i", { staticClass: "fa-solid fa-cart-shopping" }),
+  return _vm.dishes.length
+    ? _c("div", { attrs: { id: "shop" } }, [
+        _c("div", { staticClass: "row", attrs: { id: "dashboard_box" } }, [
+          _c(
+            "div",
+            {
+              staticClass: "col-xs-12 col-md-3",
+              attrs: { id: "dashboard_img" },
+            },
+            [
+              _c("img", {
+                staticClass: "img-responsive",
+                attrs: { src: "../../storage/" + _vm.restaurantData.image },
+              }),
+            ]
+          ),
           _vm._v(" "),
-          _vm.cart.length > 0
-            ? _c("div", { attrs: { id: "count" } }, [
-                _vm._v("\n        " + _vm._s(_vm.quantityTotal) + "\n      "),
-              ])
-            : _vm._e(),
+          _c(
+            "div",
+            {
+              staticClass: "col-xs-12 col-md-9",
+              attrs: { id: "dashboard_cont" },
+            },
+            [
+              _c("h1", [_vm._v(_vm._s(_vm.restaurantData.brand_name))]),
+              _vm._v(" "),
+              _c("h3", [_vm._v(_vm._s(_vm.restaurantData.description))]),
+              _vm._v(" "),
+              _c("h3", [
+                _vm._v("Valutazione: "),
+                _c("strong", [_vm._v(_vm._s(_vm.restaurantData.rating))]),
+                _vm._v(" (" + _vm._s(_vm.restaurantData.num_rating) + ")"),
+              ]),
+              _vm._v(" "),
+              _c("h4", [_vm._v(_vm._s(_vm.restaurantData.address))]),
+              _vm._v(" "),
+              _c("h5", [
+                _vm._v(
+                  "Minimo ordine: €" + _vm._s(_vm.restaurantData.order_min)
+                ),
+              ]),
+              _vm._v(" "),
+              _c("h5", [
+                _vm._v(
+                  "Consegna a €" + _vm._s(_vm.restaurantData.delivery_price)
+                ),
+              ]),
+            ]
+          ),
         ]),
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "d-none d-md-inline col-md-4", attrs: { id: "cart-box" } },
-      [
+        _vm._v(" "),
         _c(
-          "table",
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _vm._l(_vm.cart, function (item, i) {
-              return _c("tr", { key: item.id + i }, [
-                _c("td", [_vm._v(_vm._s(item.quantity))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(item.name))]),
-                _vm._v(" "),
-                _c("td", [_vm._v("€ " + _vm._s(item.price))]),
-              ])
-            }),
-            _vm._v(" "),
-            _c("tr", [
-              _c("th"),
-              _vm._v(" "),
-              _c("th", [_vm._v("Totale")]),
-              _vm._v(" "),
-              _c("th", [_c("b", [_vm._v("€ " + _vm._s(_vm.cartTotal))])]),
-            ]),
-          ],
-          2
+          "div",
+          {
+            staticClass: "row d-flex justify-content-center",
+            attrs: { id: "categories_box" },
+          },
+          _vm._l(_vm.arrayCategories, function (category, i) {
+            return _c(
+              "a",
+              {
+                key: i,
+                staticClass: "col-xs-4 col-md-2 btn btn-success mx-1",
+                attrs: { href: "#" + category + "link" },
+              },
+              [_vm._v("\n\n        " + _vm._s(category) + "\n\n    ")]
+            )
+          }),
+          0
         ),
         _vm._v(" "),
         _c(
-          "a",
-          { staticClass: "btn btn-success", attrs: { href: _vm.route } },
-          [_vm._v("Procedi con l'acquisto")]
-        ),
-      ]
-    ),
-    _vm._v(" "),
-    _vm.dishes.length
-      ? _c(
           "div",
-          { staticClass: "col-xs-12 col-md-8", attrs: { id: "flex" } },
+          {
+            staticClass: "row position-relative",
+            attrs: { id: "content_box" },
+          },
           [
-            _vm._l(_vm.arrayCategories, function (category, i) {
-              return _c(
-                "div",
-                {
-                  key: i,
-                  staticClass: "category_box",
-                  class: {
-                    ant: category == "Antipasto",
-                    pri: category == "Primi Piatti",
-                    sec: category == "Secondi Piatti",
-                    piz: category == "Pizza",
-                    des: category == "Dessert",
-                    bib: category == "Bibite",
+            _c(
+              "div",
+              {
+                staticClass: "col-xs-12 col-md-8",
+                attrs: { id: "dishes_box" },
+              },
+              [
+                _vm._l(_vm.arrayCategories, function (category, i) {
+                  return _c(
+                    "div",
+                    {
+                      key: i,
+                      staticClass: "category_box",
+                      class: {
+                        ant: category == "Antipasto",
+                        pri: category == "Primi Piatti",
+                        sec: category == "Secondi Piatti",
+                        piz: category == "Pizza",
+                        des: category == "Dessert",
+                        bib: category == "Bibite",
+                      },
+                    },
+                    [
+                      _c(
+                        "h2",
+                        {
+                          staticClass: "col-12",
+                          attrs: { id: "" + category + "link" },
+                        },
+                        [_vm._v(_vm._s(category) + ":")]
+                      ),
+                      _vm._v(
+                        "\n        " +
+                          _vm._s(_vm.setCat(category)) +
+                          "\n        "
+                      ),
+                      _vm._l(_vm.arrayCategoryDishes, function (dish, k) {
+                        return _c(
+                          "div",
+                          {
+                            key: k,
+                            staticClass: "dish_box col-xs-12 col-lg-6",
+                          },
+                          [
+                            dish.is_visible && !dish.delete
+                              ? _c("div", { staticClass: "dish_card" }, [
+                                  _c("img", {
+                                    attrs: {
+                                      src: "data:image/jpeg;base64,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",
+                                      alt: "",
+                                    },
+                                  }),
+                                  _vm._v(" "),
+                                  _c("h2", [_vm._v(_vm._s(dish.name))]),
+                                  _vm._v(" "),
+                                  _c("h3", [
+                                    _vm._v("Prezzo: " + _vm._s(dish.price)),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("h3", [_vm._v(_vm._s(dish.description))]),
+                                  _vm._v(" "),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _vm.cart.some(function (item) {
+                                    return item.id === dish.id
+                                  })
+                                    ? _c(
+                                        "span",
+                                        {
+                                          staticClass: "btn btn-primary",
+                                          on: {
+                                            click: function ($event) {
+                                              return _vm.addToCart(dish)
+                                            },
+                                          },
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                +\n              "
+                                          ),
+                                        ]
+                                      )
+                                    : _c(
+                                        "span",
+                                        {
+                                          staticClass: "btn btn-primary",
+                                          on: {
+                                            click: function ($event) {
+                                              return _vm.addToCart(dish)
+                                            },
+                                          },
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                Aggiungi al carrello\n              "
+                                          ),
+                                        ]
+                                      ),
+                                  _vm._v(" "),
+                                  _vm.cart.some(function (item) {
+                                    return item.id === dish.id
+                                  })
+                                    ? _c(
+                                        "span",
+                                        {
+                                          staticClass: "btn btn-danger",
+                                          on: {
+                                            click: function ($event) {
+                                              return _vm.removeFromCart(dish)
+                                            },
+                                          },
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                -\n              "
+                                          ),
+                                        ]
+                                      )
+                                    : _vm._e(),
+                                ])
+                              : _vm._e(),
+                          ]
+                        )
+                      }),
+                    ],
+                    2
+                  )
+                }),
+                _vm._v(" "),
+                this.addMessageOpened
+                  ? _c("div", { staticClass: "cart-message cart-add" }, [
+                      _vm._v(
+                        '\n        "' +
+                          _vm._s(_vm.selectedDish.name) +
+                          '" è stato aggiunto al carrello!\n      '
+                      ),
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                this.removeMessageOpened
+                  ? _c("div", { staticClass: "cart-message cart-remove" }, [
+                      _vm._v(
+                        '\n        "' +
+                          _vm._s(_vm.selectedDish.name) +
+                          '" è stato rimosso al carrello!\n      '
+                      ),
+                    ])
+                  : _vm._e(),
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "d-md-none",
+                attrs: { id: "icon-cart" },
+                on: {
+                  click: function ($event) {
+                    _vm.isCartOpen = !_vm.isCartOpen
                   },
                 },
-                [
-                  _c("h2", { staticStyle: { width: "100%" } }, [
-                    _vm._v(_vm._s(category) + ":"),
-                  ]),
-                  _vm._v(
-                    "\n      " + _vm._s(_vm.setCat(category)) + "\n      "
-                  ),
-                  _vm._l(_vm.arrayCategoryDishes, function (dish, k) {
-                    return _c("div", { key: k, staticClass: "dish_box" }, [
-                      _c("div", [
-                        dish.is_visible || dish.delete
-                          ? _c("div", { staticClass: "dish_card" }, [
-                              _c("img", {
-                                attrs: {
-                                  src: "data:image/jpeg;base64,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",
-                                  alt: "",
-                                },
-                              }),
-                              _vm._v(" "),
-                              _c("h2", [_vm._v(_vm._s(dish.name))]),
-                              _vm._v(" "),
-                              _c("h3", [
-                                _vm._v("Prezzo: " + _vm._s(dish.price)),
-                              ]),
-                              _vm._v(" "),
-                              _c("h3", [_vm._v(_vm._s(dish.description))]),
-                              _vm._v(" "),
-                              _c("span", [
-                                _vm._v("(" + _vm._s(dish.category) + ")"),
-                              ]),
-                              _vm._v(" "),
-                              _c("br"),
-                              _vm._v(" "),
-                              _vm.cart.some(function (item) {
-                                return item.id === dish.id
-                              })
-                                ? _c(
-                                    "span",
-                                    {
-                                      staticClass: "btn btn-primary",
-                                      on: {
-                                        click: function ($event) {
-                                          return _vm.addToCart(dish)
-                                        },
-                                      },
-                                    },
-                                    [_vm._v("\n              +\n            ")]
-                                  )
-                                : _c(
-                                    "span",
-                                    {
-                                      staticClass: "btn btn-primary",
-                                      on: {
-                                        click: function ($event) {
-                                          return _vm.addToCart(dish)
-                                        },
-                                      },
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n              Aggiungi al carrello\n            "
-                                      ),
-                                    ]
-                                  ),
-                              _vm._v(" "),
-                              _vm.cart.some(function (item) {
-                                return item.id === dish.id
-                              })
-                                ? _c(
-                                    "span",
-                                    {
-                                      staticClass: "btn btn-danger",
-                                      on: {
-                                        click: function ($event) {
-                                          return _vm.removeFromCart(dish)
-                                        },
-                                      },
-                                    },
-                                    [_vm._v("\n              -\n            ")]
-                                  )
-                                : _vm._e(),
-                            ])
-                          : _vm._e(),
+              },
+              [
+                _c("div", { attrs: { id: "cont_icon" } }, [
+                  _c("i", { staticClass: "fa-solid fa-cart-shopping" }),
+                  _vm._v(" "),
+                  _vm.cart.length > 0
+                    ? _c("div", { attrs: { id: "count" } }, [
+                        _vm._v(
+                          "\n          " +
+                            _vm._s(_vm.quantityTotal) +
+                            "\n        "
+                        ),
+                      ])
+                    : _vm._e(),
+                ]),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "cart_position d-none d-md-inline",
+                attrs: { id: "cart-box" },
+              },
+              [
+                _c(
+                  "table",
+                  [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _vm._l(_vm.cart, function (item, i) {
+                      return _c("tr", { key: item.id + i }, [
+                        _c("td", [_vm._v(_vm._s(item.quantity))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(item.name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("€ " + _vm._s(item.price))]),
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th"),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("Totale")]),
+                      _vm._v(" "),
+                      _c("th", [
+                        _c("b", [_vm._v("€ " + _vm._s(_vm.cartTotal))]),
                       ]),
-                    ])
-                  }),
-                ],
-                2
-              )
-            }),
-            _vm._v(" "),
-            this.addMessageOpened
-              ? _c("div", { staticClass: "cart-message cart-add" }, [
-                  _vm._v(
-                    '\n      "' +
-                      _vm._s(_vm.selectedDish.name) +
-                      '" è stato aggiunto al carrello!\n    '
-                  ),
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            this.removeMessageOpened
-              ? _c("div", { staticClass: "cart-message cart-remove" }, [
-                  _vm._v(
-                    '\n      "' +
-                      _vm._s(_vm.selectedDish.name) +
-                      '" è stato rimosso al carrello!\n    '
-                  ),
-                ])
-              : _vm._e(),
-          ],
-          2
-        )
-      : _c("div", { attrs: { id: "loading_screen" } }, [
-          _vm._v("...Loading screen..."),
-        ]),
-  ])
+                    ]),
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { href: _vm.route },
+                  },
+                  [_vm._v("Procedi con l'acquisto")]
+                ),
+              ]
+            ),
+          ]
+        ),
+      ])
+    : _c("div", { attrs: { id: "loading_screen" } }, [
+        _c("h1", [_vm._v("...Loading screen...")]),
+      ])
 }
 var staticRenderFns = [
   function () {
