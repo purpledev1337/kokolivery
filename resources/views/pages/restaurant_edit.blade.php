@@ -12,7 +12,7 @@
         <h3>Aggiornamento Ristornate</h3>
         {{-- brand name --}}
         <div class="col-md-6">
-            <label for="brand_name" class="form-label">Brand Name</label>
+            <label for="brand_name" class="form-label">Nome del ristorante</label>
             <input type="text" name="brand_name" class="form-control" value="{{ $restaurant -> brand_name }}">
         </div>
 
@@ -24,13 +24,13 @@
         
         {{-- address --}}
         <div class="col-6">
-            <label for="address" class="form-label">Address</label>
+            <label for="address" class="form-label">Strada/Via/Piazza</label>
             <input type="text" name="address" class="form-control" value="{{ $restaurant -> address }}">
         </div>
 
         {{-- city --}}
         <div class="col-6">
-            <label for="city" class="form-label">City</label><br>
+            <label for="city" class="form-label">Città</label><br>
             <select class="form-select form-control" name="city" aria-label="Default select example">
                 <option {{ $restaurant -> city}} selected hidden> {{ $restaurant -> city}} </option>
                 <option value="Milano">Milano</option> 
@@ -62,19 +62,19 @@
 
         {{-- order min --}}
         <div class="col-4">
-            <label for="order_min" class="form-label">Order Min</label>
+            <label for="order_min" class="form-label">Ordine Min</label>
             <input type="number" step="0.01" name="order_min" class="form-control" value="{{ $restaurant -> order_min }}">
         </div>
 
         {{-- Delivery price --}}
         <div class="col-4">
-            <label for="delivery_price" class="form-label">Delivery Price</label>
+            <label for="delivery_price" class="form-label">Prezzo Consegna</label>
             <input type="number" step="0.01" name="delivery_price" class="form-control" value="{{ $restaurant -> delivery_price }}">
         </div>
         
         {{-- discount --}}
         <div class="col-4">
-            <label for="discount" class="form-label">Discount</label>
+            <label for="discount" class="form-label">Sconti</label>
             <input type="number" name="discount" class="form-control" value="{{ $restaurant -> discount }}">
         </div> 
 
@@ -95,11 +95,11 @@
         
         {{-- descrizione --}}
         <div class="offset-3 col-6">
-            <label for="description" class="form-label">Description</label>
+            <label for="description" class="form-label">Descrizione</label>
             <textarea name="description" class="form-control" cols="30" rows="4">{{ $restaurant -> description }}</textarea>
         </div>
 
-        <a href="{{ route('dashboard') }}" class="btn btn-danger offset-5 col-1 me-1" type="submit" >CANCEL</a>
-        <button class="btn btn-secondary col-1 ms-1" type="submit">UPDATE</button>
+        <a href="{{ route('dashboard') }}" class="btn btn-danger offset-5 col-1 me-1" type="submit" >CANCELLA</a>
+        <button class="btn btn-secondary col-1 ms-1" type="submit">MODIFICA</button>
     </form>
 @endsection

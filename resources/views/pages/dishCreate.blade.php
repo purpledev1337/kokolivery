@@ -11,7 +11,7 @@
 
     {{-- brand name --}}
     <div class="col-md-6">
-    <label for="name" class="form-label">Dish Name</label>
+    <label for="name" class="form-label">Nome del Piatto</label>
     <input type="text" name="name" class="form-control">
     </div>
 
@@ -29,15 +29,15 @@
 
     {{-- password confirmation --}}
     <div class="col-md-6">
-    <label for="price" class="form-label">Price</label>
+    <label for="price" class="form-label">Prezzo</label>
     <input type="number" name="price" class="form-control">
     </div>
 
     {{-- Category --}}
     <div class="col-6 offset-3">
-    <label for="category" class="form-label">Category</label><br>
+    <label for="category" class="form-label">Categoria</label><br>
     <select class="form-select form-control" name="category" aria-label="Default select example">
-        <option selected hidden disabled>Open this select menu</option>
+        <option selected hidden disabled>Scegli qui la Categoria</option>
         <option value="Antipasto">Antipasto</option> 
         <option value="Primi Piatti">Primi Piatti</option> 
         <option value="Secondi Piatti">Secondi Piatti</option> 

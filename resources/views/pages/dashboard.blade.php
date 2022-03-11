@@ -14,17 +14,17 @@
         <h2>Indirizzo: {{Auth::user()->address}}</h2>
         <h2>P.IVA: {{Auth::user()->p_iva}}</h2>
         <h2>Descrizione: {{Auth::user()->description}}</h2>
-        <h2>Ordine minimo: {{Auth::user()->order_min}}</h2>
-        <h2>Prezzo consegna: {{Auth::user()->delivery_price}}</h2>
+        <h2>Ordine minimo: {{Auth::user()->order_min}}€</h2>
+        <h2>Prezzo consegna: {{Auth::user()->delivery_price}}€</h2>
         <a class="btn btn-primary" href="{{route('myDishes')}}">PIATTI</a>
         <a class="btn btn-primary" href="{{route('my_orders')}}">ORDINI</a>
-        <a class="btn btn-secondary" href="{{route('restaurant.edit')}}">EDIT</a>
+        <a class="btn btn-secondary" href="{{route('restaurant.edit')}}">MODIFICA</a>
         <a  href="#" 
         data-target-id="{{Auth::user()->id}}" 
         data-bs-toggle="modal" 
         data-bs-target="#deleteRestaurantConfirmation" 
         class="btn btn-danger">
-        DELETE
+        CANCELLA
         </a>
     </div>
 

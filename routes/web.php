@@ -67,7 +67,8 @@ Route::post('stripe', 'StripePaymentController@stripePost')->name('stripe.post')
 
 Route::get('/charts', 'ChartController@index')->name('charts');
 
+// rotta rider
 
-
+Route::get('/rider', 'GuestController@rider')->name('rider');
 
 

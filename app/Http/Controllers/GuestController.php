@@ -32,6 +32,10 @@ class GuestController extends Controller
 
         return view('pages.guest.restaurantShop', compact($dishes));
     }
+    public function rider()
+    {
+        return view('pages.rider');
+    }
 
  
 }
