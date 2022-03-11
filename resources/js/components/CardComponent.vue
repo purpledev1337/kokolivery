@@ -20,8 +20,8 @@
               <h6>
                 {{ restaurant.city }} - 
                 <!-- stampo categorie -->
-                <span v-for="category in restaurant.categories" :key="category.id">
-                  <span>{{category}} </span>
+                <span v-for="categories in restaurant.categories" :key="categories.id">
+                  {{categories.name}}
                 </span>
                 
                 <br />

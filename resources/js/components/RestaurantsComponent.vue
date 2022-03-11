@@ -73,7 +73,7 @@
         },
         mounted() {
             this.getCategories();
-            this.getRestaurant();
+            this.getRestaurants();
         },
         computed: {
             filteredRestaurants() {
@@ -81,19 +81,14 @@
             },
         },
         methods: {
-            getRestaurant(){
-            axios.get('/api/restaurants')
-                .then((res) => {
-                    // recupero tutti i ristornati
-                    this.restaurants = res.data;
-                    // this.types = res.data.types;
-                    this.restaurants.forEach(element => {
-                        this.getCategoriesByRestaurant(element.id);
-                    });
-                }) 
-                .catch(error => console.error(error));
-                
-                return this.loading = false;
+            getRestaurants(){
+                axios.get('/api/restaurants/get')
+                    .then((res)=>{
+                        console.log(res.data);
+                        this.restaurants = res.data;
+                        this.loading = false;
+                    })
+                    .catch(error => console.error(error));
             },
             getCategories(){
                 axios.get('/api/categories')
@@ -102,20 +97,6 @@
                         // this.restaurants = res.data.users;
                         this.types = res.data;
                     }) 
-                    .catch(error => console.error(error));
-            },
-            getCategoriesByRestaurant(id){
-                axios.get(`api/categories/by/restaurant/${id}`)
-                    .then((res)=>{
-                        let index = id - 1;
-                        let categories = [];
-                        res.data.forEach(element => {
-                            categories.push(element.name);
-                        });
-                        this.$set(this.restaurants[index], 'categories', categories);
-                        // this.restaurants[index].categories = categories;
-                        // console.log(this.restaurants[index]);
-                    })
                     .catch(error => console.error(error));
             },
             // show della pagina del ristornate selezionato

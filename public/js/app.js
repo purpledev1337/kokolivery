@@ -5263,13 +5263,9 @@ __webpack_require__.r(__webpack_exports__);
     getRestaurant: function getRestaurant() {
       var _this = this;
 
-      axios.get('/api/restaurants').then(function (res) {
-        // // recupero tutti i ristornati e tipologie
-        // this.restaurants = res.data.users;
-        // this.types = res.data.types;
-        // // ordino i ristoranti x rating discendete
-        // this.filteredRestaurant = this.restaurants;
-        _this.filteredRestaurant = res.data.users;
+      axios.get('/api/restaurants/get').then(function (res) {
+        // // recupero tutti i ristornati e riordino per rating
+        _this.filteredRestaurant = res.data;
 
         _this.filteredRestaurant.sort(function (a, b) {
           return b.rating - a.rating;
@@ -5660,7 +5656,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getCategories();
-    this.getRestaurant();
+    this.getRestaurants();
   },
   computed: {
     filteredRestaurants: function filteredRestaurants() {
@@ -5668,20 +5664,16 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    getRestaurant: function getRestaurant() {
+    getRestaurants: function getRestaurants() {
       var _this = this;
 
-      axios.get('/api/restaurants').then(function (res) {
-        // recupero tutti i ristornati
-        _this.restaurants = res.data; // this.types = res.data.types;
-
-        _this.restaurants.forEach(function (element) {
-          _this.getCategoriesByRestaurant(element.id);
-        });
+      axios.get('/api/restaurants/get').then(function (res) {
+        console.log(res.data);
+        _this.restaurants = res.data;
+        _this.loading = false;
       })["catch"](function (error) {
         return console.error(error);
       });
-      return this.loading = false;
     },
     getCategories: function getCategories() {
       var _this2 = this;
@@ -5694,30 +5686,13 @@ __webpack_require__.r(__webpack_exports__);
         return console.error(error);
       });
     },
-    getCategoriesByRestaurant: function getCategoriesByRestaurant(id) {
-      var _this3 = this;
-
-      axios.get("api/categories/by/restaurant/".concat(id)).then(function (res) {
-        var index = id - 1;
-        var categories = [];
-        res.data.forEach(function (element) {
-          categories.push(element.name);
-        });
-
-        _this3.$set(_this3.restaurants[index], 'categories', categories); // this.restaurants[index].categories = categories;
-        // console.log(this.restaurants[index]);
-
-      })["catch"](function (error) {
-        return console.error(error);
-      });
-    },
     // show della pagina del ristornate selezionato
     getRestaurantViewById: function getRestaurantViewById(id) {
       window.location.href = "/restaurant/shop/".concat(id);
     },
     // filtro ristornati per città --> inputCity!
     filterRestaurantsByCity: function filterRestaurantsByCity() {
-      var _this4 = this;
+      var _this3 = this;
 
       if (this.inputCity === '') {
         // ritorno tutti i ristornati
@@ -5727,11 +5702,11 @@ __webpack_require__.r(__webpack_exports__);
       this.restaurantsCity = []; // filtro i ristornati per città
 
       this.restaurants.forEach(function (restaurant) {
-        if (restaurant.city.toLowerCase().includes(_this4.inputCity.toLowerCase())) {
-          _this4.restaurantsCity.push(restaurant);
+        if (restaurant.city.toLowerCase().includes(_this3.inputCity.toLowerCase())) {
+          _this3.restaurantsCity.push(restaurant);
         }
 
-        console.log(_this4.restaurantsCitys);
+        console.log(_this3.restaurantsCitys);
       });
       return this.restaurantsCity;
     }
@@ -42821,9 +42796,13 @@ var render = function () {
                       " - \n              "
                   ),
                   _vm._v(" "),
-                  _vm._l(restaurant.categories, function (category) {
-                    return _c("span", { key: category.id }, [
-                      _c("span", [_vm._v(_vm._s(category) + " ")]),
+                  _vm._l(restaurant.categories, function (categories) {
+                    return _c("span", { key: categories.id }, [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(categories.name) +
+                          "\n              "
+                      ),
                     ])
                   }),
                   _vm._v(" "),

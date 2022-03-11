@@ -33,14 +33,10 @@ export default {
     },
     methods: {
         getRestaurant(){
-            axios.get('/api/restaurants')
+            axios.get('/api/restaurants/get')
                 .then((res) => {
-                    // // recupero tutti i ristornati e tipologie
-                    // this.restaurants = res.data.users;
-                    // this.types = res.data.types;
-                    // // ordino i ristoranti x rating discendete
-                    // this.filteredRestaurant = this.restaurants;
-                    this.filteredRestaurant = res.data.users;
+                    // // recupero tutti i ristornati e riordino per rating
+                    this.filteredRestaurant = res.data;
                     this.filteredRestaurant.sort( (a,b) => b.rating - a.rating);
                     // filtro solo i primi 10 risultati
                     this.filteredRestaurant = this.filteredRestaurant.splice(0,10);
