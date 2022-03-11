@@ -18,8 +18,15 @@
 
             <div class="details">
               <h6>
-                {{ restaurant.city }} - {{ restaurant.address }}
+                {{ restaurant.city }} - 
+                <!-- stampo categorie -->
+                <span v-for="category in restaurant.categories" :key="category.id">
+                  <span>{{category}} </span>
+                </span>
+                
                 <br />
+                 {{ restaurant.address }}
+                 <br />
                 <span class="more-details"
                   >{{ restaurant.rating }} <i class="fas fa-star"></i> ({{
                     restaurant.num_rating
@@ -42,12 +49,11 @@ export default {
   props: {
     filteredRestaurants: Array,
   },
-
   methods: {
     // show della pagina del ristornate selezionato
     getRestaurantViewById(id) {
       window.location.href = `/restaurant/shop/${id}`;
-    }
+    },
   },
 };
 </script>

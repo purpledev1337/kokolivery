@@ -5145,6 +5145,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
@@ -5612,13 +5619,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       restaurants: [],
       types: [],
       restaurantsCity: [],
-      inputCity: ''
+      inputCity: '',
+      loading: true
     };
   },
   props: {
@@ -5628,11 +5659,12 @@ __webpack_require__.r(__webpack_exports__);
     this.inputCity = this.city;
   },
   mounted: function mounted() {
+    this.getCategories();
     this.getRestaurant();
   },
   computed: {
     filteredRestaurants: function filteredRestaurants() {
-      return this.filterRestaurantByCity();
+      return this.filterRestaurantsByCity();
     }
   },
   methods: {
@@ -5640,10 +5672,41 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/api/restaurants').then(function (res) {
-        // recupero tutti i ristornati e le categorie
-        _this.restaurants = res.data.users;
-        _this.types = res.data.types;
-        console.log(_this.types);
+        // recupero tutti i ristornati
+        _this.restaurants = res.data; // this.types = res.data.types;
+
+        _this.restaurants.forEach(function (element) {
+          _this.getCategoriesByRestaurant(element.id);
+        });
+      })["catch"](function (error) {
+        return console.error(error);
+      });
+      return this.loading = false;
+    },
+    getCategories: function getCategories() {
+      var _this2 = this;
+
+      axios.get('/api/categories').then(function (res) {
+        // recupero tutti le categorie
+        // this.restaurants = res.data.users;
+        _this2.types = res.data;
+      })["catch"](function (error) {
+        return console.error(error);
+      });
+    },
+    getCategoriesByRestaurant: function getCategoriesByRestaurant(id) {
+      var _this3 = this;
+
+      axios.get("api/categories/by/restaurant/".concat(id)).then(function (res) {
+        var index = id - 1;
+        var categories = [];
+        res.data.forEach(function (element) {
+          categories.push(element.name);
+        });
+
+        _this3.$set(_this3.restaurants[index], 'categories', categories); // this.restaurants[index].categories = categories;
+        // console.log(this.restaurants[index]);
+
       })["catch"](function (error) {
         return console.error(error);
       });
@@ -5653,19 +5716,22 @@ __webpack_require__.r(__webpack_exports__);
       window.location.href = "/restaurant/shop/".concat(id);
     },
     // filtro ristornati per città --> inputCity!
-    filterRestaurantByCity: function filterRestaurantByCity() {
-      var _this2 = this;
+    filterRestaurantsByCity: function filterRestaurantsByCity() {
+      var _this4 = this;
 
       if (this.inputCity === '') {
+        // ritorno tutti i ristornati
         return this.restaurantsCity = this.restaurants;
       }
 
       this.restaurantsCity = []; // filtro i ristornati per città
 
       this.restaurants.forEach(function (restaurant) {
-        if (restaurant.city.toLowerCase().includes(_this2.inputCity.toLowerCase())) {
-          _this2.restaurantsCity.push(restaurant);
+        if (restaurant.city.toLowerCase().includes(_this4.inputCity.toLowerCase())) {
+          _this4.restaurantsCity.push(restaurant);
         }
+
+        console.log(_this4.restaurantsCitys);
       });
       return this.restaurantsCity;
     }
@@ -42746,22 +42812,37 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "details" }, [
-              _c("h6", [
-                _vm._v(
-                  "\n              " +
-                    _vm._s(restaurant.city) +
-                    " - " +
-                    _vm._s(restaurant.address) +
-                    "\n              "
-                ),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "more-details" }, [
-                  _vm._v(_vm._s(restaurant.rating) + " "),
-                  _c("i", { staticClass: "fas fa-star" }),
-                  _vm._v(" (" + _vm._s(restaurant.num_rating) + ")"),
-                ]),
-              ]),
+              _c(
+                "h6",
+                [
+                  _vm._v(
+                    "\n              " +
+                      _vm._s(restaurant.city) +
+                      " - \n              "
+                  ),
+                  _vm._v(" "),
+                  _vm._l(restaurant.categories, function (category) {
+                    return _c("span", { key: category.id }, [
+                      _c("span", [_vm._v(_vm._s(category) + " ")]),
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(
+                    "\n               " +
+                      _vm._s(restaurant.address) +
+                      "\n               "
+                  ),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "more-details" }, [
+                    _vm._v(_vm._s(restaurant.rating) + " "),
+                    _c("i", { staticClass: "fas fa-star" }),
+                    _vm._v(" (" + _vm._s(restaurant.num_rating) + ")"),
+                  ]),
+                ],
+                2
+              ),
             ]),
           ]),
         ]
@@ -43167,91 +43248,151 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", [
-    _c("div", { staticClass: "container" }, [
-      _c("h3", [_vm._v("Restaurants List:")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row row-cols-2" }, [
-        _c("div", { staticClass: "col" }, [
-          _c("label", { attrs: { for: "cityFilter" } }, [_vm._v("Città:")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model.lazy",
-                value: _vm.inputCity,
-                expression: "inputCity",
-                modifiers: { lazy: true },
-              },
-            ],
-            attrs: { type: "text", name: "city" },
-            domProps: { value: _vm.inputCity },
-            on: {
-              keyup: function ($event) {
-                if (
-                  !$event.type.indexOf("key") &&
-                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                ) {
-                  return null
-                }
-                $event.preventDefault()
-                return _vm.filterRestaurantByCity.apply(null, arguments)
-              },
-              change: function ($event) {
-                _vm.inputCity = $event.target.value
-              },
-            },
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary",
-              on: {
-                click: function ($event) {
-                  $event.preventDefault()
-                  return _vm.filterRestaurantByCity.apply(null, arguments)
-                },
-              },
-            },
-            [_vm._v("search")]
-          ),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          { staticClass: "col" },
-          _vm._l(_vm.types, function (type) {
-            return _c("span", { key: type.id, staticClass: "type" }, [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(type.name) +
-                  "\n                "
-              ),
-            ])
-          }),
-          0
-        ),
-      ]),
-    ]),
+    _vm._m(0),
     _vm._v(" "),
     _c("div", { attrs: { id: "restaurantsbox" } }, [
-      _c(
-        "div",
-        { staticClass: "cardrestaurant container-fluid" },
-        [
-          _c("card-component", {
-            attrs: { filteredRestaurants: _vm.filteredRestaurants },
-          }),
-        ],
-        1
-      ),
+      _c("div", { staticClass: "cardrestaurant container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-2 pt-4" },
+            [
+              _c("h5", { staticClass: "h5" }, [_vm._v("CITTA'")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col input-group input-group mb-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model.lazy",
+                      value: _vm.inputCity,
+                      expression: "inputCity",
+                      modifiers: { lazy: true },
+                    },
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", name: "city" },
+                  domProps: { value: _vm.inputCity },
+                  on: {
+                    keyup: function ($event) {
+                      if (
+                        !$event.type.indexOf("key") &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                      ) {
+                        return null
+                      }
+                      $event.preventDefault()
+                      return _vm.filterRestaurantsByCity.apply(null, arguments)
+                    },
+                    change: function ($event) {
+                      _vm.inputCity = $event.target.value
+                    },
+                  },
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    on: {
+                      click: function ($event) {
+                        $event.preventDefault()
+                        return _vm.filterRestaurantsByCity.apply(
+                          null,
+                          arguments
+                        )
+                      },
+                    },
+                  },
+                  [_vm._v("search")]
+                ),
+              ]),
+              _vm._v(" "),
+              _c("h5", { staticClass: "h5" }, [_vm._v("CATEGORIE")]),
+              _vm._v(" "),
+              _vm._l(_vm.types, function (type) {
+                return _c(
+                  "div",
+                  { key: type.id, staticClass: "input-group mb-3" },
+                  [
+                    _c("div", { staticClass: "input-group-text" }, [
+                      _c("input", {
+                        staticClass: "form-check-input mt-0",
+                        attrs: { type: "checkbox" },
+                        domProps: { value: type.id },
+                        on: {
+                          click: function ($event) {
+                            return _vm.test(type.id, type.name)
+                          },
+                        },
+                      }),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          "aria-label": "Text input with checkbox",
+                        },
+                      },
+                      [_vm._v(_vm._s(type.name))]
+                    ),
+                  ]
+                )
+              }),
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _vm.loading
+            ? _c("div", { attrs: { id: "loading" } }, [
+                _c("span"),
+                _vm._v(" "),
+                _c("span"),
+                _vm._v(" "),
+                _c("span"),
+                _vm._v(" "),
+                _c("span"),
+              ])
+            : _c(
+                "div",
+                { staticClass: "col-10" },
+                [
+                  _c("card-component", {
+                    attrs: { filteredRestaurants: _vm.filteredRestaurants },
+                  }),
+                ],
+                1
+              ),
+        ]),
+      ]),
     ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "container my-4", attrs: { id: "restaurants" } },
+      [
+        _c("div", { staticClass: "row" }, [
+          _c("h2", { staticClass: "h2" }, [
+            _vm._v("RISTORANTI CHE CONSEGNANO ORA"),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-2" }),
+        ]),
+      ]
+    )
+  },
+]
 render._withStripped = true
 
 
