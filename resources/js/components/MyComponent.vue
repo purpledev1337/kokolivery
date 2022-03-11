@@ -11,8 +11,7 @@
     export default {
         props: {
             labels: String,
-            dataProp: String,
-            colors: String,
+            dataProp: String
         },
         methods: {
             renderChart() {
@@ -23,7 +22,13 @@
                         datasets: [{
                             label: '# of Laravel apps made by Jack Russels',
                             data: JSON.parse(this.dataProp),
-                            backgroundColor: JSON.parse(this.colors)
+                            backgroundColor: [
+                                '#2ecc71',
+                                '#e74c3c',
+                                '#8e44ad',
+                                '#d35400',
+                                '#16a085'
+                            ]
                         }]
                     },
                     options: {
@@ -37,8 +42,6 @@
             }
         },
         mounted() {
-            console.log(JSON.parse(this.labels));
-            console.log('data',JSON.parse(this.dataProp));
             this.renderChart();
         }
     }

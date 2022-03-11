@@ -1,12 +1,13 @@
 <template>
     <!-- resources/assets/js/components -->
     <div>
-        <canvas id="canvas" height="70px"></canvas>
+        <canvas id="canvas"></canvas>
     </div>
 </template>
 
 <script>
-    // import {Chart} from 'Chart.js';
+    import Chart from 'chart.js/auto';
+
     export default {
         // props: {
         //     labels: String,

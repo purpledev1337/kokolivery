@@ -1,5 +1,7 @@
 require('./bootstrap');
 
+
+
 window.Vue = require('vue');
 
 const files = require.context('./', true, /\.vue$/i)
