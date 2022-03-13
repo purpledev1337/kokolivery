@@ -19164,9 +19164,10 @@ nav span.navbar-toggler-icon {
   position: absolute;
   top: 0;
   right: 0;
-  color: #000;
-  font-size: 2rem;
-  padding: 3px;
+  color: #390075;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
   cursor: pointer;
 }
 
@@ -19302,75 +19303,12 @@ img {
   padding: 0.375rem 0.75rem;
   font-size: 0.9rem;
   line-height: 1.6;
+  cursor: pointer;
 }
 
 #restaurantsbox .categories .form-control {
   font-size: 0.7rem;
   overflow-x: hidden;
-}
-
-#loading {
-  text-align: center;
-  padding-top: 4rem;
-  display: block;
-}
-
-#loading span {
-  display: inline-block;
-  margin-top: 10px;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  -webkit-animation: move 1s ease-in-out infinite alternate;
-          animation: move 1s ease-in-out infinite alternate;
-}
-
-#loading span:not(:first-child) {
-  margin-left: 10px;
-}
-
-#loading span:first-child {
-  background-color: #4285f4;
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
-}
-
-#loading span:nth-child(2) {
-  background-color: #db4437;
-  -webkit-animation-delay: 0.4s;
-          animation-delay: 0.4s;
-}
-
-#loading span:nth-child(3) {
-  background-color: #f4b400;
-  -webkit-animation-delay: 0.6s;
-          animation-delay: 0.6s;
-}
-
-#loading span:nth-child(4) {
-  background-color: #0f9d58;
-  -webkit-animation-delay: 0.8s;
-          animation-delay: 0.8s;
-}
-
-@-webkit-keyframes move {
-  to {
-    transform: translateY(5px);
-  }
-
-  from {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes move {
-  to {
-    transform: translateY(5px);
-  }
-
-  from {
-    transform: translateY(-10px);
-  }
 }
 
 .cardrestaurant {
@@ -19869,6 +19807,70 @@ ul.social-footer2 li a {
 
 .centratura-logonav {
   padding: 34px 10%;
+}
+
+#loading {
+  text-align: center;
+  padding-top: 4rem;
+  display: block;
+}
+
+#loading span {
+  display: inline-block;
+  margin-top: 10px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  -webkit-animation: move 1s ease-in-out infinite alternate;
+          animation: move 1s ease-in-out infinite alternate;
+}
+
+#loading span:not(:first-child) {
+  margin-left: 10px;
+}
+
+#loading span:first-child {
+  background-color: #390075;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+
+#loading span:nth-child(2) {
+  background-color: #ff2c63;
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+#loading span:nth-child(3) {
+  background-color: #f9db03;
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+
+#loading span:nth-child(4) {
+  background-color: #11ef45;
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+
+@-webkit-keyframes move {
+  to {
+    transform: translateY(5px);
+  }
+
+  from {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes move {
+  to {
+    transform: translateY(5px);
+  }
+
+  from {
+    transform: translateY(-10px);
+  }
 }
 
 * {

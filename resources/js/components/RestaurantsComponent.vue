@@ -41,12 +41,7 @@
                     </div>
                     <!-- componente card ristorante -->
                     <!-- loading -->
-                    <div v-if="loading" id="loading"> 
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
+                    <loader-component v-if="loading" />
                     <div v-else class="col-sm-9 col-md-10">
                         <card-component :filteredRestaurants="filteredRestaurants"/>
                     </div>
@@ -123,7 +118,7 @@
                 return this.restaurantsCity
             },
             test(id, name){
-                console.log(id, name);
+                console.log(id,name);
             }
         }
 }
