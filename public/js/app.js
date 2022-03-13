@@ -5914,7 +5914,9 @@ __webpack_require__.r(__webpack_exports__);
       types: [],
       restaurantsCity: [],
       inputCity: '',
-      loading: true
+      loading: true,
+      categoriesActive: [],
+      result: []
     };
   },
   props: {
@@ -5926,10 +5928,16 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.getCategories();
     this.getRestaurants();
+    this.categoriesActive = [];
   },
   computed: {
     filteredRestaurants: function filteredRestaurants() {
-      return this.filterRestaurantsByCity();
+      if (this.categoriesActive.length === 0) {
+        return this.filterRestaurantsByCity();
+      } else {
+        this.filterCategory();
+        return this.result;
+      }
     }
   },
   methods: {
@@ -5937,7 +5945,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/api/restaurants/get').then(function (res) {
-        console.log(res.data);
+        console.log(res.data[0]);
         _this.restaurants = res.data;
         _this.loading = false;
       })["catch"](function (error) {
@@ -5965,7 +5973,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.inputCity === '') {
         // ritorno tutti i ristornati
-        return this.restaurantsCity = this.restaurants;
+        return this.restaurants;
       }
 
       this.restaurantsCity = []; // filtro i ristornati per città
@@ -5974,13 +5982,32 @@ __webpack_require__.r(__webpack_exports__);
         if (restaurant.city.toLowerCase().includes(_this3.inputCity.toLowerCase())) {
           _this3.restaurantsCity.push(restaurant);
         }
-
-        console.log(_this3.restaurantsCitys);
       });
       return this.restaurantsCity;
     },
-    test: function test(id, name) {
-      console.log(id, name);
+    addToCategoriesActive: function addToCategoriesActive(id) {
+      // verifico se il checkbox cliccato è gia stato selezionato
+      var elementFinded = this.categoriesActive.indexOf(id);
+
+      if (elementFinded !== -1) {
+        this.categoriesActive.splice(elementFinded, 1);
+      } else this.categoriesActive.push(id);
+    },
+    filterCategory: function filterCategory() {
+      var _this4 = this;
+
+      this.result = [];
+      var filteredByCategoryRestaurants = this.filterRestaurantsByCity();
+      filteredByCategoryRestaurants.forEach(function (element) {
+        element.categories.forEach(function (el) {
+          _this4.categoriesActive.forEach(function (idCategory) {
+            if (idCategory === el.id) {
+              if (!_this4.result.includes(element)) _this4.result.push(element);
+            }
+          });
+        });
+      });
+      return this.result;
     }
   }
 });
@@ -57237,7 +57264,7 @@ var render = function () {
                           domProps: { value: type.id },
                           on: {
                             click: function ($event) {
-                              return _vm.test(type.id, type.name)
+                              return _vm.addToCategoriesActive(type.id)
                             },
                           },
                         }),

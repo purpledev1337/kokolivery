@@ -33,7 +33,7 @@
                             <div class="input-group-text">
                                 <input class="form-check-input mt-0" type="checkbox" 
                                     :value="type.id" 
-                                    @click="test(type.id, type.name)"
+                                    @click="addToCategoriesActive(type.id)"
                                 >
                             </div>
                             <span type="text" class="form-control" aria-label="Text input with checkbox">{{type.name}}</span>
@@ -61,6 +61,8 @@
                 restaurantsCity: [],
                 inputCity: '',
                 loading: true,
+                categoriesActive: [],
+                result: [],
             };
         },
         props: {
@@ -72,17 +74,24 @@
         mounted() {
             this.getCategories();
             this.getRestaurants();
+            this.categoriesActive = [];
         },
         computed: {
             filteredRestaurants() {
-                return this.filterRestaurantsByCity();
+                if (this.categoriesActive.length === 0) {
+                    return this.filterRestaurantsByCity();
+                }else {
+                    this.filterCategory();
+                    return this.result;
+                }
             },
+
         },
         methods: {
             getRestaurants(){
                 axios.get('/api/restaurants/get')
                     .then((res)=>{
-                        console.log(res.data);
+                        console.log(res.data[0]);
                         this.restaurants = res.data;
                         this.loading = false;
                     })
@@ -105,7 +114,7 @@
             filterRestaurantsByCity(){
                 if(this.inputCity === ''){
                     // ritorno tutti i ristornati
-                    return this.restaurantsCity = this.restaurants;
+                    return this.restaurants;
                 }
                 this.restaurantsCity = [];
                 // filtro i ristornati per città
@@ -113,13 +122,30 @@
                     if(restaurant.city.toLowerCase().includes(this.inputCity.toLowerCase())){
                         this.restaurantsCity.push(restaurant);
                     }
-                    console.log(this.restaurantsCitys);
                 });
                 return this.restaurantsCity
             },
-            test(id, name){
-                console.log(id,name);
-            }
+            addToCategoriesActive(id){
+                // verifico se il checkbox cliccato è gia stato selezionato
+                let elementFinded = this.categoriesActive.indexOf(id);
+                if (elementFinded !== -1) {
+                    this.categoriesActive.splice(elementFinded,1);
+                }else this.categoriesActive.push(id);
+            },
+            filterCategory(){
+                this.result = [];
+                let filteredByCategoryRestaurants = this.filterRestaurantsByCity();
+                filteredByCategoryRestaurants.forEach(element => {
+                    element.categories.forEach(el => {
+                        this.categoriesActive.forEach(idCategory =>{
+                            if(idCategory === el.id) {
+                                if(!this.result.includes(element)) this.result.push(element);
+                            }
+                        })
+                    });
+                });
+                return this.result
+            },
         }
 }
 </script>
