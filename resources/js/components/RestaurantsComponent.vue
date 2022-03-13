@@ -3,12 +3,9 @@
 
         <div id="restaurants" class="container my-4">
             <div class="row">
-                <h2 class="h2">RISTORANTI CHE CONSEGNANO ORA</h2>
-            </div>
-        
-            <div class="row">
-                <div class="col-2">
-                        </div>
+                <div class="col">
+                    <h2 class="h2">RISTORANTI CHE CONSEGNANO ORA</h2>
+                </div>
             </div>
         </div>
         
@@ -16,17 +13,23 @@
         <div id="restaurantsbox">
             <div class="cardrestaurant container-fluid">
                 <div class="row">
-                    <div class="col-2 pt-4">
+                    <div class="col-sm-3 col-md-2 pt-4">
 
                         <h5 class="h5">CITTA'</h5>
                         <div class="col input-group input-group mb-3">
-                            <input type="text" class="form-control" @keyup.enter.prevent="filterRestaurantsByCity"  name="city"  v-model.lazy="inputCity">
-                            <!-- <input @keyup.enter.prevent="filterRestaurantsByCity" type="text" name="city"  v-model.lazy="inputCity"> -->
-                            <button @click.prevent="filterRestaurantsByCity" class="btn btn-primary">search</button>
+                            <div id="searchcity" class="position-relative">
+                                <input type="text" 
+                                    class="form-control" 
+                                    @keyup.enter.prevent="filterRestaurantsByCity" 
+                                    name="city" v-model.lazy="inputCity"
+                                >
+                                <i class="fa-solid fa-magnifying-glass" @click.prevent="filterRestaurantsByCity"></i>
+                            </div>
+                            <!-- <button @click.prevent="filterRestaurantsByCity" class="btn btn-primary">search</button> -->
                         </div>
 
                         <h5 class="h5">CATEGORIE</h5>
-                        <div class="input-group mb-3" v-for="type in types" :key="type.id">
+                        <div class="categories input-group mb-3" v-for="type in types" :key="type.id">
                             <div class="input-group-text">
                                 <input class="form-check-input mt-0" type="checkbox" 
                                     :value="type.id" 
@@ -44,7 +47,7 @@
                         <span></span>
                         <span></span>
                     </div>
-                    <div v-else class="col-10">
+                    <div v-else class="col-sm-9 col-md-10">
                         <card-component :filteredRestaurants="filteredRestaurants"/>
                     </div>
                 </div>
@@ -119,6 +122,9 @@
                 });
                 return this.restaurantsCity
             },
+            test(id, name){
+                console.log(id, name);
+            }
         }
 }
 </script>

@@ -5301,6 +5301,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5887,6 +5888,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5958,6 +5962,9 @@ __webpack_require__.r(__webpack_exports__);
         console.log(_this3.restaurantsCitys);
       });
       return this.restaurantsCity;
+    },
+    test: function test(id, name) {
+      console.log(id, name);
     }
   }
 });
@@ -5973,6 +5980,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -56550,7 +56561,7 @@ var render = function () {
     _c("div", { attrs: { id: "search_home" } }, [
       _vm._m(0),
       _vm._v(" "),
-      _c("div", { staticClass: "kokohover" }, [
+      _c("div", { staticClass: "kokohover input-group" }, [
         _c("input", {
           directives: [
             {
@@ -56560,9 +56571,11 @@ var render = function () {
               expression: "city",
             },
           ],
+          staticClass: "form-control",
           attrs: {
             type: "text",
-            placeholder: "Inserisci La Via, La Citta' E La Provincia",
+            placeholder:
+              "Inserisci qui La Citta' e scopri i migliori ristornati",
           },
           domProps: { value: _vm.city },
           on: {
@@ -57082,56 +57095,70 @@ var render = function () {
         _c("div", { staticClass: "row" }, [
           _c(
             "div",
-            { staticClass: "col-2 pt-4" },
+            { staticClass: "col-sm-3 col-md-2 pt-4" },
             [
               _c("h5", { staticClass: "h5" }, [_vm._v("CITTA'")]),
               _vm._v(" "),
               _c("div", { staticClass: "col input-group input-group mb-3" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model.lazy",
-                      value: _vm.inputCity,
-                      expression: "inputCity",
-                      modifiers: { lazy: true },
-                    },
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", name: "city" },
-                  domProps: { value: _vm.inputCity },
-                  on: {
-                    keyup: function ($event) {
-                      if (
-                        !$event.type.indexOf("key") &&
-                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                      ) {
-                        return null
-                      }
-                      $event.preventDefault()
-                      return _vm.filterRestaurantsByCity.apply(null, arguments)
-                    },
-                    change: function ($event) {
-                      _vm.inputCity = $event.target.value
-                    },
-                  },
-                }),
-                _vm._v(" "),
                 _c(
-                  "button",
+                  "div",
                   {
-                    staticClass: "btn btn-primary",
-                    on: {
-                      click: function ($event) {
-                        $event.preventDefault()
-                        return _vm.filterRestaurantsByCity.apply(
-                          null,
-                          arguments
-                        )
-                      },
-                    },
+                    staticClass: "position-relative",
+                    attrs: { id: "searchcity" },
                   },
-                  [_vm._v("search")]
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model.lazy",
+                          value: _vm.inputCity,
+                          expression: "inputCity",
+                          modifiers: { lazy: true },
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "city" },
+                      domProps: { value: _vm.inputCity },
+                      on: {
+                        keyup: function ($event) {
+                          if (
+                            !$event.type.indexOf("key") &&
+                            _vm._k(
+                              $event.keyCode,
+                              "enter",
+                              13,
+                              $event.key,
+                              "Enter"
+                            )
+                          ) {
+                            return null
+                          }
+                          $event.preventDefault()
+                          return _vm.filterRestaurantsByCity.apply(
+                            null,
+                            arguments
+                          )
+                        },
+                        change: function ($event) {
+                          _vm.inputCity = $event.target.value
+                        },
+                      },
+                    }),
+                    _vm._v(" "),
+                    _c("i", {
+                      staticClass: "fa-solid fa-magnifying-glass",
+                      on: {
+                        click: function ($event) {
+                          $event.preventDefault()
+                          return _vm.filterRestaurantsByCity.apply(
+                            null,
+                            arguments
+                          )
+                        },
+                      },
+                    }),
+                  ]
                 ),
               ]),
               _vm._v(" "),
@@ -57140,7 +57167,7 @@ var render = function () {
               _vm._l(_vm.types, function (type) {
                 return _c(
                   "div",
-                  { key: type.id, staticClass: "input-group mb-3" },
+                  { key: type.id, staticClass: "categories input-group mb-3" },
                   [
                     _c("div", { staticClass: "input-group-text" }, [
                       _c("input", {
@@ -57185,7 +57212,7 @@ var render = function () {
               ])
             : _c(
                 "div",
-                { staticClass: "col-10" },
+                { staticClass: "col-sm-9 col-md-10" },
                 [
                   _c("card-component", {
                     attrs: { filteredRestaurants: _vm.filteredRestaurants },
@@ -57208,13 +57235,11 @@ var staticRenderFns = [
       { staticClass: "container my-4", attrs: { id: "restaurants" } },
       [
         _c("div", { staticClass: "row" }, [
-          _c("h2", { staticClass: "h2" }, [
-            _vm._v("RISTORANTI CHE CONSEGNANO ORA"),
+          _c("div", { staticClass: "col" }, [
+            _c("h2", { staticClass: "h2" }, [
+              _vm._v("RISTORANTI CHE CONSEGNANO ORA"),
+            ]),
           ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-2" }),
         ]),
       ]
     )
@@ -57242,53 +57267,49 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "verkoko hoverkoko centratura" }, [
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.city,
-          expression: "city",
+    _c("div", { staticClass: "position-relative" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.city,
+            expression: "city",
+          },
+        ],
+        staticClass: "form-control",
+        attrs: { type: "text", placeholder: "Inserisci La Citta'" },
+        domProps: { value: _vm.city },
+        on: {
+          keyup: function ($event) {
+            if (
+              !$event.type.indexOf("key") &&
+              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+            ) {
+              return null
+            }
+            $event.preventDefault()
+            return _vm.searchRestaurantsFromCity.apply(null, arguments)
+          },
+          input: function ($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.city = $event.target.value
+          },
         },
-      ],
-      attrs: {
-        type: "text",
-        placeholder: "Inserisci La Via, La Citta' E La Provincia",
-      },
-      domProps: { value: _vm.city },
-      on: {
-        keyup: function ($event) {
-          if (
-            !$event.type.indexOf("key") &&
-            _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-          ) {
-            return null
-          }
-          $event.preventDefault()
-          return _vm.searchRestaurantsFromCity.apply(null, arguments)
-        },
-        input: function ($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.city = $event.target.value
-        },
-      },
-    }),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "btn",
+      }),
+      _vm._v(" "),
+      _c("i", {
+        staticClass: "fa-solid fa-magnifying-glass",
         on: {
           click: function ($event) {
             $event.preventDefault()
             return _vm.searchRestaurantsFromCity.apply(null, arguments)
           },
         },
-      },
-      [_vm._v("\n    CERCA\n  ")]
-    ),
+      }),
+    ]),
   ])
 }
 var staticRenderFns = []
@@ -70225,8 +70246,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\BOOLEAN\kokolivery\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! F:\BOOLEAN\kokolivery\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/cenny/Desktop/project final/project/kokolivery/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/cenny/Desktop/project final/project/kokolivery/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -12,14 +12,32 @@
 
 #restaurants{
 
-    text-align: left;
-    
 }
 #restaurantsbox{
     
     .types{
         cursor: pointer;
     }
+
+    #searchcity{
+        i{
+            color: $indigo;
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0.375rem 0.75rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+    }
+
+    .categories{
+        .form-control{
+            font-size: .7rem;
+            overflow-x: hidden;
+        }
+    }
+
 }
 
 #loading{

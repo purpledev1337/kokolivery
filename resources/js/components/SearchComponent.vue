@@ -1,14 +1,18 @@
 <template>
   <div class="verkoko hoverkoko centratura">
-    <input
-      @keyup.enter.prevent="searchRestaurantsFromCity"
-      type="text"
-      placeholder="Inserisci La Via, La Citta' E La Provincia"
-      v-model="city"
-    />
-    <button @click.prevent="searchRestaurantsFromCity" class="btn">
-      CERCA
-    </button>
+    <div class="position-relative">
+      <input
+        class="form-control"
+        @keyup.enter.prevent="searchRestaurantsFromCity"
+        type="text"
+        placeholder="Inserisci La Citta'"
+        v-model="city"
+      />
+      <i @click.prevent="searchRestaurantsFromCity" class="fa-solid fa-magnifying-glass"></i>
+      <!-- <button @click.prevent="searchRestaurantsFromCity" class="btn">
+        CERCA
+      </button> -->
+    </div>
   </div>
 </template>
 

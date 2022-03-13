@@ -78,7 +78,7 @@
     </nav>
 
 
-    <script>
+    <script type="application/javascript">
         $(function() {
             var header = $(".navbar");
             var brand = $(".navbar-brand");

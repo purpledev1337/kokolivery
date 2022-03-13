@@ -12,11 +12,12 @@
         </div>
         <h1 class="kokohover" id="float-title">Kokolivery</h1>
       </div>
-      <div class="kokohover">
+      <div class="kokohover input-group">
         <input
+          class="form-control"
           @keyup.enter.prevent="searchRestaurantsFromCity"
           type="text"
-          placeholder="Inserisci La Via, La Citta' E La Provincia"
+          placeholder="Inserisci qui La Citta' e scopri i migliori ristornati"
           v-model="city"
         />
         <button @click.prevent="searchRestaurantsFromCity" class="btn">
