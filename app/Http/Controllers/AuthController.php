@@ -210,7 +210,7 @@ class AuthController extends Controller
 
         if ($imageFile) {
             // assegno un nome univoco all'img
-            $imageName = rand(100000,999999) . '_' . time() . '.' . $imageFile -> getClientOriginalName();
+            $imageName = 'asset' . '/' . rand(100000,999999) . '_' . time() . '.' . $imageFile -> getClientOriginalName();
             // salvo l'img nello storage
             $imageFile -> storeAs('/storage/', $imageName , 'public');
             // aggiungo l'img all'array che salvero' nel db
@@ -218,10 +218,7 @@ class AuthController extends Controller
         }
         
         $restaurant = Auth::user();
-        // if (Auth::user()->email != $request->email) {
-        //     $email = $request -> validate(['email' => ['required', 'string', 'email', 'max:255', 'unique:users']]);
-        //     $restaurant -> update($email);
-        // }
+        
         $restaurant -> update($data);
         
         $types = Type::findOrFail($request -> get('types'));

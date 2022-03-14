@@ -11,7 +11,7 @@
         </div>
         <div class="col-md-9">
             <div id="cont-img">
-                <img src="{{asset('storage/asset') . '/' . Auth::user()->image}}">
+                <img src="{{asset('storage') . '/' . Auth::user()->image}}">
             </div>
             <h1 class="text-center">{{Auth::user()->brand_name}}</h1>
             <h4>Tipologia: 
