@@ -9,7 +9,7 @@
 
         {{-- brand name --}}
         <div class="col-md-6">
-            <label for="brand_name" class="form-label">Brand Name</label>
+            <label for="brand_name" class="form-label">Nome del ristorante</label>
             <input type="text" name="brand_name" class="form-control">
         </div>
 
@@ -27,21 +27,21 @@
 
         {{-- password confirmation --}}
         <div class="col-md-6">
-            <label for="password_confirmation" class="form-label">Password Confirmation</label>
+            <label for="password_confirmation" class="form-label">Conferma Password</label>
             <input type="password" name="password_confirmation" class="form-control">
         </div>
 
         {{-- address --}}
         <div class="col-6">
-            <label for="address" class="form-label">Address</label>
+            <label for="address" class="form-label">Strada/Via/Piazza</label>
             <input type="text" name="address" class="form-control">
         </div>
 
         {{-- city --}}
         <div class="col-6">
-            <label for="city" class="form-label">City</label><br>
+            <label for="city" class="form-label">Città</label><br>
             <select class="form-select form-control" name="city" aria-label="Default select example">
-                <option disabled selected>Open this select menu</option>
+                <option disabled selected>Inserisci la tua città</option>
                 <option value="Milano">Milano</option> 
                 <option value="Napoli">Napoli</option> 
                 <option value="Roma">Roma</option> 
@@ -71,19 +71,19 @@
 
         {{-- order min --}}
         <div class="col-4">
-            <label for="order_min" class="form-label">Order Min</label>
+            <label for="order_min" class="form-label">Ordine Min</label>
             <input type="number" step="0.01" name="order_min" class="form-control">
         </div>
 
         {{-- Delivery price --}}
         <div class="col-4">
-            <label for="delivery_price" class="form-label">Delivery Price</label>
+            <label for="delivery_price" class="form-label">Prezzo Consegna </label>
             <input type="number" step="0.01" name="delivery_price" class="form-control">
         </div>
         
         {{-- discount --}}
         <div class="col-4">
-            <label for="discount" class="form-label">Discount</label>
+            <label for="discount" class="form-label">Sconti</label>
             <input type="number" name="discount" class="form-control">
         </div> 
         
@@ -97,11 +97,11 @@
         
         {{-- descrizione --}}
         <div class="offset-3 col-6">
-            <label for="description" class="form-label">Description</label>
+            <label for="description" class="form-label">Descrizione</label>
             <textarea name="description" class="form-control" cols="30" rows="4"></textarea>
         </div>
 
-        <a href="{{ route('home') }}" class="btn btn-danger offset-5 col-1 me-1" type="submit" >CANCEL</a>
-        <button class="btn btn-secondary col-1 ms-1" type="submit">REGISTER</button>
+        <a href="{{ route('home') }}" class="btn btn-danger offset-5 col-1 me-1" type="submit" >CANCELLA</a>
+        <button class="btn btn-secondary col-1 ms-1" type="submit">REGISTRATI</button>
     </form>
 @endsection

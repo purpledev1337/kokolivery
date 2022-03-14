@@ -1,7 +1,14 @@
 <template>
     <!-- resources/assets/js/components -->
-    <div>
-        <canvas id="canvas"></canvas>
+    <div class="d-none d-md-block">
+        <!-- title grafico -->
+        <h2 class="title-order">
+            I 5 Piatti Piu' Venduti
+        </h2>
+
+        <div id="chart-cont" >
+            <canvas id="canvas"></canvas>
+        </div>
     </div>
 </template>
 

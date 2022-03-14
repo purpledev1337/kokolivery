@@ -4,5 +4,7 @@
 
     {{-- Main Component --}}
     <main-component> </main-component>
+    
+
 
 @endsection

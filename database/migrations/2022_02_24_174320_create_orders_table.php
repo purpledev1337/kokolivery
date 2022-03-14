@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
 
             $table->string('status_pay');
             $table->integer('delivery_time');
+            $table->decimal('order_price');
 
             $table->timestamps();
         });

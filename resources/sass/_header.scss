@@ -1,3 +1,98 @@
+//sezione navbar
+nav{
+
+flex-direction: column;
+
+    .navbar-toggler {
+        background-color: #ff2c63!important;
+        border: 1px solid #ff2c63!important;
+    }
+
+    span{
+        &.navbar-toggler-icon{
+            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1024px-Hamburger_icon.svg.png)!important;
+        }
+    }
+}
+
 .navbar-collapse {
     flex-grow: 0!important;
+}
+.logonavbase
+{
+    text-shadow: 1px 2px 3px #5c2e4d;
+    font-size: 32px;
+}
+.centratura{
+    margin: 0 auto;
+    position: relative;
+    top: -40px;
+
+    .position-relative{
+        width: 20rem;
+    }
+
+    i{
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: $indigo;
+        padding: 0.375rem 0.75rem;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        cursor: pointer;
+    }
+    .form-control{
+        padding-right: 2.5rem;
+    }
+}
+
+//colori link
+ .white
+{
+      color: white;
+}
+.a, .black
+{
+      color: #000000;
+}
+
+//sezione navbar che scompare
+.bg-valerio{
+    background-color:$orange;
+    color: white;
+    transition: 0.5s;
+  }
+
+.hoverkoko{
+    display: none;
+    transition: 0.5s;
+}
+.removehover{
+    display: inline;
+    width: 100px;
+}
+.removehoverform{
+    display: inline;
+}
+.logonav{
+ display: none;
+ transition: 0.5s;
+}
+
+.containeNav{
+width: 100%;
+background-color: $orange;
+display: flex;
+}
+
+.navbar-light .navbar-toggler{
+    color: blue !important;
+}
+
+.kokohover.input-group {
+    position: relative;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 26rem;
 }
