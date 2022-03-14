@@ -19471,55 +19471,68 @@ img {
   justify-content: center;
 }
 
-#shop #dishes_box .dish_card {
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 2em;
-  overflow-wrap: break-word;
-}
-
-#shop #dishes_box .dish_card img {
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 2em;
-}
-
-#shop #flex {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  position: relative;
-}
-
-#shop .category_box {
+#shop #dishes_box .category_box {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
 
-#shop .category_box.ant {
+#shop #dishes_box .category_box.ant {
   order: 1;
 }
 
-#shop .category_box.pri {
+#shop #dishes_box .category_box.pri {
   order: 2;
 }
 
-#shop .category_box.sec {
+#shop #dishes_box .category_box.sec {
   order: 3;
 }
 
-#shop .category_box.piz {
+#shop #dishes_box .category_box.piz {
   order: 4;
 }
 
-#shop .category_box.des {
+#shop #dishes_box .category_box.des {
   order: 5;
 }
 
-#shop .category_box.bib {
+#shop #dishes_box .category_box.bib {
   order: 6;
+}
+
+#shop #dishes_box .category_box .dish_card {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2em;
+  overflow-wrap: break-word;
+}
+
+#shop #dishes_box .category_box .dish_card img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 2em;
+}
+
+#shop #dishes_box .category_box .cart-message {
+  position: fixed;
+  top: 40%;
+  right: 50%;
+  transform: translate(50%, 0);
+  color: #ffffff;
+  padding: 1em 1.5em;
+  border-radius: 2em;
+  font-size: 1.5em;
+  z-index: 4000;
+}
+
+#shop #dishes_box .category_box .cart-message.cart-add {
+  background-color: rgba(0, 128, 0, 0.733);
+}
+
+#shop #dishes_box .category_box .cart-message.cart-remove {
+  background-color: rgba(255, 46, 102, 0.733);
 }
 
 #shop #icon-cart {
@@ -19532,7 +19545,7 @@ img {
   border-radius: 25%;
   position: fixed;
   right: 2rem;
-  top: 16.5rem;
+  top: 13.5rem;
   z-index: 2000;
 }
 
@@ -19564,28 +19577,8 @@ img {
   cursor: pointer;
 }
 
-.cart-message {
-  position: fixed;
-  top: 40%;
-  right: 50%;
-  transform: translate(50%, 0);
-  color: #ffffff;
-  padding: 1em 1.5em;
-  border-radius: 2em;
-  font-size: 1.5em;
-  z-index: 4000;
-}
-
-.cart-message.cart-add {
-  background-color: rgba(0, 128, 0, 0.733);
-}
-
-.cart-message.cart-remove {
-  background-color: rgba(255, 46, 102, 0.733);
-}
-
 #cart-box {
-  min-height: 40%;
+  height: 100%;
   border: 3px #f9db03 solid;
   border-radius: 2em;
   background-color: rgba(205, 191, 226, 0.85);
@@ -19594,13 +19587,7 @@ img {
   overflow-wrap: break-word;
   position: -webkit-sticky;
   position: sticky;
-  top: 16rem;
-}
-
-#loading_screen {
-  font-size: 5em;
-  text-align: center;
-  padding: 3em 0;
+  top: 14rem;
 }
 
 .btn-orange {
@@ -19610,7 +19597,7 @@ img {
 
 @media (max-width: 991.98px) {
   #cart-box {
-    width: 100%;
+    height: initial;
     position: fixed;
     top: 16rem;
     left: 0;
@@ -20118,7 +20105,12 @@ ul.social-footer2 li a {
   overflow-wrap: break-word;
 }
 
-#my_dishes .dish_card img {
+#my_dishes .dish_card .img_container {
+  height: 150px;
+}
+
+#my_dishes .dish_card .img_container img {
+  width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
