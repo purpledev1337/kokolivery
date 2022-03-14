@@ -19226,9 +19226,10 @@ nav span.navbar-toggler-icon {
   width: 26rem;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  padding-top: 40px;
+.navbar-collapse {
+  flex-basis: 0;
+  flex-grow: 1;
+  align-items: center;
 }
 
 #search_home {
@@ -19239,10 +19240,6 @@ body {
   height: 75vh;
   background: #ffd00f;
   background: linear-gradient(90deg, #ffd00f 49%, #d05026 100%);
-}
-
-#home {
-  margin-top: 40px;
 }
 
 #cont-logo {
@@ -19943,6 +19940,8 @@ ul.social-footer2 li a {
 }
 
 body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding-top: 145px;
   background-color: #fff;
 }
 
@@ -19953,9 +19952,5 @@ body .h2 {
 
 .visibility {
   display: none;
-}
-
-#content {
-  padding: 4em 0em;
 }
 
