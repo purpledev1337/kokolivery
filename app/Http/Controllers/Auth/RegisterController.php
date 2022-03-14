@@ -98,7 +98,7 @@ class RegisterController extends Controller
             // aggiungo l'img all'array che salvero' nel db
             $dbData['image'] = $imageName;
         } else {
-            $dbData['image'] = 'asset/kokolivery-logo.svg';
+            $dbData['image'] = 'risto-default.jpeg';
         }
 
         // salvo l'array nel db 
