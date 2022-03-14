@@ -19842,10 +19842,35 @@ ul.social-footer2 li a {
 }
 
 #create_plate {
+  width: 30%;
   position: fixed;
-  bottom: 5rem;
-  left: 0;
+  top: 15rem;
+  right: 5rem;
   z-index: 3000;
+}
+
+.dish_card {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2em;
+  overflow-wrap: break-word;
+}
+
+.dish_card img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 2em;
+}
+
+.dish_card .comand_panel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dish_card.not_visible {
+  opacity: 0.5;
 }
 
 html {
