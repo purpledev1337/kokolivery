@@ -19835,6 +19835,11 @@ ul.social-footer2 li a {
   padding: 34px 10%;
 }
 
+#chart-cont {
+  width: 70%;
+  margin: 0 auto;
+}
+
 * {
   margin: 0;
   padding: 0;

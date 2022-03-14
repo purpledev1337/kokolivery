@@ -40,37 +40,7 @@ class AuthController extends Controller
             array_push($listOrders, $orders);
         }
 
-         // Get orders grouped by delivery_time
-         $order = DB::table('dish_order')
-         ->select('dish_id', DB::raw('count(*) as total'))
-         ->groupBy('dish_id')
-         ->orderBy('total', 'desc')->limit(10)->get();
-        $order = json_decode($order);
-
-        $dishName = [];
-        $total = [];
-
-        foreach ($order as $tot) {
-            array_push($total, $tot -> total);
-            $dish = Dish::findOrFail($tot -> dish_id);
-            array_push($dishName, $dish -> name);
-        }
-        // dd($dishName);
-
-        // Generate random colours for the groups
-        for ($i=0; $i<=count($order); $i++) {
-            $colours[] = '#' . substr(str_shuffle('ABCDEF0123456789'), 0, 6);
-        }
-
-
-        // Prepare the data for returning with the view
-        $chart = new Chart;
-        $chart->labels = (array_values($dishName));
-        $chart->dataset = (array_values($total));
-        $chart->colours = $colours;
-        // dd($chart);
-
-        return view('pages.my_orders', compact('listOrders', 'chart'));
+        return view('pages.my_orders', compact('listOrders'));
     }
     
     // view form create piatto
@@ -248,43 +218,5 @@ class AuthController extends Controller
 
         return redirect() -> route('home');
         
-    }
-
-    public function index()
-    {
-
-        // SELECT dish_id, COUNT(*)as tot FROM dish_order GROUP BY dish_id ORDER by tot DESC
-
-        // Get orders grouped by delivery_time
-        $order = DB::table('dish_order')
-                ->select('dish_id', DB::raw('count(*) as total'))
-                ->groupBy('dish_id')
-                ->orderBy('total', 'desc')->limit(10)->get();
-        $order = json_decode($order);
-
-        $dishName = [];
-        $total = [];
-
-        foreach ($order as $tot) {
-            array_push($total, $tot -> total);
-            $dish = Dish::findOrFail($tot -> dish_id);
-            array_push($dishName, $dish -> name);
-        }
-        // dd($dishName);
-
-        // Generate random colours for the groups
-        for ($i=0; $i<=count($order); $i++) {
-            $colours[] = '#' . substr(str_shuffle('ABCDEF0123456789'), 0, 6);
-        }
-
-
-        // Prepare the data for returning with the view
-        $chart = new Chart;
-        $chart->labels = (array_values($dishName));
-        $chart->dataset = (array_values($total));
-        $chart->colours = $colours;
-        // dd($chart);
-        return view('layouts.index', compact('chart'));
-
     }
 }
