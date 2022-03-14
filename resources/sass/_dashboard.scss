@@ -3,39 +3,41 @@
     min-height: 50rem;
 }
 
-#create_plate {
+// #create_plate {
 
-    width: 30%;
-    position: fixed;
-    top: 15rem;
-    right: 5rem;
-    z-index: 3000;
+//     width: 30%;
+//     position: fixed;
+//     top: 15rem;
+//     right: 5rem;
+//     z-index: 3000;
 
-}
+// }
+ #my_dishes {
 
-.dish_card {
+    .dish_card {
 
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 2em;
-    overflow-wrap: break-word;
-
-    img {
-
-        height: 100%;
-        object-fit: cover;
+        background-color: rgba(0, 0, 0, 0.1);
         border-radius: 2em;
+        overflow-wrap: break-word;
+    
+        img {
+    
+            height: 100%;
+            object-fit: cover;
+            border-radius: 2em;
+        }
+    
+        .comand_panel {
+    
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    
+        &.not_visible {
+    
+            opacity: 0.5;
+        }
     }
-
-    .comand_panel {
-
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    &.not_visible {
-
-        opacity: 0.5;
-    }
-}
+ }

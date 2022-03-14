@@ -1,12 +1,13 @@
 @extends('layouts.main-layout')
 @section('content')
-    <h1 class="text-center">Piatti di {{ Auth::user()->brand_name }}</h1>
-    <a id="create_plate" class="btn btn-primary" href="{{ route('dish.create') }}" >CREA NUOVO PIATTO</a>
-    <br>
-    <div style="padding-top:80px" id="content_box" class="row position-relative">
+<div id="my_dishes">
+    <div class="row justify-content-center">
+        <h1 class="text-center">Piatti di {{ Auth::user()->brand_name }}</h1>
+        <a id="create_plate" class="btn btn-primary col-xs-12 col-md-6" href="{{ route('dish.create') }}" >CREA NUOVO PIATTO</a>
+    </div>
+    <div id="content_box" class="row position-relative">
 
         <div
-          id="dishes_box"
           class="d-flex flex-column align-items-around"
         >
 
@@ -14,14 +15,14 @@
             @foreach ($categories as $category)
                 
                 @if ($category == 'Antipasto')
-                <div class="col-12 order-1">
+                <div class="col-12 p-3 order-1">
                     <div class="row justify-content-center">
-                        <h2 style="width:100%">Antipasto:</h2>
+                        <h2 class="col-12">Antipasto:</h2>
                         @foreach ($dishes as $dish)
                             @if ($dish -> category == 'Antipasto')
-                                <div class="{{ !$dish -> is_visible? 'dish_card col-5 p-3 m-3 not_visible':'dish_card col-5 p-3 m-3' }}">
+                                <div class="{{ !$dish -> is_visible? 'dish_card col-12 p-3 m-1 not_visible':'dish_card col-12 p-3 m-1' }}">
                                     <div class="row">
-                                        <div class="col-8">
+                                        <div class="col-8 p-3">
                                             <h2>{{ $dish->name }}</h2>
                                             <h5>{{ $dish->description }}</h5>
                                             <h3>{{ $dish->price }} €</h3>
@@ -34,15 +35,15 @@
                                             />
                                         </div>
                                         <div class="comand_panel col-xs-12">
-                                            <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-md-3">MODIFICA</a>
-                                            <a href="#" 
+                                            <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-sm-3">MODIFICA</a>
+                                            <a href="#"
                                                data-target-id="{{ $dish -> id }}" 
                                                data-bs-toggle="modal" 
                                                data-bs-target="#deleteDishConfirmation" 
-                                               class="btn btn-danger m-md-3">
+                                               class="btn btn-danger m-sm-3">
                                                CANCELLA
                                             </a>
-                                            <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-md-3">VISIBILITA</a>
+                                            <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-sm-3">VISIBILITA</a>
                                         </div>
                                     </div>
                                 </div>
@@ -51,14 +52,14 @@
                     </div>
                 </div>
                 @elseif ($category == 'Primi Piatti')
-                <div class="col-12 order-1">
+                <div class="col-12 p-3 order-2">
                     <div class="row justify-content-center">
-                        <h2 style="width:100%">Primi Piatti:</h2>
+                        <h2 class="col-12">Primi Piatti:</h2>
                         @foreach ($dishes as $dish)
                             @if ($dish -> category == 'Primi Piatti')
-                                <div class="{{ !$dish -> is_visible? 'dish_card col-5 p-3 m-3 not_visible':'dish_card col-5 p-3 m-3' }}">
+                                <div class="{{ !$dish -> is_visible? 'dish_card col-12 p-3 m-1 not_visible':'dish_card col-12 p-3 m-1' }}">
                                     <div class="row">
-                                        <div class="col-8">
+                                        <div class="col-8 p-3">
                                             <h2>{{ $dish->name }}</h2>
                                             <h5>{{ $dish->description }}</h5>
                                             <h3>{{ $dish->price }} €</h3>
@@ -71,15 +72,15 @@
                                             />
                                         </div>
                                         <div class="comand_panel col-xs-12">
-                                            <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-md-3">MODIFICA</a>
+                                            <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-sm-3">MODIFICA</a>
                                             <a href="#" 
                                                data-target-id="{{ $dish -> id }}" 
                                                data-bs-toggle="modal" 
                                                data-bs-target="#deleteDishConfirmation" 
-                                               class="btn btn-danger m-md-3">
+                                               class="btn btn-danger m-sm-3">
                                                CANCELLA
                                             </a>
-                                            <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-md-3">VISIBILITA</a>
+                                            <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-sm-3">VISIBILITA</a>
                                         </div>
                                     </div>
                                 </div>
@@ -88,14 +89,14 @@
                     </div>
                 </div>
                 @elseif ($category == 'Secondi Piatti')
-                <div class="col-12 order-1">
+                <div class="col-12 p-3 order-3">
                     <div class="row justify-content-center">
-                        <h2 style="width:100%">Secondi Piatti:</h2>
+                        <h2 class="col-12">Secondi Piatti:</h2>
                         @foreach ($dishes as $dish)
                             @if ($dish -> category == 'Secondi Piatti')
-                                <div class="{{ !$dish -> is_visible? 'dish_card col-5 p-3 m-3 not_visible':'dish_card col-5 p-3 m-3' }}">
+                                <div class="{{ !$dish -> is_visible? 'dish_card col-12 p-3 m-1 not_visible':'dish_card col-12 p-3 m-1' }}">
                                     <div class="row">
-                                        <div class="col-8">
+                                        <div class="col-8 p-3">
                                             <h2>{{ $dish->name }}</h2>
                                             <h5>{{ $dish->description }}</h5>
                                             <h3>{{ $dish->price }} €</h3>
@@ -108,15 +109,15 @@
                                             />
                                         </div>
                                         <div class="comand_panel col-xs-12">
-                                            <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-md-3">MODIFICA</a>
+                                            <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-sm-3">MODIFICA</a>
                                             <a href="#" 
                                                data-target-id="{{ $dish -> id }}" 
                                                data-bs-toggle="modal" 
                                                data-bs-target="#deleteDishConfirmation" 
-                                               class="btn btn-danger m-md-3">
+                                               class="btn btn-danger m-sm-3">
                                                CANCELLA
                                             </a>
-                                            <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-md-3">VISIBILITA</a>
+                                            <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-sm-3">VISIBILITA</a>
                                         </div>
                                     </div>
                                 </div>
@@ -125,14 +126,14 @@
                     </div>
                 </div>
                 @elseif ($category == 'Pizza')
-                <div class="col-12 order-1">
+                <div class="col-12 p-3 order-4">
                     <div class="row justify-content-center">
-                        <h2 style="width:100%">Pizza:</h2>
+                        <h2 class="col-12">Pizza:</h2>
                         @foreach ($dishes as $dish)
                             @if ($dish -> category == 'Pizza')
-                                <div class="{{ !$dish -> is_visible? 'dish_card col-5 p-3 m-3 not_visible':'dish_card col-5 p-3 m-3' }}">
+                                <div class="{{ !$dish -> is_visible? 'dish_card col-12 p-3 m-1 not_visible':'dish_card col-12 p-3 m-1' }}">
                                     <div class="row">
-                                        <div class="col-8">
+                                        <div class="col-8 p-3">
                                             <h2>{{ $dish->name }}</h2>
                                             <h5>{{ $dish->description }}</h5>
                                             <h3>{{ $dish->price }} €</h3>
@@ -145,15 +146,15 @@
                                             />
                                         </div>
                                         <div class="comand_panel col-xs-12">
-                                            <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-md-3">MODIFICA</a>
+                                            <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-sm-3">MODIFICA</a>
                                             <a href="#" 
                                                data-target-id="{{ $dish -> id }}" 
                                                data-bs-toggle="modal" 
                                                data-bs-target="#deleteDishConfirmation" 
-                                               class="btn btn-danger m-md-3">
+                                               class="btn btn-danger m-sm-3">
                                                CANCELLA
                                             </a>
-                                            <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-md-3">VISIBILITA</a>
+                                            <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-sm-3">VISIBILITA</a>
                                         </div>
                                     </div>
                                 </div>
@@ -162,14 +163,14 @@
                     </div>
                 </div>
                 @elseif ($category == 'Dessert')
-                <div class="col-12 order-1">
+                <div class="col-12 p-3 order-5">
                     <div class="row justify-content-center">
-                        <h2 style="width:100%">Dessert:</h2>
+                        <h2 class="col-12">Dessert:</h2>
                         @foreach ($dishes as $dish)
                             @if ($dish -> category == 'Dessert')
-                                <div class="{{ !$dish -> is_visible? 'dish_card col-5 p-3 m-3 not_visible':'dish_card col-5 p-3 m-3' }}">
+                                <div class="{{ !$dish -> is_visible? 'dish_card col-12 p-3 m-1 not_visible':'dish_card col-12 p-3 m-1' }}">
                                     <div class="row">
-                                        <div class="col-8">
+                                        <div class="col-8 p-3">
                                             <h2>{{ $dish->name }}</h2>
                                             <h5>{{ $dish->description }}</h5>
                                             <h3>{{ $dish->price }} €</h3>
@@ -182,15 +183,15 @@
                                             />
                                         </div>
                                         <div class="comand_panel col-xs-12">
-                                            <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-md-3">MODIFICA</a>
+                                            <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-sm-3">MODIFICA</a>
                                             <a href="#" 
                                                data-target-id="{{ $dish -> id }}" 
                                                data-bs-toggle="modal" 
                                                data-bs-target="#deleteDishConfirmation" 
-                                               class="btn btn-danger m-md-3">
+                                               class="btn btn-danger m-sm-3">
                                                CANCELLA
                                             </a>
-                                            <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-md-3">VISIBILITA</a>
+                                            <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-sm-3">VISIBILITA</a>
                                         </div>
                                     </div>
                                 </div>
@@ -199,14 +200,14 @@
                     </div>
                 </div>
                 @elseif ($category == 'Bibite')
-                <div class="col-12 order-1">
+                <div class="col-12 p-3 order-6">
                     <div class="row justify-content-center">
-                        <h2 style="width:100%">Bibite:</h2>
+                        <h2 class="col-12">Bibite:</h2>
                         @foreach ($dishes as $dish)
                             @if ($dish -> category == 'Bibite')
-                                <div class="{{ !$dish -> is_visible? 'dish_card col-5 p-3 m-3 not_visible':'dish_card col-5 p-3 m-3' }}">
+                                <div class="{{ !$dish -> is_visible? 'dish_card col-12 p-3 m-1 not_visible':'dish_card col-12 p-3 m-1' }}">
                                     <div class="row">
-                                        <div class="col-8">
+                                        <div class="col-8 p-3">
                                             <h2>{{ $dish->name }}</h2>
                                             <h5>{{ $dish->description }}</h5>
                                             <h3>{{ $dish->price }} €</h3>
@@ -219,15 +220,15 @@
                                             />
                                         </div>
                                         <div class="comand_panel col-xs-12">
-                                            <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-md-3">MODIFICA</a>
+                                            <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-sm-3">MODIFICA</a>
                                             <a href="#" 
                                                data-target-id="{{ $dish -> id }}" 
                                                data-bs-toggle="modal" 
                                                data-bs-target="#deleteDishConfirmation" 
-                                               class="btn btn-danger m-md-3">
+                                               class="btn btn-danger m-sm-3">
                                                CANCELLA
                                             </a>
-                                            <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-md-3">VISIBILITA</a>
+                                            <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-sm-3">VISIBILITA</a>
                                         </div>
                                     </div>
                                 </div>
@@ -240,27 +241,8 @@
         </div>
 
       </div>
+</div>
 
-    {{-- @foreach ($dishes as $dish)
-        @if (!$dish -> delete)
-        <div>
-            {{ $dish -> name }} 
-            <span class="{{ $dish -> is_visible? 'visibility':'' }}">Non Visibile</span>
-        </div>
-        <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary">MODIFICA</a>
-        <a  href="#" 
-            data-target-id="{{ $dish -> id }}" 
-            data-bs-toggle="modal" 
-            data-bs-target="#deleteDishConfirmation" 
-            class="btn btn-danger">
-            CANCELLA
-        </a>
-        <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary">VISIBILITA</a>
-        <br><br>
-        @endif
-    @endforeach --}}
-
-    {{-- modale alert delete --}}
     @include('pages.modal.delete-dish-confirmation')
 
 @endsection

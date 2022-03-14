@@ -19440,7 +19440,7 @@ img {
 }
 
 #shop {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   position: relative;
 }
@@ -19457,6 +19457,19 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+#shop #dishes_box .dish_card {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2em;
+  overflow-wrap: break-word;
+}
+
+#shop #dishes_box .dish_card img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 2em;
 }
 
 #shop #flex {
@@ -19548,7 +19561,7 @@ img {
   padding: 1em 1.5em;
   border-radius: 2em;
   font-size: 1.5em;
-  z-index: 800;
+  z-index: 4000;
 }
 
 .cart-message.cart-add {
@@ -19560,27 +19573,16 @@ img {
 }
 
 #cart-box {
-  height: 100%;
+  min-height: 40%;
   border: 3px #f9db03 solid;
   border-radius: 2em;
-  background-color: rgba(208, 81, 38, 0.95);
+  background-color: rgba(205, 191, 226, 0.85);
   z-index: 1000;
   text-align: center;
-}
-
-#cart-box th,
-#cart-box td {
-  padding: 1rem;
-}
-
-.cart_position {
-  width: 33.3333333333%;
-}
-
-.scrollEffect {
-  position: fixed;
-  right: 5%;
-  bottom: 50%;
+  overflow-wrap: break-word;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 16rem;
 }
 
 #loading_screen {
@@ -19594,10 +19596,9 @@ img {
   border-color: #d05026;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   #cart-box {
     width: 100%;
-    height: 50%;
     position: fixed;
     top: 16rem;
     left: 0;
@@ -19841,35 +19842,27 @@ ul.social-footer2 li a {
   min-height: 50rem;
 }
 
-#create_plate {
-  width: 30%;
-  position: fixed;
-  top: 15rem;
-  right: 5rem;
-  z-index: 3000;
-}
-
-.dish_card {
+#my_dishes .dish_card {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 2em;
   overflow-wrap: break-word;
 }
 
-.dish_card img {
+#my_dishes .dish_card img {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 2em;
 }
 
-.dish_card .comand_panel {
+#my_dishes .dish_card .comand_panel {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.dish_card.not_visible {
+#my_dishes .dish_card.not_visible {
   opacity: 0.5;
 }
 
