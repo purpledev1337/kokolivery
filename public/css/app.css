@@ -19153,7 +19153,8 @@ nav span.navbar-toggler-icon {
 .centratura {
   margin: 0 auto;
   position: relative;
-  top: -40px;
+  top: 0px;
+  left: -142px;
 }
 
 .centratura .position-relative {
