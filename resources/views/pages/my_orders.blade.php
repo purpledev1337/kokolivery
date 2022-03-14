@@ -73,7 +73,7 @@
                     
                     {{-- ceil --}}
                     <div class="ceil-headling">
-                        100 patate  
+                          {{ $order -> order_price }}€
                     </div>
                 </div>
                 {{-- /footer list --}}

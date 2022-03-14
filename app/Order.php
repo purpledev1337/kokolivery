@@ -9,6 +9,7 @@ class Order extends Model
     protected $fillable = [
         'status_pay',
         'delivery_time',
+        'order_price'
     ];
 
     public function dishes() {

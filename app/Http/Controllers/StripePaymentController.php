@@ -66,6 +66,7 @@ class StripePaymentController extends Controller
         $order = Order::make();
         $order -> status_pay = true;
         $order -> delivery_time = rand(5,60);
+        $order -> order_price = $payment;
         
         $order -> save();
 
