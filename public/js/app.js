@@ -5945,7 +5945,6 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/api/restaurants/get').then(function (res) {
-        console.log(res.data[0]);
         _this.restaurants = res.data;
         _this.loading = false;
       })["catch"](function (error) {
@@ -57314,7 +57313,10 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "container my-4", attrs: { id: "restaurants" } },
+      {
+        staticClass: "container-fluid py-5 text-center",
+        attrs: { id: "restaurants" },
+      },
       [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col" }, [

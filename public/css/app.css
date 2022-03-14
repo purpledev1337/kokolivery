@@ -19291,6 +19291,10 @@ img {
   width: 40% !important;
 }
 
+#restaurants {
+  background-color: #f8fafc;
+}
+
 #restaurantsbox .types {
   cursor: pointer;
 }

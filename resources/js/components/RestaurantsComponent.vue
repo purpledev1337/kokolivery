@@ -1,7 +1,7 @@
 <template>
     <section>
 
-        <div id="restaurants" class="container my-4">
+        <div id="restaurants" class="container-fluid py-5 text-center">
             <div class="row">
                 <div class="col">
                     <h2 class="h2">RISTORANTI CHE CONSEGNANO ORA</h2>
@@ -91,7 +91,6 @@
             getRestaurants(){
                 axios.get('/api/restaurants/get')
                     .then((res)=>{
-                        console.log(res.data[0]);
                         this.restaurants = res.data;
                         this.loading = false;
                     })
