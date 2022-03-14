@@ -23,9 +23,25 @@ class AuthController extends Controller
 
     public function myDishes()
     {
-        $dishes = User::find(Auth::User() -> id) -> dishes;
+        // $dishes = User::find(Auth::User() -> id) -> dishes;
 
-        return view('pages.my_dishes', compact('dishes'));
+        $dishes = DB::table('dishes')
+        -> select('*')
+        -> where('user_id', Auth::User() -> id)
+        -> where('delete', 0)
+        -> get();
+
+        $categories = [];
+
+        foreach ($dishes as $dish) {
+            if (!in_array($dish -> category, $categories)) {
+
+                $categories[] = $dish -> category;
+            }
+
+        }
+
+        return view('pages.my_dishes', compact('dishes', 'categories'));
     }
 
     public function myOrders()
