@@ -5301,6 +5301,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5330,6 +5331,27 @@ $(function () {
     }
   });
 });
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LoaderComponent.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LoaderComponent.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 
@@ -5885,8 +5907,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5894,7 +5914,9 @@ __webpack_require__.r(__webpack_exports__);
       types: [],
       restaurantsCity: [],
       inputCity: '',
-      loading: true
+      loading: true,
+      categoriesActive: [],
+      result: []
     };
   },
   props: {
@@ -5906,10 +5928,16 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.getCategories();
     this.getRestaurants();
+    this.categoriesActive = [];
   },
   computed: {
     filteredRestaurants: function filteredRestaurants() {
-      return this.filterRestaurantsByCity();
+      if (this.categoriesActive.length === 0) {
+        return this.filterRestaurantsByCity();
+      } else {
+        this.filterCategory();
+        return this.result;
+      }
     }
   },
   methods: {
@@ -5917,7 +5945,6 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/api/restaurants/get').then(function (res) {
-        console.log(res.data);
         _this.restaurants = res.data;
         _this.loading = false;
       })["catch"](function (error) {
@@ -5945,7 +5972,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.inputCity === '') {
         // ritorno tutti i ristornati
-        return this.restaurantsCity = this.restaurants;
+        return this.restaurants;
       }
 
       this.restaurantsCity = []; // filtro i ristornati per città
@@ -5954,10 +5981,32 @@ __webpack_require__.r(__webpack_exports__);
         if (restaurant.city.toLowerCase().includes(_this3.inputCity.toLowerCase())) {
           _this3.restaurantsCity.push(restaurant);
         }
-
-        console.log(_this3.restaurantsCitys);
       });
       return this.restaurantsCity;
+    },
+    addToCategoriesActive: function addToCategoriesActive(id) {
+      // verifico se il checkbox cliccato è gia stato selezionato
+      var elementFinded = this.categoriesActive.indexOf(id);
+
+      if (elementFinded !== -1) {
+        this.categoriesActive.splice(elementFinded, 1);
+      } else this.categoriesActive.push(id);
+    },
+    filterCategory: function filterCategory() {
+      var _this4 = this;
+
+      this.result = [];
+      var filteredByCategoryRestaurants = this.filterRestaurantsByCity();
+      filteredByCategoryRestaurants.forEach(function (element) {
+        element.categories.forEach(function (el) {
+          _this4.categoriesActive.forEach(function (idCategory) {
+            if (idCategory === el.id) {
+              if (!_this4.result.includes(element)) _this4.result.push(element);
+            }
+          });
+        });
+      });
+      return this.result;
     }
   }
 });
@@ -5973,6 +6022,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -56550,7 +56603,7 @@ var render = function () {
     _c("div", { attrs: { id: "search_home" } }, [
       _vm._m(0),
       _vm._v(" "),
-      _c("div", { staticClass: "kokohover" }, [
+      _c("div", { staticClass: "kokohover input-group" }, [
         _c("input", {
           directives: [
             {
@@ -56560,9 +56613,11 @@ var render = function () {
               expression: "city",
             },
           ],
+          staticClass: "form-control",
           attrs: {
             type: "text",
-            placeholder: "Inserisci La Via, La Citta' E La Provincia",
+            placeholder:
+              "Inserisci qui La Citta' e scopri i migliori ristornati",
           },
           domProps: { value: _vm.city },
           on: {
@@ -56630,6 +56685,45 @@ var staticRenderFns = [
       _c("h1", { staticClass: "kokohover", attrs: { id: "float-title" } }, [
         _vm._v("Kokolivery"),
       ]),
+    ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LoaderComponent.vue?vue&type=template&id=0ccf4ce2&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LoaderComponent.vue?vue&type=template&id=0ccf4ce2& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "loading" } }, [
+      _c("span"),
+      _vm._v(" "),
+      _c("span"),
+      _vm._v(" "),
+      _c("span"),
+      _vm._v(" "),
+      _c("span"),
     ])
   },
 ]
@@ -57079,121 +57173,135 @@ var render = function () {
     _vm._v(" "),
     _c("div", { attrs: { id: "restaurantsbox" } }, [
       _c("div", { staticClass: "cardrestaurant container-fluid" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-2 pt-4" },
-            [
-              _c("h5", { staticClass: "h5" }, [_vm._v("CITTA'")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col input-group input-group mb-3" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model.lazy",
-                      value: _vm.inputCity,
-                      expression: "inputCity",
-                      modifiers: { lazy: true },
-                    },
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", name: "city" },
-                  domProps: { value: _vm.inputCity },
-                  on: {
-                    keyup: function ($event) {
-                      if (
-                        !$event.type.indexOf("key") &&
-                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                      ) {
-                        return null
-                      }
-                      $event.preventDefault()
-                      return _vm.filterRestaurantsByCity.apply(null, arguments)
-                    },
-                    change: function ($event) {
-                      _vm.inputCity = $event.target.value
-                    },
-                  },
-                }),
+        _c(
+          "div",
+          { staticClass: "row" },
+          [
+            _c(
+              "div",
+              { staticClass: "col-sm-3 col-md-2 pt-4" },
+              [
+                _c("h5", { staticClass: "h5" }, [_vm._v("CITTA'")]),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary",
-                    on: {
-                      click: function ($event) {
-                        $event.preventDefault()
-                        return _vm.filterRestaurantsByCity.apply(
-                          null,
-                          arguments
-                        )
-                      },
+                _c("div", { staticClass: "col input-group input-group mb-3" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "position-relative",
+                      attrs: { id: "searchcity" },
                     },
-                  },
-                  [_vm._v("search")]
-                ),
-              ]),
-              _vm._v(" "),
-              _c("h5", { staticClass: "h5" }, [_vm._v("CATEGORIE")]),
-              _vm._v(" "),
-              _vm._l(_vm.types, function (type) {
-                return _c(
-                  "div",
-                  { key: type.id, staticClass: "input-group mb-3" },
-                  [
-                    _c("div", { staticClass: "input-group-text" }, [
+                    [
                       _c("input", {
-                        staticClass: "form-check-input mt-0",
-                        attrs: { type: "checkbox" },
-                        domProps: { value: type.id },
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model.lazy",
+                            value: _vm.inputCity,
+                            expression: "inputCity",
+                            modifiers: { lazy: true },
+                          },
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text", name: "city" },
+                        domProps: { value: _vm.inputCity },
                         on: {
-                          click: function ($event) {
-                            return _vm.test(type.id, type.name)
+                          keyup: function ($event) {
+                            if (
+                              !$event.type.indexOf("key") &&
+                              _vm._k(
+                                $event.keyCode,
+                                "enter",
+                                13,
+                                $event.key,
+                                "Enter"
+                              )
+                            ) {
+                              return null
+                            }
+                            $event.preventDefault()
+                            return _vm.filterRestaurantsByCity.apply(
+                              null,
+                              arguments
+                            )
+                          },
+                          change: function ($event) {
+                            _vm.inputCity = $event.target.value
                           },
                         },
                       }),
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          "aria-label": "Text input with checkbox",
+                      _vm._v(" "),
+                      _c("i", {
+                        staticClass: "fa-solid fa-magnifying-glass",
+                        on: {
+                          click: function ($event) {
+                            $event.preventDefault()
+                            return _vm.filterRestaurantsByCity.apply(
+                              null,
+                              arguments
+                            )
+                          },
                         },
-                      },
-                      [_vm._v(_vm._s(type.name))]
-                    ),
-                  ]
-                )
-              }),
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _vm.loading
-            ? _c("div", { attrs: { id: "loading" } }, [
-                _c("span"),
+                      }),
+                    ]
+                  ),
+                ]),
                 _vm._v(" "),
-                _c("span"),
+                _c("h5", { staticClass: "h5" }, [_vm._v("CATEGORIE")]),
                 _vm._v(" "),
-                _c("span"),
-                _vm._v(" "),
-                _c("span"),
-              ])
-            : _c(
-                "div",
-                { staticClass: "col-10" },
-                [
-                  _c("card-component", {
-                    attrs: { filteredRestaurants: _vm.filteredRestaurants },
-                  }),
-                ],
-                1
-              ),
-        ]),
+                _vm._l(_vm.types, function (type) {
+                  return _c(
+                    "div",
+                    {
+                      key: type.id,
+                      staticClass: "categories input-group mb-3",
+                    },
+                    [
+                      _c("div", { staticClass: "input-group-text" }, [
+                        _c("input", {
+                          staticClass: "form-check-input mt-0",
+                          attrs: { type: "checkbox" },
+                          domProps: { value: type.id },
+                          on: {
+                            click: function ($event) {
+                              return _vm.addToCategoriesActive(type.id)
+                            },
+                          },
+                        }),
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            "aria-label": "Text input with checkbox",
+                          },
+                        },
+                        [_vm._v(_vm._s(type.name))]
+                      ),
+                    ]
+                  )
+                }),
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _vm.loading
+              ? _c("loader-component")
+              : _c(
+                  "div",
+                  { staticClass: "col-sm-9 col-md-10" },
+                  [
+                    _c("card-component", {
+                      attrs: { filteredRestaurants: _vm.filteredRestaurants },
+                    }),
+                  ],
+                  1
+                ),
+          ],
+          1
+        ),
       ]),
     ]),
   ])
@@ -57205,16 +57313,17 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "container my-4", attrs: { id: "restaurants" } },
+      {
+        staticClass: "container-fluid py-5 text-center",
+        attrs: { id: "restaurants" },
+      },
       [
         _c("div", { staticClass: "row" }, [
-          _c("h2", { staticClass: "h2" }, [
-            _vm._v("RISTORANTI CHE CONSEGNANO ORA"),
+          _c("div", { staticClass: "col" }, [
+            _c("h2", { staticClass: "h2" }, [
+              _vm._v("RISTORANTI CHE CONSEGNANO ORA"),
+            ]),
           ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-2" }),
         ]),
       ]
     )
@@ -57242,53 +57351,49 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "verkoko hoverkoko centratura" }, [
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.city,
-          expression: "city",
+    _c("div", { staticClass: "position-relative" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.city,
+            expression: "city",
+          },
+        ],
+        staticClass: "form-control",
+        attrs: { type: "text", placeholder: "Inserisci La Citta'" },
+        domProps: { value: _vm.city },
+        on: {
+          keyup: function ($event) {
+            if (
+              !$event.type.indexOf("key") &&
+              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+            ) {
+              return null
+            }
+            $event.preventDefault()
+            return _vm.searchRestaurantsFromCity.apply(null, arguments)
+          },
+          input: function ($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.city = $event.target.value
+          },
         },
-      ],
-      attrs: {
-        type: "text",
-        placeholder: "Inserisci La Via, La Citta' E La Provincia",
-      },
-      domProps: { value: _vm.city },
-      on: {
-        keyup: function ($event) {
-          if (
-            !$event.type.indexOf("key") &&
-            _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-          ) {
-            return null
-          }
-          $event.preventDefault()
-          return _vm.searchRestaurantsFromCity.apply(null, arguments)
-        },
-        input: function ($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.city = $event.target.value
-        },
-      },
-    }),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "btn",
+      }),
+      _vm._v(" "),
+      _c("i", {
+        staticClass: "fa-solid fa-magnifying-glass",
         on: {
           click: function ($event) {
             $event.preventDefault()
             return _vm.searchRestaurantsFromCity.apply(null, arguments)
           },
         },
-      },
-      [_vm._v("\n    CERCA\n  ")]
-    ),
+      }),
+    ]),
   ])
 }
 var staticRenderFns = []
@@ -69557,6 +69662,7 @@ var map = {
 	"./components/CardComponent.vue": "./resources/js/components/CardComponent.vue",
 	"./components/ChartComponent.vue": "./resources/js/components/ChartComponent.vue",
 	"./components/HeaderComponent.vue": "./resources/js/components/HeaderComponent.vue",
+	"./components/LoaderComponent.vue": "./resources/js/components/LoaderComponent.vue",
 	"./components/MainComponent.vue": "./resources/js/components/MainComponent.vue",
 	"./components/RestaurantShopComponent.vue": "./resources/js/components/RestaurantShopComponent.vue",
 	"./components/RestaurantsComponent.vue": "./resources/js/components/RestaurantsComponent.vue",
@@ -69857,6 +69963,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HeaderComponent_vue_vue_type_template_id_153bfd55___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HeaderComponent_vue_vue_type_template_id_153bfd55___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/LoaderComponent.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/LoaderComponent.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _LoaderComponent_vue_vue_type_template_id_0ccf4ce2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LoaderComponent.vue?vue&type=template&id=0ccf4ce2& */ "./resources/js/components/LoaderComponent.vue?vue&type=template&id=0ccf4ce2&");
+/* harmony import */ var _LoaderComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LoaderComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/LoaderComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _LoaderComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _LoaderComponent_vue_vue_type_template_id_0ccf4ce2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _LoaderComponent_vue_vue_type_template_id_0ccf4ce2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/LoaderComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/LoaderComponent.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/LoaderComponent.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LoaderComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./LoaderComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LoaderComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LoaderComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/LoaderComponent.vue?vue&type=template&id=0ccf4ce2&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/LoaderComponent.vue?vue&type=template&id=0ccf4ce2& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoaderComponent_vue_vue_type_template_id_0ccf4ce2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./LoaderComponent.vue?vue&type=template&id=0ccf4ce2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LoaderComponent.vue?vue&type=template&id=0ccf4ce2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoaderComponent_vue_vue_type_template_id_0ccf4ce2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoaderComponent_vue_vue_type_template_id_0ccf4ce2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -70225,8 +70400,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\BOOLEAN\kokolivery\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! F:\BOOLEAN\kokolivery\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/cenny/Desktop/project final/project/kokolivery/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/cenny/Desktop/project final/project/kokolivery/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

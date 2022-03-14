@@ -27,6 +27,24 @@ flex-direction: column;
     margin: 0 auto;
     position: relative;
     top: -40px;
+
+    .position-relative{
+        width: 20rem;
+    }
+
+    i{
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: $indigo;
+        padding: 0.375rem 0.75rem;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        cursor: pointer;
+    }
+    .form-control{
+        padding-right: 2.5rem;
+    }
 }
 
 //colori link
@@ -70,4 +88,11 @@ display: flex;
 
 .navbar-light .navbar-toggler{
     color: blue !important;
+}
+
+.kokohover.input-group {
+    position: relative;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 26rem;
 }
