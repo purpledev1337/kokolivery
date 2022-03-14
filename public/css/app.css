@@ -19226,9 +19226,10 @@ nav span.navbar-toggler-icon {
   width: 26rem;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  padding-top: 40px;
+.navbar-collapse {
+  flex-basis: 0;
+  flex-grow: 1;
+  align-items: center;
 }
 
 #search_home {
@@ -19239,10 +19240,6 @@ body {
   height: 75vh;
   background: #ffd00f;
   background: linear-gradient(90deg, #ffd00f 49%, #d05026 100%);
-}
-
-#home {
-  margin-top: 40px;
 }
 
 #cont-logo {
@@ -19454,7 +19451,7 @@ img {
 }
 
 #shop {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   position: relative;
 }
@@ -19471,6 +19468,19 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+#shop #dishes_box .dish_card {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2em;
+  overflow-wrap: break-word;
+}
+
+#shop #dishes_box .dish_card img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 2em;
 }
 
 #shop #flex {
@@ -19520,8 +19530,9 @@ img {
   align-items: center;
   border-radius: 25%;
   position: fixed;
-  right: 25px;
-  top: 65px;
+  right: 2rem;
+  top: 16.5rem;
+  z-index: 2000;
 }
 
 #shop #icon-cart #cont_icon {
@@ -19561,7 +19572,7 @@ img {
   padding: 1em 1.5em;
   border-radius: 2em;
   font-size: 1.5em;
-  z-index: 800;
+  z-index: 4000;
 }
 
 .cart-message.cart-add {
@@ -19573,27 +19584,16 @@ img {
 }
 
 #cart-box {
-  position: absolute;
-  right: 2%;
-  top: 1%;
-  padding: 2rem;
+  min-height: 40%;
+  border: 3px #f9db03 solid;
+  border-radius: 2em;
+  background-color: rgba(205, 191, 226, 0.85);
   z-index: 1000;
   text-align: center;
-}
-
-#cart-box th,
-#cart-box td {
-  padding: 1.5rem;
-}
-
-.cart_position {
-  width: 33.3333333333%;
-}
-
-.scrollEffect {
-  position: fixed;
-  right: 5%;
-  bottom: 50%;
+  overflow-wrap: break-word;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 16rem;
 }
 
 #loading_screen {
@@ -19605,6 +19605,15 @@ img {
 .btn-orange {
   background-color: #d05026;
   border-color: #d05026;
+}
+
+@media (max-width: 991.98px) {
+  #cart-box {
+    width: 100%;
+    position: fixed;
+    top: 16rem;
+    left: 0;
+  }
 }
 
 #stripe .panel-title {
@@ -19840,6 +19849,7 @@ ul.social-footer2 li a {
   padding: 34px 10%;
 }
 
+<<<<<<< HEAD
 #loading {
   text-align: center;
   padding-top: 4rem;
@@ -19909,6 +19919,66 @@ ul.social-footer2 li a {
   margin: 0 auto;
 }
 
+.title-order {
+  text-align: center;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+#list-orders {
+  width: 80%;
+  margin: 50px auto;
+}
+
+#list-orders #orders .order {
+  margin-bottom: 50px;
+}
+
+#list-orders #orders .order #heading-order-list {
+  border: 1px solid;
+  display: flex;
+  justify-content: space-between;
+  background-color: #d05026;
+}
+
+#list-orders #orders .order #heading-order-list .ceil-headling {
+  text-align: center;
+  width: 33.3333333333%;
+  padding: 5px 15px;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: white;
+}
+
+#list-orders #orders .order .product {
+  border: 1px solid;
+  display: flex;
+  justify-content: space-between;
+}
+
+#list-orders #orders .order .product .ceil {
+  text-align: center;
+  width: 33.3333333333%;
+  padding: 5px 15px;
+  font-size: 1.2em;
+  background-color: rgba(210, 198, 229, 0.6);
+}
+
+#list-orders #orders .order #footer-order-list {
+  border: 1px solid;
+  display: flex;
+  justify-content: space-between;
+}
+
+#list-orders #orders .order #footer-order-list .ceil-footer {
+  text-align: center;
+  width: 33.3333333333%;
+  padding: 5px 15px;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #d05026;
+}
+
 #float-img {
   position: relative;
   -webkit-animation: floatBubble 1s 1 normal ease-out;
@@ -19961,6 +20031,38 @@ ul.social-footer2 li a {
   100% {
     right: 0px;
   }
+=======
+#dashboard {
+  min-height: 50rem;
+}
+
+#my_dishes .dish_card {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2em;
+  overflow-wrap: break-word;
+}
+
+#my_dishes .dish_card img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 2em;
+}
+
+#my_dishes .dish_card .comand_panel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#my_dishes .dish_card.not_visible {
+  opacity: 0.5;
+}
+
+html {
+  scroll-behavior: smooth;
+>>>>>>> d366af2751106a10776547037e9c20103824cfb0
 }
 
 #cityactive {
@@ -20045,6 +20147,8 @@ ul.social-footer2 li a {
 }
 
 body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding-top: 145px;
   background-color: #fff;
 }
 
@@ -20055,9 +20159,5 @@ body .h2 {
 
 .visibility {
   display: none;
-}
-
-#content {
-  padding: 4em 0em;
 }
 

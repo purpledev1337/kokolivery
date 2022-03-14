@@ -1,37 +1,32 @@
 <header>
-    <nav class="navbar fixed-top navbar-expand-lg sfumatura_header">
+    <nav  class="navbar fixed-top navbar-expand-lg sfumatura_header">
         <div class="container-fluid centratura-logonav">
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
                 aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <a class="navbar-brand mb-1 mb-lg-0 logonavbase black" href="{{ route('home') }}"> <img
                     class="logonav" src="/storage/asset/Kokolivery-logo.svg"> Kokolivery</a>
-
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-
+                <search-component></search-component>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
                     @auth
-                        <button class="btn btn-collabora">
-                            <li class="nav-item">
-                                <a href="{{ route('dashboard') }}"
-                                    class="nav-link black">{{ Auth::user()->brand_name }}</a>
-                            </li>
-                        </button>
-                        <button class="btn btn-collabora">
-                            <li class="nav-item ">
-                                <a class="nav-link black" href="{{ route('logout') }}">Logout</a>
-                            </li>
-                        </button>
+                    <button class="btn btn-collabora">
+                        <li class="nav-item">
+                            <a href="{{ route('dashboard') }}" class="nav-link black">{{ Auth::user()->brand_name }}</a>
+                        </li>
+                    </button>
+                    <button class="btn btn-collabora">
+                        <li class="nav-item ">
+                            <a class="nav-link black" href="{{ route('logout') }}">Logout</a>
+                        </li>
+                    </button>
+                  
                     @endauth
                     <form class="form-inline hoverkoko">
                         {{-- <input @keyup.enter.prevent="searchRestaurantsFromCity" type="text" placeholder="Inserisci La Via, La Citta' E La Provincia" v-model="city"> --}}
                         {{-- <button @click.prevent="searchRestaurantsFromCity"  class="btn btn-primary" >SEARCH</button> --}}
                     </form>
-
                     {{-- dropdown --}}
                     <li class="nav-item dropdown ">
                         <button class="btn btn-collabora">
@@ -52,9 +47,8 @@
                             </ul>
                         </button>
                     </li>
-
                     {{-- link to home --}}
-                    <button class="btn btn-collabora">
+                    <button class="btn btn-collabora" >
                         <li class="nav-item">
                             <a class="nav-link black" href="{{ route('home') }}">Home</a>
                         </li>
@@ -65,14 +59,14 @@
                             <a class="nav-link black" href="{{ route('restaurants') }}">Ristoranti</a>
                         </li>
                     </button>
-
                 </ul>
             </div>
         </div>
+        {{-- <div class="containeNav">
+            <search-component></search-component>
+        </div> --}}
     </nav>
-
-
-    <script type="application/javascript">
+    <script>
         $(function() {
             var header = $(".navbar");
             var brand = $(".navbar-brand");
@@ -92,8 +86,6 @@
                     koko.addClass("removehover");
                     formkoko.removeClass("hoverkoko");
                     formkoko.addClass("removehoverform");
-
-
                 } else {
                     header.removeClass(" bg-valerio");
                     header.addClass("sfumatura_header");
@@ -105,13 +97,10 @@
                     koko.addClass("logonav");
                     formkoko.addClass("hoverkoko");
                     formkoko.removeClass("removehoverform");
-
                 }
             });
-
         });
     </script>
-
     {{-- modal registration --}}
     @include('pages.modal.login')
 </header>

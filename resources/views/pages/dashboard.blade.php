@@ -1,31 +1,39 @@
 @extends('layouts.main-layout')
 @section('content')
-    <div id="dashboard" class="text-center">
-        <div id="cont-img">
-            {{-- <img src="{{asset('storage') . '/'.Auth::user()->image_path}}"> --}}
+    <div id="dashboard" class="row align-items-center">
+        <div class="col-md-3">
+            <div class="row">
+                    <a class="btn btn-primary offset-3 col-6 mb-5" href="{{route('myDishes')}}">PIATTI</a>
+            </div>
+            <div class="row">
+                    <a class="btn btn-primary offset-3 col-6" href="{{route('my_orders')}}">ORDINI</a>
+            </div>
         </div>
-        <h2>Nome: {{Auth::user()->brand_name}}</h2>
-        <h2>Tipologia: 
-            @foreach (Auth::user()->types as $type)
-                {{$type -> name}}
-            @endforeach
-        </h2>
-        <h2>Email: {{Auth::user()->email}}</h2>
-        <h2>Indirizzo: {{Auth::user()->address}}</h2>
-        <h2>P.IVA: {{Auth::user()->p_iva}}</h2>
-        <h2>Descrizione: {{Auth::user()->description}}</h2>
-        <h2>Ordine minimo: {{Auth::user()->order_min}}€</h2>
-        <h2>Prezzo consegna: {{Auth::user()->delivery_price}}€</h2>
-        <a class="btn btn-primary" href="{{route('myDishes')}}">PIATTI</a>
-        <a class="btn btn-primary" href="{{route('my_orders')}}">ORDINI</a>
-        <a class="btn btn-secondary" href="{{route('restaurant.edit')}}">MODIFICA</a>
-        <a  href="#" 
-        data-target-id="{{Auth::user()->id}}" 
-        data-bs-toggle="modal" 
-        data-bs-target="#deleteRestaurantConfirmation" 
-        class="btn btn-danger">
-        CANCELLA
-        </a>
+        <div class="col-md-9">
+            <div id="cont-img">
+                <img src="{{asset('storage/asset') . '/' . Auth::user()->image}}">
+            </div>
+            <h1 class="text-center">{{Auth::user()->brand_name}}</h1>
+            <h4>Tipologia: 
+                @foreach (Auth::user()->types as $type)
+                    {{$type -> name}} |
+                @endforeach
+            </h4>
+            <h4>Email: {{Auth::user()->email}}</h4>
+            <h4>Indirizzo: {{Auth::user()->address}}</h4>
+            <h4>P.IVA: {{Auth::user()->p_iva}}</h4>
+            <h4>Descrizione: {{Auth::user()->description}}</h4>
+            <h4>Ordine minimo: {{Auth::user()->order_min}}€</h4>
+            <h4>Prezzo consegna: {{Auth::user()->delivery_price}}€</h4>
+            <a class="btn btn-secondary" href="{{route('restaurant.edit')}}">MODIFICA</a>
+            <a  href="#" 
+            data-target-id="{{Auth::user()->id}}" 
+            data-bs-toggle="modal" 
+            data-bs-target="#deleteRestaurantConfirmation" 
+            class="btn btn-danger">
+            CANCELLA
+            </a>
+        </div>
     </div>
 
     {{-- modale alert delete --}}
