@@ -72,46 +72,6 @@
     </nav>
 
 
-    <script type="application/javascript">
-        $(function() {
-            var header = $(".navbar");
-            var brand = $(".navbar-brand");
-            var linka = $(".nav-link");
-            var koko = $(".logonav");
-            var formkoko = $(".form-inline");
-            $(window).scroll(function() {
-                var scroll = $(window).scrollTop();
-                if (scroll >= 50) {
-                    header.addClass(" bg-valerio");
-                    header.removeClass("sfumatura_header");
-                    brand.addClass("white");
-                    brand.removeClass("black");
-                    linka.removeClass("black");
-                    linka.addClass("white");
-                    koko.removeClass("logonav");
-                    koko.addClass("removehover");
-                    formkoko.removeClass("hoverkoko");
-                    formkoko.addClass("removehoverform");
-
-
-                } else {
-                    header.removeClass(" bg-valerio");
-                    header.addClass("sfumatura_header");
-                    brand.removeClass("white");
-                    brand.addClass("black")
-                    linka.removeClass("white");
-                    linka.addClass("black");
-                    koko.removeClass("removehover");
-                    koko.addClass("logonav");
-                    formkoko.addClass("hoverkoko");
-                    formkoko.removeClass("removehoverform");
-
-                }
-            });
-
-        });
-    </script>
-
     {{-- modal registration --}}
     @include('pages.modal.login')
 </header>
