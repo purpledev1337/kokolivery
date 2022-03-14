@@ -1,5 +1,5 @@
 <header>
-    <nav  class="navbar fixed-top navbar-expand-lg sfumatura_header">
+    <nav class="navbar fixed-top navbar-expand-lg sfumatura_header">
         <div class="container-fluid centratura-logonav">
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
@@ -15,12 +15,17 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     @auth
-                        <li class="nav-item">
-                            <a href="{{ route('dashboard') }}" class="nav-link black">{{ Auth::user()->brand_name }}</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link black" href="{{ route('logout') }}">Logout</a>
-                        </li>
+                        <button class="btn btn-collabora">
+                            <li class="nav-item">
+                                <a href="{{ route('dashboard') }}"
+                                    class="nav-link black">{{ Auth::user()->brand_name }}</a>
+                            </li>
+                        </button>
+                        <button class="btn btn-collabora">
+                            <li class="nav-item ">
+                                <a class="nav-link black" href="{{ route('logout') }}">Logout</a>
+                            </li>
+                        </button>
                     @endauth
                     <form class="form-inline hoverkoko">
                         {{-- <input @keyup.enter.prevent="searchRestaurantsFromCity" type="text" placeholder="Inserisci La Via, La Citta' E La Provincia" v-model="city"> --}}
@@ -49,7 +54,7 @@
                     </li>
 
                     {{-- link to home --}}
-                    <button class="btn btn-collabora" >
+                    <button class="btn btn-collabora">
                         <li class="nav-item">
                             <a class="nav-link black" href="{{ route('home') }}">Home</a>
                         </li>

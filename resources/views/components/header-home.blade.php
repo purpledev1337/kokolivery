@@ -10,12 +10,17 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     @auth
+                    <button class="btn btn-collabora">
                         <li class="nav-item">
                             <a href="{{ route('dashboard') }}" class="nav-link black">{{ Auth::user()->brand_name }}</a>
                         </li>
+                    </button>
+                    <button class="btn btn-collabora">
                         <li class="nav-item ">
                             <a class="nav-link black" href="{{ route('logout') }}">Logout</a>
                         </li>
+                    </button>
+                  
                     @endauth
                     <form class="form-inline hoverkoko">
                         {{-- <input @keyup.enter.prevent="searchRestaurantsFromCity" type="text" placeholder="Inserisci La Via, La Citta' E La Provincia" v-model="city"> --}}
