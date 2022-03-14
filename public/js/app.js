@@ -5196,6 +5196,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -56577,7 +56582,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
+    return _c("div", { staticClass: "d-none d-md-block" }, [
+      _c("h2", { staticClass: "title-order" }, [
+        _vm._v("\n        I 5 Piatti Piu' Venduti\n    "),
+      ]),
+      _vm._v(" "),
       _c("div", { attrs: { id: "chart-cont" } }, [
         _c("canvas", { attrs: { id: "canvas" } }),
       ]),

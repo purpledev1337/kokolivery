@@ -17,7 +17,7 @@
 
         .order {
             margin-bottom: 50px;
-    
+
             #heading-order-list {
                 border: 1px solid;
                 display: flex;
@@ -28,7 +28,7 @@
                     text-align: center;
                     width: calc(100% / 3);
                     padding: 5px 15px;
-                    font-size: 22px;
+                    font-size: 1.4em;
                     font-weight: bold;
                     color: white;
                 }
@@ -43,11 +43,38 @@
                     text-align: center;
                     width: calc(100% / 3);
                     padding: 5px 15px;
-                    font-size: 16px;
+                    font-size: 1.2em;
                     background-color: rgba(210, 198, 229, 0.6);
                 }
             }
+
+            #footer-order-list {
+                border: 1px solid;
+                display: flex;
+                justify-content: space-between;
+
+                .ceil-footer {
+                    text-align: center;
+                    width: calc(100% / 3);
+                    padding: 5px 15px;
+                    font-size: 1.4em;
+                    font-weight: bold;
+                    color: $orange;
+                }
+            }
+
         }
-    
+        
     }
 }
+
+// @media (max-width: 767.98px) {
+
+//     .ceil-headling {
+//         font-size: 20px;
+//     }
+
+//     .ceil-footer {
+//         font-size: 20px;
+//     }
+// }
