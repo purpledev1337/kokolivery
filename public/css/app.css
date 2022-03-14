@@ -19424,7 +19424,7 @@ img {
 }
 
 #shop {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   position: relative;
 }
@@ -19441,6 +19441,19 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+#shop #dishes_box .dish_card {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2em;
+  overflow-wrap: break-word;
+}
+
+#shop #dishes_box .dish_card img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 2em;
 }
 
 #shop #flex {
@@ -19490,8 +19503,9 @@ img {
   align-items: center;
   border-radius: 25%;
   position: fixed;
-  right: 25px;
-  top: 65px;
+  right: 2rem;
+  top: 16.5rem;
+  z-index: 2000;
 }
 
 #shop #icon-cart #cont_icon {
@@ -19531,7 +19545,7 @@ img {
   padding: 1em 1.5em;
   border-radius: 2em;
   font-size: 1.5em;
-  z-index: 800;
+  z-index: 4000;
 }
 
 .cart-message.cart-add {
@@ -19543,27 +19557,16 @@ img {
 }
 
 #cart-box {
-  position: absolute;
-  right: 2%;
-  top: 1%;
-  padding: 2rem;
+  min-height: 40%;
+  border: 3px #f9db03 solid;
+  border-radius: 2em;
+  background-color: rgba(205, 191, 226, 0.85);
   z-index: 1000;
   text-align: center;
-}
-
-#cart-box th,
-#cart-box td {
-  padding: 1.5rem;
-}
-
-.cart_position {
-  width: 33.3333333333%;
-}
-
-.scrollEffect {
-  position: fixed;
-  right: 5%;
-  bottom: 50%;
+  overflow-wrap: break-word;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 16rem;
 }
 
 #loading_screen {
@@ -19575,6 +19578,15 @@ img {
 .btn-orange {
   background-color: #d05026;
   border-color: #d05026;
+}
+
+@media (max-width: 991.98px) {
+  #cart-box {
+    width: 100%;
+    position: fixed;
+    top: 16rem;
+    left: 0;
+  }
 }
 
 #stripe .panel-title {
@@ -19810,6 +19822,7 @@ ul.social-footer2 li a {
   padding: 34px 10%;
 }
 
+<<<<<<< HEAD
 #loading {
   text-align: center;
   padding-top: 4rem;
@@ -19991,6 +20004,38 @@ ul.social-footer2 li a {
   100% {
     right: 0px;
   }
+=======
+#dashboard {
+  min-height: 50rem;
+}
+
+#my_dishes .dish_card {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2em;
+  overflow-wrap: break-word;
+}
+
+#my_dishes .dish_card img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 2em;
+}
+
+#my_dishes .dish_card .comand_panel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#my_dishes .dish_card.not_visible {
+  opacity: 0.5;
+}
+
+html {
+  scroll-behavior: smooth;
+>>>>>>> d366af2751106a10776547037e9c20103824cfb0
 }
 
 * {

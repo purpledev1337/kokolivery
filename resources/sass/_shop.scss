@@ -1,6 +1,6 @@
 
 #shop {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     position: relative;
 
@@ -25,6 +25,23 @@
             justify-content: center;
         }
 
+    }
+
+    #dishes_box {
+
+        .dish_card {
+
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 2em;
+            overflow-wrap: break-word;
+        
+            img {
+        
+                height: 100%;
+                object-fit: cover;
+                border-radius: 2em;
+            }
+        }
     }
 
     #flex{
@@ -68,14 +85,6 @@
         }
     }
 
-
-
-    // .dish_box {
-    //     width: calc((100% / 3) - 2%);
-    //     margin: 0 1%;
-    //     padding: 20px;
-    // }
-
     #icon-cart {
         height: 3.5rem;
         width: 3.5rem;
@@ -85,8 +94,9 @@
         align-items: center;
         border-radius: 25%;
         position: fixed;
-        right: 25px;
-        top: 65px;
+        right: 2rem;
+        top: 16.5rem;
+        z-index: 2000;
 
         #cont_icon {
             position: relative;
@@ -132,7 +142,7 @@
     padding: 1em 1.5em;
     border-radius: 2em;
     font-size: 1.5em;
-    z-index: 800;
+    z-index: 4000;
 
     &.cart-add {
 
@@ -147,35 +157,28 @@
 
 #cart-box {
 
-    // border: 3px $yellow solid;
-    // border-radius: 2em;
-    // background-color: $orange;
-    position: absolute;
-    right: 2%;
-    top: 1%;
-    padding: 2rem;
+    min-height: 40%;
+    border: 3px $yellow solid;
+    border-radius: 2em;
+    background-color: rgba(205, 191, 226, 0.85);
     z-index: 1000;
     text-align: center;
-
-    th, td {
-
-        padding: 1.5rem;
-    }
-
-
+    overflow-wrap: break-word;
+    position: sticky;
+    top: 16rem;
 }
 
-.cart_position{
+// .cart_position{
 
-    width: calc(100% / 12 * 4);
-}
+//     width: calc(100% / 12 * 4);
+// }
 
-.scrollEffect{
+// .scrollEffect{
 
-    position: fixed;
-    right: 5%;
-    bottom: 50%;
-}
+//     position: fixed;
+//     right: 5%;
+//     bottom: 50%;
+// }
 
 #loading_screen {
     font-size: 5em;
@@ -187,4 +190,15 @@
 
     background-color: #d05026;
     border-color: #d05026;
+}
+
+@media (max-width: 991.98px) {
+
+    #cart-box {
+
+        width: 100%;
+        position: fixed;
+        top: 16rem;
+        left: 0;
+    }
 }
