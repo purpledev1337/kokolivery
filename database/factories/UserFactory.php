@@ -28,7 +28,7 @@ $factory->define(User::class, function (Faker $faker) {
         'city' => $faker -> randomElement(['Milano', 'Napoli', 'Roma', 'Bologna', 'Firenze', 'Venezia', 'Torino', 'Pisa', 'Bari', 'Palermo', 'Cosenza', 'Cagliari']),
         'p_iva' => $faker -> bankAccountNumber(),
         'description' => $faker -> sentence(),
-        'image' => 'asset/kokolivery-logo.svg',
+        'image' => 'asset/risto_default.jpg',
         'order_min' => $faker -> randomFloat(2,0,20),
         'delivery_price' => $faker -> randomFloat(2,0,20),
         'discount' => $faker -> numberBetween(0,20),

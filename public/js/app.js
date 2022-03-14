@@ -56679,7 +56679,11 @@ var render = function () {
               _vm._v(_vm._s(restaurant.brand_name)),
             ]),
             _vm._v(" "),
-            _vm._m(0, true),
+            _c("div", { staticClass: "card-image" }, [
+              _c("img", {
+                attrs: { src: "../storage/" + restaurant.image, alt: "" },
+              }),
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "container-description" }, [
               _c("p", { staticClass: "description" }, [
@@ -56731,21 +56735,7 @@ var render = function () {
     0
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-image" }, [
-      _c("img", {
-        attrs: {
-          src: "https://source.unsplash.com/random/900×700/?restaurant",
-          alt: "",
-        },
-      }),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
