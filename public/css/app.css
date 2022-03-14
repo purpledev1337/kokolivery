@@ -19841,6 +19841,13 @@ ul.social-footer2 li a {
   min-height: 50rem;
 }
 
+#create_plate {
+  position: fixed;
+  bottom: 5rem;
+  left: 0;
+  z-index: 3000;
+}
+
 html {
   scroll-behavior: smooth;
 }
