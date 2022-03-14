@@ -19129,8 +19129,8 @@ fieldset:disabled .btn {
 }
 
 nav {
-  padding-top: 0rem;
-  padding-bottom: 0rem;
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
   background-color: #cdbfe2;
 }
 
@@ -19414,6 +19414,7 @@ nav button.btn.indigo:hover a {
 #shop {
   width: 90%;
   margin: 0 auto;
+  padding-top: 2rem;
   position: relative;
 }
 
@@ -19470,6 +19471,7 @@ nav button.btn.indigo:hover a {
 
 #shop #dishes_box .category_box .dish_card img {
   height: 100%;
+  max-height: 300px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 2em;
@@ -20096,8 +20098,11 @@ html {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  padding-top: 120px;
   background-color: #fff;
+}
+
+body #content {
+  margin-top: 120px;
 }
 
 body h2,
