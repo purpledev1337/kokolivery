@@ -19506,8 +19506,9 @@ img {
   align-items: center;
   border-radius: 25%;
   position: fixed;
-  right: 25px;
-  top: 65px;
+  right: 2rem;
+  top: 16.5rem;
+  z-index: 2000;
 }
 
 #shop #icon-cart #cont_icon {
@@ -19559,17 +19560,17 @@ img {
 }
 
 #cart-box {
-  position: absolute;
-  right: 2%;
-  top: 1%;
-  padding: 2rem;
+  height: 100%;
+  border: 3px #f9db03 solid;
+  border-radius: 2em;
+  background-color: rgba(208, 81, 38, 0.95);
   z-index: 1000;
   text-align: center;
 }
 
 #cart-box th,
 #cart-box td {
-  padding: 1.5rem;
+  padding: 1rem;
 }
 
 .cart_position {
@@ -19591,6 +19592,16 @@ img {
 .btn-orange {
   background-color: #d05026;
   border-color: #d05026;
+}
+
+@media (max-width: 767.98px) {
+  #cart-box {
+    width: 100%;
+    height: 50%;
+    position: fixed;
+    top: 16rem;
+    left: 0;
+  }
 }
 
 #stripe .panel-title {
@@ -19824,6 +19835,10 @@ ul.social-footer2 li a {
 
 .centratura-logonav {
   padding: 34px 10%;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 * {

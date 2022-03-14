@@ -5569,6 +5569,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 Vue.use(vue_sessionstorage__WEBPACK_IMPORTED_MODULE_1___default.a);
 Vue.config.productionTip = false;
@@ -5579,8 +5592,9 @@ Vue.config.productionTip = false;
       dishes: [],
       restaurantData: "",
       arrayCategories: [],
+      // sortedArrayCategories: [],
       arrayCategoryDishes: [],
-      categoryLooped: "",
+      // sortCategories: ['Antipasto', 'Primi Piatti', 'Secondi Piatti', 'Pizza', 'Dessert', 'Bibite'],
       // catAntipasto: [],
       // catPrimiPiatti: [],
       // catSecondiPiatti: [],
@@ -5642,11 +5656,20 @@ Vue.config.productionTip = false;
                   if (!_this.arrayCategories.includes(dish.category)) {
                     _this.arrayCategories.push(dish.category);
                   }
-                });
+                }); // this.sortCategories.forEach(function (key) {
+                //   let found = false;
+                //   this.arrayCategories.filter(function (cat) {
+                //     if (!found && cat == key) {
+                //       this.sortedArrayCategories.push(cat);
+                //       found = true;
+                //       return false;
+                //     } else
+                //       return true;
+                //   })
+                // })
 
-                console.log(_this.arrayCategories);
 
-              case 7:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -56731,9 +56754,11 @@ var render = function () {
               _c("h3", [_vm._v(_vm._s(_vm.restaurantData.description))]),
               _vm._v(" "),
               _c("h3", [
-                _vm._v("Valutazione: "),
+                _vm._v("\n        Valutazione: "),
                 _c("strong", [_vm._v(_vm._s(_vm.restaurantData.rating))]),
-                _vm._v(" (" + _vm._s(_vm.restaurantData.num_rating) + ")"),
+                _vm._v(
+                  " (" + _vm._s(_vm.restaurantData.num_rating) + ")\n      "
+                ),
               ]),
               _vm._v(" "),
               _c("h4", [_vm._v(_vm._s(_vm.restaurantData.address))]),
@@ -56767,7 +56792,7 @@ var render = function () {
                 staticClass: "col-xs-4 col-md-2 btn btn-orange mx-1",
                 attrs: { href: "#" + category + "link" },
               },
-              [_vm._v("\n\n        " + _vm._s(category) + "\n\n    ")]
+              [_vm._v("\n      " + _vm._s(category) + "\n    ")]
             )
           }),
           0
@@ -56850,7 +56875,7 @@ var render = function () {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                  +\n                "
+                                          "\n                +\n              "
                                         ),
                                       ]
                                     )
@@ -56866,7 +56891,7 @@ var render = function () {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                  Aggiungi al carrello\n                "
+                                          "\n                Aggiungi al carrello\n              "
                                         ),
                                       ]
                                     ),
@@ -56886,7 +56911,7 @@ var render = function () {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                  -\n                "
+                                          "\n                -\n              "
                                         ),
                                       ]
                                     )
@@ -56957,63 +56982,67 @@ var render = function () {
             _c(
               "div",
               {
-                staticClass: "cart_position d-none d-md-inline",
+                staticClass:
+                  "cart_position col-md-4 d-md-inline-block d-flex flex-column justify-content-between p-3",
+                class: !_vm.isCartOpen ? "d-none" : "",
                 attrs: { id: "cart-box" },
               },
               [
-                _c(
-                  "table",
-                  [
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _vm._l(_vm.cart, function (item, i) {
-                      return _c("tr", { key: item.id + i }, [
-                        _c("td", [_vm._v(_vm._s(item.quantity))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(item.name))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v("€ " + _vm._s(item.price))]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _c(
-                            "span",
-                            {
-                              staticClass: "btn btn-secondary",
-                              on: {
-                                click: function ($event) {
-                                  return _vm.removeFromCart(item)
-                                },
-                              },
-                            },
-                            [_vm._v("\n              -\n            ")]
-                          ),
-                        ]),
-                      ])
-                    }),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("th"),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Totale")]),
-                      _vm._v(" "),
-                      _c("th", [
-                        _c("b", [_vm._v("€ " + _vm._s(_vm.cartTotal))]),
-                      ]),
-                    ]),
-                  ],
-                  2
-                ),
+                _vm._m(1),
                 _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-orange",
-                    class: !_vm.cart.length ? "disabled" : "",
-                    attrs: { href: _vm.route },
-                  },
-                  [_vm._v("Procedi con l'acquisto")]
-                ),
-              ]
+                _vm._l(_vm.cart, function (item, i) {
+                  return _c("div", { key: item.id + i, staticClass: "row" }, [
+                    _c("div", { staticClass: "col-1" }, [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "btn btn-secondary",
+                          on: {
+                            click: function ($event) {
+                              return _vm.removeFromCart(item)
+                            },
+                          },
+                        },
+                        [_vm._v("\n              -\n            ")]
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-1 align-self-center" }, [
+                      _vm._v(_vm._s(item.quantity)),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-5 align-self-center" }, [
+                      _vm._v(_vm._s(item.name)),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-5 align-self-center" }, [
+                      _vm._v("€ " + _vm._s(item.price)),
+                    ]),
+                  ])
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "offset-3 col-6" }, [
+                    _c("h3", [
+                      _vm._v("Totale: "),
+                      _c("b", [_vm._v("€ " + _vm._s(_vm.cartTotal))]),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "offset-3 col-6" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-orange",
+                        class: !_vm.cart.length ? "disabled" : "",
+                        attrs: { href: _vm.route },
+                      },
+                      [_vm._v("Procedi con l'acquisto")]
+                    ),
+                  ]),
+                ]),
+              ],
+              2
             ),
           ]
         ),
@@ -57044,12 +57073,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("th", [_vm._v("Qnt.")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Piatto")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Prezzo")]),
+    return _c("div", { staticClass: "row p-3" }, [
+      _c("div", { staticClass: "col-8" }, [
+        _c("h2", [_vm._v("Il tuo carrello")]),
+      ]),
     ])
   },
 ]

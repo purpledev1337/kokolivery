@@ -85,8 +85,9 @@
         align-items: center;
         border-radius: 25%;
         position: fixed;
-        right: 25px;
-        top: 65px;
+        right: 2rem;
+        top: 16.5rem;
+        z-index: 2000;
 
         #cont_icon {
             position: relative;
@@ -147,19 +148,18 @@
 
 #cart-box {
 
-    // border: 3px $yellow solid;
-    // border-radius: 2em;
-    // background-color: $orange;
-    position: absolute;
-    right: 2%;
-    top: 1%;
-    padding: 2rem;
+    // width: 100%;
+    height: 100%;
+    border: 3px $yellow solid;
+    border-radius: 2em;
+    background-color: rgba(208, 81, 38, 0.95);
+    // padding: 2rem;
     z-index: 1000;
     text-align: center;
 
     th, td {
 
-        padding: 1.5rem;
+        padding: 1rem;
     }
 
 
@@ -187,4 +187,16 @@
 
     background-color: #d05026;
     border-color: #d05026;
+}
+
+@media (max-width: 767.98px) {
+
+    #cart-box {
+
+        width: 100%;
+        height: 50%;
+        position: fixed;
+        top: 16rem;
+        left: 0;
+    }
 }
