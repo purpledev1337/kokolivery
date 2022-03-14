@@ -19877,6 +19877,65 @@ ul.social-footer2 li a {
   }
 }
 
+#chart-cont {
+  width: 70%;
+  margin: 0 auto;
+}
+
+#float-img {
+  position: relative;
+  -webkit-animation: floatBubble 1s 1 normal ease-out;
+  animation: floatBubble 1s 1 normal ease-out;
+}
+
+@-webkit-keyframes floatBubble {
+  0% {
+    left: -100vw;
+  }
+
+  100% {
+    left: 0px;
+  }
+}
+
+@keyframes floatBubble {
+  0% {
+    left: -100vw;
+  }
+
+  100% {
+    left: 0px;
+  }
+}
+
+#float-title {
+  font-size: 70px;
+  position: relative;
+  /* right: -95px; */
+  -webkit-animation: floatBubbleT 1s 1 normal ease-out;
+  animation: floatBubbleT 1s 1 normal ease-out;
+}
+
+@-webkit-keyframes floatBubbleT {
+  0% {
+    right: -100vw;
+  }
+
+  100% {
+    right: 0px;
+  }
+}
+
+@keyframes floatBubbleT {
+  0% {
+    right: -100vw;
+  }
+
+  100% {
+    right: 0px;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;

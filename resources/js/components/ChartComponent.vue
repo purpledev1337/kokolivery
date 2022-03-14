@@ -1,7 +1,9 @@
 <template>
     <!-- resources/assets/js/components -->
     <div>
-        <canvas id="canvas"></canvas>
+        <div id="chart-cont">
+            <canvas id="canvas"></canvas>
+        </div>
     </div>
 </template>
 
