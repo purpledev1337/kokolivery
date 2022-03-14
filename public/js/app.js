@@ -5615,6 +5615,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 Vue.use(vue_sessionstorage__WEBPACK_IMPORTED_MODULE_1___default.a);
 Vue.config.productionTip = false;
@@ -56893,10 +56905,7 @@ var render = function () {
         _vm._v(" "),
         _c(
           "div",
-          {
-            staticClass: "row-md d-flex justify-content-center m-5",
-            attrs: { id: "categories_box" },
-          },
+          { staticClass: "row-md d-flex justify-content-center m-5" },
           _vm._l(_vm.arrayCategories, function (category, i) {
             return _c(
               "a",
@@ -56953,13 +56962,13 @@ var render = function () {
                       _vm._v(
                         "\n        " +
                           _vm._s(_vm.setCat(category)) +
-                          "\n          "
+                          "\n        "
                       ),
                       _vm._v(" "),
                       _vm._l(_vm.arrayCategoryDishes, function (dish, k) {
                         return _c(
                           "div",
-                          { key: k, staticClass: "dish_box col-12 p-3 m-3" },
+                          { key: k, staticClass: "col-12 p-3 m-3" },
                           [
                             _c("div", { staticClass: "dish_card row p-3" }, [
                               _c("div", { staticClass: "col-7" }, [
@@ -57066,6 +57075,7 @@ var render = function () {
               "div",
               {
                 staticClass: "d-lg-none",
+                class: _vm.cart.length == 0 ? "d-none" : "",
                 attrs: { id: "icon-cart" },
                 on: {
                   click: function ($event) {
@@ -57094,7 +57104,7 @@ var render = function () {
               "div",
               {
                 staticClass:
-                  "col-lg-4 d-lg-inline-block d-flex flex-column justify-content-between p-2",
+                  "\n        col-lg-4\n        d-lg-inline-block d-flex\n        flex-column\n        justify-content-between\n        p-2\n        w-lg-100\n      ",
                 class: !_vm.isCartOpen || !_vm.cart.length > 0 ? "d-none" : "",
                 attrs: { id: "cart-box" },
               },
@@ -57102,53 +57112,57 @@ var render = function () {
                 _vm._m(1),
                 _vm._v(" "),
                 _vm._l(_vm.cart, function (item, i) {
-                  return _c("div", { key: item.id + i, staticClass: "row" }, [
-                    _c("div", { staticClass: "col-2" }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "btn btn-secondary",
-                          on: {
-                            click: function ($event) {
-                              return _vm.removeFromCart(item)
+                  return _c(
+                    "div",
+                    { key: item.id + i, staticClass: "row my-3" },
+                    [
+                      _c("div", { staticClass: "col-2" }, [
+                        _c(
+                          "span",
+                          {
+                            staticClass: "btn btn-secondary",
+                            on: {
+                              click: function ($event) {
+                                return _vm.removeFromCart(item)
+                              },
                             },
                           },
-                        },
-                        [_vm._v("\n              -\n            ")]
-                      ),
+                          [_vm._v("\n            -\n          ")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            staticClass: "btn btn-orange",
+                            on: {
+                              click: function ($event) {
+                                return _vm.addToCart(item)
+                              },
+                            },
+                          },
+                          [_vm._v(" + ")]
+                        ),
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          staticClass: "btn btn-orange",
-                          on: {
-                            click: function ($event) {
-                              return _vm.addToCart(item)
-                            },
-                          },
-                        },
-                        [_vm._v("\n              +\n            ")]
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-1 align-self-center" }, [
-                      _vm._v(_vm._s(item.quantity)),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-5 align-self-center" }, [
-                      _vm._v(_vm._s(item.name)),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-4 align-self-center" }, [
-                      _vm._v("€ " + _vm._s(item.price)),
-                    ]),
-                  ])
+                      _c("div", { staticClass: "col-1 align-self-center" }, [
+                        _vm._v(_vm._s(item.quantity)),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-5 align-self-center" }, [
+                        _vm._v(_vm._s(item.name)),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-4 align-self-center" }, [
+                        _vm._v("€ " + _vm._s(item.price)),
+                      ]),
+                    ]
+                  )
                 }),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "offset-3 col-6" }, [
                     _c("h3", [
-                      _vm._v("Totale: "),
+                      _vm._v("\n            Totale: "),
                       _c("b", [_vm._v("€ " + _vm._s(_vm.cartTotal))]),
                     ]),
                   ]),
@@ -70461,8 +70475,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Maurizio\boolean\esercizi\kokolivery\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Maurizio\boolean\esercizi\kokolivery\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! F:\BOOLEAN\kokolivery\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! F:\BOOLEAN\kokolivery\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
