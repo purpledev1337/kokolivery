@@ -2,3 +2,52 @@
     width: 70%;
     margin: 0 auto;
 }
+
+.title-order {
+    text-align: center;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+#list-orders {
+    width: 80%;
+    margin: 50px auto;
+
+    #orders {
+
+        .order {
+            margin-bottom: 50px;
+    
+            #heading-order-list {
+                border: 1px solid;
+                display: flex;
+                justify-content: space-between;
+                background-color: $orange;
+        
+                .ceil-headling {
+                    text-align: center;
+                    width: calc(100% / 3);
+                    padding: 5px 15px;
+                    font-size: 22px;
+                    font-weight: bold;
+                    color: white;
+                }
+            }
+        
+            .product {
+                border: 1px solid;
+                display: flex;
+                justify-content: space-between;
+        
+                .ceil {
+                    text-align: center;
+                    width: calc(100% / 3);
+                    padding: 5px 15px;
+                    font-size: 16px;
+                    background-color: rgba(210, 198, 229, 0.6);
+                }
+            }
+        }
+    
+    }
+}

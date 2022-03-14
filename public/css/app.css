@@ -19882,6 +19882,51 @@ ul.social-footer2 li a {
   margin: 0 auto;
 }
 
+.title-order {
+  text-align: center;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+#list-orders {
+  width: 80%;
+  margin: 50px auto;
+}
+
+#list-orders #orders .order {
+  margin-bottom: 50px;
+}
+
+#list-orders #orders .order #heading-order-list {
+  border: 1px solid;
+  display: flex;
+  justify-content: space-between;
+  background-color: #d05026;
+}
+
+#list-orders #orders .order #heading-order-list .ceil-headling {
+  text-align: center;
+  width: 33.3333333333%;
+  padding: 5px 15px;
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+}
+
+#list-orders #orders .order .product {
+  border: 1px solid;
+  display: flex;
+  justify-content: space-between;
+}
+
+#list-orders #orders .order .product .ceil {
+  text-align: center;
+  width: 33.3333333333%;
+  padding: 5px 15px;
+  font-size: 16px;
+  background-color: rgba(210, 198, 229, 0.6);
+}
+
 #float-img {
   position: relative;
   -webkit-animation: floatBubble 1s 1 normal ease-out;

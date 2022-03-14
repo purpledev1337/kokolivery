@@ -37,9 +37,10 @@ class AuthController extends Controller
         foreach ($dishes as $dish) {
             
             $orders = Dish::find($dish -> id) -> orders;
-            array_push($listOrders, $orders);
+            $listOrders[] = $orders;
         }
-
+        // dd($listOrders);
+        $listOrders = array_reverse($listOrders);
         return view('pages.my_orders', compact('listOrders'));
     }
     
