@@ -1,17 +1,7 @@
-#top-restaurant{
-    .row{
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        justify-content: start!important;
-    }
-    .row-cols-2 > * {
-        width: 40%!important;
-    }
 
-}
 
 #restaurants{
-    background-color: #f8fafc;
+    background-color: $grey;
 }
 #restaurantsbox{
     

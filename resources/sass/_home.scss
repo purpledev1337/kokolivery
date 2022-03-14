@@ -54,3 +54,47 @@ img {
 .nav-link:hover, .nav-link:focus{
     color: #ffffff;
 }
+
+
+// sezione css top ten restaurants
+#top-restaurant{
+
+    padding-bottom: 8rem;
+
+    .row{
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: start!important;
+    }
+    .row-cols-2 > * {
+        width: 40%!important;
+    }
+}
+
+#title-top-restaurants{
+    
+    img{
+        height: 140px;
+        width: 140px;
+    }
+
+    span{
+        &.spancontainer{
+            position: relative;
+            z-index: 3;
+        }
+        &.highlights{
+            background-color: $red;
+            // border-radius: 15px;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            width: 5rem;
+            height: 1.575rem;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: -5%;
+            z-index: -1;
+        }
+    }
+}
