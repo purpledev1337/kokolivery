@@ -30,17 +30,6 @@ class AuthController extends Controller
 
     public function myOrders()
     {
-        // $dishes = User::find(Auth::User() -> id) -> dishes;
-
-        
-        // $listOrders = [];
-
-        // foreach ($dishes as $dish) {
-            
-        //     $orders = Dish::find($dish -> id) -> orders;
-        //     $listOrders[] = $orders;
-        // }
-
         $listOrder = DB::table('orders')
                         ->join('dish_order', 'orders.id','=', 'dish_order.order_id')
                         ->join('dishes', 'dish_order.dish_id','=', 'dishes.id')
@@ -62,27 +51,7 @@ class AuthController extends Controller
             ];
 
             $listOrderComplete[] = $data;
-            // $listOrderComplete[] = $dishes;
         }
-        
-        // dd($listOrderComplete);
-        // dd(gettype($listOrderComplete));
-    
-
-        // SELECT orders.id, order_price, COUNT(orders.id) AS grop_order
-        // FROM orders -
-        // JOIN dish_order -
-        // ON orders.id = dish_order.order_id 
-        // JOIN dishes
-        // ON dish_order.dish_id = dishes.id
-        // JOIN users
-        // ON users.id = 1
-        // AND dishes.user_id = users.id
-        // GROUP BY orders.id
-        // ORDER BY orders.id
-
-        // dd($listOrders);
-        // $listOrders = array_reverse($listOrders, true);
         
         return view('pages.my_orders', compact('listOrderComplete'));
     }
