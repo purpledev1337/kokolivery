@@ -9,7 +9,7 @@
           <div class="card">
             <h2 class="brandname">{{ restaurant.brand_name }}</h2>
             <div class="card-image">
-              <img src="https://source.unsplash.com/random/900×700/?restaurant" alt="" />
+              <img :src="`../storage/${restaurant.image}`" alt="" />
             </div>
 
             <div class="container-description">
