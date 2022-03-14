@@ -9,7 +9,7 @@ $factory->define(Dish::class, function (Faker $faker) {
     return [
         'name' => $faker -> word(),
         'description' => $faker -> sentence(),
-        'image_path' => 'asset/kokolivery-logo.svg',
+        'image_path' => 'asset/dish.jpg',
         'price' => $faker -> randomFloat(2, 1, 99),
         'category' => $faker -> randomElement(['Antipasto', 'Primi Piatti', 'Secondi Piatti', 'Dessert', 'Bibite', 'Pizza']),
     ];

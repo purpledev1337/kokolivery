@@ -218,10 +218,7 @@ class AuthController extends Controller
         }
         
         $restaurant = Auth::user();
-        // if (Auth::user()->email != $request->email) {
-        //     $email = $request -> validate(['email' => ['required', 'string', 'email', 'max:255', 'unique:users']]);
-        //     $restaurant -> update($email);
-        // }
+        
         $restaurant -> update($data);
         
         $types = Type::findOrFail($request -> get('types'));
