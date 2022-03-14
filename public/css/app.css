@@ -19849,7 +19849,6 @@ ul.social-footer2 li a {
   padding: 34px 10%;
 }
 
-<<<<<<< HEAD
 #loading {
   text-align: center;
   padding-top: 4rem;
@@ -20031,113 +20030,6 @@ ul.social-footer2 li a {
   100% {
     right: 0px;
   }
-=======
-#dashboard {
-  min-height: 50rem;
-}
-
-#my_dishes .dish_card {
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 2em;
-  overflow-wrap: break-word;
-}
-
-#my_dishes .dish_card img {
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 2em;
-}
-
-#my_dishes .dish_card .comand_panel {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-#my_dishes .dish_card.not_visible {
-  opacity: 0.5;
-}
-
-html {
-  scroll-behavior: smooth;
->>>>>>> d366af2751106a10776547037e9c20103824cfb0
-}
-
-#cityactive {
-  background-color: #f8fafc;
-}
-
-#cityactive img {
-  height: 140px;
-  width: 140px;
-}
-
-#cityactive span.spancontainer {
-  position: relative;
-  z-index: 3;
-}
-
-#cityactive span.highlights {
-  background-color: #ff2c63;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  width: 5rem;
-  height: 1.575rem;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 88%;
-  z-index: -1;
-}
-
-#cityactive span.city {
-  font-size: 1.7rem;
-  line-height: 1.2rem;
-  background-color: rgba(208, 195, 228, 0.2);
-  border-radius: 20px;
-  padding: 10px 25px;
-}
-
-#together {
-  background-color: #f8fafc;
-}
-
-#together #cards .card-group {
-  background-color: #f8fafc;
-}
-
-#together #cards .card-group a {
-  text-decoration: none;
-}
-
-#together #cards .card-group .btn-pink {
-  background-color: #ff2c63 !important;
-}
-
-#together #cards .card-group .card {
-  background-color: #f8fafc;
-  border: none;
-  cursor: pointer;
-}
-
-#together #cards .card-group .card .position-relative img:nth-child(2) {
-  bottom: 0;
-  z-index: 3;
-  left: 0;
-}
-
-#together #cards .card-group .card:first-child .card-body {
-  background-color: #ff2c63;
-}
-
-#together #cards .card-group .card:nth-child(2) .card-body {
-  background-color: #390075;
-}
-
-#together #cards .card-group .card:nth-child(3) .card-body {
-  background-color: #0bce39;
 }
 
 * {
@@ -20147,8 +20039,6 @@ html {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  padding-top: 145px;
   background-color: #fff;
 }
 
@@ -20159,5 +20049,9 @@ body .h2 {
 
 .visibility {
   display: none;
+}
+
+#content {
+  padding: 4em 0em;
 }
 
