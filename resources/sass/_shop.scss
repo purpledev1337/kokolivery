@@ -29,62 +29,78 @@
 
     #dishes_box {
 
-        .dish_card {
+        .category_box {
 
-            background-color: rgba(0, 0, 0, 0.1);
-            border-radius: 2em;
-            overflow-wrap: break-word;
-        
-            img {
-        
-                height: 100%;
-                object-fit: cover;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+    
+            &.ant{
+                
+                order: 1;
+            }
+            &.pri{
+                
+                order: 2;
+            }
+            &.sec{
+                
+                order: 3;
+            }
+            &.piz{
+                
+                order: 4;
+            }
+            &.des{
+                
+                order: 5;
+            }
+            &.bib{
+                
+                order: 6;
+            }
+
+            .dish_card {
+
+                background-color: rgba(0, 0, 0, 0.1);
                 border-radius: 2em;
+                overflow-wrap: break-word;
+            
+                img {
+            
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 2em;
+                }
+            }
+
+            .cart-message {
+
+                position: fixed;
+                top: 40%;
+                right: 50%;
+                transform: translate(50%, 0);
+                color: #ffffff;
+                padding: 1em 1.5em;
+                border-radius: 2em;
+                font-size: 1.5em;
+                z-index: 4000;
+            
+                &.cart-add {
+            
+                    background-color: rgba(0, 128, 0, 0.733);
+                }
+            
+                &.cart-remove {
+            
+                    background-color: rgba(255, 46, 102, 0.733);
+                }
             }
         }
     }
 
-    #flex{
-
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        position: relative;
-    }
-
-    .category_box {
-
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-
-        &.ant{
-            
-            order: 1;
-        }
-        &.pri{
-            
-            order: 2;
-        }
-        &.sec{
-            
-            order: 3;
-        }
-        &.piz{
-            
-            order: 4;
-        }
-        &.des{
-            
-            order: 5;
-        }
-        &.bib{
-            
-            order: 6;
-        }
-    }
-
+    
     #icon-cart {
         height: 3.5rem;
         width: 3.5rem;
@@ -95,13 +111,14 @@
         border-radius: 25%;
         position: fixed;
         right: 2rem;
-        top: 16.5rem;
+        top: 13.5rem;
         z-index: 2000;
 
         #cont_icon {
+
             position: relative;
-            
         }
+
         #count {
             position: absolute;
             top: -18px;
@@ -127,37 +144,12 @@
 
             cursor: pointer;
         }
-
-    }
-    
-}
-
-.cart-message {
-
-    position: fixed;
-    top: 40%;
-    right: 50%;
-    transform: translate(50%, 0);
-    color: #ffffff;
-    padding: 1em 1.5em;
-    border-radius: 2em;
-    font-size: 1.5em;
-    z-index: 4000;
-
-    &.cart-add {
-
-        background-color: rgba(0, 128, 0, 0.733);
-    }
-
-    &.cart-remove {
-
-        background-color: rgba(255, 46, 102, 0.733);
     }
 }
 
 #cart-box {
 
-    min-height: 40%;
+    height: 100%;
     border: 3px $yellow solid;
     border-radius: 2em;
     background-color: rgba(205, 191, 226, 0.85);
@@ -165,25 +157,7 @@
     text-align: center;
     overflow-wrap: break-word;
     position: sticky;
-    top: 16rem;
-}
-
-// .cart_position{
-
-//     width: calc(100% / 12 * 4);
-// }
-
-// .scrollEffect{
-
-//     position: fixed;
-//     right: 5%;
-//     bottom: 50%;
-// }
-
-#loading_screen {
-    font-size: 5em;
-    text-align: center;
-    padding: 3em 0;
+    top: 14rem;
 }
 
 .btn-orange {
@@ -196,7 +170,7 @@
 
     #cart-box {
 
-        width: 100%;
+        height: initial;
         position: fixed;
         top: 16rem;
         left: 0;

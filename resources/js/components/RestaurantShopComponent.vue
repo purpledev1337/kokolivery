@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <div id="categories_box" class="row-md d-flex justify-content-center m-5">
+    <div class="row-md d-flex justify-content-center m-5">
       <a
         class="col-xs-4 col-md-2 btn btn-orange mx-1"
         v-for="(category, i) in arrayCategories"
@@ -53,9 +53,9 @@
         >
           <h2 class="col-12" :id="`${category}` + `link`">{{ category }}:</h2>
           {{ setCat(category) }}
-            <!-- class="dish_box col-xs-11 col-lg-5" -->
+          <!-- class="dish_box col-xs-11 col-lg-5" -->
           <div
-            class="dish_box col-12 p-3 m-3"
+            class="col-12 p-3 m-3"
             v-for="(dish, k) in arrayCategoryDishes"
             :key="k"
           >
@@ -104,7 +104,12 @@
       </div>
 
       <!-- cart icon -->
-      <div class="d-lg-none" @click="isCartOpen = !isCartOpen" id="icon-cart">
+      <div
+        :class="cart.length == 0 ? 'd-none' : ''"
+        class="d-lg-none"
+        @click="isCartOpen = !isCartOpen"
+        id="icon-cart"
+      >
         <div id="cont_icon">
           <i class="fa-solid fa-cart-shopping"></i>
           <div v-if="cart.length > 0" id="count">
@@ -115,50 +120,57 @@
 
       <div
         :class="!isCartOpen || !cart.length > 0 ? 'd-none' : ''"
-        class="col-lg-4 d-lg-inline-block d-flex flex-column justify-content-between p-2"
-        id="cart-box">
-
-          <div class="row p-3">
-            <div class="col-12">
-              <h4>Carrello</h4>
-            </div>
+        class="
+          col-lg-4
+          d-lg-inline-block d-flex
+          flex-column
+          justify-content-between
+          p-2
+          w-lg-100
+        "
+        id="cart-box"
+      >
+        <div class="row p-3">
+          <div class="col-12">
+            <h4>Carrello</h4>
           </div>
-          <div class="row" v-for="(item, i) in cart" :key="item.id + i">
-            <div class="col-2">
-              <span class="btn btn-secondary" @click="removeFromCart(item)">
-                -
-              </span>
-              <span class="btn btn-orange" @click="addToCart(item)">
-                +
-              </span>
-            </div>
-            <div class="col-1 align-self-center">{{ item.quantity }}</div>
-            <div class="col-5 align-self-center">{{ item.name }}</div>
-            <div class="col-4 align-self-center">€ {{ item.price }}</div>
+        </div>
+        <div class="row my-3" v-for="(item, i) in cart" :key="item.id + i">
+          <div class="col-2">
+            <span class="btn btn-secondary" @click="removeFromCart(item)">
+              -
+            </span>
+            <span class="btn btn-orange" @click="addToCart(item)"> + </span>
           </div>
-          <div class="row">
-            <div class="offset-3 col-6">
-              <h3>Totale: <b>€ {{ cartTotal }}</b></h3>
-            </div>
-            <div class="offset-3 col-6">
-              <a
-                :class="!cart.length ? 'disabled' : ''"
-                class="btn btn-orange"
-                :href="route"
-                >Procedi con l'acquisto</a
-              >
-            </div>
+          <div class="col-1 align-self-center">{{ item.quantity }}</div>
+          <div class="col-5 align-self-center">{{ item.name }}</div>
+          <div class="col-4 align-self-center">€ {{ item.price }}</div>
+        </div>
+        <div class="row">
+          <div class="offset-3 col-6">
+            <h3>
+              Totale: <b>€ {{ cartTotal }}</b>
+            </h3>
           </div>
+          <div class="offset-3 col-6">
+            <a
+              :class="!cart.length ? 'disabled' : ''"
+              class="btn btn-orange"
+              :href="route"
+              >Procedi con l'acquisto</a
+            >
+          </div>
+        </div>
 
         <!-- @click="sendCart" -->
       </div>
     </div>
   </div>
-  <div v-else id="loading"> 
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
+  <div v-else id="loading">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
   <!-- <div id="loading_screen" v-else>
     <h1>...Loading screen...</h1>
@@ -240,7 +252,6 @@ export default {
       //       return true;
       //   })
       // })
-
     },
 
     async sendCart() {
@@ -403,5 +414,4 @@ $(function () {
     }
   });
 });
-
 </script>
