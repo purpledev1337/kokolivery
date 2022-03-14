@@ -57749,7 +57749,7 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
-          _c("h3", { staticClass: "h3" }, [
+          _c("h3", { staticClass: "h3 display-6" }, [
             _c("span", { staticClass: "spancontainer" }, [
               _vm._v("\n                    LAVORA CON NOI\n                "),
             ]),

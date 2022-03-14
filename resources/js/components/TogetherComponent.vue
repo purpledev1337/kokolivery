@@ -9,7 +9,7 @@
             </div>
             <!-- titolo -->
             <div class="row">
-                <h3 class="h3">
+                <h3 class="h3 display-6">
                     <span class="spancontainer">
                         LAVORA CON NOI
                     </span>
