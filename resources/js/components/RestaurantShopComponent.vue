@@ -158,10 +158,15 @@
       </div>
     </div>
   </div>
-
-  <div id="loading_screen" v-else>
-    <h1>...Loading screen...</h1>
+  <div v-else id="loading"> 
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
   </div>
+  <!-- <div id="loading_screen" v-else>
+    <h1>...Loading screen...</h1>
+  </div> -->
 </template>
 
 <script>

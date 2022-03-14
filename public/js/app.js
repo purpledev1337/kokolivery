@@ -5582,6 +5582,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 
 Vue.use(vue_sessionstorage__WEBPACK_IMPORTED_MODULE_1___default.a);
 Vue.config.productionTip = false;
@@ -57047,8 +57052,14 @@ var render = function () {
           ]
         ),
       ])
-    : _c("div", { attrs: { id: "loading_screen" } }, [
-        _c("h1", [_vm._v("...Loading screen...")]),
+    : _c("div", { attrs: { id: "loading" } }, [
+        _c("span"),
+        _vm._v(" "),
+        _c("span"),
+        _vm._v(" "),
+        _c("span"),
+        _vm._v(" "),
+        _c("span"),
       ])
 }
 var staticRenderFns = [
