@@ -19281,6 +19281,10 @@ img {
   color: #ffffff;
 }
 
+#top-restaurant {
+  padding-bottom: 8rem;
+}
+
 #top-restaurant .row {
   flex-wrap: nowrap;
   overflow-x: auto;
@@ -19289,6 +19293,29 @@ img {
 
 #top-restaurant .row-cols-2 > * {
   width: 40% !important;
+}
+
+#title-top-restaurants img {
+  height: 140px;
+  width: 140px;
+}
+
+#title-top-restaurants span.spancontainer {
+  position: relative;
+  z-index: 3;
+}
+
+#title-top-restaurants span.highlights {
+  background-color: #ff2c63;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  width: 5rem;
+  height: 1.575rem;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -5%;
+  z-index: -1;
 }
 
 #restaurants {
@@ -19325,8 +19352,8 @@ img {
 }
 
 .cardrestaurant .card-wrapper {
-  width: 300px;
-  height: 400px;
+  width: 400px;
+  height: 500px;
   position: relative;
 }
 
@@ -19334,8 +19361,8 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 250px;
-  height: 350px;
+  width: 350px;
+  height: 450px;
   transform: translate(-50%, -50%);
   border-radius: 16px;
   overflow: hidden;
@@ -19934,6 +19961,81 @@ ul.social-footer2 li a {
   100% {
     right: 0px;
   }
+}
+
+#cityactive {
+  background-color: #f8fafc;
+}
+
+#cityactive img {
+  height: 140px;
+  width: 140px;
+}
+
+#cityactive span.spancontainer {
+  position: relative;
+  z-index: 3;
+}
+
+#cityactive span.highlights {
+  background-color: #ff2c63;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  width: 5rem;
+  height: 1.575rem;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 88%;
+  z-index: -1;
+}
+
+#cityactive span.city {
+  font-size: 1.7rem;
+  line-height: 1.2rem;
+  background-color: rgba(208, 195, 228, 0.2);
+  border-radius: 20px;
+  padding: 10px 25px;
+}
+
+#together {
+  background-color: #f8fafc;
+}
+
+#together #cards .card-group {
+  background-color: #f8fafc;
+}
+
+#together #cards .card-group a {
+  text-decoration: none;
+}
+
+#together #cards .card-group .btn-pink {
+  background-color: #ff2c63 !important;
+}
+
+#together #cards .card-group .card {
+  background-color: #f8fafc;
+  border: none;
+  cursor: pointer;
+}
+
+#together #cards .card-group .card .position-relative img:nth-child(2) {
+  bottom: 0;
+  z-index: 3;
+  left: 0;
+}
+
+#together #cards .card-group .card:first-child .card-body {
+  background-color: #ff2c63;
+}
+
+#together #cards .card-group .card:nth-child(2) .card-body {
+  background-color: #390075;
+}
+
+#together #cards .card-group .card:nth-child(3) .card-body {
+  background-color: #0bce39;
 }
 
 * {

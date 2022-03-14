@@ -1,0 +1,36 @@
+#cityactive{
+    background-color: $grey;
+
+    img{
+        height: 140px;
+        width: 140px;
+    }
+
+    span{
+        &.spancontainer{
+            position: relative;
+            z-index: 3;
+        }
+        &.highlights{
+            background-color: $red;
+            // border-radius: 15px;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+            width: 5rem;
+            height: 1.575rem;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 88%;
+            z-index: -1;
+        }
+        &.city{
+            font-size: 1.7rem;
+            line-height: 1.2rem;
+            // background-color: rgba(255,44,99,.2);
+            background-color: rgba(208,195,228,.2);
+            border-radius: 20px;
+            padding: 10px 25px;
+        }
+    }
+}
