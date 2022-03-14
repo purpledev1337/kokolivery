@@ -3,11 +3,32 @@
         <!-- Header Component  -->
         <header-component />
 
+        <!-- section city -->
+        <city-component />
+
         <!-- Top Ten Restaurant -->
-        <h4 class="h4 m-2">I nostri migliori Ristornati</h4>
+        <div id="title-top-restaurants" class="container py-5">
+            <div class="row py-5">
+                <div class="col-2 offset-5">
+                    <img src="storage/asset/risto.jpeg" alt="">
+                </div>
+            </div>
+            <div class="row">
+                <h3 class="h3 text-center">
+                    <span class="spancontainer">
+                        I NOSTRI MIGLIORI RISTORANTI
+                        <span class="highlights"></span>
+                    </span>
+                </h3>
+            </div>
+        </div>
         <div id="top-restaurant" class="cardrestaurant container-fluid">
             <top-restaurant-component :topRestaurants="filteredRestaurant" />
         </div>
+
+        <!-- together section -->
+        <together-component />
+
     </section>
 </template>
 

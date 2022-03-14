@@ -10,18 +10,14 @@ use DB;
 
 class ApiController extends Controller
 {
-    // public function getRestaurants() {
+    public function getAllCity() {
 
-    //     // $types = Type::all();
-    //     $users = User::all();
-        
-    //     // $data = [
-    //     //     'users' => $users,
-    //     //     'types' => $types
-    //     // ];
-        
-    //     return json_encode($users);
-    // }
+        $data = DB::table('users')
+                    ->select('city')
+                    ->distinct()
+                    ->get();        
+        return json_encode($data);
+    }
 
     public function getRestaurantsWithDetails($field = null) {
 
