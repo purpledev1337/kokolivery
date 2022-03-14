@@ -9,5 +9,6 @@ $factory->define(Order::class, function (Faker $faker) {
     return [
         'status_pay' => $faker->boolean,
         'delivery_time' => $faker->numberBetween(1,60),
+        'order_price' => $faker->numberBetween(50,1000),
     ];
 });
