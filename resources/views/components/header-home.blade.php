@@ -1,19 +1,14 @@
 <header>
     <nav  class="navbar fixed-top navbar-expand-lg sfumatura_header">
         <div class="container-fluid centratura-logonav">
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
                 aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <a class="navbar-brand mb-1 mb-lg-0 logonavbase black" href="{{ route('home') }}"> <img
                     class="logonav" src="/storage/asset/Kokolivery-logo.svg"> Kokolivery</a>
-
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
                     @auth
                         <li class="nav-item">
                             <a href="{{ route('dashboard') }}" class="nav-link black">{{ Auth::user()->brand_name }}</a>
@@ -26,7 +21,6 @@
                         {{-- <input @keyup.enter.prevent="searchRestaurantsFromCity" type="text" placeholder="Inserisci La Via, La Citta' E La Provincia" v-model="city"> --}}
                         {{-- <button @click.prevent="searchRestaurantsFromCity"  class="btn btn-primary" >SEARCH</button> --}}
                     </form>
-
                     {{-- dropdown --}}
                     <li class="nav-item dropdown ">
                         <button class="btn btn-collabora">
@@ -47,7 +41,6 @@
                             </ul>
                         </button>
                     </li>
-
                     {{-- link to home --}}
                     <button class="btn btn-collabora" >
                         <li class="nav-item">
@@ -60,12 +53,48 @@
                             <a class="nav-link black" href="{{ route('restaurants') }}">Ristoranti</a>
                         </li>
                     </button>
-
                 </ul>
             </div>
         </div>
+        <div class="containeNav">
+            <search-component></search-component>
+        </div>
     </nav>
-
+    <script>
+        $(function() {
+            var header = $(".navbar");
+            var brand = $(".navbar-brand");
+            var linka = $(".nav-link");
+            var koko = $(".logonav");
+            var formkoko = $(".form-inline");
+            $(window).scroll(function() {
+                var scroll = $(window).scrollTop();
+                if (scroll >= 50) {
+                    header.addClass(" bg-valerio");
+                    header.removeClass("sfumatura_header");
+                    brand.addClass("white");
+                    brand.removeClass("black");
+                    linka.removeClass("black");
+                    linka.addClass("white");
+                    koko.removeClass("logonav");
+                    koko.addClass("removehover");
+                    formkoko.removeClass("hoverkoko");
+                    formkoko.addClass("removehoverform");
+                } else {
+                    header.removeClass(" bg-valerio");
+                    header.addClass("sfumatura_header");
+                    brand.removeClass("white");
+                    brand.addClass("black")
+                    linka.removeClass("white");
+                    linka.addClass("black");
+                    koko.removeClass("removehover");
+                    koko.addClass("logonav");
+                    formkoko.addClass("hoverkoko");
+                    formkoko.removeClass("removehoverform");
+                }
+            });
+        });
+    </script>
     {{-- modal registration --}}
     @include('pages.modal.login')
 </header>
