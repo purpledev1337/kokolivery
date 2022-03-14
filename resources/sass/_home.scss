@@ -6,18 +6,19 @@
     height: 75vh;
     background: rgb(255,208,15);
     background: linear-gradient(90deg, rgba(255,208,15,1) 49%, rgba(208,80,38,1) 100%);
-}
-// #home{
-//     margin-top: 40px;
-// }
 
-#cont-logo {
-    display: flex;
-    align-items: center;
-}
+    #cont-logo {
+        display: flex;
+        align-items: center;
+    
+        #cont-img-home{
 
-img {
-    width: 100%;
+            img {
+                width: 100%;
+            }
+        }
+    
+    }
 }
 
 #float-title {
@@ -28,31 +29,9 @@ img {
     font-size: 70px;
 }
 
-// input {
-//     padding: 5px 15px;
-//     height: 40px;
-//     width: 400px;
-//     border-radius: 14px;
-// }
-
-.container {
-    text-align: center;
-}
-
 #banner_svg {
     background: rgb(255,208,15);
     background: linear-gradient(90deg, rgba(255,208,15,1) 49%, rgba(208,80,38,1) 100%);
-}
-
-
-
-.sfumatura_header{
-    background-color: #cdbfe2;
-    background-image: var(--bs-gradient);
-}
-
-.nav-link:hover, .nav-link:focus{
-    color: #ffffff;
 }
 
 
@@ -88,12 +67,12 @@ img {
             // border-radius: 15px;
             border-top-left-radius: 15px;
             border-bottom-left-radius: 15px;
-            width: 5rem;
-            height: 1.575rem;
+            width: 6rem;
+            height: 2.5rem;
             display: block;
             position: absolute;
             top: 0;
-            left: -5%;
+            left: -2%;
             z-index: -1;
         }
     }

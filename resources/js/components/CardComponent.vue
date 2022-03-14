@@ -7,12 +7,12 @@
           :key="restaurant.id"
         >
           <div class="card">
-            <h2 class="brandname">{{ restaurant.brand_name }}</h2>
+            <h3 class="brandname">{{ restaurant.brand_name }}</h3>
             <div class="card-image">
               <img :src="`../storage/${restaurant.image}`" alt="" />
             </div>
 
-            <div class="container-description">
+            <div class="container-description p-3">
               <p class="description">{{ restaurant.description }}</p>
             </div>
 

@@ -47,18 +47,18 @@ export default {
     },
   },
 };
-$(function () {
-  var koko = $(".kokohover");
+// $(function () {
+//   var koko = $(".kokohover");
 
-  $(window).scroll(function () {
-    var scroll = $(window).scrollTop();
-    if (scroll >= 50) {
-      //header.addClass("navbar-dark bg-primary");
+//   $(window).scroll(function () {
+//     var scroll = $(window).scrollTop();
+//     if (scroll >= 50) {
+//       //header.addClass("navbar-dark bg-primary");
 
-      koko.addClass("hoverkoko");
-    } else {
-      koko.removeClass(" hoverkoko");
-    }
-  });
-});
+//       koko.addClass("hoverkoko");
+//     } else {
+//       koko.removeClass(" hoverkoko");
+//     }
+//   });
+// });
 </script>

@@ -75,7 +75,7 @@
     <div id="app">
         <div id="home">
 
-            @include('components.header')
+            @include('components.header-home')
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>

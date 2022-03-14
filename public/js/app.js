@@ -5386,20 +5386,18 @@ __webpack_require__.r(__webpack_exports__);
       window.location.href = "/restaurants/".concat(cityChoose);
     }
   }
-});
-$(function () {
-  var koko = $(".kokohover");
-  $(window).scroll(function () {
-    var scroll = $(window).scrollTop();
-
-    if (scroll >= 50) {
-      //header.addClass("navbar-dark bg-primary");
-      koko.addClass("hoverkoko");
-    } else {
-      koko.removeClass(" hoverkoko");
-    }
-  });
-});
+}); // $(function () {
+//   var koko = $(".kokohover");
+//   $(window).scroll(function () {
+//     var scroll = $(window).scrollTop();
+//     if (scroll >= 50) {
+//       //header.addClass("navbar-dark bg-primary");
+//       koko.addClass("hoverkoko");
+//     } else {
+//       koko.removeClass(" hoverkoko");
+//     }
+//   });
+// });
 
 /***/ }),
 
@@ -6181,24 +6179,22 @@ __webpack_require__.r(__webpack_exports__);
       window.location.href = "/restaurants/".concat(cityChoose);
     }
   }
-});
-$(function () {
-  var koko = $(".verkoko");
-  var bottone = $(".btn");
-  $(window).scroll(function () {
-    var scroll = $(window).scrollTop();
-
-    if (scroll >= 50) {
-      bottone.addClass("btnBlue");
-      bottone.addClass("btnNavScesa");
-      koko.removeClass("hoverkoko");
-    } else {
-      koko.addClass(" hoverkoko");
-      bottone.removeClass("btnBlue");
-      bottone.removeClass("btnNavScesa");
-    }
-  });
-});
+}); // $(function () {
+//   var koko = $(".verkoko");
+//   var bottone = $(".btn");
+//   $(window).scroll(function () {
+//     var scroll = $(window).scrollTop();
+//     if (scroll >= 50) {
+//       bottone.addClass("btnBlue");
+//       bottone.addClass("btnNavScesa");
+//       koko.removeClass("hoverkoko");
+//     } else {
+//       koko.addClass(" hoverkoko");
+//       bottone.removeClass("btnBlue");
+//        bottone.removeClass("btnNavScesa");
+//     }
+//   });
+// });
 
 /***/ }),
 
@@ -56684,7 +56680,7 @@ var render = function () {
         },
         [
           _c("div", { staticClass: "card" }, [
-            _c("h2", { staticClass: "brandname" }, [
+            _c("h3", { staticClass: "brandname" }, [
               _vm._v(_vm._s(restaurant.brand_name)),
             ]),
             _vm._v(" "),
@@ -56694,7 +56690,7 @@ var render = function () {
               }),
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "container-description" }, [
+            _c("div", { staticClass: "container-description p-3" }, [
               _c("p", { staticClass: "description" }, [
                 _vm._v(_vm._s(restaurant.description)),
               ]),
@@ -56834,8 +56830,8 @@ var staticRenderFns = [
         ]),
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("h3", { staticClass: "h3" }, [
+      _c("div", { staticClass: "row text-center" }, [
+        _c("h3", { staticClass: "h3 display-6" }, [
           _c("span", { staticClass: "spancontainer" }, [
             _vm._v(
               "\n                    SIAMO PRESENTI NELLE SEGUENTI CITTA'\n                    "
@@ -57061,7 +57057,7 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
-          _c("h3", { staticClass: "h3 text-center" }, [
+          _c("h3", { staticClass: "h3 display-6 text-center" }, [
             _c("span", { staticClass: "spancontainer" }, [
               _vm._v(
                 "\n                    I NOSTRI MIGLIORI RISTORANTI\n                    "
@@ -57753,7 +57749,7 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
-          _c("h3", { staticClass: "h3" }, [
+          _c("h3", { staticClass: "h3 display-6" }, [
             _c("span", { staticClass: "spancontainer" }, [
               _vm._v("\n                    LAVORA CON NOI\n                "),
             ]),
@@ -57786,15 +57782,20 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("p", { staticClass: "card-text " }, [
                     _vm._v(
-                      "Diventa un rider: flessibilità, ottimi guadagni e un mondo di vantaggi per te."
+                      "Diventa un rider: flessibilità, ottimi guadagni e un mondo di vantaggi per te. Scopri un mondo nuovo di opportunità."
                     ),
                   ]),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "card-body py-4 text-light" }, [
-                  _c("a", { staticClass: "btn", attrs: { href: "/rider" } }, [
-                    _vm._v("Unisciti a noi"),
-                  ]),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-indigo",
+                      attrs: { href: "/rider" },
+                    },
+                    [_vm._v("Unisciti a noi")]
+                  ),
                 ]),
               ]
             ),
@@ -57869,7 +57870,9 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "card-body py-4 text-light" }, [
-                _c("a", { staticClass: "btn " }, [_vm._v("Scopri di più")]),
+                _c("a", { staticClass: "btn btn-indigo" }, [
+                  _vm._v("Scopri di più"),
+                ]),
               ]),
             ]),
           ]),
@@ -71021,8 +71024,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\BOOLEAN\kokolivery\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! F:\BOOLEAN\kokolivery\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/cenny/Desktop/project final/project/kokolivery/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/cenny/Desktop/project final/project/kokolivery/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
