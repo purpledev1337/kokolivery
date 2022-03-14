@@ -8,6 +8,7 @@
             <a class="navbar-brand mb-1 mb-lg-0 logonavbase black" href="{{ route('home') }}"> <img
                     class="logonav" src="/storage/asset/Kokolivery-logo.svg"> Kokolivery</a>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <search-component></search-component>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     @auth
                     <button class="btn btn-collabora">
@@ -61,9 +62,9 @@
                 </ul>
             </div>
         </div>
-        <div class="containeNav">
+        {{-- <div class="containeNav">
             <search-component></search-component>
-        </div>
+        </div> --}}
     </nav>
     <script>
         $(function() {
