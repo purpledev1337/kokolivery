@@ -19160,11 +19160,11 @@ nav span.navbar-toggler-icon {
   background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1024px-Hamburger_icon.svg.png) !important;
 }
 
-nav .navbar-brand img {
+nav .navbar-brand .img {
   display: none;
 }
 
-nav .navbar-brand img.d-block {
+nav .navbar-brand .img.d-block {
   display: block;
 }
 

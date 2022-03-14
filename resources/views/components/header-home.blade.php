@@ -9,7 +9,7 @@
             {{-- noome e logo --}}
             <div class="navbar-brand">
                 <a class="d-flex" href="{{ route('home') }}"> 
-                    <img src="/storage/asset/Kokolivery-logo.svg">
+                    <img class="img" src="/storage/asset/Kokolivery-logo.svg">
                     <h4 class="h4 align-self-center">Kokolivery</h4>
                 </a>
             </div>
