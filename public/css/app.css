@@ -19129,51 +19129,66 @@ fieldset:disabled .btn {
 }
 
 nav {
-  flex-direction: column;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  background-color: #cdbfe2;
+}
+
+nav.background-scroll-change {
+  background-color: #d05026 !important;
+}
+
+nav .navbar-collapse {
+  flex-grow: 0 !important;
+}
+
+nav .nav-link:hover,
+nav .nav-link:focus {
+  color: #ffffff;
+}
+
+nav div.container {
+  height: 120px;
 }
 
 nav .navbar-toggler {
   background-color: #ff2c63 !important;
-  border: 1px solid #ff2c63 !important;
+  border: none;
 }
 
 nav span.navbar-toggler-icon {
   background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1024px-Hamburger_icon.svg.png) !important;
 }
 
-.navbar-collapse {
-  flex-grow: 0 !important;
+nav .navbar-brand img {
+  display: none;
 }
 
-.logonavbase {
-  text-shadow: 1px 2px 3px #5c2e4d;
-  font-size: 32px;
+nav .navbar-brand img.d-block {
+  display: block;
 }
 
-.centratura {
-  margin: 0 auto;
-  position: relative;
-  top: 0px;
-  left: -142px;
-}
-
-.centratura .position-relative {
-  width: 20rem;
-}
-
-.centratura i {
-  position: absolute;
-  top: 0;
-  right: 0;
+nav .navbar-brand a {
+  text-decoration: none;
   color: #390075;
-  padding: 0.375rem 0.75rem;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bolder;
 }
 
-.centratura .form-control {
-  padding-right: 2.5rem;
+nav button.btn.indigo {
+  background-color: #390075;
+}
+
+nav button.btn.indigo a {
+  color: #ffffff;
+}
+
+nav button.btn.indigo:hover {
+  background-color: #ff2c63;
+}
+
+nav button.btn.indigo:hover a {
+  color: #000;
 }
 
 .white {
@@ -19185,52 +19200,11 @@ nav span.navbar-toggler-icon {
   color: #000000;
 }
 
-.bg-valerio {
-  background-color: #d05026;
-  color: white;
-  transition: 0.5s;
-}
-
-.hoverkoko {
-  display: none;
-  transition: 0.5s;
-}
-
-.removehover {
-  display: inline;
-  width: 100px;
-}
-
-.removehoverform {
-  display: inline;
-}
-
-.logonav {
-  display: none;
-  transition: 0.5s;
-}
-
-.containeNav {
-  width: 100%;
-  background-color: #d05026;
-  display: flex;
-}
-
-.navbar-light .navbar-toggler {
-  color: blue !important;
-}
-
 .kokohover.input-group {
   position: relative;
   flex-wrap: wrap;
   align-items: stretch;
   width: 26rem;
-}
-
-.navbar-collapse {
-  flex-basis: 0;
-  flex-grow: 1;
-  align-items: center;
 }
 
 #search_home {
@@ -19243,12 +19217,12 @@ nav span.navbar-toggler-icon {
   background: linear-gradient(90deg, #ffd00f 49%, #d05026 100%);
 }
 
-#cont-logo {
+#search_home #cont-logo {
   display: flex;
   align-items: center;
 }
 
-img {
+#search_home #cont-logo #cont-img-home img {
   width: 100%;
 }
 
@@ -19260,23 +19234,9 @@ img {
   font-size: 70px;
 }
 
-.container {
-  text-align: center;
-}
-
 #banner_svg {
   background: #ffd00f;
   background: linear-gradient(90deg, #ffd00f 49%, #d05026 100%);
-}
-
-.sfumatura_header {
-  background-color: #cdbfe2;
-  background-image: var(--bs-gradient);
-}
-
-.nav-link:hover,
-.nav-link:focus {
-  color: #ffffff;
 }
 
 #top-restaurant {
@@ -19307,12 +19267,12 @@ img {
   background-color: #ff2c63;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
-  width: 5rem;
-  height: 1.575rem;
+  width: 8rem;
+  height: 2.5rem;
   display: block;
   position: absolute;
   top: 0;
-  left: -5%;
+  left: -2%;
   z-index: -1;
 }
 
@@ -19408,7 +19368,7 @@ img {
 }
 
 .cardrestaurant .container-description > .description {
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-align: center;
   padding-top: 0.5rem;
   font-weight: bold;
@@ -19829,14 +19789,6 @@ ul.social-footer2 li a {
   text-shadow: 3px 3px 6px #050505;
 }
 
-.btn-collabora {
-  margin-right: 20px;
-}
-
-.centratura-logonav {
-  padding: 34px 10%;
-}
-
 #loading {
   text-align: center;
   padding-top: 4rem;
@@ -20039,11 +19991,11 @@ ul.social-footer2 li a {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   width: 5rem;
-  height: 1.575rem;
+  height: 2.5rem;
   display: block;
   position: absolute;
   top: 0;
-  left: 88%;
+  left: 93%;
   z-index: -1;
 }
 
@@ -20069,6 +20021,10 @@ ul.social-footer2 li a {
 
 #together #cards .card-group .btn-pink {
   background-color: #ff2c63 !important;
+}
+
+#together #cards .card-group .btn-indigo {
+  background-color: #390075 !important;
 }
 
 #together #cards .card-group .card {
@@ -20140,7 +20096,7 @@ html {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  padding-top: 145px;
+  padding-top: 120px;
   background-color: #fff;
 }
 

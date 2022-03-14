@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="row">
-                <h3 class="h3 text-center">
+                <h3 class="h3 display-6 text-center">
                     <span class="spancontainer">
                         I NOSTRI MIGLIORI RISTORANTI
                         <span class="highlights"></span>

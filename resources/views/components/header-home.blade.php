@@ -1,35 +1,48 @@
 <header>
-    <nav  class="navbar fixed-top navbar-expand-lg sfumatura_header">
-        <div class="container-fluid centratura-logonav">
+    <nav  class="navbar fixed-top navbar-expand-lg">
+        <div class="container">
+            {{-- toggle menu in mobile --}}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
                 aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand mb-1 mb-lg-0 logonavbase black" href="{{ route('home') }}"> <img
-                    class="logonav" src="/storage/asset/Kokolivery-logo.svg"> Kokolivery</a>
+            {{-- noome e logo --}}
+            <div class="navbar-brand">
+                <a class="d-flex" href="{{ route('home') }}"> 
+                    <img src="/storage/asset/Kokolivery-logo.svg">
+                    <h4 class="h4 align-self-center">Kokolivery</h4>
+                </a>
+            </div>
+            {{-- sezione che collapse --}}
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <search-component></search-component>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav mb-lg-0">
+
+                    {{-- nome ristorante --}}
                     @auth
-                    <button class="btn btn-collabora">
-                        <li class="nav-item">
-                            <a href="{{ route('dashboard') }}" class="nav-link black">{{ Auth::user()->brand_name }}</a>
-                        </li>
-                    </button>
-                    <button class="btn btn-collabora">
-                        <li class="nav-item ">
-                            <a class="nav-link black" href="{{ route('logout') }}">Logout</a>
-                        </li>
-                    </button>
+                        <button class="btn me-3">
+                            <li class="nav-item">
+                                <a href="{{ route('dashboard') }}" class="nav-link black">{{ Auth::user()->brand_name }}</a>
+                            </li>
+                        </button>
                   
                     @endauth
-                    <form class="form-inline hoverkoko">
-                        {{-- <input @keyup.enter.prevent="searchRestaurantsFromCity" type="text" placeholder="Inserisci La Via, La Citta' E La Provincia" v-model="city"> --}}
-                        {{-- <button @click.prevent="searchRestaurantsFromCity"  class="btn btn-primary" >SEARCH</button> --}}
-                    </form>
+                    
+                    {{-- link to home --}}
+                    <button class="btn me-3" >
+                        <li class="nav-item">
+                            <a class="nav-link black" href="{{ route('home') }}">Home</a>
+                        </li>
+                    </button>
+                    {{-- link to all restaurants --}}
+                    <button class="btn me-3">
+                        <li class="nav-item">
+                            <a class="nav-link black" href="{{ route('restaurants') }}">Ristoranti</a>
+                        </li>
+                    </button>
+
                     {{-- dropdown --}}
                     <li class="nav-item dropdown ">
-                        <button class="btn btn-collabora">
+                        <button class="btn me-3">
                             <a class="nav-link dropdown-toggle black" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Collabora Con Noi
@@ -42,65 +55,49 @@
                                             Ristorante</a></li>
                                     <li><a class="dropdown-item" href="{{ route('rider') }}">Rider Login</a></li>
                                 @endguest
+
                                 {{-- <li><hr class="dropdown-divider"></li> --}}
-                                <li><a class="dropdown-item" href="#">Contatti</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Contatti</a>
+                                </li>
+
+                                <li >
+                                    <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+                                </li>
                             </ul>
                         </button>
                     </li>
-                    {{-- link to home --}}
-                    <button class="btn btn-collabora" >
-                        <li class="nav-item">
-                            <a class="nav-link black" href="{{ route('home') }}">Home</a>
-                        </li>
-                    </button>
-                    {{-- link to all restaurants --}}
-                    <button class="btn btn-collabora">
-                        <li class="nav-item">
-                            <a class="nav-link black" href="{{ route('restaurants') }}">Ristoranti</a>
-                        </li>
-                    </button>
                 </ul>
             </div>
         </div>
-        {{-- <div class="containeNav">
-            <search-component></search-component>
-        </div> --}}
     </nav>
-    <script>
+
+
+    <script type="application/javascript">
         $(function() {
-            var header = $(".navbar");
-            var brand = $(".navbar-brand");
-            var linka = $(".nav-link");
-            var koko = $(".logonav");
-            var formkoko = $(".form-inline");
+            var navbar = $(".navbar");
+            var brand = $(".navbar-brand>a");
+            var brandImg = $(".navbar-brand>a>.img");
+            var buttonNav = $(".btn.me-3");
             $(window).scroll(function() {
                 var scroll = $(window).scrollTop();
                 if (scroll >= 50) {
-                    header.addClass(" bg-valerio");
-                    header.removeClass("sfumatura_header");
-                    brand.addClass("white");
-                    brand.removeClass("black");
-                    linka.removeClass("black");
-                    linka.addClass("white");
-                    koko.removeClass("logonav");
-                    koko.addClass("removehover");
-                    formkoko.removeClass("hoverkoko");
-                    formkoko.addClass("removehoverform");
+                    navbar.addClass("background-scroll-change");
+                    brand.addClass("text-light");
+                    brandImg.addClass("d-block");
+                    buttonNav.addClass("indigo");
+                    
                 } else {
-                    header.removeClass(" bg-valerio");
-                    header.addClass("sfumatura_header");
-                    brand.removeClass("white");
-                    brand.addClass("black")
-                    linka.removeClass("white");
-                    linka.addClass("black");
-                    koko.removeClass("removehover");
-                    koko.addClass("logonav");
-                    formkoko.addClass("hoverkoko");
-                    formkoko.removeClass("removehoverform");
+                    navbar.removeClass("background-scroll-change");
+                    brand.removeClass("text-light");
+                    brandImg.removeClass("d-block");
+                    buttonNav.removeClass("indigo");
+
                 }
             });
         });
     </script>
+
     {{-- modal registration --}}
     @include('pages.modal.login')
 </header>

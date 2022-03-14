@@ -25,10 +25,10 @@
                         </div>
                         <div class="card-body py-4 text-light">
                             <h3 class="card-title">RIDER</h3>
-                            <p class="card-text ">Diventa un rider: flessibilità, ottimi guadagni e un mondo di vantaggi per te.</p>
+                            <p class="card-text ">Diventa un rider: flessibilità, ottimi guadagni e un mondo di vantaggi per te. Scopri un mondo nuovo di opportunità.</p>
                         </div>
                         <div class="card-body py-4 text-light">
-                            <a href="/rider" class="btn">Unisciti a noi</a>
+                            <a href="/rider" class="btn btn-indigo">Unisciti a noi</a>
                         </div>
                     </a>
                     <a href="/restaurants" class="col-sm-12 col-md-4 card p-3">
@@ -54,7 +54,7 @@
                             <p class="card-text ">La nostra missione è trasformare il modo in cui le persone mangiano. È un obiettivo ambizioso, come noi, e ci servono persone che ci aiutino a raggiungerlo.</p>
                         </div>
                         <div class="card-body py-4 text-light">
-                            <a class="btn ">Scopri di più</a>
+                            <a class="btn btn-indigo">Scopri di più</a>
                         </div>
                     </a>
                 </div>

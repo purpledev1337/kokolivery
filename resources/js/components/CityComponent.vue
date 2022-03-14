@@ -6,8 +6,8 @@
                     <img src="storage/asset/cities.svg" alt="">
                 </div>
             </div>
-            <div class="row">
-                <h3 class="h3">
+            <div class="row text-center">
+                <h3 class="h3 display-6">
                     <span class="spancontainer">
                         SIAMO PRESENTI NELLE SEGUENTI CITTA'
                         <span class="highlights"></span>
