@@ -63,18 +63,22 @@ class StripePaymentController extends Controller
 
         Session::flash('success', 'Pagamento avvenuto con successo!');
 
+        // salvo i dati dell'ordine
         $order = Order::make();
         $order -> status_pay = true;
         $order -> delivery_time = rand(5,60);
+        $order -> order_price = $payment;
         
         $order -> save();
 
+        // salvo i dati nella tabella ponte dish_order
         $cartData = Session::get('cart');
         $cart = $cartData['cartDishes'];
         foreach ($cart as $dish) {
             $order->dishes()->attach($dish['id'], ['quantity' => $dish['quantity']]);
         };
 
+        // salvo i dati del cliente
         $guest = Guest::make($data);
         $guest -> order_id = $order -> id;
         $guest -> save();

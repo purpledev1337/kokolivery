@@ -30,17 +30,30 @@ class AuthController extends Controller
 
     public function myOrders()
     {
-        $dishes = User::find(Auth::User() -> id) -> dishes;
+        $listOrder = DB::table('orders')
+                        ->join('dish_order', 'orders.id','=', 'dish_order.order_id')
+                        ->join('dishes', 'dish_order.dish_id','=', 'dishes.id')
+                        ->join('users','dishes.user_id', 'users.id') 
+                        ->where('users.id', Auth::User() -> id)
+                        ->select('orders.id', 'order_price', DB::raw('COUNT(orders.id) as group_order'))
+                        ->groupBy('orders.id')
+                        ->orderBy('orders.id', 'DESC')->get();
 
-        $listOrders = [];
+        $listOrderComplete = [];
 
-        foreach ($dishes as $dish) {
-            
-            $orders = Dish::find($dish -> id) -> orders;
-            array_push($listOrders, $orders);
+        foreach ($listOrder as $order) {
+            $dishes = Order::find($order -> id) -> dishes;
+
+            $data = [
+                'id' => $order -> id,
+                'order_price' => $order -> order_price,
+                'dishes' => $dishes
+            ];
+
+            $listOrderComplete[] = $data;
         }
-
-        return view('pages.my_orders', compact('listOrders'));
+        
+        return view('pages.my_orders', compact('listOrderComplete'));
     }
     
     // view form create piatto
