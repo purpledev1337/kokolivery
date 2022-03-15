@@ -43,6 +43,13 @@
         z-index: 2;
         background-color: #202020;
         transition: 0.5s;
+
+        img{
+            object-position: center;
+            object-fit: cover;
+            // height: 100%;
+            width: 100%;
+        }
     }
 
     .card:hover img {
