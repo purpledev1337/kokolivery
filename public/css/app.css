@@ -20131,9 +20131,10 @@ ul.social-footer2 li a {
 }
 
 #my_dishes .dish_card {
+  max-height: 250px;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 2em;
-  overflow-wrap: break-word;
+  position: relative;
 }
 
 #my_dishes .dish_card .img_container {
@@ -20156,7 +20157,15 @@ ul.social-footer2 li a {
 }
 
 #my_dishes .dish_card.not_visible {
-  opacity: 0.5;
+  opacity: 0.4;
+}
+
+#my_dishes .dish_card .visibility_eye {
+  color: black;
+  font-size: 1.5em;
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
 }
 
 html {

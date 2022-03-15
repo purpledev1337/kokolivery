@@ -2,7 +2,7 @@
 @section('content')
 <div id="my_dishes">
     <div class="row justify-content-center">
-        <h1 class="text-center">Piatti di {{ Auth::user()->brand_name }}</h1>
+        <h1 class="text-center my-3">Piatti di {{ Auth::user()->brand_name }}</h1>
         <a id="create_plate" class="btn btn-primary col-xs-12 col-md-6" href="{{ route('dish.create') }}" >CREA NUOVO PIATTO</a>
     </div>
     <div id="content_box" class="row position-relative">
@@ -15,12 +15,14 @@
             @foreach ($categories as $category)
                 
                 @if ($category == 'Antipasto')
-                <div class="col-12 p-3 order-1">
+                <div class="p-3 order-1">
                     <div class="row justify-content-center">
                         <h2 class="col-12">Antipasto:</h2>
+                        <div class="offset-md-2 col-md-8">
                         @foreach ($dishes as $dish)
                             @if ($dish -> category == 'Antipasto')
-                                <div class="{{ !$dish -> is_visible? 'dish_card col-12 p-3 m-1 not_visible':'dish_card col-12 p-3 m-1' }}">
+                                <div class="{{ !$dish -> is_visible ? 'dish_card col-12 col-xs-6 text-truncate p-3 m-1 not_visible' : 'dish_card col-12 col-xs-6 text-truncate p-3 m-1' }}">
+                                    <i class="{{ !$dish -> is_visible ? 'fa fa-eye visibility_eye d-none' : 'fa fa-eye visibility_eye' }}"></i>
                                     <div class="row">
                                         <div class="col-8 p-3">
                                             <h2>{{ $dish->name }}</h2>
@@ -46,16 +48,18 @@
                                 </div>
                             @endif
                         @endforeach
+                        </div>
                     </div>
                 </div>
                 @elseif ($category == 'Primi Piatti')
-                <div class="col-12 p-3 order-2">
+                <div class="p-3 order-2">
                     <div class="row justify-content-center">
                         <h2 class="col-12">Primi Piatti:</h2>
+                        <div class="offset-md-2 col-md-8">
                         @foreach ($dishes as $dish)
                             @if ($dish -> category == 'Primi Piatti')
-                                <div class="{{ !$dish -> is_visible? 'dish_card col-12 p-3 m-1 not_visible':'dish_card col-12 p-3 m-1' }}">
-                                    <div class="row">
+                                <div class="{{ !$dish -> is_visible ? 'dish_card col-12 col-xs-6 text-truncate p-3 m-1 not_visible' : 'dish_card col-12 col-xs-6 text-truncate p-3 m-1' }}">
+                                    <i class="{{ $dish -> is_visible ? 'fa fa-eye visibility_eye d-none' : 'fa fa-eye visibility_eye' }}"></i>
                                         <div class="col-8 p-3">
                                             <h2>{{ $dish->name }}</h2>
                                             <h5>{{ $dish->description }}</h5>
@@ -80,16 +84,18 @@
                                 </div>
                             @endif
                         @endforeach
+                        </div>
                     </div>
                 </div>
                 @elseif ($category == 'Secondi Piatti')
-                <div class="col-12 p-3 order-3">
+                <div class="p-3 order-3">
                     <div class="row justify-content-center">
                         <h2 class="col-12">Secondi Piatti:</h2>
+                        <div class="offset-md-2 col-md-8">
                         @foreach ($dishes as $dish)
                             @if ($dish -> category == 'Secondi Piatti')
-                                <div class="{{ !$dish -> is_visible? 'dish_card col-12 p-3 m-1 not_visible':'dish_card col-12 p-3 m-1' }}">
-                                    <div class="row">
+                                <div class="{{ !$dish -> is_visible ? 'dish_card col-12 col-xs-6 text-truncate p-3 m-1 not_visible' : 'dish_card col-12 col-xs-6 text-truncate p-3 m-1' }}">
+                                    <i class="{{ $dish -> is_visible ? 'fa fa-eye visibility_eye d-none' : 'fa fa-eye visibility_eye' }}"></i>
                                         <div class="col-8 p-3">
                                             <h2>{{ $dish->name }}</h2>
                                             <h5>{{ $dish->description }}</h5>
@@ -114,16 +120,18 @@
                                 </div>
                             @endif
                         @endforeach
+                        </div>
                     </div>
                 </div>
                 @elseif ($category == 'Pizza')
-                <div class="col-12 p-3 order-4">
+                <div class="p-3 order-4">
                     <div class="row justify-content-center">
                         <h2 class="col-12">Pizza:</h2>
+                        <div class="offset-md-2 col-md-8">
                         @foreach ($dishes as $dish)
                             @if ($dish -> category == 'Pizza')
-                                <div class="{{ !$dish -> is_visible? 'dish_card col-12 p-3 m-1 not_visible':'dish_card col-12 p-3 m-1' }}">
-                                    <div class="row">
+                                <div class="{{ !$dish -> is_visible ? 'dish_card col-12 col-xs-6 text-truncate p-3 m-1 not_visible' : 'dish_card col-12 col-xs-6 text-truncate p-3 m-1' }}">
+                                    <i class="{{ $dish -> is_visible ? 'fa fa-eye visibility_eye d-none' : 'fa fa-eye visibility_eye' }}"></i>
                                         <div class="col-8 p-3">
                                             <h2>{{ $dish->name }}</h2>
                                             <h5>{{ $dish->description }}</h5>
@@ -148,16 +156,18 @@
                                 </div>
                             @endif
                         @endforeach
+                        </div>
                     </div>
                 </div>
                 @elseif ($category == 'Dessert')
-                <div class="col-12 p-3 order-5">
+                <div class="p-3 order-5">
                     <div class="row justify-content-center">
                         <h2 class="col-12">Dessert:</h2>
+                        <div class="offset-md-2 col-md-8">
                         @foreach ($dishes as $dish)
                             @if ($dish -> category == 'Dessert')
-                                <div class="{{ !$dish -> is_visible? 'dish_card col-12 p-3 m-1 not_visible':'dish_card col-12 p-3 m-1' }}">
-                                    <div class="row">
+                                <div class="{{ !$dish -> is_visible ? 'dish_card col-12 col-xs-6 text-truncate p-3 m-1 not_visible' : 'dish_card col-12 col-xs-6 text-truncate p-3 m-1' }}">
+                                    <i class="{{ $dish -> is_visible ? 'fa fa-eye visibility_eye d-none' : 'fa fa-eye visibility_eye' }}"></i>
                                         <div class="col-8 p-3">
                                             <h2>{{ $dish->name }}</h2>
                                             <h5>{{ $dish->description }}</h5>
@@ -182,16 +192,18 @@
                                 </div>
                             @endif
                         @endforeach
+                        </div>
                     </div>
                 </div>
                 @elseif ($category == 'Bibite')
-                <div class="col-12 p-3 order-6">
+                <div class="p-3 order-6">
                     <div class="row justify-content-center">
                         <h2 class="col-12">Bibite:</h2>
+                        <div class="offset-md-2 col-md-8">
                         @foreach ($dishes as $dish)
                             @if ($dish -> category == 'Bibite')
-                                <div class="{{ !$dish -> is_visible? 'dish_card col-12 p-3 m-1 not_visible':'dish_card col-12 p-3 m-1' }}">
-                                    <div class="row">
+                                <div class="{{ !$dish -> is_visible ? 'dish_card col-12 col-xs-6 text-truncate p-3 m-1 not_visible' : 'dish_card col-12 col-xs-6 text-truncate p-3 m-1' }}">
+                                    <i class="{{ $dish -> is_visible ? 'fa fa-eye visibility_eye d-none' : 'fa fa-eye visibility_eye' }}"></i>
                                         <div class="col-8 p-3">
                                             <h2>{{ $dish->name }}</h2>
                                             <h5>{{ $dish->description }}</h5>
@@ -216,6 +228,7 @@
                                 </div>
                             @endif
                         @endforeach
+                        </div>
                     </div>
                 </div>
                 @endif
