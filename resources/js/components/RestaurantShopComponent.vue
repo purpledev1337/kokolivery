@@ -1,9 +1,8 @@
 <template>
   <div v-if="dishes.length" id="shop">
-    <div id="dashboard_box" class="row">
+    <div id="dashboard_box" class="row m-5">
       <div class="col-xs-12 col-md-3" id="dashboard_img">
-        <img
-          class="img-responsive"
+        <img class="rounded"
           :src="`../../storage/${restaurantData.image}`"
         />
       </div>
@@ -21,9 +20,9 @@
       </div>
     </div>
 
-    <div class="row-md d-flex justify-content-center m-5">
+    <div class="d-flex flex-wrap justify-content-center align-items-center my-3">
       <a
-        class="col-xs-4 col-md-2 btn btn-orange mx-1"
+        class="btn mx-xs-5 mx-md-3"
         v-for="(category, i) in arrayCategories"
         :key="i"
         :href="`#${category}` + `link`"
@@ -38,8 +37,8 @@
         id="dishes_box"
         class="col-xs-12 col-lg-8 d-flex flex-column align-items-around"
       >
-        <div
-          class="category_box"
+        <div id="category_section"
+          class="w-100 d-flex flex-wrap justify-content-around"
           v-for="(category, i) in arrayCategories"
           :key="i"
           :class="{
@@ -51,8 +50,8 @@
             bib: category == 'Bibite',
           }"
         >
-          <h2 class="col-12" :id="`${category}` + `link`">{{ category }}:</h2>
-          {{ setCat(category) }}
+          <span class="category_title" :id="`${category}` + `link`">{{ category }}</span>
+            {{ setCat(category) }}
           <!-- class="dish_box col-xs-11 col-lg-5" -->
           <div
             class="col-12 p-3 m-3"
@@ -60,11 +59,11 @@
             :key="k"
           >
             <div class="dish_card row p-3">
-              <!-- <img :src="`../public/storage/${dish.image_path}`" alt=""> -->
               <div class="col-7">
                 <h2>{{ dish.name }}</h2>
+                <hr>
                 <h5>{{ dish.description }}</h5>
-                <h3>€{{ dish.price }}</h3>
+                <h3>{{ dish.price }} €</h3>
                 <br />
 
                 <span
@@ -127,27 +126,33 @@
           justify-content-between
           p-2
           w-lg-100
+          rounded
         "
         id="cart-box"
       >
-        <div class="row p-3">
+        <div class="row p-3 border_bottom">
           <div class="col-12">
-            <h4>Carrello</h4>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="h4">Il tuo ordine</span>
           </div>
         </div>
         <div class="row my-3" v-for="(item, i) in cart" :key="item.id + i">
-          <div class="col-2">
-            <span class="btn btn-secondary" @click="removeFromCart(item)">
-              -
-            </span>
-            <span class="btn btn-orange" @click="addToCart(item)"> + </span>
-          </div>
-          <div class="col-1 align-self-center">{{ item.quantity }}</div>
-          <div class="col-5 align-self-center">{{ item.name }}</div>
-          <div class="col-4 align-self-center">€ {{ item.price }}</div>
+          <!-- <div class="col-1">
+          </div> -->
+          <!-- <div class="col-3"> -->
+            <div class="ms-2 add_remove rounded d-flex justify-content-center align-items-center" @click="removeFromCart(item)">
+                <div class="p-3">-</div>
+            </div>
+            <div class="add_remove rounded-circle d-flex justify-content-center align-items-center" @click="addToCart(item)">
+                <div class="p-3">+</div>
+            </div>
+          <!-- </div> -->
+          <div class="col-2 align-self-center">{{ item.quantity }}x</div>
+          <div class="col-4 align-self-center text-truncate">{{ item.name }}</div>
+          <div class="col-3 align-self-center">{{ item.price }} €</div>
         </div>
-        <div class="row">
-          <div class="offset-3 col-6">
+        <div class="row my-3">
+          <div class="offset-2 col-8 my-3">
             <h3>
               Totale: <b>€ {{ cartTotal }}</b>
             </h3>

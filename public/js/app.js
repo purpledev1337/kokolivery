@@ -5705,6 +5705,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 
 Vue.use(vue_sessionstorage__WEBPACK_IMPORTED_MODULE_1___default.a);
 Vue.config.productionTip = false;
@@ -57093,7 +57098,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _vm.dishes.length
     ? _c("div", { attrs: { id: "shop" } }, [
-        _c("div", { staticClass: "row", attrs: { id: "dashboard_box" } }, [
+        _c("div", { staticClass: "row m-5", attrs: { id: "dashboard_box" } }, [
           _c(
             "div",
             {
@@ -57102,7 +57107,7 @@ var render = function () {
             },
             [
               _c("img", {
-                staticClass: "img-responsive",
+                staticClass: "rounded",
                 attrs: { src: "../../storage/" + _vm.restaurantData.image },
               }),
             ]
@@ -57146,13 +57151,16 @@ var render = function () {
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "row-md d-flex justify-content-center m-5" },
+          {
+            staticClass:
+              "d-flex flex-wrap justify-content-center align-items-center my-3",
+          },
           _vm._l(_vm.arrayCategories, function (category, i) {
             return _c(
               "a",
               {
                 key: i,
-                staticClass: "col-xs-4 col-md-2 btn btn-orange mx-1",
+                staticClass: "btn mx-xs-5 mx-md-3",
                 attrs: { href: "#" + category + "link" },
               },
               [_vm._v("\n      " + _vm._s(category) + "\n    ")]
@@ -57181,7 +57189,8 @@ var render = function () {
                     "div",
                     {
                       key: i,
-                      staticClass: "category_box",
+                      staticClass:
+                        "w-100 d-flex flex-wrap justify-content-around",
                       class: {
                         ant: category == "Antipasto",
                         pri: category == "Primi Piatti",
@@ -57190,18 +57199,19 @@ var render = function () {
                         des: category == "Dessert",
                         bib: category == "Bibite",
                       },
+                      attrs: { id: "category_section" },
                     },
                     [
                       _c(
-                        "h2",
+                        "span",
                         {
-                          staticClass: "col-12",
+                          staticClass: "category_title",
                           attrs: { id: "" + category + "link" },
                         },
-                        [_vm._v(_vm._s(category) + ":")]
+                        [_vm._v(_vm._s(category))]
                       ),
                       _vm._v(
-                        "\n        " +
+                        "\n          " +
                           _vm._s(_vm.setCat(category)) +
                           "\n        "
                       ),
@@ -57215,9 +57225,11 @@ var render = function () {
                               _c("div", { staticClass: "col-7" }, [
                                 _c("h2", [_vm._v(_vm._s(dish.name))]),
                                 _vm._v(" "),
+                                _c("hr"),
+                                _vm._v(" "),
                                 _c("h5", [_vm._v(_vm._s(dish.description))]),
                                 _vm._v(" "),
-                                _c("h3", [_vm._v("€" + _vm._s(dish.price))]),
+                                _c("h3", [_vm._v(_vm._s(dish.price) + " €")]),
                                 _vm._v(" "),
                                 _c("br"),
                                 _vm._v(" "),
@@ -57359,7 +57371,7 @@ var render = function () {
               "div",
               {
                 staticClass:
-                  "\n        col-lg-4\n        d-lg-inline-block d-flex\n        flex-column\n        justify-content-between\n        p-2\n        w-lg-100\n      ",
+                  "\n        col-lg-4\n        d-lg-inline-block d-flex\n        flex-column\n        justify-content-between\n        p-2\n        w-lg-100\n        rounded\n      ",
                 class: !_vm.isCartOpen || !_vm.cart.length > 0 ? "d-none" : "",
                 attrs: { id: "cart-box" },
               },
@@ -57371,51 +57383,55 @@ var render = function () {
                     "div",
                     { key: item.id + i, staticClass: "row my-3" },
                     [
-                      _c("div", { staticClass: "col-2" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "btn btn-secondary",
-                            on: {
-                              click: function ($event) {
-                                return _vm.removeFromCart(item)
-                              },
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "ms-2 add_remove rounded d-flex justify-content-center align-items-center",
+                          on: {
+                            click: function ($event) {
+                              return _vm.removeFromCart(item)
                             },
                           },
-                          [_vm._v("\n            -\n          ")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          {
-                            staticClass: "btn btn-orange",
-                            on: {
-                              click: function ($event) {
-                                return _vm.addToCart(item)
-                              },
+                        },
+                        [_c("div", { staticClass: "p-3" }, [_vm._v("-")])]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "add_remove rounded-circle d-flex justify-content-center align-items-center",
+                          on: {
+                            click: function ($event) {
+                              return _vm.addToCart(item)
                             },
                           },
-                          [_vm._v(" + ")]
-                        ),
+                        },
+                        [_c("div", { staticClass: "p-3" }, [_vm._v("+")])]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-2 align-self-center" }, [
+                        _vm._v(_vm._s(item.quantity) + "x"),
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-1 align-self-center" }, [
-                        _vm._v(_vm._s(item.quantity)),
-                      ]),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-4 align-self-center text-truncate",
+                        },
+                        [_vm._v(_vm._s(item.name))]
+                      ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-5 align-self-center" }, [
-                        _vm._v(_vm._s(item.name)),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-4 align-self-center" }, [
-                        _vm._v("€ " + _vm._s(item.price)),
+                      _c("div", { staticClass: "col-3 align-self-center" }, [
+                        _vm._v(_vm._s(item.price) + " €"),
                       ]),
                     ]
                   )
                 }),
                 _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "offset-3 col-6" }, [
+                _c("div", { staticClass: "row my-3" }, [
+                  _c("div", { staticClass: "offset-2 col-8 my-3" }, [
                     _c("h3", [
                       _vm._v("\n            Totale: "),
                       _c("b", [_vm._v("€ " + _vm._s(_vm.cartTotal))]),
@@ -57455,8 +57471,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row p-3" }, [
-      _c("div", { staticClass: "col-12" }, [_c("h4", [_vm._v("Carrello")])]),
+    return _c("div", { staticClass: "row p-3 border_bottom" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("i", { staticClass: "fa-solid fa-cart-shopping" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "h4" }, [_vm._v("Il tuo ordine")]),
+      ]),
     ])
   },
 ]
