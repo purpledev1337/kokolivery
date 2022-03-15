@@ -1,19 +1,32 @@
 @extends('layouts.main-layout')
 @section('content')
-    <div id="dashboard" class="row align-items-center">
-        <div class="col-md-3">
+    <div id="dashboard" class="row align-items-center pt-3">
+        <div class="col-md-3 order-2">
             <div class="row">
-                    <a class="btn btn-primary offset-3 col-6 mb-5" href="{{route('myDishes')}}">PIATTI</a>
+                    <a class="btn btn-primary offset-3 col-6 my-3" href="{{route('myDishes')}}">PIATTI</a>
             </div>
             <div class="row">
-                    <a class="btn btn-primary offset-3 col-6" href="{{route('my_orders')}}">ORDINI</a>
+                    <a class="btn btn-primary offset-3 col-6 my-3" href="{{route('my_orders')}}">ORDINI</a>
             </div>
+            <div class="row">
+                <a class="btn btn-secondary offset-3 col-6 my-3" href="{{route('restaurant.edit')}}">MODIFICA</a>
+            </div>
+            <div class="row">
+                <a  href="#" 
+                data-target-id="{{Auth::user()->id}}" 
+                data-bs-toggle="modal" 
+                data-bs-target="#deleteRestaurantConfirmation" 
+                class="btn btn-danger offset-3 col-6 my-3">
+                CANCELLA
+                </a>
+            </div>
+            
         </div>
-        <div class="col-md-9">
-            <div id="cont-img">
+        <div class="col-md-9 order-1 ps-5">
+            <div class="img_container">
                 <img src="{{asset('storage') . '/' . Auth::user()->image}}">
             </div>
-            <h1 class="text-center">{{Auth::user()->brand_name}}</h1>
+            <h1 class="text-center my-3">{{Auth::user()->brand_name}}</h1>
             <h4>Tipologia: 
                 @foreach (Auth::user()->types as $type)
                     {{$type -> name}} |
@@ -25,14 +38,6 @@
             <h4>Descrizione: {{Auth::user()->description}}</h4>
             <h4>Ordine minimo: {{Auth::user()->order_min}}€</h4>
             <h4>Prezzo consegna: {{Auth::user()->delivery_price}}€</h4>
-            <a class="btn btn-secondary" href="{{route('restaurant.edit')}}">MODIFICA</a>
-            <a  href="#" 
-            data-target-id="{{Auth::user()->id}}" 
-            data-bs-toggle="modal" 
-            data-bs-target="#deleteRestaurantConfirmation" 
-            class="btn btn-danger">
-            CANCELLA
-            </a>
         </div>
     </div>
 
