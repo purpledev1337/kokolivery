@@ -58,29 +58,30 @@
                         <div class="offset-md-2 col-md-8">
                         @foreach ($dishes as $dish)
                             @if ($dish -> category == 'Primi Piatti')
-                                <div class="{{ !$dish -> is_visible ? 'dish_card col-12 col-xs-6 text-truncate p-3 m-1 not_visible' : 'dish_card col-12 col-xs-6 text-truncate p-3 m-1' }}">
-                                    <i class="{{ $dish -> is_visible ? 'fa fa-eye visibility_eye d-none' : 'fa fa-eye visibility_eye' }}"></i>
-                                        <div class="col-8 p-3">
-                                            <h2>{{ $dish->name }}</h2>
-                                            <h5>{{ $dish->description }}</h5>
-                                            <h3>{{ $dish->price }} €</h3>
-                                            <br/>
-                                        </div>
-                                        <div class="img_container col-4">
-                                            <img class="img-responsive" src="{{asset('storage') . '/' . $dish -> image_path}}">
-                                        </div>
-                                        <div class="comand_panel col-xs-12">
-                                            <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-sm-3">MODIFICA</a>
-                                            <a href="#" 
-                                               data-target-id="{{ $dish -> id }}" 
-                                               data-bs-toggle="modal" 
-                                               data-bs-target="#deleteDishConfirmation" 
-                                               class="btn btn-danger m-sm-3">
-                                               CANCELLA
-                                            </a>
-                                            <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-sm-3">VISIBILITA</a>
-                                        </div>
+                            <div class="{{ !$dish -> is_visible ? 'dish_card col-12 col-xs-6 text-truncate p-3 m-1 not_visible' : 'dish_card col-12 col-xs-6 text-truncate p-3 m-1' }}">
+                                <i class="{{ !$dish -> is_visible ? 'fa fa-eye visibility_eye d-none' : 'fa fa-eye visibility_eye' }}"></i>
+                                <div class="row">
+                                    <div class="col-8 p-3">
+                                        <h2>{{ $dish->name }}</h2>
+                                        <h5>{{ $dish->description }}</h5>
+                                        <h3>{{ $dish->price }} €</h3>
+                                        <br/>
                                     </div>
+                                    <div class="img_container col-4">
+                                        <img class="img-responsive" src="{{asset('storage') . '/' . $dish -> image_path}}">
+                                    </div>
+                                    <div class="comand_panel col-xs-12">
+                                        <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-sm-3">MODIFICA</a>
+                                        <a href="#"
+                                           data-target-id="{{ $dish -> id }}" 
+                                           data-bs-toggle="modal" 
+                                           data-bs-target="#deleteDishConfirmation" 
+                                           class="btn btn-danger m-sm-3">
+                                           CANCELLA
+                                        </a>
+                                        <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-sm-3">VISIBILITA</a>
+                                    </div>
+                                </div>
                                 </div>
                             @endif
                         @endforeach
@@ -95,7 +96,8 @@
                         @foreach ($dishes as $dish)
                             @if ($dish -> category == 'Secondi Piatti')
                                 <div class="{{ !$dish -> is_visible ? 'dish_card col-12 col-xs-6 text-truncate p-3 m-1 not_visible' : 'dish_card col-12 col-xs-6 text-truncate p-3 m-1' }}">
-                                    <i class="{{ $dish -> is_visible ? 'fa fa-eye visibility_eye d-none' : 'fa fa-eye visibility_eye' }}"></i>
+                                    <i class="{{ !$dish -> is_visible ? 'fa fa-eye visibility_eye d-none' : 'fa fa-eye visibility_eye' }}"></i>
+                                    <div class="row">
                                         <div class="col-8 p-3">
                                             <h2>{{ $dish->name }}</h2>
                                             <h5>{{ $dish->description }}</h5>
@@ -107,7 +109,7 @@
                                         </div>
                                         <div class="comand_panel col-xs-12">
                                             <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-sm-3">MODIFICA</a>
-                                            <a href="#" 
+                                            <a href="#"
                                                data-target-id="{{ $dish -> id }}" 
                                                data-bs-toggle="modal" 
                                                data-bs-target="#deleteDishConfirmation" 
@@ -130,29 +132,30 @@
                         <div class="offset-md-2 col-md-8">
                         @foreach ($dishes as $dish)
                             @if ($dish -> category == 'Pizza')
-                                <div class="{{ !$dish -> is_visible ? 'dish_card col-12 col-xs-6 text-truncate p-3 m-1 not_visible' : 'dish_card col-12 col-xs-6 text-truncate p-3 m-1' }}">
-                                    <i class="{{ $dish -> is_visible ? 'fa fa-eye visibility_eye d-none' : 'fa fa-eye visibility_eye' }}"></i>
-                                        <div class="col-8 p-3">
-                                            <h2>{{ $dish->name }}</h2>
-                                            <h5>{{ $dish->description }}</h5>
-                                            <h3>{{ $dish->price }} €</h3>
-                                            <br/>
-                                        </div>
-                                        <div class="img_container col-4">
-                                            <img class="img-responsive" src="{{asset('storage') . '/' . $dish -> image_path}}">
-                                        </div>
-                                        <div class="comand_panel col-xs-12">
-                                            <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-sm-3">MODIFICA</a>
-                                            <a href="#" 
-                                               data-target-id="{{ $dish -> id }}" 
-                                               data-bs-toggle="modal" 
-                                               data-bs-target="#deleteDishConfirmation" 
-                                               class="btn btn-danger m-sm-3">
-                                               CANCELLA
-                                            </a>
-                                            <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-sm-3">VISIBILITA</a>
-                                        </div>
+                            <div class="{{ !$dish -> is_visible ? 'dish_card col-12 col-xs-6 text-truncate p-3 m-1 not_visible' : 'dish_card col-12 col-xs-6 text-truncate p-3 m-1' }}">
+                                <i class="{{ !$dish -> is_visible ? 'fa fa-eye visibility_eye d-none' : 'fa fa-eye visibility_eye' }}"></i>
+                                <div class="row">
+                                    <div class="col-8 p-3">
+                                        <h2>{{ $dish->name }}</h2>
+                                        <h5>{{ $dish->description }}</h5>
+                                        <h3>{{ $dish->price }} €</h3>
+                                        <br/>
                                     </div>
+                                    <div class="img_container col-4">
+                                        <img class="img-responsive" src="{{asset('storage') . '/' . $dish -> image_path}}">
+                                    </div>
+                                    <div class="comand_panel col-xs-12">
+                                        <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-sm-3">MODIFICA</a>
+                                        <a href="#"
+                                           data-target-id="{{ $dish -> id }}" 
+                                           data-bs-toggle="modal" 
+                                           data-bs-target="#deleteDishConfirmation" 
+                                           class="btn btn-danger m-sm-3">
+                                           CANCELLA
+                                        </a>
+                                        <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-sm-3">VISIBILITA</a>
+                                    </div>
+                                </div>
                                 </div>
                             @endif
                         @endforeach
@@ -166,29 +169,30 @@
                         <div class="offset-md-2 col-md-8">
                         @foreach ($dishes as $dish)
                             @if ($dish -> category == 'Dessert')
-                                <div class="{{ !$dish -> is_visible ? 'dish_card col-12 col-xs-6 text-truncate p-3 m-1 not_visible' : 'dish_card col-12 col-xs-6 text-truncate p-3 m-1' }}">
-                                    <i class="{{ $dish -> is_visible ? 'fa fa-eye visibility_eye d-none' : 'fa fa-eye visibility_eye' }}"></i>
-                                        <div class="col-8 p-3">
-                                            <h2>{{ $dish->name }}</h2>
-                                            <h5>{{ $dish->description }}</h5>
-                                            <h3>{{ $dish->price }} €</h3>
-                                            <br/>
-                                        </div>
-                                        <div class="img_container col-4">
-                                            <img class="img-responsive" src="{{asset('storage') . '/' . $dish -> image_path}}">
-                                        </div>
-                                        <div class="comand_panel col-xs-12">
-                                            <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-sm-3">MODIFICA</a>
-                                            <a href="#" 
-                                               data-target-id="{{ $dish -> id }}" 
-                                               data-bs-toggle="modal" 
-                                               data-bs-target="#deleteDishConfirmation" 
-                                               class="btn btn-danger m-sm-3">
-                                               CANCELLA
-                                            </a>
-                                            <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-sm-3">VISIBILITA</a>
-                                        </div>
+                            <div class="{{ !$dish -> is_visible ? 'dish_card col-12 col-xs-6 text-truncate p-3 m-1 not_visible' : 'dish_card col-12 col-xs-6 text-truncate p-3 m-1' }}">
+                                <i class="{{ !$dish -> is_visible ? 'fa fa-eye visibility_eye d-none' : 'fa fa-eye visibility_eye' }}"></i>
+                                <div class="row">
+                                    <div class="col-8 p-3">
+                                        <h2>{{ $dish->name }}</h2>
+                                        <h5>{{ $dish->description }}</h5>
+                                        <h3>{{ $dish->price }} €</h3>
+                                        <br/>
                                     </div>
+                                    <div class="img_container col-4">
+                                        <img class="img-responsive" src="{{asset('storage') . '/' . $dish -> image_path}}">
+                                    </div>
+                                    <div class="comand_panel col-xs-12">
+                                        <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-sm-3">MODIFICA</a>
+                                        <a href="#"
+                                           data-target-id="{{ $dish -> id }}" 
+                                           data-bs-toggle="modal" 
+                                           data-bs-target="#deleteDishConfirmation" 
+                                           class="btn btn-danger m-sm-3">
+                                           CANCELLA
+                                        </a>
+                                        <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-sm-3">VISIBILITA</a>
+                                    </div>
+                                </div>
                                 </div>
                             @endif
                         @endforeach
@@ -202,29 +206,30 @@
                         <div class="offset-md-2 col-md-8">
                         @foreach ($dishes as $dish)
                             @if ($dish -> category == 'Bibite')
-                                <div class="{{ !$dish -> is_visible ? 'dish_card col-12 col-xs-6 text-truncate p-3 m-1 not_visible' : 'dish_card col-12 col-xs-6 text-truncate p-3 m-1' }}">
-                                    <i class="{{ $dish -> is_visible ? 'fa fa-eye visibility_eye d-none' : 'fa fa-eye visibility_eye' }}"></i>
-                                        <div class="col-8 p-3">
-                                            <h2>{{ $dish->name }}</h2>
-                                            <h5>{{ $dish->description }}</h5>
-                                            <h3>{{ $dish->price }} €</h3>
-                                            <br/>
-                                        </div>
-                                        <div class="img_container col-4">
-                                            <img class="img-responsive" src="{{asset('storage') . '/' . $dish -> image_path}}">
-                                        </div>
-                                        <div class="comand_panel col-xs-12">
-                                            <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-sm-3">MODIFICA</a>
-                                            <a href="#" 
-                                               data-target-id="{{ $dish -> id }}" 
-                                               data-bs-toggle="modal" 
-                                               data-bs-target="#deleteDishConfirmation" 
-                                               class="btn btn-danger m-sm-3">
-                                               CANCELLA
-                                            </a>
-                                            <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-sm-3">VISIBILITA</a>
-                                        </div>
+                            <div class="{{ !$dish -> is_visible ? 'dish_card col-12 col-xs-6 text-truncate p-3 m-1 not_visible' : 'dish_card col-12 col-xs-6 text-truncate p-3 m-1' }}">
+                                <i class="{{ !$dish -> is_visible ? 'fa fa-eye visibility_eye d-none' : 'fa fa-eye visibility_eye' }}"></i>
+                                <div class="row">
+                                    <div class="col-8 p-3">
+                                        <h2>{{ $dish->name }}</h2>
+                                        <h5>{{ $dish->description }}</h5>
+                                        <h3>{{ $dish->price }} €</h3>
+                                        <br/>
                                     </div>
+                                    <div class="img_container col-4">
+                                        <img class="img-responsive" src="{{asset('storage') . '/' . $dish -> image_path}}">
+                                    </div>
+                                    <div class="comand_panel col-xs-12">
+                                        <a href="{{ route('dish.edit', $dish -> id) }}" class="btn btn-primary m-sm-3">MODIFICA</a>
+                                        <a href="#"
+                                           data-target-id="{{ $dish -> id }}" 
+                                           data-bs-toggle="modal" 
+                                           data-bs-target="#deleteDishConfirmation" 
+                                           class="btn btn-danger m-sm-3">
+                                           CANCELLA
+                                        </a>
+                                        <a href="{{ route('dish.visibility', $dish -> id) }}" class="btn btn-secondary m-sm-3">VISIBILITA</a>
+                                    </div>
+                                </div>
                                 </div>
                             @endif
                         @endforeach

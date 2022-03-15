@@ -20089,7 +20089,6 @@ ul.social-footer2 li a {
 }
 
 #my_dishes .dish_card {
-  max-height: 250px;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 2em;
   position: relative;
