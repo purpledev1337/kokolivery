@@ -20123,6 +20123,13 @@ ul.social-footer2 li a {
   min-height: 50rem;
 }
 
+#dashboard .img_container img {
+  width: 100%;
+  height: 500px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 #my_dishes .dish_card {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 2em;
