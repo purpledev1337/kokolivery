@@ -19441,30 +19441,6 @@ nav button.btn.indigo:hover a {
   font-weight: 900;
 }
 
-#shop #dishes_box.ant {
-  order: 1;
-}
-
-#shop #dishes_box.pri {
-  order: 2;
-}
-
-#shop #dishes_box.sec {
-  order: 3;
-}
-
-#shop #dishes_box.piz {
-  order: 4;
-}
-
-#shop #dishes_box.des {
-  order: 5;
-}
-
-#shop #dishes_box.bib {
-  order: 6;
-}
-
 #shop #dishes_box .dish_card {
   background-color: rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.03);
@@ -19577,6 +19553,30 @@ nav button.btn.indigo:hover a {
 #cart-box i {
   color: #ff2c64;
   font-size: 1.5em;
+}
+
+.ant {
+  order: 1;
+}
+
+.pri {
+  order: 2;
+}
+
+.sec {
+  order: 3;
+}
+
+.piz {
+  order: 4;
+}
+
+.des {
+  order: 5;
+}
+
+.bib {
+  order: 6;
 }
 
 @media (max-width: 991.98px) {

@@ -43,32 +43,6 @@
             }
         }
 
-
-        &.ant{
-            
-            order: 1;
-        }
-        &.pri{
-            
-            order: 2;
-        }
-        &.sec{
-            
-            order: 3;
-        }
-        &.piz{
-            
-            order: 4;
-        }
-        &.des{
-            
-            order: 5;
-        }
-        &.bib{
-            
-            order: 6;
-        }
-
         .dish_card {
 
             background-color: rgba(0, 0, 0, 0.05);
@@ -192,6 +166,31 @@
         color: rgb(255, 44, 100);
         font-size: 1.5em;
     }
+}
+
+.ant{
+            
+    order: 1;
+}
+.pri{
+    
+    order: 2;
+}
+.sec{
+    
+    order: 3;
+}
+.piz{
+    
+    order: 4;
+}
+.des{
+    
+    order: 5;
+}
+.bib{
+    
+    order: 6;
 }
 
 @media (max-width: 991.98px) {
