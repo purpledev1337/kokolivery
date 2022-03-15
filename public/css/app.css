@@ -19349,6 +19349,14 @@ nav button.btn.indigo:hover a {
   transition: 0.5s;
 }
 
+.cardrestaurant .card .card-image img {
+  -o-object-position: center;
+     object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+}
+
 .cardrestaurant .card:hover img {
   opacity: 0.2;
   transition: 0.5s;
